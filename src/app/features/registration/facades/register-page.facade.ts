@@ -20,11 +20,11 @@ export class RegisterPageFacade {
   public readonly isLoading = this.authService.isLoading;
 
   public async signup() {
-    if (this.registerForm.invalid || this.isLoading()) {
+    const { email, password, name, dateOfBirth } = this.registerForm.getRawValue();
+
+    if (this.registerForm.invalid || this.isLoading() || !email || !password) {
       return;
     }
-
-    const { email, password, name, dateOfBirth } = this.registerForm.getRawValue();
 
     try {
       await this.authService.signup(email, password, { full_name: name, date_of_birth: dateOfBirth });

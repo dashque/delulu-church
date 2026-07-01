@@ -8,46 +8,20 @@
     <label tuiLabel for="name">{{ 'register.form.labels.name' | transloco }}</label>
     <input [formControl]="nameControl" placeholder="aboba" tuiInput id="name" />
   </tui-textfield>
-
-  @let nameControlErrors = nameControl.errors;
-  @if (nameControl.touched && nameControl.invalid) {
-    @if (nameControlErrors?.['required']) {
-      <tui-error [error]="validationErrors.required | transloco" />
-    } @else if (nameControlErrors?.['maxlength']; as maxlength) {
-      <tui-error [error]="validationErrors.maxLength | transloco: maxlength" />
-    }
-  }
+  <tui-error [formControl]="nameControl" />
 
   <tui-textfield iconStart="@tui.mail">
     <label tuiLabel for="email">{{ 'register.form.labels.email' | transloco }}</label>
     <input [formControl]="emailControl" placeholder="john@wick.com" tuiInput type="email" id="email" />
   </tui-textfield>
-  @let emailControlErrors = emailControl.errors;
-  @if (emailControl.touched && emailControl.invalid) {
-    @if (emailControlErrors?.['required']) {
-      <tui-error [error]="validationErrors.required | transloco" />
-    } @else if (emailControlErrors?.['pattern']) {
-      <tui-error [error]="validationErrors.emailPattern | transloco" />
-    }
-  }
+  <tui-error [formControl]="emailControl" />
 
   <tui-textfield iconStart="@tui.lock">
     <label tuiLabel for="password">{{ 'register.form.labels.password' | transloco }}</label>
     <input id="password" [formControl]="passwordControl" placeholder="Aa888888" tuiInput type="password" />
     <tui-icon tuiPassword />
   </tui-textfield>
-  @let passwordControlErrors = passwordControl.errors;
-  @if (passwordControl.touched && passwordControl.invalid) {
-    @if (passwordControlErrors?.['required']) {
-      <tui-error [error]="validationErrors.required | transloco" />
-    } @else if (passwordControlErrors?.['maxlength']; as maxlengthError) {
-      <tui-error [error]="validationErrors.maxLength | transloco: maxlengthError" />
-    } @else if (passwordControlErrors?.['minlength']; as minlengthError) {
-      <tui-error [error]="validationErrors.minLength | transloco: minlengthError" />
-    } @else if (passwordControlErrors?.['pattern']) {
-      <tui-error [error]="validationErrors.passwordPattern | transloco: passwordHints" />
-    }
-  }
+  <tui-error [formControl]="passwordControl" />
 
   <tui-textfield iconStart="@tui.lock">
     <label tuiLabel for="passwordConfirmation">{{ 'register.form.labels.password_confirmation' | transloco }}</label>
@@ -60,20 +34,7 @@
     />
     <tui-icon tuiPassword />
   </tui-textfield>
-  @let passwordConfirmationControlErrors = passwordConfirmationControl.errors;
-  @if (passwordConfirmationControl.touched && passwordConfirmationControl.invalid) {
-    @if (passwordConfirmationControlErrors?.['required']) {
-      <tui-error [error]="validationErrors.required | transloco" />
-    } @else if (passwordConfirmationControlErrors?.['maxlength']; as maxlengthError) {
-      <tui-error [error]="validationErrors.maxLength | transloco: maxlengthError" />
-    } @else if (passwordConfirmationControlErrors?.['minlength']; as minlengthError) {
-      <tui-error [error]="validationErrors.minLength | transloco: minlengthError" />
-    } @else if (passwordConfirmationControlErrors?.['pattern']) {
-      <tui-error [error]="validationErrors.passwordPattern | transloco: passwordHints" />
-    } @else if (passwordConfirmationControlErrors?.['confirmPasswordError']; as confirmPasswordError) {
-      <tui-error [error]="confirmPasswordError | transloco" />
-    }
-  }
+  <tui-error [formControl]="passwordConfirmationControl" />
 
   <tui-textfield iconStart="@tui.calendar">
     <label tuiLabel for="dateOfBirth">{{ 'register.form.labels.date_of_birth' | transloco }}</label>
@@ -81,11 +42,7 @@
     <tui-calendar *tuiDropdown />
   </tui-textfield>
 
-  @if (dateOfBirthControl.touched && dateOfBirthControl.invalid) {
-    @if (dateOfBirthControl.errors?.['required']) {
-      <tui-error [error]="validationErrors.required | transloco" />
-    }
-  }
+  <tui-error [formControl]="dateOfBirthControl" />
 
   <footer class="footer">
     <button tuiButton type="submit" [disabled]="form.invalid || isLoading()">
