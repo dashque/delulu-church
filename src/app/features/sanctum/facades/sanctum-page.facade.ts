@@ -1,5 +1,4 @@
-import { computed, DestroyRef, effect, inject, Service } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { computed, effect, inject, Service } from '@angular/core';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { RITUAL_INTENT_OPTIONS } from '@features/sanctum/constants/ritual-intent-options.config';
 import { SanctumSoundPhase } from '@features/sanctum/data/models/sanctum-sound-phase.model';
@@ -10,20 +9,18 @@ import { SanctumSoundService } from '@features/sanctum/services/sanctum-sound.se
 import { PriestQuotesService } from '@features/sanctum/services/priest-quotes.service';
 import { toErrorMessage } from '@shared/helpers/to-error-message.helper';
 import { TranslocoService } from '@jsverse/transloco';
-import { TuiNotificationService } from '@taiga-ui/core';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Service({
   autoProvided: false,
 })
 export class SanctumPageFacade {
-  private readonly notifications = inject(TuiNotificationService);
-  private readonly destroyRef = inject(DestroyRef);
+  private readonly notifications = inject(HotToastService);
   private readonly translocoService = inject(TranslocoService);
   private readonly candlesService = inject(CandlesService);
   private readonly sanctumRitual = inject(SanctumRitualService);
   private readonly sanctumSound = inject(SanctumSoundService);
   private readonly priestQuotes = inject(PriestQuotesService);
-
   public readonly sanctumForm = inject(SanctumFormService).sanctumForm;
   public readonly isJudging = this.sanctumRitual.isJudging;
   public readonly judgment = this.sanctumRitual.judgment;
@@ -40,9 +37,9 @@ export class SanctumPageFacade {
         return;
       }
 
-      void this.showNotification(
-        toErrorMessage(error),
-        this.translocoService.translate('notifications.failure', {}, 'sanctum')
+      void this.notifications.error(
+        `${this.translocoService.translate('notifications.failure', {}, 'sanctum')}
+        ${toErrorMessage(error)}`
       );
     });
   }
@@ -64,16 +61,5 @@ export class SanctumPageFacade {
 
   public onPriestRaged(): void {
     this.sanctumSound.play(SanctumSoundPhase.PRIEST_RAGE);
-  }
-
-  private showNotification(message: string, label: string) {
-    this.notifications
-      .open(message, {
-        label: label,
-        appearance: 'negative',
-        autoClose: 5000,
-      })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
   }
 }
