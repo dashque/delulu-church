@@ -26,10 +26,6 @@ export class CoderQuotesService {
     this.showQuote(this.translocoService.translate(`coder.sins.${action}`));
   }
 
-  public reactCandle() {
-    this.showQuote(this.translocoService.translate(`coder.candle`));
-  }
-
   private async getQuotes(lang: string): Promise<Quote[]> {
     if (this.cache.has(lang)) {
       return this.cache.get(lang)!;
