@@ -1,4 +1,4 @@
-import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
+import { computed, DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
@@ -108,6 +108,23 @@ export class ProfileFacade {
     total: this.achievementsCount(),
   }));
 
+  constructor() {
+    effect(() => {
+      const user = this.userProfileService.user();
+
+      if (!user || this.profileForm.controls.name.dirty) {
+        return;
+      }
+
+      this.profileForm.patchValue(
+        {
+          name: user.displayName ?? '',
+        },
+        { emitEvent: false }
+      );
+    });
+  }
+
   public async submit() {
     if (this.profileForm.invalid || this.isLoading()) {
       return;
@@ -124,13 +141,14 @@ export class ProfileFacade {
     try {
       const { name, currentPassword, newPassword } = this.profileForm.getRawValue();
 
-      const passwordMode = !!currentPassword?.trim() && !!newPassword?.trim();
-
-      if (passwordMode) {
-        await this.userProfileService.updateProfile(user.uid, {
-          displayName: name,
-        });
+      if (currentPassword && newPassword) {
+        await this.authService.changePassword(currentPassword, newPassword);
       }
+
+      await this.userProfileService.updateProfile(user.uid, {
+        displayName: name,
+      });
+
       this.profileForm.markAsPristine();
 
       await this.showNotification(
