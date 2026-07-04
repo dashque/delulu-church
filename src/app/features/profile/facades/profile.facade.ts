@@ -4,7 +4,7 @@ import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
-import { ProfileSecurityFormService } from '../services/profile-security/profile-security';
+import { ProfileFormService } from '../services/profile-form/profile-form';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -15,7 +15,7 @@ import { FirebaseError } from 'firebase/app';
   providedIn: 'root',
 })
 export class ProfileFacade {
-  private readonly profileSecurityFormService = inject(ProfileSecurityFormService);
+  private readonly profileFormService = inject(ProfileFormService);
 
   private readonly authService = inject(AuthService);
 
@@ -25,7 +25,7 @@ export class ProfileFacade {
 
   private readonly destroyRef = inject(DestroyRef);
 
-  public readonly profileForm = this.profileSecurityFormService.form;
+  public readonly profileForm = this.profileFormService.form;
 
   public readonly state = signal<ProfileData>(PROFILE_MOCK);
 
@@ -95,7 +95,7 @@ export class ProfileFacade {
     };
   });
 
-  public readonly isLoading = computed(() => false);
+  public readonly isLoading = signal(false);
 
   public readonly achievementsCount = computed(() => this.achievementInfo().achievements.length);
 
@@ -112,7 +112,6 @@ export class ProfileFacade {
     if (this.profileForm.invalid || this.isLoading()) {
       return;
     }
-    const { name, currentPassword, newPassword } = this.profileForm.getRawValue();
 
     const user = this.authService.user();
 
@@ -120,15 +119,18 @@ export class ProfileFacade {
       return;
     }
 
+    this.isLoading.set(true);
+
     try {
-      if (currentPassword && newPassword) {
-        await this.authService.changePassword(currentPassword, newPassword);
+      const { name, currentPassword, newPassword } = this.profileForm.getRawValue();
+
+      const passwordMode = !!currentPassword?.trim() && !!newPassword?.trim();
+
+      if (passwordMode) {
+        await this.userProfileService.updateProfile(user.uid, {
+          displayName: name,
+        });
       }
-
-      await this.userProfileService.updateProfile(user.uid, {
-        displayName: name,
-      });
-
       this.profileForm.markAsPristine();
 
       await this.showNotification(
@@ -151,6 +153,8 @@ export class ProfileFacade {
           'negative'
         );
       }
+    } finally {
+      this.isLoading.set(false);
     }
   }
 
