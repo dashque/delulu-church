@@ -444,6 +444,7 @@ tui-textfield:has([tuiInputDate]) tui-icon {
   color: color-mix(in srgb, var(--critical) 88%, var(--warning));
 }
 
+/* className from provideHotToastConfig({ className: 'toast' }) */
 .toast {
   font-family: var(--font-display);
   white-space: pre-line;

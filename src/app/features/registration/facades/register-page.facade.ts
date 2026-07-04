@@ -20,7 +20,7 @@ export class RegisterPageFacade {
   public async signup() {
     const { email, password, name, dateOfBirth } = this.registerForm.getRawValue();
 
-    if (this.registerForm.invalid || this.isLoading() || !email || !password) {
+    if (this.registerForm.invalid || this.isLoading() || !email || !password || !name || !dateOfBirth) {
       return;
     }
 
@@ -29,14 +29,14 @@ export class RegisterPageFacade {
 
       this.registerForm.reset();
 
-      void this.notifications.success(
+      this.notifications.success(
         `${this.translocoService.translate('notifications.success-title', {}, 'register')}
          ${this.translocoService.translate('notifications.success', {}, 'register')}`
       );
       this.registerForm.markAsPristine();
       void this.router.navigate(['/']);
     } catch (error) {
-      void this.notifications.error(
+      this.notifications.error(
         `${this.translocoService.translate('notifications.failure', {}, 'register')} ${toErrorMessage(error)}`
       );
     }

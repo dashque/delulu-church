@@ -1,4 +1,4 @@
-import { DestroyRef, inject, Service } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import { ConfessFormService } from '../services/confess-form.service';
 import { ConfessService } from '@core/services/confess/confess.service';
 import { TranslocoService } from '@jsverse/transloco';
@@ -10,7 +10,6 @@ import { HotToastService } from '@ngxpert/hot-toast';
 })
 export class ShriftPageFacade {
   private readonly notifications = inject(HotToastService);
-  private readonly destroyRef = inject(DestroyRef);
   private readonly translocoService = inject(TranslocoService);
   private readonly confessService = inject(ConfessService);
   public readonly confessForm = inject(ConfessFormService).confessForm;
@@ -19,7 +18,7 @@ export class ShriftPageFacade {
 
   constructor() {
     this.confessService.loadSins().catch((error: unknown) => {
-      void this.notifications.error(
+      this.notifications.error(
         `${this.translocoService.translate('notifications.failure', {}, 'shrift')}
         ${toErrorMessage(error)}`
       );
@@ -37,7 +36,7 @@ export class ShriftPageFacade {
       await this.confessService.addSin(text, severity);
       this.confessForm.reset();
     } catch (error) {
-      void this.notifications.error(
+      this.notifications.error(
         `${this.translocoService.translate('notifications.failure', {}, 'shrift')}
         ${toErrorMessage(error)}`
       );
@@ -48,7 +47,7 @@ export class ShriftPageFacade {
     try {
       await this.confessService.deleteSin(sinUid);
     } catch (error) {
-      void this.notifications.error(
+      this.notifications.error(
         `${this.translocoService.translate('notifications.failure', {}, 'shrift')}
         ${toErrorMessage(error)}`
       );

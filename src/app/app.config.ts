@@ -22,6 +22,7 @@ import { initialUiState } from '@core/store/constants/initial-ui-state';
 import { httpErrorInterceptor } from '@core/interceptors/http-error-interceptor';
 import { VALIDATION_ERRORS_DICT } from '@shared/dictionaries/validation-errors.dictionary';
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/password-length';
+import { PASSWORD_PATTERN } from '@shared/patterns/password-pattern';
 import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 export const appConfig: ApplicationConfig = {
@@ -54,12 +55,16 @@ export const appConfig: ApplicationConfig = {
         maxlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.maxLength, context),
         minlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.minLength, context),
         pattern: (context) => {
-          return context?.['requiredPattern']
-            ? transloco.translate(VALIDATION_ERRORS_DICT.passwordPattern, {
-                minLength: PASSWORD_MIN_LENGTH,
-                maxLength: PASSWORD_MAX_LENGTH,
-              })
-            : transloco.translate(VALIDATION_ERRORS_DICT.emailPattern);
+          const requiredPattern = String(context?.['requiredPattern'] ?? '');
+
+          if (requiredPattern === PASSWORD_PATTERN.toString()) {
+            return transloco.translate(VALIDATION_ERRORS_DICT.passwordPattern, {
+              minLength: PASSWORD_MIN_LENGTH,
+              maxLength: PASSWORD_MAX_LENGTH,
+            });
+          }
+
+          return transloco.translate(VALIDATION_ERRORS_DICT.emailPattern);
         },
         confirmPasswordError: (key) => transloco.translate(key as string),
       };

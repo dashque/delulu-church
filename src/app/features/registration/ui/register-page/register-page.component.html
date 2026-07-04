@@ -6,7 +6,7 @@
 <form [formGroup]="form" tuiCardLarge tuiForm="m" class="form" [style.max-width.rem]="48" (submit)="onSubmit($event)">
   <tui-textfield>
     <label tuiLabel for="name">{{ 'register.form.labels.name' | transloco }}</label>
-    <input [formControl]="nameControl" placeholder="aboba" tuiInput id="name" />
+    <input [formControl]="nameControl" placeholder="John" tuiInput id="name" />
   </tui-textfield>
   <tui-error [formControl]="nameControl" />
 

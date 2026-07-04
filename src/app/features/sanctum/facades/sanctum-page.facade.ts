@@ -37,7 +37,7 @@ export class SanctumPageFacade {
         return;
       }
 
-      void this.notifications.error(
+      this.notifications.error(
         `${this.translocoService.translate('notifications.failure', {}, 'sanctum')}
         ${toErrorMessage(error)}`
       );
