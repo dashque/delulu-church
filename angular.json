@@ -60,7 +60,9 @@
               "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
               "src/styles.css",
-              "src/app/shared/directives/scan-effect/scan-effect.directive.scss"
+              "src/app/shared/directives/scan-effect/scan-effect.directive.scss",
+              "@ngxpert/hot-toast/styles.css",
+              "@ngxpert/hot-toast/themes/glassmorphism.css"
             ]
           },
           "configurations": {

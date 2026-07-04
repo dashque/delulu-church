@@ -22,6 +22,7 @@ import { initialUiState } from '@core/store/constants/initial-ui-state';
 import { httpErrorInterceptor } from '@core/interceptors/http-error-interceptor';
 import { VALIDATION_ERRORS_DICT } from '@shared/dictionaries/validation-errors.dictionary';
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/password-length';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -62,6 +63,10 @@ export const appConfig: ApplicationConfig = {
         },
         confirmPasswordError: (key) => transloco.translate(key as string),
       };
+    }),
+    provideHotToastConfig({
+      theme: 'glassmorphism',
+      className: 'toast',
     }),
   ],
 };
