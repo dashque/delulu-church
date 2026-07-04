@@ -138,6 +138,10 @@ export class AuthService {
 
     const credential = EmailAuthProvider.credential(user.email, currentPassword);
 
+    /**
+     * Requires email/password account; OAuth-only users are not supported.
+     */
+
     await reauthenticateWithCredential(user, credential);
 
     await updatePassword(user, newPassword);
