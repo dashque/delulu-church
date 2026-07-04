@@ -1,5 +1,5 @@
 import type { Signal } from '@angular/core';
-import type { MockedObject } from 'vitest';
+import type { MockedFunction, MockedObject } from 'vitest';
 import { vi } from 'vitest';
 
 import type { AuthService } from '@core/services/auth/auth.service';
@@ -20,3 +20,18 @@ export const authServiceMock = {
   requestPasswordRecovery: vi.fn().mockResolvedValue(undefined),
   changePassword: vi.fn().mockResolvedValue(undefined),
 } as const satisfies MockedObject<Partial<AuthService>>;
+
+export const resetAuthServiceMock = (): void => {
+  (authServiceMock.user as unknown as MockedFunction<() => User | null>).mockReset().mockReturnValue(null);
+  (authServiceMock.isLoading as unknown as MockedFunction<() => boolean>).mockReset().mockReturnValue(false);
+  (authServiceMock.error as unknown as MockedFunction<() => unknown | null>).mockReset().mockReturnValue(null);
+  (authServiceMock.isAuthenticated as unknown as MockedFunction<() => boolean>).mockReset().mockReturnValue(false);
+  authServiceMock.initialize.mockReset().mockResolvedValue(undefined);
+  authServiceMock.loadUser.mockReset().mockResolvedValue(null);
+  authServiceMock.login.mockReset().mockResolvedValue(null);
+  authServiceMock.signup.mockReset().mockResolvedValue(null);
+  authServiceMock.logout.mockReset().mockResolvedValue(undefined);
+  authServiceMock.loginWithGithub.mockReset().mockResolvedValue(null);
+  authServiceMock.loginWithGoogle.mockReset().mockResolvedValue(null);
+  authServiceMock.requestPasswordRecovery.mockReset().mockResolvedValue(undefined);
+};

@@ -13,5 +13,6 @@
     "none": "sin not forgiven",
     "half": "partially forgiven",
     "full": "sin forgiven"
-  }
+  },
+  "notifications": { "failure": "Failed to load sins" }
 }

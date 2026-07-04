@@ -5,6 +5,7 @@
     "shrift": "Shrift",
     "altar": "Altar",
     "tarot": "Tarot",
+    "sanctum": "Sanctum",
     "crystal_ball": "Crystal ball"
   },
   "sidebar": {
@@ -47,5 +48,6 @@
   },
   "coder": {
     "text": "Go on... click me already"
-  }
+  },
+  "http_error_label": "HTTP error"
 }

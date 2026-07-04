@@ -1,0 +1,143 @@
+<section class="sanctum">
+  <header class="sanctum-header">
+    <h2 class="sanctum-title">{{ 'sanctum.title' | transloco }}</h2>
+    <p class="sanctum-subtitle">{{ 'sanctum.subtitle' | transloco }}</p>
+  </header>
+
+  <div class="sanctum-workspace">
+    <section class="sanctum-panel sanctum-rite">
+      <form class="sanctum-form" [formGroup]="facade.sanctumForm" (submit)="onSubmit($event)">
+        <label class="sanctum-label" for="branch-name">{{ 'sanctum.form.label' | transloco }}</label>
+        <tui-textfield class="sanctum-input">
+          <input
+            id="branch-name"
+            type="text"
+            tuiInput
+            formControlName="branch"
+            [placeholder]="'sanctum.form.placeholder' | transloco"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </tui-textfield>
+
+        <fieldset class="sanctum-intents" aria-labelledby="sanctum-intent-title">
+          <legend id="sanctum-intent-title" class="sanctum-label">{{ 'sanctum.intents.title' | transloco }}</legend>
+
+          <div class="sanctum-intent-options">
+            @for (option of facade.ritualIntentOptions; track option.value) {
+              <label tuiBlock class="sanctum-intent-option sanctum-intent-option-{{ option.value }}">
+                <input formControlName="ritualIntent" tuiRadio type="radio" [value]="option.value" />
+                <span class="sanctum-intent-copy">
+                  <span class="sanctum-intent-label" tuiFade>{{
+                    'sanctum.intents.' + option.value + '.label' | transloco
+                  }}</span>
+                  <span class="sanctum-intent-description">{{
+                    'sanctum.intents.' + option.value + '.description' | transloco
+                  }}</span>
+                </span>
+              </label>
+            }
+          </div>
+        </fieldset>
+
+        <button
+          tuiButton
+          type="submit"
+          size="l"
+          appearance="primary"
+          class="sanctum-submit"
+          [disabled]="facade.sanctumForm.invalid || facade.isJudging()"
+        >
+          @if (facade.isJudging()) {
+            {{ 'sanctum.form.consulting' | transloco }}
+          } @else {
+            {{ 'sanctum.form.submit' | transloco }}
+          }
+        </button>
+      </form>
+    </section>
+
+    <aside class="sanctum-panel sanctum-oracle">
+      <div class="sanctum-stage" [class.sanctum-stage-judging]="facade.isJudging()">
+        <ngKitty-digital-priest
+          layout="stage"
+          [mood]="facade.priestMood()"
+          [spiritLevel]="facade.blessingLevel()"
+          [isBusy]="facade.isJudging()"
+          [ariaLabel]="'sanctum.priest.label' | transloco"
+          (priestRaged)="onPriestRaged()"
+        />
+      </div>
+    </aside>
+
+    <section
+      class="sanctum-panel sanctum-litany"
+      [class.sanctum-litany-active]="facade.isJudging()"
+      [class.sanctum-litany-empty]="facade.litanyLines().length === 0 && !facade.isJudging()"
+      aria-live="polite"
+    >
+      <p class="sanctum-panel-title">{{ 'sanctum.litany.title' | transloco }}</p>
+      <div class="sanctum-litany-screen">
+        @for (line of facade.litanyLines(); track line.key) {
+          <p class="sanctum-litany-line">{{ line.key | transloco: line.params }}</p>
+        }
+        @if (facade.isJudging()) {
+          <p class="sanctum-litany-cursor" aria-hidden="true">_</p>
+        }
+      </div>
+    </section>
+
+    <section
+      class="sanctum-panel sanctum-verdict-panel"
+      [class.sanctum-verdict-panel-visible]="facade.judgment()"
+      aria-live="polite"
+    >
+      @if (facade.judgment(); as result) {
+        <div class="sanctum-verdict-stack">
+          <article class="sanctum-fate sanctum-fate-{{ result.mergeFate }}">
+            <div class="sanctum-fate-head">
+              <p class="sanctum-fate-label">{{ 'sanctum.merge_fate.label' | transloco }}</p>
+              <p class="sanctum-fate-value">{{ 'sanctum.merge_fate.' + result.mergeFate | transloco | uppercase }}</p>
+            </div>
+            <div class="sanctum-fate-bar" role="presentation">
+              <span class="sanctum-fate-fill" [style.width.%]="result.score"></span>
+            </div>
+          </article>
+
+          <div class="sanctum-omens" [attr.aria-label]="'sanctum.omens.title' | transloco">
+            @for (omen of result.omens; track omen.messageKey) {
+              <article class="sanctum-omen sanctum-omen-{{ omen.sanctity }}">
+                <tui-icon class="sanctum-omen-icon" [icon]="omen.icon" />
+                <p class="sanctum-omen-text">{{ omen.messageKey | transloco }}</p>
+              </article>
+            }
+          </div>
+
+          <article class="sanctum-verdict sanctum-verdict-{{ result.sanctity }}">
+            <div class="sanctum-verdict-head">
+              <p class="sanctum-verdict-label">{{ 'sanctum.verdicts.' + result.sanctity | transloco | uppercase }}</p>
+              <div class="sanctum-seal" [attr.aria-label]="'sanctum.result.seal' | transloco">
+                <span class="sanctum-seal-mark">Ω</span>
+              </div>
+            </div>
+            <dl class="sanctum-verdict-meta">
+              <div>
+                <dt>{{ 'sanctum.result.score' | transloco }}</dt>
+                <dd>{{ result.score }}%</dd>
+              </div>
+              <div>
+                <dt>{{ 'sanctum.result.branch' | transloco }}</dt>
+                <dd>{{ result.branchName }}</dd>
+              </div>
+              <div>
+                <dt>{{ 'sanctum.result.intent' | transloco }}</dt>
+                <dd>{{ 'sanctum.intents.' + result.intent + '.label' | transloco }}</dd>
+              </div>
+            </dl>
+            <p class="sanctum-verdict-prophecy">{{ result.prophecyKey | transloco }}</p>
+          </article>
+        </div>
+      }
+    </section>
+  </div>
+</section>

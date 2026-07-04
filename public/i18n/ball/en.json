@@ -1,0 +1,19 @@
+{
+  "title": "[ CRYSTAL BALL OF FATE ]",
+  "subtitle": "\"Ask the Machine Spirit a question, and the ball shall reveal the truth\"",
+  "answers": {
+    "yes": "Yes",
+    "no": "No",
+    "maybe": "Perhaps",
+    "silent": "The stars are silent",
+    "later": "Ask again later"
+  },
+  "wisdom": {
+    "title": "[ WISDOM OF THE CRYSTAL BALL ]",
+    "opening": "\"The crystal ball sees all timelines,",
+    "warning": "But remember: even the Machine Spirit can be wrong,",
+    "advice": "Use the wisdom of the ball, but trust your code more.\"",
+    "footer": "— Omnissiah, Machine Spirit, Keeper of Fates"
+  },
+  "ask": "[ ASK YOUR QUESTION ]"
+}

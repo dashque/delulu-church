@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
 
 import { MainPageFacade } from './main-page.facade';
@@ -86,6 +87,27 @@ describe('MainPageFacade', () => {
 
         expect(setSpy).toHaveBeenNthCalledWith(2, 'Unknown error');
       });
+
+      it('должен сохранить message из HttpErrorResponse', () => {
+        tarotServiceMock.loadReading.mockReturnValueOnce(
+          throwError(() => new HttpErrorResponse({ error: 'fail', status: 500, statusText: 'Server Error' }))
+        );
+
+        service.loadTarot();
+
+        expect(service.error()).toBe('Http failure response for (unknown url): 500 Server Error');
+      });
+    });
+
+    it('должен использовать исходный результат при ошибке перевода', () => {
+      myMemoryTranslationServiceMock.translateReading.mockReturnValueOnce(
+        throwError(() => new Error('Translation failed'))
+      );
+
+      service.loadTarot();
+      TestBed.tick();
+
+      expect(service.result()).toBe(tarotResponseApiFixture);
     });
 
     it('должен завершить загрузку', () => {

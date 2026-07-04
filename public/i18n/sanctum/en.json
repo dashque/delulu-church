@@ -1,0 +1,93 @@
+{
+  "title": "[ SANCTUM OF BRANCHES ]",
+  "subtitle": "\"Choose your ritual intent, speak the branch name, let the cogitator judge\"",
+  "priest": {
+    "label": "Digital grandmother priestess of the Machine Spirit",
+    "hint": "Click her — she'll yell at you"
+  },
+  "form": {
+    "label": "[ BRANCH NAME ]",
+    "placeholder": "feat/bless-the-pipeline",
+    "submit": "Begin the rite",
+    "consulting": "Cogitator is chanting..."
+  },
+  "intents": {
+    "title": "[ RITUAL INTENT ]",
+    "merge": {
+      "label": "Merge rite",
+      "description": "Seek the Omnissiah's blessing for union with develop"
+    },
+    "deploy": {
+      "label": "Deploy litany",
+      "description": "Ask whether production shall survive your offering"
+    },
+    "penance": {
+      "label": "Penance path",
+      "description": "Confess a fix branch and beg absolution from CI"
+    }
+  },
+  "litany": {
+    "title": "Cogitator litany",
+    "boot": "> INIT BRANCH RITE vΩ.4.2 ... COGITATOR ONLINE",
+    "target": "> SCANNING TARGET: {{branch}}",
+    "intent": "> RITUAL INTENT: {{intent}}",
+    "spirit": "> SPIRIT RESONANCE: {{level}}%",
+    "convention_found": "> CONVENTION SIGIL: DETECTED IN PREFIX",
+    "convention_missing": "> CONVENTION SIGIL: NOT FOUND — HERESY RISK ELEVATED",
+    "forbidden": "> FORBIDDEN MARK MATCHED: /{{pattern}}/",
+    "heresy": "> HERETICAL TRACE: /{{pattern}}/",
+    "kebab": "> KEBAB-CASE RUNES: ALIGNED WITH MACHINE LAW",
+    "length_warn": "> SIGIL LENGTH: EXCESSIVE — COGITATOR DISPLEASED",
+    "verdict_pending": "> AWAITING OMNISSIAH DECREE..."
+  },
+  "merge_fate": {
+    "label": "Predicted merge fate",
+    "green": "CI shall pass",
+    "amber": "Merge at your peril",
+    "red": "Deploy is damned"
+  },
+  "omens": {
+    "title": "Branch omens",
+    "sacred_prefix": "Sacred conventional prefix guards this branch",
+    "spirit_high": "Altar spirit burns bright — the Machine Spirit approves",
+    "spirit_low": "Spirit resonance critical — offer candles before merge",
+    "forbidden_mark": "Forbidden nomenclature stains the branch sigil",
+    "heretical_trace": "Heretical traces detected in branch runes",
+    "kebab_aligned": "Kebab-case runes align with repository law",
+    "penance_rite": "Penance rite invoked — absolution hinges on your fix",
+    "fallback": {
+      "sacred": "The branch hums with quiet machine-blessed order",
+      "heretical": "The branch trembles between order and chaos",
+      "forbidden": "The branch reeks of unmerged despair"
+    }
+  },
+  "verdicts": {
+    "sacred": "[ SACRED ]",
+    "heretical": "[ HERETICAL ]",
+    "forbidden": "[ FORBIDDEN ]"
+  },
+  "result": {
+    "score": "Sanctity score",
+    "branch": "Branch",
+    "intent": "Ritual",
+    "seal": "Machine Spirit seal"
+  },
+  "prophecies": {
+    "sacred": {
+      "0": "The Omnissiah smiles upon this branch. Merge shall be swift and CI green.",
+      "1": "Your naming rite follows the sacred convention. Deploy with confidence.",
+      "2": "This branch carries the incense of order. The repository approves."
+    },
+    "heretical": {
+      "0": "The branch walks a narrow path. Review thrice before the merge ritual.",
+      "1": "Suspicious sigils detected, yet not damned. Proceed with caution and tests.",
+      "2": "The Machine Spirit squints at your branch. A refactor blessing may be required."
+    },
+    "forbidden": {
+      "0": "Heresy! This branch name reeks of wip and despair. Rename before offering.",
+      "1": "The cogitators reject this sigil. No deploy shall pass until repentance.",
+      "2": "Forbidden nomenclature offends the Machine Spirit. Abandon this path."
+    }
+  },
+  "notifications": { "failure": "Failed to load priest quotes" }
+}

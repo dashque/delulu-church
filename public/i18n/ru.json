@@ -5,6 +5,7 @@
     "shrift": "Исповедь",
     "altar": "Алтарь",
     "tarot": "Таро",
+    "sanctum": "Святилище",
     "crystal_ball": "Шар"
   },
   "sidebar": {
@@ -48,5 +49,6 @@
   },
   "coder": {
     "text": "Эй... ты кликать будешь?"
-  }
+  },
+  "http_error_label": "HTTP ошибка"
 }

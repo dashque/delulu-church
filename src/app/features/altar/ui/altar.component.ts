@@ -4,7 +4,7 @@ import { StatisticsComponent } from '@features/altar/ui/statistics/statistics.co
 import { PrayerComponent } from '@features/altar/ui/prayer/prayer.component';
 import { InstructionsComponent } from '@features/altar/ui/instructions/instructions.component';
 import { CandlesComponent } from '@features/altar/ui/candles/candles.component';
-import { CandlesService } from '@core/services/candles/candles.service';
+import { AltarPageFacade } from '@features/altar/facades/altar-page.facade';
 
 @Component({
   selector: 'ngKitty-altar',
@@ -13,11 +13,11 @@ import { CandlesService } from '@core/services/candles/candles.service';
   styleUrl: './altar.component.scss',
 })
 export class AltarComponent {
-  protected readonly candlesService = inject(CandlesService);
-  protected readonly candleCounts = this.candlesService.candleCounts;
-  protected readonly litCandleList = this.candlesService.litCandleList;
-  protected readonly candleTypes = this.candlesService.candleTypes;
-  protected readonly totalOfferings = this.candlesService.totalOfferings;
-  protected readonly blessingLevel = this.candlesService.blessingLevel;
-  protected readonly isSpiritPleased = this.candlesService.isSpiritPleased;
+  protected readonly facade = inject(AltarPageFacade);
+  protected readonly candleCounts = this.facade.candleCounts;
+  protected readonly litCandleList = this.facade.litCandleList;
+  protected readonly candleTypes = this.facade.candleTypes;
+  protected readonly totalOfferings = this.facade.totalOfferings;
+  protected readonly blessingLevel = this.facade.blessingLevel;
+  protected readonly isSpiritPleased = this.facade.isSpiritPleased;
 }

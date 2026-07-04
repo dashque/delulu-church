@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
 
 import { LAYOUT_MOBILE_MEDIA_QUERY } from '@core/ui/components/layout/constants/layout-mobile-media-query';
 import { LAYOUT_MOBILE_MAX_WIDTH_PX } from '@core/ui/components/layout/constants/layout-mobile-max-width';
 import { AuthService } from '@core/services/auth/auth.service';
-import { authServiceMock } from '@core/services/auth/auth.service.mock';
+import { authServiceMock, resetAuthServiceMock } from '@core/services/auth/auth.service.mock';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import {
   resetUserProfileServiceMock,
@@ -12,6 +13,7 @@ import {
 import { LayoutService } from './layout.service';
 import { uiStateStore } from '@core/store/ui-state.store';
 import { resetUiStateStoreMock, uiStateStoreMock } from '@core/store/ui-state.store.mock';
+import { routerMock } from '@shared/mocks/router/router.mock';
 
 describe('LayoutService', () => {
   let service: LayoutService;
@@ -19,6 +21,9 @@ describe('LayoutService', () => {
   beforeEach(() => {
     resetUserProfileServiceMock();
     resetUiStateStoreMock();
+    resetAuthServiceMock();
+    authServiceMock.logout.mockReset().mockResolvedValue(undefined);
+    routerMock.navigate.mockReset().mockReturnValue(Promise.resolve(true));
 
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
@@ -27,6 +32,7 @@ describe('LayoutService', () => {
         { provide: AuthService, useValue: authServiceMock },
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: uiStateStore, useValue: uiStateStoreMock },
+        { provide: Router, useValue: routerMock },
       ],
     });
     service = TestBed.inject(LayoutService);
@@ -97,6 +103,23 @@ describe('LayoutService', () => {
 
         expect(service.isMobileNavOpen()).toBe(false);
       });
+    });
+  });
+
+  describe('Выход из аккаунта', () => {
+    it('должен вызвать logout и перенаправить на страницу входа', async () => {
+      await service.logout();
+
+      expect(authServiceMock.logout).toHaveBeenCalledTimes(1);
+      expect(routerMock.navigate).toHaveBeenNthCalledWith(1, ['/login']);
+    });
+  });
+
+  describe('Переключение темы', () => {
+    it('должен делегировать переключение в uiStateStore', () => {
+      service.toggleTheme();
+
+      expect(uiStateStoreMock.toggleTheme).toHaveBeenCalledTimes(1);
     });
   });
 });

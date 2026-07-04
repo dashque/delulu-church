@@ -1,0 +1,2 @@
+export const DIGITAL_PRIEST_MAX_EYE_OFFSET_X = 3.2;
+export const DIGITAL_PRIEST_MAX_EYE_OFFSET_Y = 2.2;

@@ -1,0 +1,732 @@
+:host {
+  --digital-priest-accent: var(--accent-primary);
+  --digital-priest-skin: #d9a88a;
+  --digital-priest-hair: #b8624a;
+  --digital-priest-hair-deep: #8f4635;
+  --digital-priest-robe: #1a1512;
+  --digital-priest-top: #241c18;
+  --digital-priest-figure-width: clamp(9rem, 11vw, 12rem);
+  --digital-priest-figure-height: clamp(12.5rem, 15.4vw, 16.6rem);
+
+  display: block;
+}
+
+.digital-priest {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.digital-priest-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: clamp(16rem, 20vw, 22rem);
+  height: clamp(4.5rem, 5.5vw, 5.25rem);
+  min-height: clamp(4.5rem, 5.5vw, 5.25rem);
+  margin: 0 0 0.35rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.digital-priest-trigger {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  touch-action: manipulation;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.digital-priest-trigger:focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--digital-priest-accent) 70%, transparent);
+  outline-offset: 0.35rem;
+}
+
+.digital-priest-speech,
+.digital-priest-hint {
+  width: 100%;
+  max-height: 100%;
+  margin: 0;
+  padding: 0.4rem 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--digital-priest-accent) 42%, transparent);
+  border-radius: 0.85rem 0.85rem 0.35rem;
+  background: color-mix(in srgb, var(--tui-background-base-alt) 92%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--digital-priest-accent) 18%, transparent);
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.digital-priest-speech {
+  color: var(--air);
+}
+
+.digital-priest-raging .digital-priest-speech {
+  border-color: color-mix(in srgb, var(--critical) 65%, transparent);
+  color: color-mix(in srgb, var(--critical) 25%, var(--air));
+  box-shadow: 0 0 16px color-mix(in srgb, var(--critical) 22%, transparent);
+}
+
+.digital-priest-hint {
+  color: var(--accent-primary);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.digital-priest-hint-visible {
+  opacity: 1;
+}
+
+.digital-priest-frame {
+  position: relative;
+  width: var(--digital-priest-figure-width);
+  height: var(--digital-priest-figure-height);
+  margin-inline: auto;
+  flex-shrink: 0;
+  border: 1px solid color-mix(in srgb, var(--digital-priest-accent) 48%, transparent);
+  border-radius: 0.5rem 0.5rem 0.35rem;
+  background: radial-gradient(
+    circle at 50% 12%,
+    color-mix(in srgb, var(--digital-priest-accent) 18%, transparent),
+    transparent 62%
+  );
+  box-shadow:
+    inset 0 0 18px color-mix(in srgb, var(--digital-priest-accent) 14%, transparent),
+    0 0 14px color-mix(in srgb, var(--digital-priest-accent) 22%, transparent);
+}
+
+.digital-priest-icon-frame {
+  position: absolute;
+  inset: 0.2rem;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.digital-priest-icon-corner {
+  position: absolute;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-color: var(--digital-priest-accent);
+  border-style: solid;
+  opacity: 0.75;
+}
+
+.digital-priest-icon-corner-tl {
+  top: 0;
+  left: 0;
+  border-width: 1px 0 0 1px;
+}
+
+.digital-priest-icon-corner-tr {
+  top: 0;
+  right: 0;
+  border-width: 1px 1px 0 0;
+}
+
+.digital-priest-icon-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 1px 1px;
+}
+
+.digital-priest-icon-corner-br {
+  right: 0;
+  bottom: 0;
+  border-width: 0 1px 1px 0;
+}
+
+.digital-priest-crt,
+.digital-priest-pixel-mask {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.digital-priest-crt {
+  z-index: 3;
+  background: repeating-linear-gradient(
+    0deg,
+    rgb(0 0 0 / 0%) 0,
+    rgb(0 0 0 / 0%) 2px,
+    rgb(0 0 0 / 14%) 2px,
+    rgb(0 0 0 / 14%) 3px
+  );
+  mix-blend-mode: multiply;
+  opacity: 0.62;
+  animation: digital-priest-crt-flicker 4.5s steps(2, end) infinite;
+}
+
+.digital-priest-pixel-mask {
+  z-index: 2;
+  background-image:
+    linear-gradient(90deg, color-mix(in srgb, var(--digital-priest-accent) 10%, transparent) 1px, transparent 1px),
+    linear-gradient(color-mix(in srgb, var(--digital-priest-accent) 10%, transparent) 1px, transparent 1px);
+  background-size: 4px 4px;
+  opacity: 0.22;
+}
+
+.digital-priest-binary-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.2;
+  font-family: 'Courier New', monospace;
+  font-size: 0.42rem;
+  color: var(--digital-priest-accent);
+}
+
+.digital-priest-binary-rain span {
+  position: absolute;
+  writing-mode: vertical-rl;
+  letter-spacing: 0.12em;
+  animation: digital-priest-rain 6s linear infinite;
+}
+
+.digital-priest-binary-rain span:nth-child(1) {
+  left: 10%;
+}
+
+.digital-priest-binary-rain span:nth-child(2) {
+  left: 48%;
+  animation-delay: 1.4s;
+}
+
+.digital-priest-binary-rain span:nth-child(3) {
+  left: 72%;
+  animation-delay: 2.6s;
+}
+
+.digital-priest-binary-rain span:nth-child(4) {
+  right: 8%;
+  animation-delay: 3.2s;
+}
+
+.digital-priest-svg {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--digital-priest-accent) 38%, transparent));
+  animation: digital-priest-float 5.5s ease-in-out infinite;
+}
+
+.digital-priest-pedestal {
+  width: var(--digital-priest-figure-width);
+  height: 0.45rem;
+  margin-top: -0.1rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: radial-gradient(
+    ellipse,
+    color-mix(in srgb, var(--digital-priest-accent) 42%, transparent),
+    transparent 72%
+  );
+  opacity: 0.75;
+}
+
+.digital-priest-hex {
+  fill: var(--digital-priest-accent);
+  font-family: 'Courier New', monospace;
+  font-size: 5.5px;
+  letter-spacing: 0.06em;
+}
+
+.digital-priest-halo-mark,
+.digital-priest-staff-mark {
+  fill: var(--digital-priest-accent);
+  font-family: var(--font-display), serif;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.digital-priest-hex-tiny {
+  font-size: 4.5px;
+}
+
+.digital-priest-hex-rotate {
+  transform: rotate(-28deg);
+  transform-origin: 88px 158px;
+  transform-box: fill-box;
+}
+
+.digital-priest-scarf {
+  opacity: 0.92;
+}
+
+.digital-priest-hair-peek {
+  fill: var(--digital-priest-hair);
+  stroke: var(--digital-priest-hair-deep);
+  stroke-width: 0.65;
+  opacity: 0.9;
+}
+
+.digital-priest-head {
+  fill: color-mix(in srgb, var(--digital-priest-skin) 72%, var(--digital-priest-robe));
+  stroke: var(--digital-priest-accent);
+  stroke-width: 0.95;
+}
+
+.digital-priest-cheek {
+  fill: color-mix(in srgb, #e8a0a0 48%, transparent);
+}
+
+.digital-priest-glasses {
+  fill: color-mix(in srgb, #f2ede8 18%, transparent);
+  stroke: color-mix(in srgb, #ebe6e1 82%, var(--digital-priest-accent) 18%);
+  stroke-width: 1.35;
+}
+
+.digital-priest-glasses-bridge {
+  stroke: color-mix(in srgb, #ebe6e1 82%, var(--digital-priest-accent) 18%);
+  stroke-width: 1.2;
+}
+
+.digital-priest-eye-socket {
+  fill: #0f0c0a;
+  stroke: color-mix(in srgb, var(--digital-priest-accent) 55%, transparent);
+  stroke-width: 0.7;
+}
+
+.digital-priest-eye {
+  fill: var(--digital-priest-accent);
+}
+
+.digital-priest-mouth {
+  fill: none;
+  stroke: color-mix(in srgb, var(--digital-priest-accent) 70%, #fff);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+}
+
+.digital-priest-robe {
+  fill: var(--digital-priest-top);
+}
+
+.digital-priest-apron {
+  opacity: 0.9;
+}
+
+.digital-priest-hand-raised {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.digital-priest-staff-node {
+  fill: var(--digital-priest-robe);
+  animation: digital-priest-node-pulse 2.2s ease-in-out infinite;
+}
+
+.digital-priest-staff-segment {
+  animation: digital-priest-node-pulse 2.2s ease-in-out infinite;
+}
+
+.digital-priest-staff-segment:nth-of-type(2) {
+  animation-delay: 0.35s;
+}
+
+.digital-priest-staff-segment:nth-of-type(3) {
+  animation-delay: 0.7s;
+}
+
+.digital-priest-eyes,
+.digital-priest-head-group {
+  transition: transform 0.12s ease-out;
+}
+
+.digital-priest-eye-left,
+.digital-priest-eye-right {
+  animation: digital-priest-eye-scan 2.4s ease-in-out infinite;
+}
+
+.digital-priest-eye-right {
+  animation-delay: 0.35s;
+}
+
+.digital-priest-mouth-open,
+.digital-priest-mouth-rage,
+.digital-priest-brows-angry {
+  opacity: 0;
+}
+
+.digital-priest-chancel {
+  animation: digital-priest-chancel-glow 5s ease-in-out infinite;
+}
+
+.digital-priest-flame {
+  animation: digital-priest-flame-flicker 1.5s ease-in-out infinite;
+}
+
+.digital-priest-flame-alt {
+  animation-delay: 0.4s;
+}
+
+.digital-priest-incense {
+  animation: digital-priest-incense-rise 3.4s ease-in-out infinite;
+}
+
+.digital-priest-circuits path {
+  animation: digital-priest-circuit-flow 4.5s linear infinite;
+}
+
+.digital-priest-circuits path:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.digital-priest-scanline {
+  opacity: 0;
+}
+
+.digital-priest-preaching .digital-priest-scanline,
+.digital-priest-engaged .digital-priest-scanline {
+  opacity: 0.45;
+  animation: digital-priest-scan-sweep 1.8s linear infinite;
+}
+
+.digital-priest-data-orbit {
+  animation: digital-priest-orbit 10s linear infinite;
+  transform-origin: 60px 84px;
+}
+
+.digital-priest-halo {
+  transform-origin: 60px 24px;
+  animation: digital-priest-halo-spin 22s linear infinite;
+}
+
+.digital-priest-aura {
+  animation: digital-priest-aura-pulse 3s ease-in-out infinite;
+}
+
+.digital-priest-preaching .digital-priest-svg,
+.digital-priest-blessing .digital-priest-svg,
+.digital-priest-damning .digital-priest-svg {
+  animation:
+    digital-priest-float 5s ease-in-out infinite,
+    digital-priest-preach-bob 0.9s ease-in-out infinite;
+}
+
+.digital-priest-preaching .digital-priest-mouth-closed,
+.digital-priest-blessing .digital-priest-mouth-closed,
+.digital-priest-damning .digital-priest-mouth-closed,
+.digital-priest-engaged .digital-priest-mouth-closed {
+  opacity: 0;
+}
+
+.digital-priest-preaching .digital-priest-mouth-open,
+.digital-priest-blessing .digital-priest-mouth-open,
+.digital-priest-damning .digital-priest-mouth-open {
+  opacity: 1;
+}
+
+.digital-priest-raging .digital-priest-mouth-open {
+  opacity: 0;
+}
+
+.digital-priest-raging .digital-priest-mouth-rage,
+.digital-priest-raging .digital-priest-brows-angry {
+  opacity: 1;
+}
+
+.digital-priest-preaching .digital-priest-hand-raised,
+.digital-priest-engaged .digital-priest-hand-raised {
+  opacity: 1;
+  animation: digital-priest-hand-lift 0.9s ease-in-out infinite alternate;
+}
+
+.digital-priest-blessing {
+  --digital-priest-accent: var(--earth);
+}
+
+.digital-priest-damning {
+  --digital-priest-accent: var(--critical);
+}
+
+.digital-priest-raging .digital-priest-svg {
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--critical) 38%, transparent));
+  animation:
+    digital-priest-float 5s ease-in-out infinite,
+    digital-priest-rage-shake 0.45s steps(2, end) infinite;
+}
+
+.digital-priest-hover .digital-priest-svg {
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--digital-priest-accent) 48%, transparent));
+}
+
+:host(.digital-priest-stage) .digital-priest-hint {
+  opacity: 1;
+}
+
+:host(.digital-priest-stage) {
+  display: block;
+  width: 100%;
+
+  --digital-priest-figure-width: clamp(10.5rem, 20vw, 16.5rem);
+  --digital-priest-figure-height: clamp(14.5rem, 28vw, 23rem);
+}
+
+:host(.digital-priest-stage) .digital-priest {
+  justify-content: center;
+}
+
+:host(.digital-priest-stage) .digital-priest-frame {
+  width: var(--digital-priest-figure-width);
+  height: var(--digital-priest-figure-height);
+}
+
+@media (width >= 90rem) {
+  :host(.digital-priest-stage) {
+    --digital-priest-figure-width: clamp(14rem, 17vw, 19rem);
+    --digital-priest-figure-height: clamp(19.5rem, 23.8vw, 26.5rem);
+  }
+}
+
+@media (width >= 120rem) {
+  :host(.digital-priest-stage) {
+    --digital-priest-figure-width: clamp(16rem, 15vw, 21rem);
+    --digital-priest-figure-height: clamp(22rem, 21vw, 29rem);
+  }
+}
+
+@keyframes digital-priest-hand-lift {
+  0% {
+    transform: translateY(1px);
+  }
+
+  100% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes digital-priest-hair-sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(1.5deg);
+  }
+}
+
+@keyframes digital-priest-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes digital-priest-preach-bob {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes digital-priest-rage-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-1.5px);
+  }
+}
+
+@keyframes digital-priest-rain {
+  0% {
+    transform: translateY(-110%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.65;
+  }
+
+  100% {
+    transform: translateY(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes digital-priest-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes digital-priest-halo-spin {
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes digital-priest-aura-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes digital-priest-node-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes digital-priest-blink {
+  0%,
+  94%,
+  100% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes digital-priest-eye-scan {
+  0%,
+  100% {
+    opacity: 0.75;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes digital-priest-circuit-flow {
+  to {
+    stroke-dashoffset: -16;
+  }
+}
+
+@keyframes digital-priest-incense-rise {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.65;
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes digital-priest-scan-sweep {
+  0% {
+    transform: translateY(0);
+    opacity: 0.15;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(166px);
+    opacity: 0.1;
+  }
+}
+
+@keyframes digital-priest-crt-flicker {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.62;
+  }
+}
+
+@keyframes digital-priest-chancel-glow {
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+
+  50% {
+    opacity: 0.24;
+  }
+}
+
+@keyframes digital-priest-flame-flicker {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scaleY(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scaleY(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .digital-priest-svg,
+  .digital-priest-crt,
+  .digital-priest-data-orbit,
+  .digital-priest-halo,
+  .digital-priest-aura,
+  .digital-priest-chancel,
+  .digital-priest-flame,
+  .digital-priest-incense,
+  .digital-priest-circuits path,
+  .digital-priest-scanline,
+  .digital-priest-staff-node,
+  .digital-priest-staff-segment,
+  .digital-priest-eye-left,
+  .digital-priest-eye-right,
+  .digital-priest-hand-raised,
+  .digital-priest-binary-rain span {
+    animation: none;
+  }
+}

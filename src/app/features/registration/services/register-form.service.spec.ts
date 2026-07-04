@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { RegisterFormService } from './register-form.service';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
-import { expect, it } from 'vitest';
+import { registerFormValidValueFixture } from '@features/registration/fixtures/register-form-value.fixture';
 
 describe('RegisterFormService', () => {
   let service: RegisterFormService;
@@ -27,6 +27,32 @@ describe('RegisterFormService', () => {
         passwordConfirmation: expect.anything(),
         dateOfBirth: expect.anything(),
       });
+    });
+  });
+
+  describe('Валидация формы', () => {
+    it('должен принять валидные данные', () => {
+      service.registerForm.setValue(registerFormValidValueFixture);
+
+      expect(service.registerForm.valid).toBe(true);
+    });
+
+    it('должен отклонить несовпадающие пароли', () => {
+      service.registerForm.setValue({
+        ...registerFormValidValueFixture,
+        passwordConfirmation: 'Bb999999',
+      });
+
+      expect(service.registerForm.valid).toBe(false);
+    });
+
+    it('должен отклонить пустое имя', () => {
+      service.registerForm.setValue({
+        ...registerFormValidValueFixture,
+        name: '',
+      });
+
+      expect(service.registerForm.controls.name.valid).toBe(false);
     });
   });
 });

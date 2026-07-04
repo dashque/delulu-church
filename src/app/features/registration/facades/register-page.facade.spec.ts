@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { TuiNotificationService } from '@taiga-ui/core';
+import { HotToastService } from '@ngxpert/hot-toast';
 import { AuthService } from '@core/services/auth/auth.service';
-import { authServiceMock } from '@core/services/auth/auth.service.mock';
+import { authServiceMock, resetAuthServiceMock } from '@core/services/auth/auth.service.mock';
 import { registerFormValidValueFixture } from '@features/registration/fixtures/register-form-value.fixture';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
 import { routerMock } from '@shared/mocks/router/router.mock';
-import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
-import { of } from 'rxjs';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
 import { vi } from 'vitest';
 
 import { RegisterPageFacade } from './register-page.facade';
@@ -16,9 +15,11 @@ describe('RegisterPageFacade', () => {
   let facade: RegisterPageFacade;
 
   beforeEach(() => {
+    resetAuthServiceMock();
     authServiceMock.signup.mockReset().mockResolvedValue(null);
     routerMock.navigate.mockReset().mockReturnValue(Promise.resolve(true));
-    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
+    hotToastServiceMock.success.mockReset();
+    hotToastServiceMock.error.mockReset();
 
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
@@ -26,7 +27,7 @@ describe('RegisterPageFacade', () => {
         RegisterPageFacade,
         { provide: AuthService, useValue: authServiceMock },
         { provide: Router, useValue: routerMock },
-        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+        { provide: HotToastService, useValue: hotToastServiceMock },
       ],
     });
 
@@ -56,11 +57,7 @@ describe('RegisterPageFacade', () => {
       it('должен показать уведомление об успешной регистрации', async () => {
         await facade.signup();
 
-        expect(tuiNotificationServiceMock.open).toHaveBeenNthCalledWith(
-          1,
-          expect.any(String),
-          expect.objectContaining({ appearance: 'positive', autoClose: 5000 })
-        );
+        expect(hotToastServiceMock.success).toHaveBeenNthCalledWith(1, expect.any(String));
       });
 
       it('должен перенаправить на главную страницу', async () => {
@@ -88,7 +85,8 @@ describe('RegisterPageFacade', () => {
       it('не должен показать уведомление', async () => {
         await facade.signup();
 
-        expect(tuiNotificationServiceMock.open).not.toHaveBeenCalled();
+        expect(hotToastServiceMock.success).not.toHaveBeenCalled();
+        expect(hotToastServiceMock.error).not.toHaveBeenCalled();
       });
 
       it('не должен перенаправить на главную страницу', async () => {
@@ -107,11 +105,7 @@ describe('RegisterPageFacade', () => {
       it('должен показать уведомление об ошибке', async () => {
         await facade.signup();
 
-        expect(tuiNotificationServiceMock.open).toHaveBeenNthCalledWith(
-          1,
-          'Signup failed',
-          expect.objectContaining({ appearance: 'negative', autoClose: 5000 })
-        );
+        expect(hotToastServiceMock.error).toHaveBeenNthCalledWith(1, expect.stringContaining('Signup failed'));
       });
 
       it('не должен перенаправить на главную страницу', async () => {

@@ -1,124 +1,126 @@
-<section class="oracle-speaks" aria-labelledby="oracle-speaks-title">
-  <h2 id="oracle-speaks-title" class="oracle-speaks-title">
-    {{ 'main.oracle.title' | transloco }}
-  </h2>
+<div class="main-page">
+  <section class="oracle-speaks" aria-labelledby="oracle-speaks-title">
+    <h2 id="oracle-speaks-title" class="oracle-speaks-title">
+      {{ 'main.oracle.title' | transloco }}
+    </h2>
 
-  <svg class="oracle-speaks-icon" viewBox="0 0 72 80" fill="none" aria-hidden="true" focusable="false">
-    <defs>
-      <radialGradient id="oracleSphereGradient" cx="40%" cy="35%" r="60%">
-        <stop offset="0%" stop-color="color-mix(in srgb, var(--accent-primary) 45%, var(--tui-background-base))" />
-        <stop offset="55%" stop-color="color-mix(in srgb, var(--accent-primary) 15%, var(--tui-background-base))" />
-        <stop offset="100%" stop-color="var(--tui-background-base)" />
-      </radialGradient>
-      <radialGradient id="oracleGlowCore" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="var(--accent-primary)" stop-opacity="0.7" />
-        <stop offset="100%" stop-color="var(--accent-primary)" stop-opacity="0" />
-      </radialGradient>
-      <filter id="oracleNeonBlur">
-        <feGaussianBlur stdDeviation="2.5" result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-      <filter id="oracleSoftGlow">
-        <feGaussianBlur stdDeviation="1.5" result="blur" />
-        <feMerge>
-          <feMergeNode in="blur" />
-          <feMergeNode in="SourceGraphic" />
-        </feMerge>
-      </filter>
-    </defs>
+    <svg class="oracle-speaks-icon" viewBox="0 0 72 80" fill="none" aria-hidden="true" focusable="false">
+      <defs>
+        <radialGradient id="oracleSphereGradient" cx="40%" cy="35%" r="60%">
+          <stop offset="0%" stop-color="color-mix(in srgb, var(--accent-primary) 45%, var(--tui-background-base))" />
+          <stop offset="55%" stop-color="color-mix(in srgb, var(--accent-primary) 15%, var(--tui-background-base))" />
+          <stop offset="100%" stop-color="var(--tui-background-base)" />
+        </radialGradient>
+        <radialGradient id="oracleGlowCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="var(--accent-primary)" stop-opacity="0.7" />
+          <stop offset="100%" stop-color="var(--accent-primary)" stop-opacity="0" />
+        </radialGradient>
+        <filter id="oracleNeonBlur">
+          <feGaussianBlur stdDeviation="2.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="oracleSoftGlow">
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
 
-    <rect x="24" y="66" width="24" height="3" rx="1.5" fill="var(--accent-primary)" opacity="0.6" />
-    <rect x="20" y="69" width="32" height="3" rx="1.5" fill="var(--accent-primary)" opacity="0.4" />
-    <rect
-      x="28"
-      y="63"
-      width="16"
-      height="4"
-      rx="1"
-      fill="color-mix(in srgb, var(--accent-primary) 20%, var(--tui-background-base))"
-      stroke="var(--accent-primary)"
-      stroke-width="0.8"
-      opacity="0.8"
-    />
+      <rect x="24" y="66" width="24" height="3" rx="1.5" fill="var(--accent-primary)" opacity="0.6" />
+      <rect x="20" y="69" width="32" height="3" rx="1.5" fill="var(--accent-primary)" opacity="0.4" />
+      <rect
+        x="28"
+        y="63"
+        width="16"
+        height="4"
+        rx="1"
+        fill="color-mix(in srgb, var(--accent-primary) 20%, var(--tui-background-base))"
+        stroke="var(--accent-primary)"
+        stroke-width="0.8"
+        opacity="0.8"
+      />
 
-    <circle
-      cx="36"
-      cy="34"
-      r="30"
-      fill="url(#oracleSphereGradient)"
-      stroke="var(--accent-primary)"
-      stroke-width="1.2"
-    />
-    <circle cx="36" cy="34" r="16" fill="url(#oracleGlowCore)" />
-    <circle
-      cx="36"
-      cy="34"
-      r="26"
-      stroke="var(--accent-primary)"
-      stroke-width="0.5"
-      stroke-dasharray="3 4"
-      opacity="0.5"
-    />
+      <circle
+        cx="36"
+        cy="34"
+        r="30"
+        fill="url(#oracleSphereGradient)"
+        stroke="var(--accent-primary)"
+        stroke-width="1.2"
+      />
+      <circle cx="36" cy="34" r="16" fill="url(#oracleGlowCore)" />
+      <circle
+        cx="36"
+        cy="34"
+        r="26"
+        stroke="var(--accent-primary)"
+        stroke-width="0.5"
+        stroke-dasharray="3 4"
+        opacity="0.5"
+      />
 
-    <g filter="url(#oracleSoftGlow)" stroke="var(--air)" stroke-width="0.9" opacity="0.85">
-      <line x1="36" y1="20" x2="36" y2="48" />
-      <line x1="22" y1="34" x2="50" y2="34" />
-      <line x1="27" y1="25" x2="45" y2="43" opacity="0.45" />
-      <line x1="45" y1="25" x2="27" y2="43" opacity="0.45" />
-    </g>
+      <g filter="url(#oracleSoftGlow)" stroke="var(--air)" stroke-width="0.9" opacity="0.85">
+        <line x1="36" y1="20" x2="36" y2="48" />
+        <line x1="22" y1="34" x2="50" y2="34" />
+        <line x1="27" y1="25" x2="45" y2="43" opacity="0.45" />
+        <line x1="45" y1="25" x2="27" y2="43" opacity="0.45" />
+      </g>
 
-    <circle cx="36" cy="34" r="4" fill="var(--accent-primary)" filter="url(#oracleNeonBlur)" opacity="0.9" />
-    <circle cx="36" cy="34" r="2" fill="var(--air)" />
-    <ellipse
-      cx="36"
-      cy="34"
-      rx="14"
-      ry="5"
-      stroke="var(--accent-primary)"
-      stroke-width="0.7"
-      fill="none"
-      opacity="0.5"
-    />
-    <ellipse
-      cx="36"
-      cy="34"
-      rx="5"
-      ry="14"
-      stroke="var(--accent-primary)"
-      stroke-width="0.7"
-      fill="none"
-      opacity="0.5"
-    />
-    <ellipse cx="29" cy="24" rx="5" ry="3" fill="white" opacity="0.07" transform="rotate(-30 29 24)" />
+      <circle cx="36" cy="34" r="4" fill="var(--accent-primary)" filter="url(#oracleNeonBlur)" opacity="0.9" />
+      <circle cx="36" cy="34" r="2" fill="var(--air)" />
+      <ellipse
+        cx="36"
+        cy="34"
+        rx="14"
+        ry="5"
+        stroke="var(--accent-primary)"
+        stroke-width="0.7"
+        fill="none"
+        opacity="0.5"
+      />
+      <ellipse
+        cx="36"
+        cy="34"
+        rx="5"
+        ry="14"
+        stroke="var(--accent-primary)"
+        stroke-width="0.7"
+        fill="none"
+        opacity="0.5"
+      />
+      <ellipse cx="29" cy="24" rx="5" ry="3" fill="white" opacity="0.07" transform="rotate(-30 29 24)" />
 
-    <g stroke="var(--accent-primary)" stroke-width="0.8" opacity="0.6">
-      <path d="M10 14 L10 10 L14 10" />
-      <path d="M62 14 L62 10 L58 10" />
-      <path d="M10 54 L10 58 L14 58" />
-      <path d="M62 54 L62 58 L58 58" />
-    </g>
-  </svg>
+      <g stroke="var(--accent-primary)" stroke-width="0.8" opacity="0.6">
+        <path d="M10 14 L10 10 L14 10" />
+        <path d="M62 14 L62 10 L58 10" />
+        <path d="M10 54 L10 58 L14 58" />
+        <path d="M62 54 L62 58 L58 58" />
+      </g>
+    </svg>
 
-  <blockquote class="oracle-speaks-quote">
-    {{ 'main.oracle.quote' | transloco }}
-  </blockquote>
+    <blockquote class="oracle-speaks-quote">
+      {{ 'main.oracle.quote' | transloco }}
+    </blockquote>
 
-  <span class="oracle-speaks-divider" aria-hidden="true"></span>
+    <span class="oracle-speaks-divider" aria-hidden="true"></span>
 
-  <ul class="oracle-speaks-list">
-    <li>{{ 'main.oracle.truths.cards' | transloco }}</li>
-    <li>{{ 'main.oracle.truths.deploy' | transloco }}</li>
-    <li>{{ 'main.oracle.truths.fate' | transloco }}</li>
-  </ul>
-</section>
+    <ul class="oracle-speaks-list">
+      <li>{{ 'main.oracle.truths.cards' | transloco }}</li>
+      <li>{{ 'main.oracle.truths.deploy' | transloco }}</li>
+      <li>{{ 'main.oracle.truths.fate' | transloco }}</li>
+    </ul>
+  </section>
 
-<ngKitty-tarot-oracle
-  [isLoading]="isLoading()"
-  [(role)]="currentRole"
-  [(intent)]="currentIntent"
-  (drawCardsClicked)="onDrawCards()"
-/>
-<ngKitty-tarot-reading [tarotReading]="result()" />
+  <ngKitty-tarot-oracle
+    [isLoading]="isLoading()"
+    [(role)]="currentRole"
+    [(intent)]="currentIntent"
+    (drawCardsClicked)="onDrawCards()"
+  />
+  <ngKitty-tarot-reading [tarotReading]="result()" />
+</div>
