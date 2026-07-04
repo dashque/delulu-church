@@ -9,6 +9,23 @@ import { TuiNotificationService } from '@taiga-ui/core';
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
 
+  const userProfileServiceMock = {
+    user: vi.fn().mockReturnValue(null),
+  };
+
+  const authServiceMock = {
+    user: vi.fn().mockReturnValue({ uid: '1' }),
+    changePassword: vi.fn().mockResolvedValue(undefined),
+  };
+
+  const candlesServiceMock = {
+    totalOfferings: vi.fn().mockReturnValue(0),
+  };
+
+  const confessServiceMock = {
+    sins: vi.fn().mockReturnValue([]),
+  };
+
   beforeEach(() => {
     resetUserProfileServiceMock();
     resetCandlesServiceMock();
@@ -31,6 +48,10 @@ describe('ProfileFacade', () => {
             open: vi.fn().mockReturnValue(of(null)),
           },
         },
+        { provide: 'UserProfileService', useValue: userProfileServiceMock },
+        { provide: 'AuthService', useValue: authServiceMock },
+        { provide: 'CandlesService', useValue: candlesServiceMock },
+        { provide: 'ConfessService', useValue: confessServiceMock },
       ],
     });
     facade = TestBed.inject(ProfileFacade);
