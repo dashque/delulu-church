@@ -112,7 +112,7 @@ export class ProfileFacade {
     effect(() => {
       const user = this.userProfileService.user();
 
-      if (!user || this.profileForm.controls.name.dirty) {
+      if (!user) {
         return;
       }
 
@@ -159,11 +159,10 @@ export class ProfileFacade {
     } catch (error) {
       let message = this.translocoService.translate('notifications.failure-message', {}, 'profile');
 
-      if (error instanceof FirebaseError) {
+      if (error instanceof FirebaseError && error.code === 'auth/invalid-credential') {
         switch (error.code) {
           case 'auth/invalid-credential':
             message = this.translocoService.translate('notifications.invalid-password', {}, 'profile');
-            break;
         }
         await this.showNotification(
           message,

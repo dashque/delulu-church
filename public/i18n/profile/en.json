@@ -8,7 +8,7 @@
     }
   },
   "notifications": {
-    "success": "Profile is succesfully updated",
+    "success": "Profile is successfully updated",
     "success-title": "Success",
     "failure-title": "Error",
     "failure-message": "Changes could not be saved.",

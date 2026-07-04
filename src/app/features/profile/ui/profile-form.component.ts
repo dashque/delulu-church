@@ -9,6 +9,7 @@ import {
   TuiInputDirective,
   TuiLoader,
   tuiLoaderOptionsProvider,
+  TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -27,6 +28,7 @@ import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/pass
     TuiCardLarge,
     TuiForm,
     TuiErrorComponent,
+    TuiTextfieldComponent,
     ReactiveFormsModule,
   ],
   providers: [tuiLoaderOptionsProvider({ size: 'm' })],
