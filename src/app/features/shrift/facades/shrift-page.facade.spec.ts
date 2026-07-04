@@ -1,20 +1,19 @@
 import { TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
 
 import { ShriftPageFacade } from './shrift-page.facade';
 import { ConfessFormService } from '../services/confess-form.service';
 import { ConfessService } from '@core/services/confess/confess.service';
 import { confessServiceMock, resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
-import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
-import { TuiNotificationService } from '@taiga-ui/core';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 describe('ShriftPageFacade', () => {
   let facade: ShriftPageFacade;
 
   beforeEach(() => {
     resetConfessServiceMock();
-    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
+    hotToastServiceMock.error.mockReset();
 
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
@@ -22,7 +21,7 @@ describe('ShriftPageFacade', () => {
         ShriftPageFacade,
         ConfessFormService,
         { provide: ConfessService, useValue: confessServiceMock },
-        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+        { provide: HotToastService, useValue: hotToastServiceMock },
       ],
     });
     facade = TestBed.inject(ShriftPageFacade);
@@ -59,7 +58,7 @@ describe('ShriftPageFacade', () => {
 
       await facade.onSubmit();
 
-      expect(tuiNotificationServiceMock.open).toHaveBeenCalledTimes(1);
+      expect(hotToastServiceMock.error).toHaveBeenCalledTimes(1);
     });
   });
 

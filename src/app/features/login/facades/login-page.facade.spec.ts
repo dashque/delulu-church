@@ -3,9 +3,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
 import { authServiceMock, resetAuthServiceMock } from '@core/services/auth/auth.service.mock';
 import { routerMock } from '@shared/mocks/router/router.mock';
-import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
-import { TuiNotificationService } from '@taiga-ui/core';
-import { of } from 'rxjs';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 import { LoginPageFacade } from './login-page.facade';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
@@ -19,7 +18,8 @@ describe('LoginPageFacadeService', () => {
     authServiceMock.loginWithGithub.mockReset().mockResolvedValue(null);
     authServiceMock.loginWithGoogle.mockReset().mockResolvedValue(null);
     routerMock.navigate.mockReset().mockReturnValue(Promise.resolve(true));
-    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
+    hotToastServiceMock.success.mockReset();
+    hotToastServiceMock.error.mockReset();
 
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
@@ -27,7 +27,7 @@ describe('LoginPageFacadeService', () => {
         LoginPageFacade,
         { provide: AuthService, useValue: authServiceMock },
         { provide: Router, useValue: routerMock },
-        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+        { provide: HotToastService, useValue: hotToastServiceMock },
       ],
     });
     service = TestBed.inject(LoginPageFacade);
@@ -52,10 +52,7 @@ describe('LoginPageFacadeService', () => {
 
       expect(authServiceMock.login).toHaveBeenNthCalledWith(1, 'dev@example.com', 'Aa888888');
       expect(routerMock.navigate).toHaveBeenNthCalledWith(1, ['/']);
-      expect(tuiNotificationServiceMock.open).toHaveBeenCalledWith(
-        expect.any(String),
-        expect.objectContaining({ appearance: 'positive' })
-      );
+      expect(hotToastServiceMock.success).toHaveBeenCalledWith(expect.any(String));
     });
 
     it('должен показать уведомление об ошибке', async () => {
@@ -64,11 +61,7 @@ describe('LoginPageFacadeService', () => {
 
       await service.login();
 
-      expect(tuiNotificationServiceMock.open).toHaveBeenNthCalledWith(
-        1,
-        'Invalid credentials',
-        expect.objectContaining({ appearance: 'negative' })
-      );
+      expect(hotToastServiceMock.error).toHaveBeenNthCalledWith(1, expect.stringContaining('Invalid credentials'));
       expect(routerMock.navigate).not.toHaveBeenCalled();
     });
 

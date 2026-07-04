@@ -1,4 +1,4 @@
-import { provideTaiga } from '@taiga-ui/core';
+import { provideTaiga, tuiValidationErrorsProvider } from '@taiga-ui/core';
 import type { ApplicationConfig } from '@angular/core';
 import {
   inject,
@@ -14,12 +14,16 @@ import { AuthService } from '@core/services/auth/auth.service';
 import { routes } from './app.routes';
 import { provideHttpClient, withInterceptors, withXhr } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
-import { provideTransloco } from '@jsverse/transloco';
+import { provideTransloco, TranslocoService } from '@jsverse/transloco';
 import { UserStateStrategy } from '@core/services/preloading-strategy/user-state-strategy.service';
 import { Languages } from '@core/models/languages.model';
 import { uiStateStore } from '@core/store/ui-state.store';
 import { initialUiState } from '@core/store/constants/initial-ui-state';
 import { httpErrorInterceptor } from '@core/interceptors/http-error-interceptor';
+import { VALIDATION_ERRORS_DICT } from '@shared/dictionaries/validation-errors.dictionary';
+import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/password-length';
+import { PASSWORD_PATTERN } from '@shared/patterns/password-pattern';
+import { provideHotToastConfig } from '@ngxpert/hot-toast';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -42,6 +46,32 @@ export const appConfig: ApplicationConfig = {
         prodMode: !isDevMode(),
       },
       loader: TranslocoHttpLoader,
+    }),
+    tuiValidationErrorsProvider(() => {
+      const transloco = inject(TranslocoService);
+
+      return {
+        required: () => transloco.translate(VALIDATION_ERRORS_DICT.required),
+        maxlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.maxLength, context),
+        minlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.minLength, context),
+        pattern: (context) => {
+          const requiredPattern = String(context?.['requiredPattern'] ?? '');
+
+          if (requiredPattern === PASSWORD_PATTERN.toString()) {
+            return transloco.translate(VALIDATION_ERRORS_DICT.passwordPattern, {
+              minLength: PASSWORD_MIN_LENGTH,
+              maxLength: PASSWORD_MAX_LENGTH,
+            });
+          }
+
+          return transloco.translate(VALIDATION_ERRORS_DICT.emailPattern);
+        },
+        confirmPasswordError: (key) => transloco.translate(key as string),
+      };
+    }),
+    provideHotToastConfig({
+      theme: 'glassmorphism',
+      className: 'toast',
     }),
   ],
 };
