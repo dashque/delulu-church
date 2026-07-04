@@ -1,4 +1,4 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, DestroyRef, inject, Injectable, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
@@ -6,6 +6,10 @@ import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
 import { ProfileSecurityFormService } from '../services/profile-security/profile-security';
 import { AuthService } from '@core/services/auth/auth.service';
+import { TranslocoService } from '@jsverse/transloco';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TuiNotificationService } from '@taiga-ui/core';
+import { FirebaseError } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +18,12 @@ export class ProfileFacade {
   private readonly profileSecurityFormService = inject(ProfileSecurityFormService);
 
   private readonly authService = inject(AuthService);
+
+  private readonly translocoService = inject(TranslocoService);
+
+  private readonly notifications = inject(TuiNotificationService);
+
+  private readonly destroyRef = inject(DestroyRef);
 
   public readonly profileForm = this.profileSecurityFormService.form;
 
@@ -111,17 +121,47 @@ export class ProfileFacade {
     }
 
     try {
-      await this.userProfileService.updateProfile(user.uid, {
-        displayName: name,
-      });
-
       if (currentPassword && newPassword) {
         await this.authService.changePassword(currentPassword, newPassword);
       }
 
+      await this.userProfileService.updateProfile(user.uid, {
+        displayName: name,
+      });
+
       this.profileForm.markAsPristine();
+
+      await this.showNotification(
+        this.translocoService.translate('notifications.success', {}, 'profile'),
+        this.translocoService.translate('notifications.success-title', {}, 'profile'),
+        'positive'
+      );
     } catch (error) {
-      console.error(error);
+      let message = this.translocoService.translate('notifications.failure-message', {}, 'profile');
+
+      if (error instanceof FirebaseError) {
+        switch (error.code) {
+          case 'auth/invalid-credential':
+            message = this.translocoService.translate('notifications.invalid-password', {}, 'profile');
+            break;
+        }
+        await this.showNotification(
+          message,
+          this.translocoService.translate('notifications.failure-title', {}, 'profile'),
+          'negative'
+        );
+      }
     }
+  }
+
+  private showNotification(message: string, label: string, appearance: 'positive' | 'negative') {
+    this.notifications
+      .open(message, {
+        label: label,
+        appearance: appearance,
+        autoClose: 5000,
+      })
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe();
   }
 }

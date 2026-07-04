@@ -7,6 +7,13 @@
       "new_password_confirmation": "New password confirmation"
     }
   },
+  "notifications": {
+    "success": "Profile is succesfully updated",
+    "success-title": "Success",
+    "failure-title": "Error",
+    "failure-message": "Changes could not be saved.",
+    "invalid-password": "Current password is incorrect."
+  },
   "actions": {
     "submit": "Save changes"
   },
