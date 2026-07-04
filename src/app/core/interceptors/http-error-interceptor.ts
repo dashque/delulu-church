@@ -17,7 +17,7 @@ export const httpErrorInterceptor: HttpInterceptorFn = (request, next) => {
       }
 
       notificationService.error(`${translocoService.translate(marker('http_error_label'))}
-      ${toErrorMessage(error)},`);
+      ${toErrorMessage(error)}`);
 
       return throwError(() => error);
     })

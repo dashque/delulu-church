@@ -446,6 +446,9 @@ tui-textfield:has([tuiInputDate]) tui-icon {
 
 .toast {
   font-family: var(--font-display);
-  border: 2px solid var(--accent-primary);
   white-space: pre-line;
+}
+
+.hot-toast-theme-glassmorphism .hot-toast-bar-base.toast {
+  border: 2px solid var(--accent-primary);
 }
