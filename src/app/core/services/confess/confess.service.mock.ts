@@ -16,6 +16,7 @@ export const confessServiceMock = {
   deleteSin: vi.fn().mockResolvedValue(undefined),
   getSinsCount: vi.fn().mockResolvedValue(0),
   updateSinsCount: vi.fn().mockResolvedValue(undefined),
+  error: signal(null).asReadonly(),
 } as const satisfies MockedObject<Partial<ConfessService>>;
 
 export const resetConfessServiceMock = (): void => {

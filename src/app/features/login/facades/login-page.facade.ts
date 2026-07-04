@@ -6,6 +6,7 @@ import { LoginFormService } from '../services/login-form.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
+import { toErrorMessage } from '@shared/helpers/to-error-message.helper';
 
 @Service({
   autoProvided: false,
@@ -31,9 +32,11 @@ export class LoginPageFacade {
       await this.authService.login(email, password);
       await this.completeSuccessfulLogin();
     } catch (error) {
-      if (error instanceof Error) {
-        this.showNotification(error.message, this.translocoService.translate('error.text', {}, 'login'), 'negative');
-      }
+      this.showNotification(
+        toErrorMessage(error),
+        this.translocoService.translate('error.text', {}, 'login'),
+        'negative'
+      );
     } finally {
       this.isLoading.set(false);
     }
@@ -73,9 +76,11 @@ export class LoginPageFacade {
       await login();
       await this.completeSuccessfulLogin();
     } catch (error) {
-      if (error instanceof Error) {
-        this.showNotification(error.message, this.translocoService.translate('error.text', {}, 'login'), 'negative');
-      }
+      this.showNotification(
+        toErrorMessage(error),
+        this.translocoService.translate('error.text', {}, 'login'),
+        'negative'
+      );
     } finally {
       this.isLoading.set(false);
     }

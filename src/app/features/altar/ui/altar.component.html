@@ -17,7 +17,7 @@
       [candleCountsMap]="candleCounts()"
       [litCandleList]="litCandleList()"
       [candleList]="candleTypes"
-      (candleListChanged)="candlesService.offerCandle($event)"
+      (candleListChanged)="facade.offerCandle($event)"
     />
     <ngKitty-instructions />
     <ngKitty-prayer />

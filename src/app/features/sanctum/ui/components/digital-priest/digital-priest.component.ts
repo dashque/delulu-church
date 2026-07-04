@@ -7,12 +7,11 @@ import {
 } from '@features/sanctum/ui/components/digital-priest/constants/digital-priest.config';
 import { DigitalPriestMood } from '@features/sanctum/data/models/digital-priest-mood.model';
 import { DigitalPriestService } from '@features/sanctum/ui/components/digital-priest/services/digital-priest.service';
-import { PriestQuotesService } from '@features/sanctum/services/priest-quotes.service';
 
 @Component({
   selector: 'ngKitty-digital-priest',
   imports: [TranslocoPipe],
-  providers: [DigitalPriestService, PriestQuotesService],
+  providers: [DigitalPriestService],
   templateUrl: './digital-priest.component.html',
   styleUrl: './digital-priest.component.scss',
   host: {

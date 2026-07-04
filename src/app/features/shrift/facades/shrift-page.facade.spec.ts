@@ -1,19 +1,29 @@
 import { TestBed } from '@angular/core/testing';
-import { vi } from 'vitest';
+import { of } from 'rxjs';
 
 import { ShriftPageFacade } from './shrift-page.facade';
 import { ConfessFormService } from '../services/confess-form.service';
 import { ConfessService } from '@core/services/confess/confess.service';
 import { confessServiceMock, resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
+import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
+import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
+import { TuiNotificationService } from '@taiga-ui/core';
 
 describe('ShriftPageFacade', () => {
   let facade: ShriftPageFacade;
 
   beforeEach(() => {
     resetConfessServiceMock();
+    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
 
     TestBed.configureTestingModule({
-      providers: [ShriftPageFacade, ConfessFormService, { provide: ConfessService, useValue: confessServiceMock }],
+      imports: [TranslocoTestingMock],
+      providers: [
+        ShriftPageFacade,
+        ConfessFormService,
+        { provide: ConfessService, useValue: confessServiceMock },
+        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+      ],
     });
     facade = TestBed.inject(ShriftPageFacade);
     facade.confessForm.reset();
@@ -43,15 +53,13 @@ describe('ShriftPageFacade', () => {
       expect(facade.confessForm.pristine).toBe(true);
     });
 
-    it('должен обработать ошибку добавления без падения', async () => {
+    it('должен обработать ошибку добавления и показать уведомление', async () => {
       confessServiceMock.addSin.mockRejectedValue(new Error('Firestore error'));
       facade.confessForm.setValue({ text: 'Broken build', severity: 'medium' });
-      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => undefined);
 
       await facade.onSubmit();
 
-      expect(consoleSpy).toHaveBeenCalled();
-      consoleSpy.mockRestore();
+      expect(tuiNotificationServiceMock.open).toHaveBeenCalledTimes(1);
     });
   });
 

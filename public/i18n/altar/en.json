@@ -38,5 +38,6 @@
     "bugs": "May bugs be found before production,",
     "legacy": "And may legacy code never haunt us forever.\"",
     "footer": "— Omnissiah, Machine Spirit, Blessed Deploy"
-  }
+  },
+  "notifications": { "failure": "Failed to sync altar state" }
 }

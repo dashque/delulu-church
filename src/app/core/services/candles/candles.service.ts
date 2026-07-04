@@ -2,8 +2,10 @@ import { computed, DestroyRef, effect, inject, Service, signal } from '@angular/
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CANDLE_EXTINGUISH_TIME_IN_MS } from '@core/services/candles/constants/candle-extinguish-time';
 import { CANDLE_TYPES_CONFIG } from '@core/services/candles/constants/candle-types.config';
-import { SPIRIT_PLEASED_THRESHOLD } from '@core/services/candles/constants/spirit-satisfaction.config';
-import { SPIRIT_SATISFACTION_DECAY_INTERVAL_MS } from '@core/services/candles/constants/spirit-satisfaction.config';
+import {
+  SPIRIT_PLEASED_THRESHOLD,
+  SPIRIT_SATISFACTION_DECAY_INTERVAL_MS,
+} from '@core/services/candles/constants/spirit-satisfaction.config';
 import { createEmptyCandleCounts } from '@core/services/candles/helpers/create-empty-candle-counts.helper';
 import {
   createEmptySpiritSatisfaction,
@@ -21,12 +23,9 @@ import { UserProfileService } from '@core/services/user-profile/user-profile.ser
 import { firestore } from '@env/environment';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { timer } from 'rxjs';
-
-interface UserCandleState {
-  candleCounts: CandleCounts;
-  candles: number;
-  spiritSatisfaction: SpiritSatisfaction;
-}
+import { withTimeout } from '@shared/helpers/with-timeout.helper';
+import { FIRESTORE_OPERATION_TIMEOUT_MS } from '@shared/constants/firestore-operation-timeout';
+import type { UserCandleState } from '@core/services/candles/models/user-candle-state.model';
 
 @Service()
 export class CandlesService {
@@ -134,7 +133,7 @@ export class CandlesService {
 
   private async loadState(uid: string): Promise<void> {
     try {
-      const userSnapshot = await getDoc(this.getUserReference(uid));
+      const userSnapshot = await this.runFirestoreOp(getDoc(this.getUserReference(uid)));
 
       if (!userSnapshot.exists()) {
         this.resetState();
@@ -213,7 +212,11 @@ export class CandlesService {
       payload['spiritSatisfactionUpdatedAt'] = state.spiritSatisfaction.updatedAt;
     }
 
-    await setDoc(this.getUserReference(uid), payload, { merge: true });
+    await this.runFirestoreOp(setDoc(this.getUserReference(uid), payload, { merge: true }));
+  }
+
+  private runFirestoreOp<T>(operation: Promise<T>): Promise<T> {
+    return withTimeout(operation, FIRESTORE_OPERATION_TIMEOUT_MS);
   }
 
   private resetState(): void {

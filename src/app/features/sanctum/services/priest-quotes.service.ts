@@ -10,6 +10,8 @@ import {
   groupPriestQuotesByPool,
 } from '@features/sanctum/helpers/group-priest-quotes-by-pool.helper';
 import { collection, getDocs, query, where } from 'firebase/firestore';
+import { withTimeout } from '@shared/helpers/with-timeout.helper';
+import { FIRESTORE_OPERATION_TIMEOUT_MS } from '@shared/constants/firestore-operation-timeout';
 
 @Service({
   autoProvided: false,
@@ -41,7 +43,7 @@ export class PriestQuotesService {
     }
 
     const priestQuotesQuery = query(collection(firestore, PRIEST_QUOTES_COLLECTION), where('lang', '==', lang));
-    const snapshot = await getDocs(priestQuotesQuery);
+    const snapshot = await withTimeout(getDocs(priestQuotesQuery), FIRESTORE_OPERATION_TIMEOUT_MS);
 
     if (abortSignal.aborted) {
       return createEmptyPriestQuotesByPool();

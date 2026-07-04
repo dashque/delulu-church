@@ -88,5 +88,6 @@
       "1": "The cogitators reject this sigil. No deploy shall pass until repentance.",
       "2": "Forbidden nomenclature offends the Machine Spirit. Abandon this path."
     }
-  }
+  },
+  "notifications": { "failure": "Failed to load priest quotes" }
 }

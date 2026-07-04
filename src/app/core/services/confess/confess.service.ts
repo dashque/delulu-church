@@ -5,6 +5,8 @@ import { firestore } from '@env/environment';
 import type { Severity, Sin, Status } from '@features/shrift/models/sin.model';
 import { SINS_SUBCOLLECTION, STATUSES, USERS_COLLECTION } from '@core/services/confess/models/confess.model';
 import { CoderQuotesService } from '@core/ui/components/ghost-coder/services/coder-quotes.service';
+import { withTimeout } from '@shared/helpers/with-timeout.helper';
+import { FIRESTORE_OPERATION_TIMEOUT_MS } from '@shared/constants/firestore-operation-timeout';
 
 @Service()
 export class ConfessService {
@@ -13,8 +15,10 @@ export class ConfessService {
 
   private readonly _sins = signal<Sin[] | null>(null);
   private readonly _isLoading = signal(false);
+  private readonly _error = signal<unknown | null>(null);
   public readonly sins = this._sins.asReadonly();
   public readonly isLoading = this._isLoading.asReadonly();
+  public readonly error = this._error.asReadonly();
 
   public async loadSins(): Promise<void> {
     this.startLoading();
@@ -23,7 +27,7 @@ export class ConfessService {
       const uid = this.requireUid();
 
       const sinsReference = collection(firestore, USERS_COLLECTION, uid, SINS_SUBCOLLECTION);
-      const snapshot = await getDocs(sinsReference);
+      const snapshot = await this.runFirestoreOp(getDocs(sinsReference));
 
       const sins = snapshot.docs.map((document) => {
         const data = document.data();
@@ -38,7 +42,8 @@ export class ConfessService {
 
       this._sins.set(sins);
     } catch (error) {
-      this.handleFirebaseError(error);
+      this._error.set(error);
+      throw error;
     } finally {
       this.stopLoading();
     }
@@ -52,7 +57,7 @@ export class ConfessService {
       const status = this.getRandomStatus();
 
       const sinsReference = collection(firestore, USERS_COLLECTION, uid, SINS_SUBCOLLECTION);
-      const documentReference = await addDoc(sinsReference, { text, severity, status });
+      const documentReference = await this.runFirestoreOp(addDoc(sinsReference, { text, severity, status }));
 
       const newSin: Sin = { uid: documentReference.id, text, severity, status };
 
@@ -61,7 +66,8 @@ export class ConfessService {
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
       this.coderService.reactSins('add');
     } catch (error) {
-      this.handleFirebaseError(error);
+      this._error.set(error);
+      throw error;
     } finally {
       this.stopLoading();
     }
@@ -74,13 +80,14 @@ export class ConfessService {
 
       const sinReference = doc(firestore, USERS_COLLECTION, uid, SINS_SUBCOLLECTION, sinUid);
 
-      await deleteDoc(sinReference);
+      await this.runFirestoreOp(deleteDoc(sinReference));
 
       this._sins.update((sins) => sins?.filter((sin) => sin.uid !== sinUid) ?? null);
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
       this.coderService.reactSins('delete');
     } catch (error) {
-      this.handleFirebaseError(error);
+      this._error.set(error);
+      throw error;
     } finally {
       this.stopLoading();
     }
@@ -88,7 +95,7 @@ export class ConfessService {
 
   public async getSinsCount(uid: string): Promise<number> {
     const sinsReference = collection(firestore, USERS_COLLECTION, uid, SINS_SUBCOLLECTION);
-    const snapshot = await getDocs(sinsReference);
+    const snapshot = await this.runFirestoreOp(getDocs(sinsReference));
 
     return snapshot.size;
   }
@@ -97,10 +104,15 @@ export class ConfessService {
     try {
       const userReference = doc(firestore, USERS_COLLECTION, uid);
 
-      await updateDoc(userReference, { sins: count });
+      await this.runFirestoreOp(updateDoc(userReference, { sins: count }));
     } catch (error) {
-      this.handleFirebaseError(error);
+      this._error.set(error);
+      throw error;
     }
+  }
+
+  private runFirestoreOp<T>(operation: Promise<T>): Promise<T> {
+    return withTimeout(operation, FIRESTORE_OPERATION_TIMEOUT_MS);
   }
 
   private requireUid(): string {
@@ -125,13 +137,5 @@ export class ConfessService {
 
   private stopLoading() {
     this._isLoading.set(false);
-  }
-
-  private handleFirebaseError(error: unknown): never {
-    if (error instanceof Error) {
-      throw new Error(error.message, { cause: error });
-    }
-
-    throw new Error('Unknown error');
   }
 }

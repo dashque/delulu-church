@@ -38,5 +38,6 @@
     "bugs": "Пусть баги находятся до продакшена,",
     "legacy": "И пусть legacy код не преследует нас вечно.»",
     "footer": "— Омникассия, Machine Spirit, Blessed Deploy"
-  }
+  },
+  "notifications": { "failure": "Не удалось синхронизировать алтарь" }
 }

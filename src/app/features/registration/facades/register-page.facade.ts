@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { TuiNotificationService } from '@taiga-ui/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
+import { toErrorMessage } from '@shared/helpers/to-error-message.helper';
 
 @Service({
   autoProvided: false,
@@ -38,13 +39,11 @@ export class RegisterPageFacade {
       this.registerForm.markAsPristine();
       void this.router.navigate(['/']);
     } catch (error) {
-      if (error instanceof Error) {
-        void this.showNotification(
-          error.message,
-          this.translocoService.translate('notifications.failure', {}, 'register'),
-          'negative'
-        );
-      }
+      void this.showNotification(
+        toErrorMessage(error),
+        this.translocoService.translate('notifications.failure', {}, 'register'),
+        'negative'
+      );
     }
   }
 
