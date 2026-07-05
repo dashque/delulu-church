@@ -1,0 +1,42 @@
+{
+  "title": "[ АЛТАРЬ МАШИННОГО ДУХА ]",
+  "subtitle": "«Зажгите свечу и принесите дар Machine Spirit за свои достижения»",
+  "statistics": {
+    "label": "Статистика алтаря",
+    "total_offerings": "[ ВСЕГО ПОДНОШЕНИЙ ]",
+    "spirit_status": "[ СТАТУС ДУХА ]",
+    "blessing_level": "[ УРОВЕНЬ БЛАГОСЛОВЕНИЯ ]"
+  },
+  "instructions": {
+    "title": "[ ИНСТРУКЦИЯ РИТУАЛА ]",
+    "select": "Выберите свечу, соответствующую вашему достижению",
+    "drag_highlight": "Перетащите свечу на алтарь",
+    "drag_middle": " или ",
+    "click_highlight": "кликните",
+    "drag_suffix": " на неё",
+    "blessing": "Machine Spirit примет вашу жертву и даст благословение",
+    "extinguish": "Свеча погаснет через 5 секунд и запомнит вашу жертву"
+  },
+  "candles": {
+    "count": "{{count}} раз",
+    "altar_label": "[ АЛТАРЬ ]",
+    "altar_placeholder": "Перетащите свечу сюда",
+    "purposes": {
+      "deploy": "За успешный деплой",
+      "bug": "За исправленный баг",
+      "review": "За пройденный Code Review",
+      "refactor": "За завершенный рефакторинг",
+      "database": "За миграцию без rollback",
+      "legacy": "За работу с legacy code"
+    }
+  },
+  "prayer": {
+    "title": "[ МОЛИТВА MACHINE SPIRIT ]",
+    "opening": "«От святого Machine Spirit мы просим:",
+    "compile": "Пусть наш код компилируется без ошибок,",
+    "deploy": "Пусть наши деплои проходят успешно,",
+    "bugs": "Пусть баги находятся до продакшена,",
+    "legacy": "И пусть legacy код не преследует нас вечно.»",
+    "footer": "— Омникассия, Machine Spirit, Blessed Deploy"
+  }
+}

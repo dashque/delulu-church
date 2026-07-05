@@ -1,0 +1,1 @@
+export const CANDLE_EXTINGUISH_TIME_IN_MS = 5000;

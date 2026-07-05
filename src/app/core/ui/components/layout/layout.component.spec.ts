@@ -6,6 +6,8 @@ import { LayoutService } from '@core/services/layout/layout.service';
 import { layoutServiceMock } from '@core/services/layout/layout.service.mock';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
 import { activatedRouteMock } from '@shared/mocks/activated-route/activated-route.mock';
+import { uiStateStore } from '@core/store/ui-state.store';
+import { resetUiStateStoreMock, uiStateStoreMock } from '@core/store/ui-state.store.mock';
 
 describe('LayoutComponent', () => {
   let component: LayoutComponent;
@@ -13,12 +15,14 @@ describe('LayoutComponent', () => {
 
   beforeEach(async () => {
     vi.clearAllMocks();
+    resetUiStateStoreMock();
 
     await TestBed.configureTestingModule({
       imports: [LayoutComponent, TranslocoTestingMock],
       providers: [
         { provide: LayoutService, useValue: layoutServiceMock },
         { provide: ActivatedRoute, useValue: activatedRouteMock },
+        { provide: uiStateStore, useValue: uiStateStoreMock },
       ],
     }).compileComponents();
 

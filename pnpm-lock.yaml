@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@angular/cdk':
+        specifier: ^22.0.2
+        version: 22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@angular/common':
         specifier: ^22.0.0
         version: 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
@@ -29,48 +32,36 @@ importers:
       '@jsverse/transloco':
         specifier: ^8.3.0
         version: 8.3.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)(typescript@6.0.3)
-      '@netlify/identity':
-        specifier: ^1.1.0
-        version: 1.1.0
       '@ngrx/signals':
-        specifier: ^21.1.0
-        version: 21.1.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
+        specifier: ^21.1.1
+        version: 21.1.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@taiga-ui/addon-doc':
         specifier: ^5.9.0
-        version: 5.9.0(475b928bf5144f5b267cebd92e0eb576)
+        version: 5.9.0(28240654545e84996490cbf07117e256)
       '@taiga-ui/cdk':
         specifier: ^5.9.0
-        version: 5.9.0(941840e08a831c990dd00a60552c39e5)
+        version: 5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)
       '@taiga-ui/core':
         specifier: ^5.9.0
-        version: 5.9.0(da693f7c59ee2a42098bfaf4c4a98129)
+        version: 5.9.0(db43a599458bde700b01e43fc4eededb)
       '@taiga-ui/icons':
         specifier: ^5.9.0
         version: 5.9.0
       '@taiga-ui/kit':
         specifier: ^5.9.0
-        version: 5.9.0(991789992a1b151c004b445815c7ebb8)
+        version: 5.9.0(aad7eedde154a2676be7792a1e719655)
       '@taiga-ui/layout':
         specifier: ^5.9.0
-        version: 5.9.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(941840e08a831c990dd00a60552c39e5))(@taiga-ui/core@5.9.0(da693f7c59ee2a42098bfaf4c4a98129))(@taiga-ui/kit@5.9.0(991789992a1b151c004b445815c7ebb8))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))(rxjs@7.8.2)
+        version: 5.9.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf))(@taiga-ui/core@5.9.0(db43a599458bde700b01e43fc4eededb))(@taiga-ui/kit@5.9.0(aad7eedde154a2676be7792a1e719655))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))(rxjs@7.8.2)
       '@taiga-ui/polymorpheus':
         specifier: ^5.0.1
         version: 5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))
       '@taiga-ui/styles':
         specifier: ^5.9.0
         version: 5.9.0(@taiga-ui/design-tokens@0.299.0)
-      dompurify:
-        specifier: ^3.4.3
-        version: 3.4.5
-      gray-matter:
-        specifier: ^4.0.3
-        version: 4.0.3
-      marked:
-        specifier: ^18.0.3
-        version: 18.0.4
-      ngx-markdown:
-        specifier: ^21.3.0
-        version: 21.3.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(marked@18.0.4)(rxjs@7.8.2)(zone.js@0.16.2)
+      firebase:
+        specifier: ^12.14.0
+        version: 12.14.0
       rxjs:
         specifier: ^7.8.2
         version: 7.8.2
@@ -111,9 +102,6 @@ importers:
       '@stylistic/eslint-plugin':
         specifier: ^5.10.0
         version: 5.10.0(eslint@10.3.0(jiti@2.6.1))
-      '@types/dompurify':
-        specifier: ^3.2.0
-        version: 3.2.0
       '@types/node':
         specifier: ^25.7.0
         version: 25.9.1
@@ -379,12 +367,12 @@ packages:
       vitest:
         optional: true
 
-  '@angular/cdk@21.2.10':
-    resolution: {integrity: sha512-yfCzUFNfeSMNnCkc0P5Pozqz1EViDe9KLPQyHVY/hApsNgBWvckpA+ZEWgKNfAf72f8bUJvZoHejaSMGYrpvuw==}
+  '@angular/cdk@22.0.2':
+    resolution: {integrity: sha512-3AOyLNIpvXkxbiCeUc4R5ubwCBpY83ZPe2I6Q/cTUW53SnFapEBNYZ2spSY+jPVY4IVPnQN1Tvjlzq6R9K4M3w==}
     peerDependencies:
-      '@angular/common': ^21.0.0 || ^22.0.0
-      '@angular/core': ^21.0.0 || ^22.0.0
-      '@angular/platform-browser': ^21.0.0 || ^22.0.0
+      '@angular/common': ^22.0.0 || ^23.0.0
+      '@angular/core': ^22.0.0 || ^23.0.0
+      '@angular/platform-browser': ^22.0.0 || ^23.0.0
       rxjs: ^6.5.3 || ^7.4.0
 
   '@angular/cli@22.0.0':
@@ -1151,9 +1139,228 @@ packages:
   '@fastify/static@9.1.3':
     resolution: {integrity: sha512-aXrYtsiryLhRxRNaxNqsn7FUISeb7rB9q4eHUPIot5aeQBLNahnz1m6thzm7JWC1poSGXS9XrX8DvuMivp2hkQ==}
 
+  '@firebase/ai@2.13.0':
+    resolution: {integrity: sha512-nJJDQKqjAcbkZdZGT/5WTVLrGZ+pYhWbwKC90nNzmvtoRTtnOJaNS34fhKSHQeB9SALgD2kxuWT5I4AkytdZ/Q==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+      '@firebase/app-types': 0.x
+
+  '@firebase/analytics-compat@0.2.28':
+    resolution: {integrity: sha512-lIAlqUUbBu93FJMlQfslryQtBwwzdzvp23ePC6FNgymXk6Ook5v4Uvc0vdutvoIeqmyA3LfP0ZeRFK8+11kOOQ==}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/analytics-types@0.8.4':
+    resolution: {integrity: sha512-zQ+XTgkwH6CY/eUSHJRP7e4LxM30RCxlCmob5sy2axs25GE3Ny0XdgpDscMTHHQIGqWkxPXad4w2Mw9sCgT8zQ==}
+
+  '@firebase/analytics@0.10.22':
+    resolution: {integrity: sha512-8BSaq/QRGU1+xyi8L2PTLTJU7MH9aMA72RQdIxrbhWFauOZY9OXo8f2YDN/972xA8d588tlnNVEQ2Mo69pT9Ow==}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/app-check-compat@0.4.4':
+    resolution: {integrity: sha512-9iP0MvmaVagulNXmrca96U3tqNAI3j98wsC1z7rj62nnOTajlrHM//jjB9VoHqRw6/islMskp6RsKnM7vhLDqA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/app-check-interop-types@0.3.4':
+    resolution: {integrity: sha512-zz3i6e13B8BfWiLy8MABtTh8aGIACgKbf9UVnyHcWs+yQzJXgQcl8A46b0zfaiJHdQ+niF0ouAfcpuf+3LMPQg==}
+
+  '@firebase/app-check-types@0.5.4':
+    resolution: {integrity: sha512-xV7JsIyzVr15aA7f3Pi0rB9gdBuVubs89FGA8VkRYA4g0l78poADgdfrScgf7NndSg9mm7cR7PJyY0+t22KaGw==}
+
+  '@firebase/app-check@0.11.4':
+    resolution: {integrity: sha512-G8EsbVJV9gSfoibx0dNoNOUrvr+PkL7J//+W/BST/oUassimkZeq9bjj3bKkB0pn4og5GMQ9qs7FefwP00kkgg==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/app-compat@0.5.13':
+    resolution: {integrity: sha512-pn3FvXwUR34kWPccDQfCKsNZcM2wD1OS+J1jeEgzM1ZNXoxR2NaF6e5DjDuRrnTwR6LN2XQQt0IqE6yKmgpCQg==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/app-types@0.9.5':
+    resolution: {integrity: sha512-YevqTjvo7Iujsa9Dwowmd6dSoElhzmD63ZSrq6bzjvQ6POjYgNjOFHLmNIgJs48eNO093NCERibuFnxbfOvU7A==}
+
+  '@firebase/app@0.14.13':
+    resolution: {integrity: sha512-H89Jeyp31+EZk9GPu6vaeL9mEmoXgM3nASB7UPBYYS/lqAks21mO1BU1dF8NbsVTL6tgGZkGUtiGJgxtDiwHkw==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/auth-compat@0.6.7':
+    resolution: {integrity: sha512-XgKnOgY1Siq7gylAmLkYtHAlRxNeWEAspH+nO3gJZJnfHqoTHbr9UjJ3nHNFALYXV5CfpQlyPROyB2ztySBHBQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/auth-interop-types@0.2.5':
+    resolution: {integrity: sha512-1Li/YuBDBAXcKv7BzY4U28gontUmAaw53sYiqbaVOMCFb2lFKK/c3CGMUWqtwe7+TXrl3poWnTCL5umYBg85Eg==}
+
+  '@firebase/auth-types@0.13.1':
+    resolution: {integrity: sha512-0c1Mnid0uMDfGJHeUS4zfvBa4/CedJXotGy/n/NZJnBjwiJawt0ZYU+wH2VAVLiRCEfG2ncCkAX3yd1/2nrB7g==}
+    peerDependencies:
+      '@firebase/app-types': 0.x
+      '@firebase/util': 1.x
+
+  '@firebase/auth@1.13.2':
+    resolution: {integrity: sha512-B4w0iS7MxRg28oIh2fJFTE6cM0lYdBrW19eHpc42jqEcloUjlYyVrpPqZvqA4+v9KFEVSKEs2SfWyta7hbzkJQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+      '@react-native-async-storage/async-storage': ^2.2.0 || ^3.0.0
+    peerDependenciesMeta:
+      '@react-native-async-storage/async-storage':
+        optional: true
+
+  '@firebase/component@0.7.3':
+    resolution: {integrity: sha512-wFofIaa2879ogD/WvkjYXJxRmfnL0scen6ORgaC3na1FNOR9ASIUANQdhqQcmWu/h77/pVHY7ch5flewa5Bcew==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/data-connect@0.7.1':
+    resolution: {integrity: sha512-2LbUU8mmSA63HknxQMmWHjpzuNLBKflvVwQc2tpoVKg0biWleNEJX031ELks0vzFs+dDjOUkCJR72RP6mQHFOg==}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/database-compat@2.1.4':
+    resolution: {integrity: sha512-3pK35F1MAgmqFJQlf2nhQl44vtAXQO1uaCaQOEUI9kCRtLFqi7N+QRKR7lFZPg+xIZIyubgxQaxY69YgfZRZWg==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/database-types@1.0.20':
+    resolution: {integrity: sha512-kegbOk/w8iU64pr0q6k2ItyNGjnQBMHFhwS7ohdWI4W+pc0/zhhdGXTdFj6X1oxItRjPoYOsSQmERgBkn/ihxw==}
+
+  '@firebase/database@1.1.3':
+    resolution: {integrity: sha512-XwWCa+E4TvNGpGwXrycLRNfdogADwFcvuhyow6wDWma9W54roaQIhe+4PM0KiLsIftBdSCGI7OKCXrdSRHbIhw==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/firestore-compat@0.4.10':
+    resolution: {integrity: sha512-yMP3FADDjikdrQv4YmvL4EkIny6Hw+N+a2O5T40rlHiniyMpRPxgYkKiFOvMZnsqKLqBVnKqCAElC0pa/IZtdw==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/firestore-types@3.0.4':
+    resolution: {integrity: sha512-jGn+JSS4X9zZsrfu7Yw66v5YRdOLD1oyQh4USR0xWl4CUqV/DA6bNIXRPpxH/cUl3iVTNiP6MN7g+EL42A4qfA==}
+    peerDependencies:
+      '@firebase/app-types': 0.x
+      '@firebase/util': 1.x
+
+  '@firebase/firestore@4.15.0':
+    resolution: {integrity: sha512-Fj9osqYkz2Rqr7kW3/A8BRd8CyJ7yA5K8YjhihRdyJWbL+FsELVcR6DpoCplrp1IyU+xeGgTubo1UOySXpY+EA==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/functions-compat@0.4.5':
+    resolution: {integrity: sha512-10qlUXGY25G5/1g9UihqksPp2po+ZqSE7LEizsrdUP7vrTmkysXxGSZCDyojSEp6mQe/ecRDdDDI+z4XRdb4wQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/functions-types@0.6.4':
+    resolution: {integrity: sha512-zV6kgqtduR4rUAdC/ilS7kmb93XD7bEZoJDlVBZqlOw2uGGGCNBQBuleww2rr0Ulr3L9o2TDjumEt68/l1f9DQ==}
+
+  '@firebase/functions@0.13.5':
+    resolution: {integrity: sha512-bWCx713f4kE/uFV7gdFOLBS7lDoiZj48MRkbAqe35gkXcCeWF4QjRNO07Jhmve7EJIoQOBczL29y2r8VRuN1kw==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/installations-compat@0.2.22':
+    resolution: {integrity: sha512-C/zpAuTP5S9OgKSPvXRupw3hoY/JZSlA1wFjD/Sb7LIQE0FNbcMdO8Y4KXVEkjVzma/DDDDIAzxEXqKMAzc88w==}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/installations-types@0.5.4':
+    resolution: {integrity: sha512-U2eFapdHwjb43Vx9o+Pmj4dFfvcHEK1IirEFLqMtWrTHvmdrS3gBpBD1kmJk/9HjsOtoHZxJ2Paoe79e+L1ZPg==}
+    peerDependencies:
+      '@firebase/app-types': 0.x
+
+  '@firebase/installations@0.6.22':
+    resolution: {integrity: sha512-ef6nn3GGQTdReCfotRMG77PJZu8CqEbiK5pEoBnM0gTu/Z9v0i/az2p3HABsa/1beQmmyh1OsOjf7P5+pgwdZw==}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/logger@0.5.1':
+    resolution: {integrity: sha512-vZKLsqE1ABOy8OjQiE7cUTFn4gvaqlk88yp8N94Pk/sDpq61YqZGqmVFZTvOyflTwuYFcWirBdYGoJgbDaXKYQ==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/messaging-compat@0.2.27':
+    resolution: {integrity: sha512-JNOiu1PPgdHzEPEtoFiNxQuu0x9bm4bfETSQCpGfcTlgWkhlSK7uh7nlsjC10TQLUNgYetLmuutaYTh8aeYLVA==}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/messaging-interop-types@0.2.5':
+    resolution: {integrity: sha512-tUEKnaAP2Y/MNIqgnriPpV6e5l13Vs/+p2yrd6NGlncPJT9O3a8muYZtdnWe+IJ4fgKLHJVC79n/asxk/N5Msw==}
+
+  '@firebase/messaging@0.13.0':
+    resolution: {integrity: sha512-GZoo0uGRvEbszo83xcgbjJp4FpkmBEr4l8Z4hi8gl+P1Spn/MTK3HapanMzSX4yUHuTEiF5hasWRxOaz+o5sxQ==}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/performance-compat@0.2.25':
+    resolution: {integrity: sha512-q6NjTXpIPoFuUmCmMN/maCdTgzT6aExs9xZo+PxfVLj6uLVGvpyAD6XWjmcrb7jChsFBYbq7E5dyNDF7Zhy9kA==}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/performance-types@0.2.4':
+    resolution: {integrity: sha512-kJSEk7b0uhpcPRyL4SQ/GPujLqk52XNKcXlnsKDbWGAb9vugcLvOU3u6zfEdwd+d8hWJb5S5ZizV1JFFI0nkKg==}
+
+  '@firebase/performance@0.7.12':
+    resolution: {integrity: sha512-fe7nV8teUU3OBHlMUZ9Lw4gLhCW2k4m5Uc3pfWGV+fl8uwJQBGp9Q3lqsJ+HSrFu3Q2pJyLAgrClPGSKyDeYgQ==}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/remote-config-compat@0.2.25':
+    resolution: {integrity: sha512-FnA5S4IxFJAAFrCnYzWlO0FCaizlYdqhe42ygFMA+wE/mUP+w36iXzHyKj1OO1A+2gyMFjeRHyg8HhkJ6c5vRA==}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/remote-config-types@0.5.1':
+    resolution: {integrity: sha512-cX/1LT6KQwkXzck2eSzeKnuvXZCyr8qaPpDcikoJs7jmI+oBOXixpDLeDtWj1U6GNMkIoXrEDNoyT2Ypcyp5/A==}
+
+  '@firebase/remote-config@0.8.4':
+    resolution: {integrity: sha512-lslywR5lGvHWTu4z/MPoYs3UwS3CKdeY+ELXY87087VsOpBpkD+9Orra23tA9GW683arPTDOM3CM6eKmtiOO3g==}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/storage-compat@0.4.3':
+    resolution: {integrity: sha512-gruVqjtUGX8tEoeNbaWXZm0Zfcfcb7fvmDmBxV8yPAbWvExRnZYLO2+qw9idxNE7BvPXt5csyjSYHy//dAizxw==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app-compat': 0.x
+
+  '@firebase/storage-types@0.8.4':
+    resolution: {integrity: sha512-BT7cwxJOx8SWwlQfrlC+bD/Sk3Cw+1odCi8UZNFNWTVZoPsBnA5W+mqtZzVnvsdJpXCFGSGQ7R7vOR6dtM/BRA==}
+    peerDependencies:
+      '@firebase/app-types': 0.x
+      '@firebase/util': 1.x
+
+  '@firebase/storage@0.14.3':
+    resolution: {integrity: sha512-YX4/YL6P6/fufSSeGnVhjWddcIXbFq2cWIhMKFTZo1E/Rtcl2mJj/BYUQTwJfcE1Tl8un1FOya4L05jcSLN/Eg==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      '@firebase/app': 0.x
+
+  '@firebase/util@1.15.1':
+    resolution: {integrity: sha512-LUdM4Wg7YM9Pq/49nGYySJA0CSQEKnGffFzWV8+6gXN7mGxn+FL1IqvFbuZUtAQcfZgHYDwCE1wwlK7rB7gl2g==}
+    engines: {node: '>=20.0.0'}
+
+  '@firebase/webchannel-wrapper@1.0.6':
+    resolution: {integrity: sha512-Vr/Mqu79dMwGRAyGbJ4uN4+BtXB3/mRTdzetD1daWNeG8QaWuzhhbG77GltO5c0yYmYls8i250iX73624GJd7Q==}
+
   '@gar/promise-retry@1.0.3':
     resolution: {integrity: sha512-GmzA9ckNokPypTg10pgpeHNQe7ph+iIKKmhKu3Ob9ANkswreCx7R3cKmY781K8QK3AqVL3xVh9A42JvIAbkkSA==}
     engines: {node: ^20.17.0 || >=22.9.0}
+
+  '@grpc/grpc-js@1.9.16':
+    resolution: {integrity: sha512-wE4Ut/olIzfKqp631XrG+wbF0v1vWFN4YL9FyXC2LJiG33DsV7PLzURjrCvY/6je2ntdRkeLpPDluzSRGaVltQ==}
+    engines: {node: ^8.13.0 || >=10.10.0}
+
+  '@grpc/proto-loader@0.7.15':
+    resolution: {integrity: sha512-tMXdRCfYVixjuFK+Hk0Q1s38gV9zDiDJfWL3h1rv4Qc39oILCu1TRTDt7+fGUI8K4G1Fj125Hx/ru3azECWTyQ==}
+    engines: {node: '>=6'}
+    hasBin: true
 
   '@harperfast/extended-iterable@1.0.3':
     resolution: {integrity: sha512-sSAYhQca3rDWtQUHSAPeO7axFIUJOI6hn1gjRC5APVE1a90tuyT8f5WIgRsFhhWA7htNkju2veB9eWL6YHi/Lw==}
@@ -1896,10 +2103,6 @@ packages:
     resolution: {integrity: sha512-xih1Pf3dDpvdpBoPI+tua9WA2qTkRJeUSUIUaUtnAvRdhl959W06d09BtEWS+FtjlrCEkE/REVxD7J+SN6EpSw==}
     engines: {node: '>=20.6.1'}
 
-  '@netlify/identity@1.1.0':
-    resolution: {integrity: sha512-sZdw2a6kVlJcBHJSNcaOs1C++DSWQGnZhOkLHlrpf1gEoC494CE/IYPv8/BXp3JUltf/sI21HCiu5lSgm4Ycow==}
-    engines: {node: '>=22'}
-
   '@netlify/images@1.3.9':
     resolution: {integrity: sha512-MM7pvY83uteO+bgG/15rHdG0cz9WXOWjd9oAUYA76ki+wrw5OCt96evvF4yJsMcAf2SZx3pauBDW6VujwKR/Ng==}
     engines: {node: '>=20.6.1'}
@@ -2076,8 +2279,8 @@ packages:
       '@ng-web-apis/common': ^5.2.0
       rxjs: '>=7.0.0'
 
-  '@ngrx/signals@21.1.0':
-    resolution: {integrity: sha512-eDGaBs6sssEZe2cLGwDdRnfTwyx9TKD+zpLW8yDov6acWzyi0nW5qxUWjpMRwmIU1i+o0t5MMpQaF/rFMmtHSg==}
+  '@ngrx/signals@21.1.1':
+    resolution: {integrity: sha512-AXxsvO39cJ4gu2GMvLyUHwx+3qHi35Bn7OUqyIfJW0fffi/Af7ML6h0MPMWDHVROo55FBgxzJrYRswwzdew9VA==}
     peerDependencies:
       '@angular/core': ^21.0.0
       rxjs: ^6.5.3 || ^7.4.0
@@ -2362,6 +2565,36 @@ packages:
   '@pnpm/tabtab@0.5.4':
     resolution: {integrity: sha512-bWLDlHsBlgKY/05wDN/V3ETcn5G2SV/SiA2ZmNvKGGlmVX4G5li7GRDhHcgYvHJHyJ8TUStqg2xtHmCs0UbAbg==}
     engines: {node: '>=18'}
+
+  '@protobufjs/aspromise@1.1.2':
+    resolution: {integrity: sha512-j+gKExEuLmKwvz3OgROXtrJ2UG2x8Ch2YZUxahh+s1F2HZ+wAceUNLkvy6zKCPVRkU++ZWQrdxsUeQXmcg4uoQ==}
+
+  '@protobufjs/base64@1.1.2':
+    resolution: {integrity: sha512-AZkcAA5vnN/v4PDqKyMR5lx7hZttPDgClv83E//FMNhR2TMcLUhfRUBHCmSl0oi9zMgDDqRUJkSxO3wm85+XLg==}
+
+  '@protobufjs/codegen@2.0.5':
+    resolution: {integrity: sha512-zgXFLzW3Ap33e6d0Wlj4MGIm6Ce8O89n/apUaGNB/jx+hw+ruWEp7EwGUshdLKVRCxZW12fp9r40E1mQrf/34g==}
+
+  '@protobufjs/eventemitter@1.1.1':
+    resolution: {integrity: sha512-vW1GmwMZNnL+gMRaovlh9yZX74kc+TTU3FObkkurpMaRtBfLP3ldjS9KQWlwZgraRE0+dheEEoAxdzcJQ8eXZg==}
+
+  '@protobufjs/fetch@1.1.1':
+    resolution: {integrity: sha512-GpptLrs57adMSuHi3VNj0mAF8dwh36LMaYF6XyJ6JMWlVsc+t42tm1HSEDmOs3A8fC9yyeisgLhsTVQokOZ0zw==}
+
+  '@protobufjs/float@1.0.2':
+    resolution: {integrity: sha512-Ddb+kVXlXst9d+R9PfTIxh1EdNkgoRe5tOX6t01f1lYWOvJnSPDBlG241QLzcyPdoNTsblLUdujGSE4RzrTZGQ==}
+
+  '@protobufjs/inquire@1.1.2':
+    resolution: {integrity: sha512-pa0vFRuws4wkvaXKK1uXZMAwAX4/t8ANaJo45iw/oQHNQ9q5xUzwgFmVJGXiga2BeN+zpX7Vf9vmsiIa2J+MUw==}
+
+  '@protobufjs/path@1.1.2':
+    resolution: {integrity: sha512-6JOcJ5Tm08dOHAbdR3GrvP+yUUfkjG5ePsHYczMFLq3ZmMkAD98cDgcT2iA1lJ9NVwFd4tH/iSSoe44YWkltEA==}
+
+  '@protobufjs/pool@1.1.0':
+    resolution: {integrity: sha512-0kELaGSIDBKvcgS4zkjz1PeddatrjYcmMWOlAuAPwAeccUrPHdUqo/J6LiymHHEiJT5NrF1UVwxY14f+fy4WQw==}
+
+  '@protobufjs/utf8@1.1.1':
+    resolution: {integrity: sha512-oOAWABowe8EAbMyWKM0tYDKi8Yaox52D+HWZhAIJqQXbqe0xI/GV7FhLWqlEKreMkfDjshR5FKgi3mnle0h6Eg==}
 
   '@rollup/pluginutils@5.3.0':
     resolution: {integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q==}
@@ -2886,10 +3119,6 @@ packages:
   '@types/dom-speech-recognition@0.0.8':
     resolution: {integrity: sha512-JgpjlGQWGc+OjjTNfyJ8Ic2w2+NOdrmEpmdVAkg+sYblx8I5ZZTeA+cfxvgUMtXXT7/WzYYR2Rrp3ZDg+l/3vA==}
 
-  '@types/dompurify@3.2.0':
-    resolution: {integrity: sha512-Fgg31wv9QbLDA0SpTOXO3MaxySc4DKGLi8sna4/Utjo4r3ZRPdCt4UQee8BWr+Q5z21yifghREPJGYaEOEIACg==}
-    deprecated: This is a stub types definition. dompurify provides its own type definitions, so you do not need this installed.
-
   '@types/esquery@1.5.4':
     resolution: {integrity: sha512-yYO4Q8H+KJHKW1rEeSzHxcZi90durqYgWVfnh5K6ZADVBjBv2e1NEveYX5yT2bffgN7RqzH3k9930m+i2yBoMA==}
 
@@ -2938,9 +3167,6 @@ packages:
 
   '@types/triple-beam@1.3.5':
     resolution: {integrity: sha512-6WaYesThRMCl19iryMYP7/x2OVgCtbIVflDGFpWnb9irXI3UjYE4AzmYuiUKY1AJstGijoY+MgUszMgRxIYTYw==}
-
-  '@types/trusted-types@2.0.7':
-    resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
@@ -3375,9 +3601,6 @@ packages:
 
   arg@4.1.3:
     resolution: {integrity: sha512-58S9QDqG0Xx27YwPSt9fJxivjYl432YCwfDMfZ+71RAqUrZef7LrKQZ3LHLOwCS4FLNBplP533Zx895SeOCHvA==}
-
-  argparse@1.0.10:
-    resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
@@ -4286,9 +4509,6 @@ packages:
     resolution: {integrity: sha512-cgwlv/1iFQiFnU96XXgROh8xTeetsnJiDsTc7TYCLFd9+/WNkIqPTxiM/8pSd8VIrhXGTf1Ny1q1hquVqDJB5w==}
     engines: {node: '>= 4'}
 
-  dompurify@3.4.5:
-    resolution: {integrity: sha512-OrwIBKsdNSVEeubdJ1HBv/wNENRM9ytAVCv7YXt//A3vPdVMNuACRqK9mXCGCBW2ln7BT/A4X0jXHo2Gu89miA==}
-
   domutils@3.2.2:
     resolution: {integrity: sha512-6kZKyUajlDuqlHKVX1w7gyslj9MPIXzIFiz/rGu35uC1wMi+kMhQwGhl4lt9unC9Vb9INnY9Z3/ZA3+FhASLaw==}
 
@@ -4644,10 +4864,6 @@ packages:
     resolution: {integrity: sha512-hIS4idWWai69NezIdRt2xFVofaF4j+6INOpJlVOLDO8zXGpUVEVzIYk12UUi2JzjEzWL3IOAxcTubgz9Po0yXw==}
     engines: {node: '>= 18'}
 
-  extend-shallow@2.0.1:
-    resolution: {integrity: sha512-zCnTtlxNoAiDc3gqY2aYAWFx7XWWiasuF2K8Me5WbN8otHKTUKBwjPtNpRs/rbUZm7KxWAaNj7P1a/p52GbVug==}
-    engines: {node: '>=0.10.0'}
-
   extract-zip@2.0.1:
     resolution: {integrity: sha512-GDhU9ntwuKyGXdZBUgTIe+vXnWj0fppUEtMDL0+idd5Sta8TGpHssn/eusA9mrPr9qNDym6SxAYZjNvCn/9RBg==}
     engines: {node: '>= 10.17.0'}
@@ -4715,6 +4931,10 @@ packages:
 
   fastq@1.20.1:
     resolution: {integrity: sha512-GGToxJ/w1x32s/D2EKND7kTil4n8OVk/9mycTc4VDza13lOvpUZTGX3mFSCtV9ksdGBVzvsyAVLM6mHFThxXxw==}
+
+  faye-websocket@0.11.4:
+    resolution: {integrity: sha512-CzbClwlXAuiRQAlUyfqPgvPoNKTckTPGfwZV4ZdAhVcP2lh9KUxJg2b5GkE7XbjKQ3YJnQ9z6D9ntLAlB+tP8g==}
+    engines: {node: '>=0.8.0'}
 
   fd-slicer@1.1.0:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
@@ -4801,6 +5021,9 @@ packages:
   find-up@8.0.0:
     resolution: {integrity: sha512-JGG8pvDi2C+JxidYdIwQDyS/CgcrIdh18cvgxcBge3wSHRQOrooMD3GlFBcmMJAN9M42SAZjDp5zv1dglJjwww==}
     engines: {node: '>=20'}
+
+  firebase@12.14.0:
+    resolution: {integrity: sha512-aEZ/lniDR1hOCYpx/x/V8Nrrqq9pepKDNkqP/4WGZFC69gTv6F59Z4/54W/SUP4L/hFlrRNmWj35aweQq+IHow==}
 
   flat-cache@4.0.1:
     resolution: {integrity: sha512-f7ccFPK3SXFHpx15UIGyRJ/FJQctuKZ0zVuN3frBo4HnK3cay9VEW0R6yPYFHC0AgqhukPzKjq22t5DmAyqGyw==}
@@ -5060,18 +5283,11 @@ packages:
     resolution: {integrity: sha512-ZUKRh6/kUFoAiTAtTYPZJ3hw9wNxx+BIBOijnlG9PnrJsCcSjs1wyyD6vJpaYtgnzDrKYRSqf3OO6Rfa93xsRg==}
     engines: {node: '>= 0.4'}
 
-  gotrue-js@1.0.1:
-    resolution: {integrity: sha512-ZynwwM4bEo2y5yNWO3/Ynbx1AvQz9ONJSM9tB1jpooAvDPevGdvgeFP3NwM59FAlkd0szSkQRAhjINMkJSDfAQ==}
-
   graceful-fs@4.2.10:
     resolution: {integrity: sha512-9ByhssR2fPVsNZj478qUUbKfmL0+t5BDVyjShtyZZLiK7ZDAArFFfopyOTj0M05wE2tJPisA4iTnnXl2YoPvOA==}
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
-
-  gray-matter@4.0.3:
-    resolution: {integrity: sha512-5v6yZd4JK3eMI3FqqCouswVqwugaA9r4dNZB1wwcmrD02QkV5H0y7XBQW8QwQqEaZY1pM9aqORSORhJRdNK44Q==}
-    engines: {node: '>=6.0'}
 
   h3@1.15.11:
     resolution: {integrity: sha512-L3THSe2MPeBwgIZVSH5zLdBBU90TOxarvhK9d04IDY2AmVS8j2Jz2LIWtwsGOU3lu2I5jCN7FNvVfY2+XyF+mg==}
@@ -5170,6 +5386,9 @@ packages:
     resolution: {integrity: sha512-4FbRdAX+bSdmo4AUFuS0WNiPz8NgFt+r8ThgNWmlrjQjt1Q7ZR9+zTlce2859x4KSXrwIsaeTqDoKQmtP8pLmQ==}
     engines: {node: '>= 0.8'}
 
+  http-parser-js@0.5.10:
+    resolution: {integrity: sha512-Pysuw9XpUq5dVc/2SMHpuTY01RFl8fttgcyunjL7eEMhGM3cI4eOmiCycJDVCo/7O7ClfQD3SaI6ftDzqOXYMA==}
+
   http-proxy-agent@7.0.2:
     resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==}
     engines: {node: '>= 14'}
@@ -5218,6 +5437,9 @@ packages:
   iconv-lite@0.7.2:
     resolution: {integrity: sha512-im9DjEDQ55s9fL4EYzOAv0yMqmMBSZp6G0VvFyTMPKWxiSBHUj9NW/qqLmXUwXrrM7AvqSlTCfvqRb0cM8yYqw==}
     engines: {node: '>=0.10.0'}
+
+  idb@7.1.1:
+    resolution: {integrity: sha512-gchesWBzyvGHRO9W8tzUWFDycow5gwjvFKfyV9FF32Y7F50yZMp7mP+T2mJIWFx49zicqyC4uefHM17o6xKIVQ==}
 
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
@@ -5383,10 +5605,6 @@ packages:
   is-error-instance@2.0.0:
     resolution: {integrity: sha512-5RuM+oFY0P5MRa1nXJo6IcTx9m2VyXYhRtb4h0olsi2GHci4bqZ6akHk+GmCYvDrAR9yInbiYdr2pnoqiOMw/Q==}
     engines: {node: '>=16.17.0'}
-
-  is-extendable@0.1.1:
-    resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
-    engines: {node: '>=0.10.0'}
 
   is-extglob@2.1.1:
     resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
@@ -5624,10 +5842,6 @@ packages:
 
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-
-  js-yaml@3.14.2:
-    resolution: {integrity: sha512-PMSmkqxr106Xa156c2M265Z+FTrPl+oxd/rgOQy2tijQeK5TxQ43psO1ZCwhVOSdnn+RzkzlRz/eY4BgJBYVpg==}
-    hasBin: true
 
   js-yaml@4.1.1:
     resolution: {integrity: sha512-qQKT4zQxXl8lLwBtHMWwaTcGfFOZviOJet3Oy/xmGk2gZH677CJM9EvtfdSkgWcATZhj/55JZ0rmy3myCT5lsA==}
@@ -5880,6 +6094,9 @@ packages:
     resolution: {integrity: sha512-TFYA4jnP7PVbmlBIfhlSe+WKxs9dklXMTEGcBCIvLhE/Tn3H6Gk1norupVW7m5Cnd4bLcr08AytbyV/xj7f/kQ==}
     engines: {node: '>= 12.0.0'}
 
+  long@5.3.2:
+    resolution: {integrity: sha512-mNAgZ1GmyNhD7AuqnTG3/VQ26o760+ZYBPKjPvugO8+nLbYfX6TVpJPseBvopbdY+qpZ/lKUnmEc1LeZYS3QAA==}
+
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
@@ -5932,11 +6149,6 @@ packages:
 
   markdown-it@14.1.1:
     resolution: {integrity: sha512-BuU2qnTti9YKgK5N+IeMubp14ZUKUUw7yeJbkjtosvHiP0AZ5c8IAgEMk79D0eC8F23r4Ac/q8cAIFdm2FtyoA==}
-    hasBin: true
-
-  marked@18.0.4:
-    resolution: {integrity: sha512-c/BTaKzg0G6ezQx97DAkYU7k0HM6ys0FqYeKBL6hlBByZwy+ycA1+f0vDdjMHKKeEjdgkx0GOv9Il6D+85cOqA==}
-    engines: {node: '>= 20'}
     hasBin: true
 
   math-intrinsics@1.1.0:
@@ -6192,32 +6404,6 @@ packages:
       '@angular/common': '>=19.0.0'
       '@angular/core': '>=19.0.0'
       rxjs: '>=7.0.0'
-
-  ngx-markdown@21.3.0:
-    resolution: {integrity: sha512-HYh31RnDqu9YnMffi5CiHUqzVrucIbURJjx4/YWpuQoQkuR8Otz0CN8M0Bx6rfxDVZ7j3LmNqqlJ/YxvMKizXg==}
-    peerDependencies:
-      '@angular/common': ^21.0.0
-      '@angular/core': ^21.0.0
-      '@angular/platform-browser': ^21.0.0
-      clipboard: ^2.0.11
-      emoji-toolkit: '>= 8.0.0 < 11.0.0'
-      katex: ^0.16.0
-      marked: ^17.0.0 || ^18.0.0
-      mermaid: '>= 10.6.0 < 12.0.0'
-      prismjs: ^1.30.0
-      rxjs: ^6.5.3 || ^7.4.0
-      zone.js: ~0.15.0 || ~0.16.0
-    peerDependenciesMeta:
-      clipboard:
-        optional: true
-      emoji-toolkit:
-        optional: true
-      katex:
-        optional: true
-      mermaid:
-        optional: true
-      prismjs:
-        optional: true
 
   node-addon-api@6.1.0:
     resolution: {integrity: sha512-+eawOlIgy680F0kBzPUNFhMZGtJ1YmqM6l4+Crf4IkImjYrO/mqPwRMh352g23uIaQKFItcQ64I7KMaJxHgAVA==}
@@ -6862,6 +7048,10 @@ packages:
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
 
+  protobufjs@7.6.2:
+    resolution: {integrity: sha512-N9EiLovGEQOJSPF26Ij7qUGvahfEnq0eeYZ02aigIedkmz1qZSwjnP9SBITHJuF/6MYbIW4HDN8zdYjsjqJKXQ==}
+    engines: {node: '>=12.0.0'}
+
   proxy-addr@2.0.7:
     resolution: {integrity: sha512-llQsMLSUDUPT44jdrU/O37qlnifitDP+ZwrmmZcoSKyLKvtZxpyV0n2/bD/N4tBAAZ/gJEdZU7KMraoK1+XYAg==}
     engines: {node: '>= 0.10'}
@@ -7148,10 +7338,6 @@ packages:
     resolution: {integrity: sha512-xAg7SOnEhrm5zI3puOOKyy1OMcMlIJZYNJY7xLBwSze0UjhPLnWfj2GF2EpT0jmzaJKIWKHLsaSSajf35bcYnA==}
     engines: {node: '>=v12.22.7'}
 
-  section-matter@1.0.0:
-    resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}
-    engines: {node: '>=4'}
-
   secure-json-parse@4.1.0:
     resolution: {integrity: sha512-l4KnYfEyqYJxDwlNVyRfO2E4NTHfMKAWdUuA8J0yve2Dz/E/PdBepY03RvyJpssIpRFwJoCD55wA+mEDs6ByWA==}
 
@@ -7326,9 +7512,6 @@ packages:
     resolution: {integrity: sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg==}
     engines: {node: '>= 10.x'}
 
-  sprintf-js@1.0.3:
-    resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
-
   ssri@13.0.1:
     resolution: {integrity: sha512-QUiRf1+u9wPTL/76GTYlKttDEBWV1ga9ZXW8BG6kfdeyyM8LGPix9gROyg9V2+P0xNyF3X2Go526xKFdMZrHSQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -7420,10 +7603,6 @@ packages:
   strip-ansi@7.2.0:
     resolution: {integrity: sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==}
     engines: {node: '>=12'}
-
-  strip-bom-string@1.0.0:
-    resolution: {integrity: sha512-uCC2VHvQRYu+lMh4My/sFNmF2klFymLX1wHJeXnbEJERpV/ZsVuonzerjfrGpIGF7LBVa1O7i9kjiWvJiFck8g==}
-    engines: {node: '>=0.10.0'}
 
   strip-final-newline@2.0.0:
     resolution: {integrity: sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==}
@@ -8031,12 +8210,23 @@ packages:
     resolution: {integrity: sha512-d2JWLCivmZYTSIoge9MsgFCZrt571BikcWGYkjC1khllbTeDlGqZ2D8vD8E/lJa8WGWbb7Plm8/XJYV7IJHZZw==}
     engines: {node: '>= 8'}
 
+  web-vitals@4.2.4:
+    resolution: {integrity: sha512-r4DIlprAGwJ7YM11VZp4R884m0Vmgr6EAKe3P+kO0PPj3Unqyvv59rczf6UiGcb9Z8QxZVcqKNwv/g0WNdWwsw==}
+
   webidl-conversions@3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
 
   webidl-conversions@8.0.1:
     resolution: {integrity: sha512-BMhLD/Sw+GbJC21C/UgyaZX41nPt8bUTg+jWyDeg7e7YN4xOM05YPSIXceACnXVtqyEw/LMClUQMtMZ+PGGpqQ==}
     engines: {node: '>=20'}
+
+  websocket-driver@0.7.5:
+    resolution: {integrity: sha512-ZL2+3c7kMBdIRCMz6l8jQMHyGVxj+UL+xVk74Ombiciboca8rHa15L86B19E5oh1pL9Ii/uj54gtsIrZGMo6zA==}
+    engines: {node: '>=0.8.0'}
+
+  websocket-extensions@0.1.4:
+    resolution: {integrity: sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==}
+    engines: {node: '>=0.8.0'}
 
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
@@ -8573,7 +8763,7 @@ snapshots:
       - tsx
       - yaml
 
-  '@angular/cdk@21.2.10(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)':
+  '@angular/cdk@22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)':
     dependencies:
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
@@ -9286,7 +9476,339 @@ snapshots:
       fastq: 1.20.1
       glob: 13.0.6
 
+  '@firebase/ai@2.13.0(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/app-check-interop-types': 0.3.4
+      '@firebase/app-types': 0.9.5
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/analytics-compat@0.2.28(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/analytics': 0.10.22(@firebase/app@0.14.13)
+      '@firebase/analytics-types': 0.8.4
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+
+  '@firebase/analytics-types@0.8.4': {}
+
+  '@firebase/analytics@0.10.22(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/installations': 0.6.22(@firebase/app@0.14.13)
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/app-check-compat@0.4.4(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-check': 0.11.4(@firebase/app@0.14.13)
+      '@firebase/app-check-types': 0.5.4
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+
+  '@firebase/app-check-interop-types@0.3.4': {}
+
+  '@firebase/app-check-types@0.5.4': {}
+
+  '@firebase/app-check@0.11.4(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/app-compat@0.5.13':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/app-types@0.9.5':
+    dependencies:
+      '@firebase/logger': 0.5.1
+
+  '@firebase/app@0.14.13':
+    dependencies:
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      idb: 7.1.1
+      tslib: 2.8.1
+
+  '@firebase/auth-compat@0.6.7(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/auth': 1.13.2(@firebase/app@0.14.13)
+      '@firebase/auth-types': 0.13.1(@firebase/app-types@0.9.5)(@firebase/util@1.15.1)
+      '@firebase/component': 0.7.3
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+      - '@firebase/app-types'
+      - '@react-native-async-storage/async-storage'
+
+  '@firebase/auth-interop-types@0.2.5': {}
+
+  '@firebase/auth-types@0.13.1(@firebase/app-types@0.9.5)(@firebase/util@1.15.1)':
+    dependencies:
+      '@firebase/app-types': 0.9.5
+      '@firebase/util': 1.15.1
+
+  '@firebase/auth@1.13.2(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/component@0.7.3':
+    dependencies:
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/data-connect@0.7.1(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/auth-interop-types': 0.2.5
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/database-compat@2.1.4':
+    dependencies:
+      '@firebase/component': 0.7.3
+      '@firebase/database': 1.1.3
+      '@firebase/database-types': 1.0.20
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/database-types@1.0.20':
+    dependencies:
+      '@firebase/app-types': 0.9.5
+      '@firebase/util': 1.15.1
+
+  '@firebase/database@1.1.3':
+    dependencies:
+      '@firebase/app-check-interop-types': 0.3.4
+      '@firebase/auth-interop-types': 0.2.5
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      faye-websocket: 0.11.4
+      tslib: 2.8.1
+
+  '@firebase/firestore-compat@0.4.10(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/firestore': 4.15.0(@firebase/app@0.14.13)
+      '@firebase/firestore-types': 3.0.4(@firebase/app-types@0.9.5)(@firebase/util@1.15.1)
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+      - '@firebase/app-types'
+
+  '@firebase/firestore-types@3.0.4(@firebase/app-types@0.9.5)(@firebase/util@1.15.1)':
+    dependencies:
+      '@firebase/app-types': 0.9.5
+      '@firebase/util': 1.15.1
+
+  '@firebase/firestore@4.15.0(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      '@firebase/webchannel-wrapper': 1.0.6
+      '@grpc/grpc-js': 1.9.16
+      '@grpc/proto-loader': 0.7.15
+      tslib: 2.8.1
+
+  '@firebase/functions-compat@0.4.5(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/functions': 0.13.5(@firebase/app@0.14.13)
+      '@firebase/functions-types': 0.6.4
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+
+  '@firebase/functions-types@0.6.4': {}
+
+  '@firebase/functions@0.13.5(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/app-check-interop-types': 0.3.4
+      '@firebase/auth-interop-types': 0.2.5
+      '@firebase/component': 0.7.3
+      '@firebase/messaging-interop-types': 0.2.5
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/installations-compat@0.2.22(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/installations': 0.6.22(@firebase/app@0.14.13)
+      '@firebase/installations-types': 0.5.4(@firebase/app-types@0.9.5)
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+      - '@firebase/app-types'
+
+  '@firebase/installations-types@0.5.4(@firebase/app-types@0.9.5)':
+    dependencies:
+      '@firebase/app-types': 0.9.5
+
+  '@firebase/installations@0.6.22(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/util': 1.15.1
+      idb: 7.1.1
+      tslib: 2.8.1
+
+  '@firebase/logger@0.5.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@firebase/messaging-compat@0.2.27(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/messaging': 0.13.0(@firebase/app@0.14.13)
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+
+  '@firebase/messaging-interop-types@0.2.5': {}
+
+  '@firebase/messaging@0.13.0(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/installations': 0.6.22(@firebase/app@0.14.13)
+      '@firebase/messaging-interop-types': 0.2.5
+      '@firebase/util': 1.15.1
+      idb: 7.1.1
+      tslib: 2.8.1
+
+  '@firebase/performance-compat@0.2.25(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/performance': 0.7.12(@firebase/app@0.14.13)
+      '@firebase/performance-types': 0.2.4
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+
+  '@firebase/performance-types@0.2.4': {}
+
+  '@firebase/performance@0.7.12(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/installations': 0.6.22(@firebase/app@0.14.13)
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+      web-vitals: 4.2.4
+
+  '@firebase/remote-config-compat@0.2.25(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/logger': 0.5.1
+      '@firebase/remote-config': 0.8.4(@firebase/app@0.14.13)
+      '@firebase/remote-config-types': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+
+  '@firebase/remote-config-types@0.5.1': {}
+
+  '@firebase/remote-config@0.8.4(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/installations': 0.6.22(@firebase/app@0.14.13)
+      '@firebase/logger': 0.5.1
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/storage-compat@0.4.3(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app-compat': 0.5.13
+      '@firebase/component': 0.7.3
+      '@firebase/storage': 0.14.3(@firebase/app@0.14.13)
+      '@firebase/storage-types': 0.8.4(@firebase/app-types@0.9.5)(@firebase/util@1.15.1)
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+    transitivePeerDependencies:
+      - '@firebase/app'
+      - '@firebase/app-types'
+
+  '@firebase/storage-types@0.8.4(@firebase/app-types@0.9.5)(@firebase/util@1.15.1)':
+    dependencies:
+      '@firebase/app-types': 0.9.5
+      '@firebase/util': 1.15.1
+
+  '@firebase/storage@0.14.3(@firebase/app@0.14.13)':
+    dependencies:
+      '@firebase/app': 0.14.13
+      '@firebase/component': 0.7.3
+      '@firebase/util': 1.15.1
+      tslib: 2.8.1
+
+  '@firebase/util@1.15.1':
+    dependencies:
+      tslib: 2.8.1
+
+  '@firebase/webchannel-wrapper@1.0.6': {}
+
   '@gar/promise-retry@1.0.3': {}
+
+  '@grpc/grpc-js@1.9.16':
+    dependencies:
+      '@grpc/proto-loader': 0.7.15
+      '@types/node': 25.9.1
+
+  '@grpc/proto-loader@0.7.15':
+    dependencies:
+      lodash.camelcase: 4.3.0
+      long: 5.3.2
+      protobufjs: 7.6.2
+      yargs: 17.7.2
 
   '@harperfast/extended-iterable@1.0.3':
     optional: true
@@ -10147,10 +10669,6 @@ snapshots:
     dependencies:
       '@netlify/headers-parser': 9.0.3
 
-  '@netlify/identity@1.1.0':
-    dependencies:
-      gotrue-js: 1.0.1
-
   '@netlify/images@1.3.9(@netlify/blobs@10.7.8)':
     dependencies:
       ipx: 3.1.1(@netlify/blobs@10.7.8)
@@ -10395,7 +10913,7 @@ snapshots:
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@ngrx/signals@21.1.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)':
+  '@ngrx/signals@21.1.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)':
     dependencies:
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
       tslib: 2.8.1
@@ -10681,6 +11199,28 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@protobufjs/aspromise@1.1.2': {}
+
+  '@protobufjs/base64@1.1.2': {}
+
+  '@protobufjs/codegen@2.0.5': {}
+
+  '@protobufjs/eventemitter@1.1.1': {}
+
+  '@protobufjs/fetch@1.1.1':
+    dependencies:
+      '@protobufjs/aspromise': 1.1.2
+
+  '@protobufjs/float@1.0.2': {}
+
+  '@protobufjs/inquire@1.1.2': {}
+
+  '@protobufjs/path@1.1.2': {}
+
+  '@protobufjs/pool@1.1.0': {}
+
+  '@protobufjs/utf8@1.1.1': {}
+
   '@rollup/pluginutils@5.3.0(rollup@4.60.3)':
     dependencies:
       '@types/estree': 1.0.9
@@ -10922,28 +11462,28 @@ snapshots:
     dependencies:
       acorn: 8.16.0
 
-  '@taiga-ui/addon-doc@5.9.0(475b928bf5144f5b267cebd92e0eb576)':
+  '@taiga-ui/addon-doc@5.9.0(28240654545e84996490cbf07117e256)':
     dependencies:
-      '@angular/cdk': 21.2.10(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
+      '@angular/cdk': 22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
       '@angular/forms': 22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@angular/router': 22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@ng-web-apis/common': 5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2)
       '@ng-web-apis/platform': 5.2.0
-      '@taiga-ui/cdk': 5.9.0(941840e08a831c990dd00a60552c39e5)
-      '@taiga-ui/core': 5.9.0(da693f7c59ee2a42098bfaf4c4a98129)
-      '@taiga-ui/kit': 5.9.0(991789992a1b151c004b445815c7ebb8)
-      '@taiga-ui/legacy': 5.5.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(941840e08a831c990dd00a60552c39e5))(@taiga-ui/core@5.9.0(da693f7c59ee2a42098bfaf4c4a98129))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))
+      '@taiga-ui/cdk': 5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)
+      '@taiga-ui/core': 5.9.0(db43a599458bde700b01e43fc4eededb)
+      '@taiga-ui/kit': 5.9.0(aad7eedde154a2676be7792a1e719655)
+      '@taiga-ui/legacy': 5.5.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf))(@taiga-ui/core@5.9.0(db43a599458bde700b01e43fc4eededb))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))
       '@taiga-ui/polymorpheus': 5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))
       '@types/markdown-it': 14.1.2
       markdown-it: 14.1.1
-      ngx-highlightjs: 14.0.1(@angular/cdk@21.2.10(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
+      ngx-highlightjs: 14.0.1(@angular/cdk@22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       tslib: 2.8.1
 
-  '@taiga-ui/cdk@5.9.0(941840e08a831c990dd00a60552c39e5)':
+  '@taiga-ui/cdk@5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)':
     dependencies:
-      '@angular/cdk': 21.2.10(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
+      '@angular/cdk': 22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
       '@angular/forms': 22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
@@ -10967,7 +11507,7 @@ snapshots:
       - '@types/semver'
       - chokidar
 
-  '@taiga-ui/core@5.9.0(da693f7c59ee2a42098bfaf4c4a98129)':
+  '@taiga-ui/core@5.9.0(db43a599458bde700b01e43fc4eededb)':
     dependencies:
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
@@ -10978,7 +11518,7 @@ snapshots:
       '@ng-web-apis/intersection-observer': 5.2.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@ng-web-apis/common@5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2))
       '@ng-web-apis/mutation-observer': 5.2.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@ng-web-apis/common@5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2))
       '@ng-web-apis/platform': 5.2.0
-      '@taiga-ui/cdk': 5.9.0(941840e08a831c990dd00a60552c39e5)
+      '@taiga-ui/cdk': 5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)
       '@taiga-ui/event-plugins': 5.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@taiga-ui/i18n': 5.5.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@ng-web-apis/common@5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2))(rxjs@7.8.2)
       '@taiga-ui/polymorpheus': 5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))
@@ -11010,7 +11550,7 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
-  '@taiga-ui/kit@5.9.0(991789992a1b151c004b445815c7ebb8)':
+  '@taiga-ui/kit@5.9.0(aad7eedde154a2676be7792a1e719655)':
     dependencies:
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
@@ -11025,30 +11565,30 @@ snapshots:
       '@ng-web-apis/mutation-observer': 5.2.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@ng-web-apis/common@5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2))
       '@ng-web-apis/platform': 5.2.0
       '@ng-web-apis/resize-observer': 5.2.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@ng-web-apis/common@5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2))
-      '@taiga-ui/cdk': 5.9.0(941840e08a831c990dd00a60552c39e5)
-      '@taiga-ui/core': 5.9.0(da693f7c59ee2a42098bfaf4c4a98129)
+      '@taiga-ui/cdk': 5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)
+      '@taiga-ui/core': 5.9.0(db43a599458bde700b01e43fc4eededb)
       '@taiga-ui/i18n': 5.5.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@ng-web-apis/common@5.2.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@types/dom-speech-recognition@0.0.8)(rxjs@7.8.2))(rxjs@7.8.2)
       '@taiga-ui/polymorpheus': 5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))
       '@taiga-ui/styles': 5.9.0(@taiga-ui/design-tokens@0.299.0)
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@taiga-ui/layout@5.9.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(941840e08a831c990dd00a60552c39e5))(@taiga-ui/core@5.9.0(da693f7c59ee2a42098bfaf4c4a98129))(@taiga-ui/kit@5.9.0(991789992a1b151c004b445815c7ebb8))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))(rxjs@7.8.2)':
+  '@taiga-ui/layout@5.9.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf))(@taiga-ui/core@5.9.0(db43a599458bde700b01e43fc4eededb))(@taiga-ui/kit@5.9.0(aad7eedde154a2676be7792a1e719655))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))(rxjs@7.8.2)':
     dependencies:
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
-      '@taiga-ui/cdk': 5.9.0(941840e08a831c990dd00a60552c39e5)
-      '@taiga-ui/core': 5.9.0(da693f7c59ee2a42098bfaf4c4a98129)
-      '@taiga-ui/kit': 5.9.0(991789992a1b151c004b445815c7ebb8)
+      '@taiga-ui/cdk': 5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)
+      '@taiga-ui/core': 5.9.0(db43a599458bde700b01e43fc4eededb)
+      '@taiga-ui/kit': 5.9.0(aad7eedde154a2676be7792a1e719655)
       '@taiga-ui/polymorpheus': 5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))
       rxjs: 7.8.2
       tslib: 2.8.1
 
-  '@taiga-ui/legacy@5.5.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(941840e08a831c990dd00a60552c39e5))(@taiga-ui/core@5.9.0(da693f7c59ee2a42098bfaf4c4a98129))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))':
+  '@taiga-ui/legacy@5.5.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@taiga-ui/cdk@5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf))(@taiga-ui/core@5.9.0(db43a599458bde700b01e43fc4eededb))(@taiga-ui/polymorpheus@5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))))':
     dependencies:
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
-      '@taiga-ui/cdk': 5.9.0(941840e08a831c990dd00a60552c39e5)
-      '@taiga-ui/core': 5.9.0(da693f7c59ee2a42098bfaf4c4a98129)
+      '@taiga-ui/cdk': 5.9.0(28135dc4c31e95e7ab4d1cb5c61a3edf)
+      '@taiga-ui/core': 5.9.0(db43a599458bde700b01e43fc4eededb)
       '@taiga-ui/polymorpheus': 5.0.1(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))
       tslib: 2.8.1
 
@@ -11098,10 +11638,6 @@ snapshots:
 
   '@types/dom-speech-recognition@0.0.8': {}
 
-  '@types/dompurify@3.2.0':
-    dependencies:
-      dompurify: 3.4.5
-
   '@types/esquery@1.5.4':
     dependencies:
       '@types/estree': 1.0.9
@@ -11148,9 +11684,6 @@ snapshots:
     optional: true
 
   '@types/triple-beam@1.3.5': {}
-
-  '@types/trusted-types@2.0.7':
-    optional: true
 
   '@types/yauzl@2.10.3':
     dependencies:
@@ -11704,10 +12237,6 @@ snapshots:
       - react-native-b4a
 
   arg@4.1.3: {}
-
-  argparse@1.0.10:
-    dependencies:
-      sprintf-js: 1.0.3
 
   argparse@2.0.1: {}
 
@@ -12634,10 +13163,6 @@ snapshots:
     dependencies:
       domelementtype: 2.3.0
 
-  dompurify@3.4.5:
-    optionalDependencies:
-      '@types/trusted-types': 2.0.7
-
   domutils@3.2.2:
     dependencies:
       dom-serializer: 2.0.0
@@ -13132,10 +13657,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  extend-shallow@2.0.1:
-    dependencies:
-      is-extendable: 0.1.1
-
   extract-zip@2.0.1:
     dependencies:
       debug: 4.4.3(supports-color@10.2.2)
@@ -13223,6 +13744,10 @@ snapshots:
     dependencies:
       reusify: 1.1.0
 
+  faye-websocket@0.11.4:
+    dependencies:
+      websocket-driver: 0.7.5
+
   fd-slicer@1.1.0:
     dependencies:
       pend: 1.2.0
@@ -13305,6 +13830,39 @@ snapshots:
     dependencies:
       locate-path: 8.0.0
       unicorn-magic: 0.3.0
+
+  firebase@12.14.0:
+    dependencies:
+      '@firebase/ai': 2.13.0(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)
+      '@firebase/analytics': 0.10.22(@firebase/app@0.14.13)
+      '@firebase/analytics-compat': 0.2.28(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)
+      '@firebase/app': 0.14.13
+      '@firebase/app-check': 0.11.4(@firebase/app@0.14.13)
+      '@firebase/app-check-compat': 0.4.4(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)
+      '@firebase/app-compat': 0.5.13
+      '@firebase/app-types': 0.9.5
+      '@firebase/auth': 1.13.2(@firebase/app@0.14.13)
+      '@firebase/auth-compat': 0.6.7(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)
+      '@firebase/data-connect': 0.7.1(@firebase/app@0.14.13)
+      '@firebase/database': 1.1.3
+      '@firebase/database-compat': 2.1.4
+      '@firebase/firestore': 4.15.0(@firebase/app@0.14.13)
+      '@firebase/firestore-compat': 0.4.10(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)
+      '@firebase/functions': 0.13.5(@firebase/app@0.14.13)
+      '@firebase/functions-compat': 0.4.5(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)
+      '@firebase/installations': 0.6.22(@firebase/app@0.14.13)
+      '@firebase/installations-compat': 0.2.22(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)
+      '@firebase/messaging': 0.13.0(@firebase/app@0.14.13)
+      '@firebase/messaging-compat': 0.2.27(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)
+      '@firebase/performance': 0.7.12(@firebase/app@0.14.13)
+      '@firebase/performance-compat': 0.2.25(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)
+      '@firebase/remote-config': 0.8.4(@firebase/app@0.14.13)
+      '@firebase/remote-config-compat': 0.2.25(@firebase/app-compat@0.5.13)(@firebase/app@0.14.13)
+      '@firebase/storage': 0.14.3(@firebase/app@0.14.13)
+      '@firebase/storage-compat': 0.4.3(@firebase/app-compat@0.5.13)(@firebase/app-types@0.9.5)(@firebase/app@0.14.13)
+      '@firebase/util': 1.15.1
+    transitivePeerDependencies:
+      - '@react-native-async-storage/async-storage'
 
   flat-cache@4.0.1:
     dependencies:
@@ -13588,18 +14146,9 @@ snapshots:
 
   gopd@1.2.0: {}
 
-  gotrue-js@1.0.1: {}
-
   graceful-fs@4.2.10: {}
 
   graceful-fs@4.2.11: {}
-
-  gray-matter@4.0.3:
-    dependencies:
-      js-yaml: 3.14.2
-      kind-of: 6.0.3
-      section-matter: 1.0.0
-      strip-bom-string: 1.0.0
 
   h3@1.15.11:
     dependencies:
@@ -13705,6 +14254,8 @@ snapshots:
       statuses: 2.0.2
       toidentifier: 1.0.1
 
+  http-parser-js@0.5.10: {}
+
   http-proxy-agent@7.0.2:
     dependencies:
       agent-base: 7.1.4
@@ -13767,6 +14318,8 @@ snapshots:
   iconv-lite@0.7.2:
     dependencies:
       safer-buffer: 2.1.2
+
+  idb@7.1.1: {}
 
   ieee754@1.2.1: {}
 
@@ -13959,8 +14512,6 @@ snapshots:
 
   is-error-instance@2.0.0: {}
 
-  is-extendable@0.1.1: {}
-
   is-extglob@2.1.1: {}
 
   is-finalizationregistry@1.1.1:
@@ -14149,11 +14700,6 @@ snapshots:
   js-tokens@10.0.0: {}
 
   js-tokens@4.0.0: {}
-
-  js-yaml@3.14.2:
-    dependencies:
-      argparse: 1.0.10
-      esprima: 4.0.1
 
   js-yaml@4.1.1:
     dependencies:
@@ -14465,6 +15011,8 @@ snapshots:
       safe-stable-stringify: 2.5.0
       triple-beam: 1.4.1
 
+  long@5.3.2: {}
+
   lru-cache@10.4.3: {}
 
   lru-cache@11.3.6: {}
@@ -14534,8 +15082,6 @@ snapshots:
       mdurl: 2.0.0
       punycode.js: 2.3.1
       uc.micro: 2.1.0
-
-  marked@18.0.4: {}
 
   math-intrinsics@1.1.0: {}
 
@@ -14917,24 +15463,14 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  ngx-highlightjs@14.0.1(@angular/cdk@21.2.10(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2):
+  ngx-highlightjs@14.0.1(@angular/cdk@22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2))(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2):
     dependencies:
-      '@angular/cdk': 21.2.10(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
+      '@angular/cdk': 22.0.2(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(rxjs@7.8.2)
       '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
       '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
       highlight.js: 11.11.1
       rxjs: 7.8.2
       tslib: 2.8.1
-
-  ngx-markdown@21.3.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(@angular/platform-browser@22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)))(marked@18.0.4)(rxjs@7.8.2)(zone.js@0.16.2):
-    dependencies:
-      '@angular/common': 22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2)
-      '@angular/core': 22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2)
-      '@angular/platform-browser': 22.0.0(@angular/common@22.0.0(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))(rxjs@7.8.2))(@angular/core@22.0.0(@angular/compiler@22.0.0)(rxjs@7.8.2)(zone.js@0.16.2))
-      marked: 18.0.4
-      rxjs: 7.8.2
-      tslib: 2.8.1
-      zone.js: 0.16.2
 
   node-addon-api@6.1.0:
     optional: true
@@ -15644,6 +16180,21 @@ snapshots:
 
   proto-list@1.2.4: {}
 
+  protobufjs@7.6.2:
+    dependencies:
+      '@protobufjs/aspromise': 1.1.2
+      '@protobufjs/base64': 1.1.2
+      '@protobufjs/codegen': 2.0.5
+      '@protobufjs/eventemitter': 1.1.1
+      '@protobufjs/fetch': 1.1.1
+      '@protobufjs/float': 1.0.2
+      '@protobufjs/inquire': 1.1.2
+      '@protobufjs/path': 1.1.2
+      '@protobufjs/pool': 1.1.0
+      '@protobufjs/utf8': 1.1.1
+      '@types/node': 25.9.1
+      long: 5.3.2
+
   proxy-addr@2.0.7:
     dependencies:
       forwarded: 0.2.0
@@ -16002,11 +16553,6 @@ snapshots:
     dependencies:
       xmlchars: 2.2.0
 
-  section-matter@1.0.0:
-    dependencies:
-      extend-shallow: 2.0.1
-      kind-of: 6.0.3
-
   secure-json-parse@4.1.0: {}
 
   semver@5.7.2:
@@ -16236,8 +16782,6 @@ snapshots:
 
   split2@4.2.0: {}
 
-  sprintf-js@1.0.3: {}
-
   ssri@13.0.1:
     dependencies:
       minipass: 7.1.3
@@ -16341,8 +16885,6 @@ snapshots:
   strip-ansi@7.2.0:
     dependencies:
       ansi-regex: 6.2.2
-
-  strip-bom-string@1.0.0: {}
 
   strip-final-newline@2.0.0: {}
 
@@ -16927,9 +17469,19 @@ snapshots:
 
   web-streams-polyfill@3.3.3: {}
 
+  web-vitals@4.2.4: {}
+
   webidl-conversions@3.0.1: {}
 
   webidl-conversions@8.0.1: {}
+
+  websocket-driver@0.7.5:
+    dependencies:
+      http-parser-js: 0.5.10
+      safe-buffer: 5.2.1
+      websocket-extensions: 0.1.4
+
+  websocket-extensions@0.1.4: {}
 
   whatwg-encoding@3.1.1:
     dependencies:

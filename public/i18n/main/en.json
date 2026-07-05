@@ -1,1 +1,41 @@
-{}
+{
+  "oracle": {
+    "title": "[ THE ORACLE SPEAKS ]",
+    "quote": "\"I am the Oracle of the Machine Spirit. I know the secrets of pipelines, the fate of containers, and the karmic debts of technical debt.\"",
+    "truths": {
+      "cards": "Cards do not lie. Only pipelines do.",
+      "deploy": "Every deploy is a prayer into the void.",
+      "fate": "The fate of code is decided here."
+    }
+  },
+  "empty": {
+    "description": "Configure your reading and draw the cards to see what fate awaits your deploy."
+  },
+  "card_state": {
+    "reversed": "Reversed",
+    "upright": "Upright"
+  },
+  "position": {
+    "foundation": "The Foundation",
+    "crossing": "The Crossing",
+    "outcome": "The Outcome"
+  },
+  "verdict": {
+    "ship-it": "Ship It",
+    "proceed": "Proceed",
+    "tread-carefully": "Tread Carefully",
+    "abort-mission": "Abort Mission",
+    "just-vibes": "Just Vibes"
+  },
+  "configure_reading": "[ CONFIGURE READING ]",
+  "role": {
+    "label": "Your Role:",
+    "placeholder": "Select role"
+  },
+  "intent": {
+    "label": "Deploy Intent:",
+    "placeholder": "Select intent"
+  },
+  "loading": "Consulting the cards...",
+  "draw_cards": "Draw cards"
+}

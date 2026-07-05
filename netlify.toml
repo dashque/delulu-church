@@ -2,6 +2,12 @@
   command = "pnpm build"
   publish = "dist/ngKittyDebugRight/browser"
 
+
+[[redirects]]
+  from = "/api/reading"
+  to = "https://deploytarot.com/api/reading"
+  status = 200
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

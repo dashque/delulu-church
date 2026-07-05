@@ -1,4 +1,4 @@
-<ngKitty-header>
+<ngKitty-header [isSpiritPleased]="isSpiritPleased()" (themeChanged)="toggleTheme()">
   @if (user()) {
     <button appearance="primary" size="s" tuiButton type="button" class="exit" (click)="onLogout()">
       <tui-icon [tuiTooltip]="'sidebar.exit' | transloco" icon="@tui.log-out" />
@@ -45,10 +45,11 @@
       >
         <div tuiAvatar="@tui.user" size="m"></div>
         <div class="user-info">
-          <div class="name">{{ user.userMetadata?.['full_name'] || user.email }}</div>
+          <div class="name">{{ user.displayName || user.email }}</div>
         </div>
       </a>
     }
+    <ngKitty-ghost-coder />
   </ngKitty-sidebar>
   @if (isMobileNavOpen()) {
     <div class="layout-sidebar-backdrop" role="presentation" (click)="onCloseMobileNav()"></div>

@@ -2,8 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ShriftItemComponent } from './components/shrift-item/shrift-item.component';
 import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { ConfessComponent } from './components/confess/confess.component';
-import { SINS } from '../mocs/sins-data';
-import type { Sin } from '../models/sin.model';
+import { ShriftPageFacade } from '../facades/shrift-page.facade';
 
 @Component({
   selector: 'ngKitty-shrift',
@@ -12,6 +11,10 @@ import type { Sin } from '../models/sin.model';
   styleUrl: './shrift.component.scss',
 })
 export class ShriftComponent {
-  protected readonly sinsData: Sin[] = SINS;
+  protected readonly facade = inject(ShriftPageFacade);
   protected readonly translocoService = inject(TranslocoService);
+
+  protected onDelete(sinUid: string) {
+    this.facade.onDelete(sinUid);
+  }
 }

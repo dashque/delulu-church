@@ -1,0 +1,74 @@
+<div class="candles-layout">
+  <section
+    cdkDropList
+    id="candles-source"
+    [cdkDropListData]="candleList()"
+    [cdkDropListConnectedTo]="['altar-drop-list']"
+    cdkDropListSortingDisabled
+    class="candles"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    @for (candle of candleList(); track candle.id) {
+      <article class="candle" [style.--candle-color]="candle.color" cdkDrag>
+        <div class="candle-figure">
+          <span class="candle-wick" aria-hidden="true"></span>
+
+          <div class="candle-body">
+            <tui-icon class="candle-icon" [icon]="candle.icon" />
+            <span class="candle-marker" aria-hidden="true"></span>
+          </div>
+
+          <div class="candle-base" aria-hidden="true">
+            <span class="candle-base-line"></span>
+            <span class="candle-base-line"></span>
+          </div>
+        </div>
+
+        <p class="candle-purpose">{{ candle.purpose | transloco }}</p>
+        <p class="candle-count">
+          {{ 'altar.candles.count' | transloco: { count: candleCountsMap()[candle.id] } }}
+        </p>
+      </article>
+    }
+  </section>
+
+  <section class="candle-altar" [attr.aria-label]="'altar.candles.altar_label' | transloco">
+    <p class="candle-altar-label">{{ 'altar.candles.altar_label' | transloco }}</p>
+
+    <div
+      cdkDropList
+      id="altar-drop-list"
+      [cdkDropListConnectedTo]="['candles-source']"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="onDrop($event)"
+      class="candle-altar-surface"
+    >
+      @for (litCandle of litCandleList(); track litCandle.instanceId) {
+        <article class="candle candle-lit" [style.--candle-color]="litCandle.color">
+          <div class="candle-figure">
+            <span class="candle-wick-wrap" aria-hidden="true">
+              <span class="candle-flame">
+                <span class="candle-flame-core"></span>
+              </span>
+              <span class="candle-wick candle-wick-lit"></span>
+            </span>
+
+            <div class="candle-body">
+              <tui-icon class="candle-icon" [icon]="litCandle.icon" />
+              <span class="candle-marker" aria-hidden="true"></span>
+            </div>
+
+            <div class="candle-base" aria-hidden="true">
+              <span class="candle-base-line"></span>
+              <span class="candle-base-line"></span>
+            </div>
+          </div>
+
+          <p class="candle-purpose">{{ litCandle.purpose | transloco }}</p>
+        </article>
+      } @empty {
+        <p class="candle-altar-placeholder">{{ 'altar.candles.altar_placeholder' | transloco }}</p>
+      }
+    </div>
+  </section>
+</div>

@@ -1,8 +1,8 @@
 <ngKitty-confess />
 
 <div class="sins">
-  @for (sin of sinsData; track sin.id) {
-    <ngKitty-shrift-item [severity]="sin.severity" [status]="sin.status">
+  @for (sin of facade.sins(); track sin.uid) {
+    <ngKitty-shrift-item [severity]="sin.severity" [status]="sin.status" (clicked)="onDelete(sin.uid)">
       <p title class="title">{{ sin.text }}</p>
     </ngKitty-shrift-item>
   } @empty {
@@ -11,3 +11,9 @@
     </div>
   }
 </div>
+
+@if (facade.isLoading()) {
+  <div class="loading">
+    <img src="assets/loading.gif" alt="loading" />
+  </div>
+}

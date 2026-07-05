@@ -1,0 +1,213 @@
+:host {
+  padding: 1rem;
+}
+
+.tarot-reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.tarot-verdict {
+  --verdict-accent: var(--warning);
+  --verdict-text: var(--accent-secondary);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1.25rem;
+  border: 1px solid var(--verdict-accent);
+  background: color-mix(in srgb, var(--verdict-accent) 8%, var(--tui-background-base));
+  box-shadow: 0 0 1rem color-mix(in srgb, var(--verdict-accent) 20%, transparent);
+  text-align: center;
+}
+
+.ship-it,
+.proceed {
+  --verdict-accent: var(--earth);
+  --verdict-text: var(--accent-secondary);
+}
+
+.tread-carefully {
+  --verdict-accent: var(--warning);
+  --verdict-text: var(--warning);
+}
+
+.abort-mission {
+  --verdict-accent: var(--critical);
+  --verdict-text: var(--critical);
+}
+
+.just-vibes {
+  --verdict-accent: var(--accent-primary);
+  --verdict-text: var(--accent-primary-soft);
+}
+
+.tarot-verdict-title,
+.tarot-verdict-text {
+  margin: 0;
+}
+
+.tarot-verdict-title {
+  color: var(--verdict-accent);
+  font-family: var(--font-orbitron), serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-shadow: 0 0 0.5rem color-mix(in srgb, var(--verdict-accent) 55%, transparent);
+}
+
+.tarot-verdict-text {
+  color: var(--verdict-text);
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
+}
+
+.tarot-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 16rem));
+  justify-content: space-around;
+  width: 100%;
+  padding-block: 1rem;
+  gap: 1rem;
+}
+
+.tarot-card {
+  aspect-ratio: 2 / 3;
+  min-height: 19rem;
+  perspective: 60rem;
+}
+
+.tarot-card-inner {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  list-style: none;
+  transition: transform 0.45s ease;
+  transform-style: preserve-3d;
+}
+
+.tarot-card-inner::-webkit-details-marker {
+  display: none;
+}
+
+.tarot-card[open] .tarot-card-inner {
+  transform: rotateY(180deg);
+}
+
+.tarot-card-face {
+  grid-area: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--accent-primary);
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent-primary) 8%, transparent), transparent),
+    var(--tui-background-elevation-2);
+  box-shadow: var(--card-glow);
+  text-align: center;
+  backface-visibility: hidden;
+}
+
+.tarot-card-back {
+  transform: rotateY(180deg);
+}
+
+.tarot-card-icon-shell {
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--accent-primary);
+  border-radius: 50%;
+  background-image: var(--bg-primary-btn);
+  box-shadow: var(--primary-shadow);
+}
+
+.reversed {
+  transform: rotate(180deg);
+}
+
+.tarot-card-icon {
+  color: var(--accent-secondary);
+
+  --tui-icon-size: 3rem;
+}
+
+.tarot-card-title {
+  color: var(--accent-primary);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.tarot-card-position,
+.tarot-card-state {
+  color: var(--accent-primary-soft);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tarot-card-description {
+  max-height: 14rem;
+  margin: 0;
+  overflow: auto;
+  color: var(--accent-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  min-height: 18rem;
+  border: 1px solid color-mix(in srgb, var(--accent-primary) 45%, transparent);
+  background:
+    radial-gradient(circle at center, color-mix(in srgb, var(--accent-primary) 12%, transparent), transparent 42%),
+    linear-gradient(180deg, color-mix(in srgb, var(--tui-background-base-alt) 72%, transparent), transparent);
+  box-shadow:
+    inset 0 0 2rem color-mix(in srgb, var(--accent-primary) 8%, transparent),
+    0 0 1.5rem color-mix(in srgb, var(--accent-primary) 10%, transparent);
+  text-align: center;
+}
+
+.empty p {
+  max-width: 44rem;
+  margin: 0;
+  color: color-mix(in srgb, var(--tui-text-primary) 72%, transparent);
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-shadow: 0 0 0.75rem color-mix(in srgb, var(--accent-primary) 32%, transparent);
+}
+
+@media (width <= 768px) {
+  .tarot-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .empty {
+    min-height: 14rem;
+  }
+}

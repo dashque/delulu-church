@@ -1,0 +1,92 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.oracle-config {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--accent-primary);
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--accent-primary) 6%, transparent), transparent 45%),
+    color-mix(in srgb, var(--tui-background-base-alt) 90%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent-primary) 18%, transparent);
+}
+
+.oracle-config-title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-primary) 65%, transparent);
+}
+
+.oracle-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+
+  &::ng-deep tui-textfield {
+    border-radius: 0;
+  }
+}
+
+.oracle-label {
+  color: var(--alternative-light-text);
+  font-family: 'Courier New', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--alternative-light-text) 45%, transparent);
+}
+
+.oracle-select {
+  --tui-radius-l: 0.45rem;
+  --tui-radius-m: 0.45rem;
+  --tui-radius-s: 0.45rem;
+
+  width: 100%;
+  min-height: 2.75rem;
+  border: 1px solid var(--accent-primary);
+  background: #030204;
+  color: var(--alternative-light-text);
+  box-shadow: inset 0 0 14px rgb(0 0 0 / 75%);
+}
+
+.oracle-select input {
+  color: var(--alternative-light-text);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
+}
+
+.oracle-select input::placeholder {
+  color: color-mix(in srgb, var(--alternative-light-text) 58%, transparent);
+  opacity: 1;
+}
+
+.draw-button-icon-loading {
+  display: inline-block;
+  animation: oracle-spin 1.2s linear infinite;
+}
+
+@keyframes oracle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (width <= 768px) {
+  .oracle-config {
+    padding: 0.85rem;
+  }
+
+  .oracle-config-title,
+  .oracle-label {
+    letter-spacing: 0.08em;
+  }
+}

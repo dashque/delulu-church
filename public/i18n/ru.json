@@ -3,9 +3,9 @@
     "login": "Войти",
     "register": "Зарегистрироваться",
     "shrift": "Исповедь",
-    "runes": "Руны",
-    "horoscope": "Гороскоп",
-    "chronicle": "Хроника"
+    "altar": "Алтарь",
+    "tarot": "Таро",
+    "crystal_ball": "Шар"
   },
   "sidebar": {
     "exit": "Выход",
@@ -19,7 +19,9 @@
   },
   "header": {
     "title": "КУЛЬТ СВЯТОГО ДЕПЛОЯ",
-    "subtitle": ">> Дух Машины нестабилен <<"
+    "subtitle": ">> Дух Машины {{ machineSpiritState }} <<",
+    "status_unstable": "нестабилен",
+    "status_pleased": "доволен"
   },
   "footer": {
     "repository": "РЕПОЗИТОРИЙ",
@@ -43,5 +45,8 @@
       "confirm_label": "Предать забвению",
       "cancel_label": "Остаться и запечатать"
     }
+  },
+  "coder": {
+    "text": "Эй... ты кликать будешь?"
   }
 }

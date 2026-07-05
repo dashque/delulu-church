@@ -1,0 +1,47 @@
+<section class="oracle-config" aria-labelledby="oracle-config-title">
+  <h2 id="oracle-config-title" class="oracle-config-title">
+    {{ 'main.configure_reading' | transloco }}
+  </h2>
+
+  <div class="oracle-field">
+    <label class="oracle-label" for="tarot-role">{{ 'main.role.label' | transloco }}</label>
+    <tui-textfield tuiChevron class="oracle-select">
+      <input
+        id="tarot-role"
+        [placeholder]="'main.role.placeholder' | transloco"
+        tuiSelect
+        [ngModel]="role()"
+        (ngModelChange)="role.set($event)"
+      />
+      <tui-data-list-wrapper *tuiDropdown [items]="TarotRole" />
+    </tui-textfield>
+  </div>
+
+  <div class="oracle-field">
+    <label class="oracle-label" for="tarot-intent">{{ 'main.intent.label' | transloco }}</label>
+    <tui-textfield tuiChevron class="oracle-select">
+      <input
+        id="tarot-intent"
+        [placeholder]="'main.intent.placeholder' | transloco"
+        tuiSelect
+        [ngModel]="intent()"
+        (ngModelChange)="intent.set($event)"
+      />
+      <tui-data-list-wrapper *tuiDropdown [items]="TarotIntent" />
+    </tui-textfield>
+  </div>
+
+  <button
+    tuiButton
+    type="button"
+    size="l"
+    [disabled]="!role() || !intent() || isLoading()"
+    (click)="drawCardsClicked.emit()"
+  >
+    @if (isLoading()) {
+      <tui-icon class="draw-button-icon-loading" icon="loader" /> {{ 'main.loading' | transloco }}
+    } @else {
+      <tui-icon icon="sparkles" /> {{ 'main.draw_cards' | transloco }}
+    }
+  </button>
+</section>

@@ -1,5 +1,5 @@
 export interface Sin {
-  id: number;
+  uid: string;
   text: string;
   severity: Severity;
   status: Status;

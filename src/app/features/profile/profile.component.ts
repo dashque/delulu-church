@@ -1,19 +1,19 @@
 import { Component, inject } from '@angular/core';
 import { TuiCardLarge } from '@taiga-ui/layout';
 import { TranslocoPipe } from '@jsverse/transloco';
-import { TuiAppearance, TuiIcon } from '@taiga-ui/core';
+import { TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar } from '@taiga-ui/kit';
 import { NgTemplateOutlet } from '@angular/common';
-import { AuthService } from '@core/services/auth/auth.service';
+import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 
 @Component({
   selector: 'ngKitty-profile',
-  imports: [TuiAppearance, TuiCardLarge, TuiAvatar, TuiIcon, TranslocoPipe, NgTemplateOutlet],
+  imports: [TuiCardLarge, TuiAvatar, TuiIcon, TranslocoPipe, NgTemplateOutlet],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent {
-  protected readonly authService = inject(AuthService);
+  protected readonly userProfileService = inject(UserProfileService);
 
   protected stats = [
     {

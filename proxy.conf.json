@@ -1,6 +1,6 @@
 {
-  "/.netlify": {
-    "target": "https://delulu-church.netlify.app",
+  "/api/reading": {
+    "target": "https://deploytarot.com",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"

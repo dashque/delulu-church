@@ -1,0 +1,42 @@
+@if (tarotReading(); as result) {
+  <section class="tarot-reading">
+    <div [class]="verdictClassName()">
+      <h2 class="tarot-verdict-title">
+        {{ 'main.verdict.' + result.verdict | transloco | uppercase }}
+      </h2>
+      <p class="tarot-verdict-text">{{ result.verdict_text }}</p>
+    </div>
+    <div class="tarot-cards-container">
+      @for (card of result.cards; track card.position) {
+        <details #tarotCard class="tarot-card">
+          <summary class="tarot-card-inner">
+            <span class="tarot-card-face tarot-card-front">
+              <span class="tarot-card-position">{{ 'main.position.' + card.position | transloco }}</span>
+              <span class="tarot-card-icon-shell" [class.reversed]="card.reversed">
+                <tui-icon icon="@tui.sparkles" class="tarot-card-icon" />
+              </span>
+              <span class="tarot-card-title">{{ card.name }}</span>
+              <span class="tarot-card-state">
+                {{ (card.reversed ? 'main.card_state.reversed' : 'main.card_state.upright') | transloco }}
+              </span>
+            </span>
+            <span class="tarot-card-face tarot-card-back">
+              <span class="tarot-card-title">{{ 'main.position.' + card.position | transloco }}</span>
+              <span class="tarot-card-description">{{ card.narrative }}</span>
+            </span>
+          </summary>
+        </details>
+      }
+    </div>
+  </section>
+} @else {
+  <div class="empty">
+    <p>{{ 'main.empty.description' | transloco }}</p>
+    <tui-icon
+      [style.font-size.rem]="10"
+      [style.inline-size.rem]="10"
+      [style.--tui-stroke-width.rem]="0.25"
+      icon="@tui.wand"
+    />
+  </div>
+}

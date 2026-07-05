@@ -67,8 +67,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "600kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1.2MB",
+                  "maximumError": "1.5MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -106,6 +106,7 @@
           "options": {
             "tsConfig": "tsconfig.spec.json",
             "runnerConfig": "vitest.config.ts",
+            "isolate": true,
             "coverageExclude": ["**/**/*.html"]
           }
         },

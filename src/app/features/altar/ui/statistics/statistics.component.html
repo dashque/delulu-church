@@ -1,0 +1,16 @@
+<section class="altar-stats" [attr.aria-label]="'altar.statistics.label' | transloco">
+  <article class="altar-stat">
+    <p class="altar-panel-label">{{ 'altar.statistics.total_offerings' | transloco }}</p>
+    <p class="altar-stat-value">{{ totalOfferings() }}</p>
+  </article>
+
+  <article class="altar-stat">
+    <p class="altar-panel-label">{{ 'altar.statistics.spirit_status' | transloco }}</p>
+    <p class="altar-stat-value altar-stat-value-status">{{ isSpiritPleased() | machineSpiritState | uppercase }}</p>
+  </article>
+
+  <article class="altar-stat">
+    <p class="altar-panel-label">{{ 'altar.statistics.blessing_level' | transloco }}</p>
+    <p class="altar-stat-value">{{ blessingLevel() }}%</p>
+  </article>
+</section>

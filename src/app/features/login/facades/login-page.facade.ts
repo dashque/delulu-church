@@ -5,6 +5,7 @@ import { TuiNotificationService } from '@taiga-ui/core';
 import { LoginFormService } from '../services/login-form.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
+import { firstValueFrom } from 'rxjs';
 
 @Service({
   autoProvided: false,
@@ -28,13 +29,7 @@ export class LoginPageFacade {
 
     try {
       await this.authService.login(email, password);
-      void this.showNotification(
-        this.translocoService.translate('success', {}, 'login'),
-        this.translocoService.translate('success-title', {}, 'login'),
-        'positive'
-      );
-      this.loginForm.markAsPristine();
-      await this.router.navigate(['/']);
+      await this.completeSuccessfulLogin();
     } catch (error) {
       if (error instanceof Error) {
         this.showNotification(error.message, this.translocoService.translate('error.text', {}, 'login'), 'negative');
@@ -44,18 +39,20 @@ export class LoginPageFacade {
     }
   }
 
-  public loginWithGithub() {
+  public async loginWithGithub() {
     if (this.isLoading()) {
       return;
     }
-    this.authService.loginWithGithub();
+
+    await this.loginWithProvider(() => this.authService.loginWithGithub());
   }
 
-  public loginWithGoogle() {
+  public async loginWithGoogle() {
     if (this.isLoading()) {
       return;
     }
-    this.authService.loginWithGoogle();
+
+    await this.loginWithProvider(() => this.authService.loginWithGoogle());
   }
 
   private showNotification(message: string, label: string, appearance: 'positive' | 'negative') {
@@ -67,5 +64,31 @@ export class LoginPageFacade {
       })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe();
+  }
+
+  private async loginWithProvider(login: () => Promise<unknown>) {
+    this.isLoading.set(true);
+
+    try {
+      await login();
+      await this.completeSuccessfulLogin();
+    } catch (error) {
+      if (error instanceof Error) {
+        this.showNotification(error.message, this.translocoService.translate('error.text', {}, 'login'), 'negative');
+      }
+    } finally {
+      this.isLoading.set(false);
+    }
+  }
+
+  private async completeSuccessfulLogin() {
+    const [message, label] = await Promise.all([
+      firstValueFrom<string>(this.translocoService.selectTranslate('success', {}, 'login')),
+      firstValueFrom<string>(this.translocoService.selectTranslate('success-title', {}, 'login')),
+    ]);
+
+    this.showNotification(message, label, 'positive');
+    this.loginForm.markAsPristine();
+    await this.router.navigate(['/']);
   }
 }

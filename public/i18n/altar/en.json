@@ -1,0 +1,42 @@
+{
+  "title": "[ ALTAR OF MACHINE SPIRIT ]",
+  "subtitle": "\"Light a candle and offer a gift to the Machine Spirit for your achievements\"",
+  "statistics": {
+    "label": "Altar statistics",
+    "total_offerings": "[ TOTAL OFFERINGS ]",
+    "spirit_status": "[ SPIRIT STATUS ]",
+    "blessing_level": "[ BLESSING LEVEL ]"
+  },
+  "instructions": {
+    "title": "[ RITUAL INSTRUCTIONS ]",
+    "select": "Select a candle matching your achievement",
+    "drag_highlight": "Drag the candle to the altar",
+    "drag_middle": " or ",
+    "click_highlight": "click",
+    "drag_suffix": " on it",
+    "blessing": "Machine Spirit will accept your offering and grant a blessing",
+    "extinguish": "The candle will go out in 5 seconds and remember your sacrifice"
+  },
+  "candles": {
+    "count": "{{count}} times",
+    "altar_label": "[ ALTAR ]",
+    "altar_placeholder": "Drag a candle here",
+    "purposes": {
+      "deploy": "For a successful deploy",
+      "bug": "For a fixed bug",
+      "review": "For a passed code review",
+      "refactor": "For a completed refactor",
+      "database": "For a migration without rollback",
+      "legacy": "For working with legacy code"
+    }
+  },
+  "prayer": {
+    "title": "[ PRAYER TO MACHINE SPIRIT ]",
+    "opening": "\"From the holy Machine Spirit we ask:",
+    "compile": "May our code compile without errors,",
+    "deploy": "May our deploys succeed,",
+    "bugs": "May bugs be found before production,",
+    "legacy": "And may legacy code never haunt us forever.\"",
+    "footer": "— Omnissiah, Machine Spirit, Blessed Deploy"
+  }
+}

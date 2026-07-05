@@ -6,6 +6,7 @@
   class="nav-item"
   [routerLink]="item().url"
   routerLinkActive="active"
+  [routerLinkActiveOptions]="{ exact: item().exact ?? false }"
   (click)="onClick()"
 >
   <div class="button-content">

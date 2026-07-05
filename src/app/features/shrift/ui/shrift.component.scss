@@ -1,4 +1,5 @@
 :host {
+  position: relative;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -10,19 +11,36 @@
   }
 }
 
+.loading {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(15 15 15 / 35%);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+}
+
 .title {
-  font-size: 1.2rem;
-  text-align: center;
+  font-size: 0.9rem;
+  padding: 0;
 
   @media (width <= 768px) {
     font-size: 0.9rem;
   }
 }
 
+.title::before {
+  content: '✦';
+  color: var(--accent-primary);
+  margin-right: 0.5rem;
+}
+
 .sins {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .divider {

@@ -3,9 +3,9 @@
     "login": "Login",
     "register": "Register",
     "shrift": "Shrift",
-    "runes": "Runes",
-    "horoscope": "Horoscope",
-    "chronicle": "Chronicle"
+    "altar": "Altar",
+    "tarot": "Tarot",
+    "crystal_ball": "Crystal ball"
   },
   "sidebar": {
     "exit": "Exit",
@@ -18,7 +18,9 @@
   },
   "header": {
     "title": "CULT OF THE HOLY DEPLOY",
-    "subtitle": ">> Machine Spirit is unstable <<"
+    "subtitle": ">> Machine Spirit is {{ machineSpiritState }} <<",
+    "status_unstable": "unstable",
+    "status_pleased": "pleased"
   },
   "footer": {
     "repository": "REPOSITORY",
@@ -42,5 +44,8 @@
       "confirm_label": "Cast it to oblivion",
       "cancel_label": "Keep the vow"
     }
+  },
+  "coder": {
+    "text": "Go on... click me already"
   }
 }

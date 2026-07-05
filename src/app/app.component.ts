@@ -1,6 +1,7 @@
 import { TuiRoot } from '@taiga-ui/core';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { uiStateStore } from '@core/store/ui-state.store';
 
 @Component({
   selector: 'ngKitty-app-root',
@@ -8,4 +9,6 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent {
+  public readonly theme = inject(uiStateStore).theme;
+}

@@ -1,8 +1,8 @@
 <div class="profile">
   <section appearance="flat" tuiCardLarge class="user-info">
     <div tuiAvatar="@tui.user" size="xl"></div>
-    @if (authService.user(); as user) {
-      <h2 class="profile-title">{{ user.userMetadata?.['full_name'] || user.email }}</h2>
+    @if (userProfileService.user(); as user) {
+      <h2 class="profile-title">{{ user.displayName || user.email }}</h2>
     }
   </section>
   <section class="user-section">

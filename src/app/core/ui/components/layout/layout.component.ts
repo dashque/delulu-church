@@ -9,6 +9,7 @@ import { TuiMainComponent } from '@taiga-ui/layout';
 import { TuiAvatar, TuiTooltip } from '@taiga-ui/kit';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { NAVIGATION_ITEM_LIST } from '@core/ui/components/layout/constants/navigation-item-list.config';
+import { GhostCoderComponent } from '../ghost-coder/ghost-coder.component';
 
 @Component({
   selector: 'ngKitty-layout',
@@ -25,6 +26,7 @@ import { NAVIGATION_ITEM_LIST } from '@core/ui/components/layout/constants/navig
     TuiAvatar,
     TuiTooltip,
     TranslocoPipe,
+    GhostCoderComponent,
   ],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
@@ -34,6 +36,9 @@ export class LayoutComponent {
   protected readonly isMobileNavOpen = this.layoutService.isMobileNavOpen;
   protected readonly user = this.layoutService.user;
   protected readonly navigationItemList = NAVIGATION_ITEM_LIST;
+  protected readonly theme = this.layoutService.theme;
+  protected readonly isSpiritPleased = this.layoutService.isSpiritPleased;
+
   constructor() {
     afterNextRender(() => {
       this.layoutService.watchMobileNavMediaQuery();
@@ -50,5 +55,9 @@ export class LayoutComponent {
 
   public async onLogout() {
     await this.layoutService.logout();
+  }
+
+  public toggleTheme() {
+    this.layoutService.toggleTheme();
   }
 }
