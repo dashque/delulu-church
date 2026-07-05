@@ -1,4 +1,4 @@
-import { computed, DestroyRef, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
@@ -7,9 +7,8 @@ import { ConfessService } from '@core/services/confess/confess.service';
 import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { TuiNotificationService } from '@taiga-ui/core';
 import { FirebaseError } from 'firebase/app';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Injectable({
   providedIn: 'root',
@@ -21,9 +20,7 @@ export class ProfileFacade {
 
   private readonly translocoService = inject(TranslocoService);
 
-  private readonly notifications = inject(TuiNotificationService);
-
-  private readonly destroyRef = inject(DestroyRef);
+  private readonly toast = inject(HotToastService);
 
   public readonly profileForm = this.profileFormService.form;
 
@@ -151,38 +148,17 @@ export class ProfileFacade {
 
       this.profileForm.markAsPristine();
 
-      await this.showNotification(
-        this.translocoService.translate('notifications.success', {}, 'profile'),
-        this.translocoService.translate('notifications.success-title', {}, 'profile'),
-        'positive'
-      );
+      this.toast.success(this.translocoService.translate('notifications.success', {}, 'profile'));
     } catch (error) {
       let message = this.translocoService.translate('notifications.failure-message', {}, 'profile');
 
       if (error instanceof FirebaseError && error.code === 'auth/invalid-credential') {
-        switch (error.code) {
-          case 'auth/invalid-credential':
-            message = this.translocoService.translate('notifications.invalid-password', {}, 'profile');
-        }
-        await this.showNotification(
-          message,
-          this.translocoService.translate('notifications.failure-title', {}, 'profile'),
-          'negative'
-        );
+        message = this.translocoService.translate('notifications.invalid-password', {}, 'profile');
       }
+
+      this.toast.error(message);
     } finally {
       this.isLoading.set(false);
     }
-  }
-
-  private showNotification(message: string, label: string, appearance: 'positive' | 'negative') {
-    this.notifications
-      .open(message, {
-        label: label,
-        appearance: appearance,
-        autoClose: 5000,
-      })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
   }
 }

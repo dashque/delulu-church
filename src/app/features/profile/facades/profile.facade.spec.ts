@@ -2,9 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import type { Mock } from 'vitest';
 import { ProfileFacade } from './profile.facade';
 import { expect, vi } from 'vitest';
-import { of } from 'rxjs';
 import { TranslocoService } from '@jsverse/transloco';
-import { TuiNotificationService } from '@taiga-ui/core';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
 import { createEmptyCandleCounts } from '@core/services/candles/helpers/create-empty-candle-counts.helper';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
@@ -13,6 +11,8 @@ import { authServiceMock } from '@core/services/auth/auth.service.mock';
 import { AuthService } from '@core/services/auth/auth.service';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
+import { HotToastService } from '@ngxpert/hot-toast';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
 import {
   candlesServiceMock,
   resetCandlesServiceMock,
@@ -48,12 +48,9 @@ describe('ProfileFacade', () => {
             translate: vi.fn().mockReturnValue('translated'),
           },
         },
-
         {
-          provide: TuiNotificationService,
-          useValue: {
-            open: vi.fn().mockReturnValue(of(null)),
-          },
+          provide: HotToastService,
+          useValue: hotToastServiceMock,
         },
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: AuthService, useValue: authServiceMock },
