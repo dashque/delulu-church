@@ -1,10 +1,18 @@
 import { TestBed } from '@angular/core/testing';
-
+import type { Mock } from 'vitest';
 import { ProfileFacade } from './profile.facade';
 import { expect, vi } from 'vitest';
 import { of } from 'rxjs';
 import { TranslocoService } from '@jsverse/transloco';
 import { TuiNotificationService } from '@taiga-ui/core';
+import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
+import { resetCandlesServiceMock } from '@core/services/candles/candles.service.mock';
+import { resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
+import { resetUserProfileServiceMock } from '@core/services/user-profile/user-profile.service.mock';
+import { setCandlesServiceMockCounts } from '@core/services/candles/candles.service.mock';
+import { setConfessServiceMockSins } from '@core/services/confess/confess.service.mock';
+import { createEmptyCandleCounts } from '@core/services/candles/helpers/create-empty-candle-counts.helper';
+import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;

@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { PASSWORD_PATTERN } from '@shared/patterns/password-pattern';
 import { passwordConfirmationValidator } from '@shared/validators/password-confirmation.validator';
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/password-length';
-import type { ProfileSecurityFormGroup } from '@features/profile/data/models/profileSecurity.model';
+import type { ProfileSecurityFormGroup } from '@features/profile/data/models/profile-security.model';
 
 @Service()
 export class ProfileFormService {

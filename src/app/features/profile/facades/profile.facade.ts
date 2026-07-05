@@ -4,7 +4,7 @@ import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
-import { ProfileFormService } from '../services/profile-form/profile-form';
+import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';

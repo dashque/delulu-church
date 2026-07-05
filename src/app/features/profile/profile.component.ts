@@ -19,25 +19,6 @@ export class ProfileComponent {
 
   protected readonly userProfileService = inject(UserProfileService);
 
-  protected stats = [
-    {
-      value: 0,
-      name: 'profile.confessions',
-    },
-    {
-      value: 0,
-      name: 'profile.writings',
-    },
-    {
-      value: 0.0,
-      name: 'profile.level',
-    },
-    {
-      value: 0,
-      name: 'profile.activity',
-    },
-  ];
-
   protected achieves = [
     {
       icon: './assets/pray.svg',
