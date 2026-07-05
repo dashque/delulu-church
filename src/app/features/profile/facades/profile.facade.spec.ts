@@ -6,33 +6,32 @@ import { of } from 'rxjs';
 import { TranslocoService } from '@jsverse/transloco';
 import { TuiNotificationService } from '@taiga-ui/core';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
-import { resetCandlesServiceMock } from '@core/services/candles/candles.service.mock';
-import { resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
-import { resetUserProfileServiceMock } from '@core/services/user-profile/user-profile.service.mock';
-import { setCandlesServiceMockCounts } from '@core/services/candles/candles.service.mock';
-import { setConfessServiceMockSins } from '@core/services/confess/confess.service.mock';
 import { createEmptyCandleCounts } from '@core/services/candles/helpers/create-empty-candle-counts.helper';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
+import { UserProfileService } from '@core/services/user-profile/user-profile.service';
+import { authServiceMock } from '@core/services/auth/auth.service.mock';
+import { AuthService } from '@core/services/auth/auth.service';
+import { CandlesService } from '@core/services/candles/candles.service';
+import { ConfessService } from '@core/services/confess/confess.service';
+import {
+  candlesServiceMock,
+  resetCandlesServiceMock,
+  setCandlesServiceMockCounts,
+} from '@core/services/candles/candles.service.mock';
+
+import {
+  confessServiceMock,
+  resetConfessServiceMock,
+  setConfessServiceMockSins,
+} from '@core/services/confess/confess.service.mock';
+
+import {
+  resetUserProfileServiceMock,
+  userProfileServiceMock,
+} from '@core/services/user-profile/user-profile.service.mock';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
-
-  const userProfileServiceMock = {
-    user: vi.fn().mockReturnValue(null),
-  };
-
-  const authServiceMock = {
-    user: vi.fn().mockReturnValue({ uid: '1' }),
-    changePassword: vi.fn().mockResolvedValue(undefined),
-  };
-
-  const candlesServiceMock = {
-    totalOfferings: vi.fn().mockReturnValue(0),
-  };
-
-  const confessServiceMock = {
-    sins: vi.fn().mockReturnValue([]),
-  };
 
   beforeEach(() => {
     resetUserProfileServiceMock();
@@ -56,13 +55,16 @@ describe('ProfileFacade', () => {
             open: vi.fn().mockReturnValue(of(null)),
           },
         },
-        { provide: 'UserProfileService', useValue: userProfileServiceMock },
-        { provide: 'AuthService', useValue: authServiceMock },
-        { provide: 'CandlesService', useValue: candlesServiceMock },
-        { provide: 'ConfessService', useValue: confessServiceMock },
+        { provide: UserProfileService, useValue: userProfileServiceMock },
+        { provide: AuthService, useValue: authServiceMock },
+        { provide: CandlesService, useValue: candlesServiceMock },
+        { provide: ConfessService, useValue: confessServiceMock },
       ],
     });
     facade = TestBed.inject(ProfileFacade);
+    expect(facade.userProfileService).toBe(userProfileServiceMock);
+    expect(facade.candlesService).toBe(candlesServiceMock);
+    expect(facade.confessService).toBe(confessServiceMock);
   });
 
   it('должен инициализироваться', () => {
