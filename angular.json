@@ -59,7 +59,10 @@
             "styles": [
               "node_modules/@taiga-ui/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/styles/taiga-ui-fonts.less",
-              "src/styles.css"
+              "src/styles.css",
+              "src/app/shared/directives/scan-effect/scan-effect.directive.scss",
+              "@ngxpert/hot-toast/styles.css",
+              "@ngxpert/hot-toast/themes/glassmorphism.css"
             ]
           },
           "configurations": {
@@ -67,13 +70,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1.2MB",
-                  "maximumError": "1.5MB"
+                  "maximumWarning": "1.3MB",
+                  "maximumError": "1.6MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "8kB",
-                  "maximumError": "12kB"
+                  "maximumWarning": "14kB",
+                  "maximumError": "16kB"
                 }
               ],
               "outputHashing": "all"

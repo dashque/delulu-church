@@ -1,3 +1,4 @@
+import { vi } from 'vitest';
 import type { ComponentFixture } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
 
@@ -25,5 +26,14 @@ describe('CandlesComponent', () => {
 
   it('должен инициализироваться', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('должен эмитить candleListChanged при клике на свечу', () => {
+    const emitSpy = vi.spyOn(component.candleListChanged, 'emit');
+    const candle = CANDLE_TYPES_CONFIG[0];
+
+    (fixture.nativeElement.querySelector('.candle') as HTMLElement).click();
+
+    expect(emitSpy).toHaveBeenCalledWith(candle);
   });
 });

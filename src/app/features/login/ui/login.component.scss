@@ -5,7 +5,7 @@
   flex: 1;
 
   a {
-    color: var(--purple-soft);
+    color: var(--purple-soft, var(--accent-primary-soft));
     text-decoration: none;
     transition: 0.5s ease all;
 
@@ -20,6 +20,7 @@
   border: 1px solid var(--tui-border-normal);
   padding: 2rem;
   width: 100%;
+  background: color-mix(in srgb, var(--tui-background-base-alt) 92%, transparent);
   box-shadow: var(--primary-shadow);
 }
 
@@ -35,6 +36,11 @@
   --tui-radius-l: 0rem;
   --tui-radius-m: 0rem;
   --tui-radius-s: 0rem;
+  --tui-background-neutral-1: var(--tui-background-base-alt);
+}
+
+.form[tuiCardLarge] tui-error {
+  margin-top: -0.35rem;
 }
 
 .footer {

@@ -1,4 +1,22 @@
 {
+  "form": {
+    "labels": {
+      "name": "Имя пользователя",
+      "password": "Текущий пароль",
+      "new_password": "Новый пароль",
+      "new_password_confirmation": "Подтверждение нового пароля"
+    }
+  },
+  "notifications": {
+    "success": "Профиль успешно обновлен",
+    "success-title": "Успех",
+    "failure-title": "Ошибка",
+    "failure-message": "Не удалось сохранить изменения.",
+    "invalid-password": "Текущий пароль указан неверно."
+  },
+  "actions": {
+    "submit": "Сохранить"
+  },
   "location": "локация",
   "city": {
     "moscow": "Москва"

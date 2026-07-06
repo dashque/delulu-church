@@ -10,8 +10,16 @@ import { MainComponent } from '@features/main/ui/main.component';
 import { TarotService } from '@features/main/data/api/services/tarot/tarot.service';
 import { ShriftPageFacade } from '@features/shrift/facades/shrift-page.facade';
 import { ConfessFormService } from '@features/shrift/services/confess-form.service';
+import { AltarPageFacade } from '@features/altar/facades/altar-page.facade';
 import { PreloadFor } from '@core/services/preloading-strategy/models/preload-for.model';
 import { MainPageFacade } from '@features/main/facades/main-page.facade';
+import { MyMemoryTranslationService } from '@features/main/data/api/services/my-memory-translation/my-memory-translation.service';
+import { SanctumPageFacade } from '@features/sanctum/facades/sanctum-page.facade';
+import { SanctumFormService } from '@features/sanctum/services/sanctum-form.service';
+import { SanctumRitualService } from '@features/sanctum/services/sanctum-ritual.service';
+import { SanctumSoundService } from '@features/sanctum/services/sanctum-sound.service';
+import { PriestQuotesService } from '@features/sanctum/services/priest-quotes.service';
+import { ProfileFacade } from '@features/profile/facades/profile.facade';
 
 export const routes: Routes = [
   {
@@ -22,13 +30,13 @@ export const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: MainComponent,
-        providers: [provideTranslocoScope('main'), MainPageFacade, TarotService],
+        providers: [provideTranslocoScope('main'), MainPageFacade, TarotService, MyMemoryTranslationService],
       },
       {
         path: 'profile',
         canMatch: [authGuard],
         loadComponent: () => import('./features/profile/profile.component').then((c) => c.ProfileComponent),
-        providers: [provideTranslocoScope('profile')],
+        providers: [provideTranslocoScope('profile'), ProfileFacade],
         data: { preloadFor: PreloadFor.AUTH },
       },
       {
@@ -61,8 +69,28 @@ export const routes: Routes = [
         path: 'altar',
         canMatch: [authGuard],
         loadComponent: () => import('./features/altar/ui/altar.component').then((c) => c.AltarComponent),
-        providers: [provideTranslocoScope('altar')],
+        providers: [provideTranslocoScope('altar'), AltarPageFacade],
         data: { preloadFor: PreloadFor.AUTH },
+      },
+      {
+        path: 'sanctum',
+        canMatch: [authGuard],
+        loadComponent: () => import('./features/sanctum/ui/sanctum.component').then((c) => c.SanctumComponent),
+        providers: [
+          provideTranslocoScope('sanctum'),
+          SanctumPageFacade,
+          SanctumFormService,
+          SanctumRitualService,
+          SanctumSoundService,
+          PriestQuotesService,
+        ],
+        data: { preloadFor: PreloadFor.AUTH },
+      },
+      {
+        path: 'crystal-ball',
+        loadComponent: () => import('./features/ball/ui/ball.component').then((c) => c.BallComponent),
+        providers: [provideTranslocoScope('ball')],
+        data: { preloadFor: PreloadFor.GUEST },
       },
       {
         path: '**',

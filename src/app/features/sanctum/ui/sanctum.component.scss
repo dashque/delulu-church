@@ -1,0 +1,418 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.sanctum {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sanctum-header {
+  flex-shrink: 0;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-primary) 28%, transparent);
+}
+
+.sanctum-title {
+  margin: 0;
+  color: var(--tui-text-primary);
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sanctum-subtitle {
+  margin: 0.15rem 0 0;
+  color: var(--tui-text-tertiary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.sanctum-workspace {
+  display: grid;
+  gap: 1px;
+  align-content: start;
+  background: var(--divider);
+  grid-template-areas:
+    'rite'
+    'oracle'
+    'litany'
+    'verdict';
+}
+
+.sanctum-panel {
+  min-width: 0;
+  background: var(--tui-background-base-alt);
+}
+
+.sanctum-panel-title {
+  margin: 0 0 0.35rem;
+  color: var(--tui-text-secondary);
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.sanctum-rite {
+  grid-area: rite;
+  padding: 0.65rem 0.75rem;
+}
+
+.sanctum-oracle {
+  grid-area: oracle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: clamp(14rem, 28vw, 28rem);
+  padding: 0.5rem;
+}
+
+.sanctum-litany {
+  grid-area: litany;
+  padding: 0.55rem 0.65rem;
+}
+
+.sanctum-litany-empty {
+  opacity: 0.45;
+}
+
+.sanctum-litany-active {
+  animation: sanctum-flicker 2.8s ease-in-out infinite;
+}
+
+.sanctum-verdict-panel {
+  grid-area: verdict;
+  padding: 0;
+  background: var(--tui-background-base-alt);
+}
+
+.sanctum-verdict-panel:not(.sanctum-verdict-panel-visible) {
+  display: none;
+}
+
+.sanctum-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sanctum-label {
+  color: var(--tui-text-secondary);
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sanctum-intents {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.sanctum-intent-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.sanctum-intent-option {
+  width: 100%;
+  border-radius: var(--tui-radius-m);
+  background: var(--tui-background-elevation-1);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sanctum-intent-accent, var(--accent-primary)) 45%, transparent);
+  transition:
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+
+  &:hover {
+    box-shadow:
+      inset 0 0 0 1px var(--sanctum-intent-accent, var(--accent-primary)),
+      0 0 10px color-mix(in srgb, var(--sanctum-intent-accent, var(--accent-primary)) 22%, transparent);
+  }
+
+  &:has(input:checked) {
+    background: color-mix(
+      in srgb,
+      var(--sanctum-intent-accent, var(--accent-primary)) 10%,
+      var(--tui-background-elevation-1)
+    );
+    box-shadow:
+      inset 0 0 0 2px var(--sanctum-intent-accent, var(--accent-primary)),
+      0 0 12px color-mix(in srgb, var(--sanctum-intent-accent, var(--accent-primary)) 28%, transparent);
+  }
+}
+
+.sanctum-intent-option-merge {
+  --sanctum-intent-accent: var(--accent-primary);
+}
+
+.sanctum-intent-option-deploy {
+  --sanctum-intent-accent: var(--warning);
+}
+
+.sanctum-intent-option-penance {
+  --sanctum-intent-accent: var(--water);
+}
+
+.sanctum-intent-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.sanctum-intent-label {
+  font-weight: 600;
+}
+
+.sanctum-intent-description {
+  color: var(--tui-text-tertiary);
+  font-size: 0.82rem;
+}
+
+.sanctum-litany-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.78rem;
+}
+
+.sanctum-litany-line {
+  margin: 0;
+  color: var(--tui-text-secondary);
+}
+
+.sanctum-litany-cursor {
+  margin: 0;
+  color: var(--tui-text-secondary);
+  animation: sanctum-blink 1s step-end infinite;
+}
+
+.sanctum-stage-judging {
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent-primary) 35%, transparent));
+}
+
+.sanctum-verdict-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.55rem 0.65rem 0.75rem;
+}
+
+.sanctum-fate,
+.sanctum-verdict,
+.sanctum-omen {
+  border: 1px solid var(--divider);
+  background: var(--tui-background-elevation-1);
+}
+
+.sanctum-fate {
+  padding: 0.55rem 0.65rem;
+}
+
+.sanctum-fate-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
+}
+
+.sanctum-fate-label,
+.sanctum-verdict-meta dt {
+  margin: 0;
+  color: var(--tui-text-tertiary);
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+}
+
+.sanctum-fate-value,
+.sanctum-verdict-label {
+  margin: 0;
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.sanctum-fate-bar {
+  height: 0.35rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tui-text-tertiary) 25%, transparent);
+}
+
+.sanctum-fate-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.sanctum-fate-green .sanctum-fate-value,
+.sanctum-fate-green .sanctum-fate-fill {
+  color: var(--earth);
+  background: var(--earth);
+}
+
+.sanctum-fate-amber .sanctum-fate-value,
+.sanctum-fate-amber .sanctum-fate-fill {
+  color: var(--fire);
+  background: var(--fire);
+}
+
+.sanctum-fate-red .sanctum-fate-value,
+.sanctum-fate-red .sanctum-fate-fill {
+  color: var(--critical);
+  background: var(--critical);
+}
+
+.sanctum-omens {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.sanctum-omen {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.45rem;
+  align-items: start;
+  padding: 0.45rem 0.55rem;
+  border-left-width: 3px;
+  border-left-style: solid;
+
+  --omen-tone: var(--tui-text-secondary);
+}
+
+.sanctum-omen-text {
+  margin: 0;
+  color: var(--omen-tone);
+  font-size: 0.82rem;
+}
+
+.sanctum-omen-icon {
+  color: var(--omen-tone);
+}
+
+.sanctum-omen-sacred {
+  --omen-tone: var(--earth);
+
+  border-left-color: var(--earth);
+  background: var(--tui-status-positive-pale);
+}
+
+.sanctum-omen-heretical {
+  --omen-tone: var(--fire);
+
+  border-left-color: var(--fire);
+  background: var(--tui-status-warning-pale);
+}
+
+.sanctum-omen-forbidden {
+  --omen-tone: var(--critical);
+
+  border-left-color: var(--critical);
+  background: var(--tui-status-negative-pale);
+}
+
+.sanctum-verdict {
+  padding: 0.55rem 0.65rem;
+  border-left-width: 3px;
+  border-left-style: solid;
+}
+
+.sanctum-verdict-sacred {
+  border-left-color: var(--earth);
+
+  .sanctum-verdict-label {
+    color: var(--earth);
+  }
+}
+
+.sanctum-verdict-heretical {
+  border-left-color: var(--fire);
+
+  .sanctum-verdict-label {
+    color: var(--fire);
+  }
+}
+
+.sanctum-verdict-forbidden {
+  border-left-color: var(--critical);
+
+  .sanctum-verdict-label {
+    color: var(--critical);
+  }
+}
+
+.sanctum-verdict-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.sanctum-seal-mark {
+  font-size: 1.2rem;
+  color: var(--tui-text-secondary);
+}
+
+.sanctum-verdict-meta {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0 0 0.5rem;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--tui-text-primary);
+    font-size: 0.82rem;
+  }
+}
+
+.sanctum-verdict-prophecy {
+  margin: 0;
+  color: var(--tui-text-secondary);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+@keyframes sanctum-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.88;
+  }
+}
+
+@keyframes sanctum-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (width >= 64rem) {
+  .sanctum-workspace {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    grid-template-areas:
+      'rite oracle'
+      'litany litany'
+      'verdict verdict';
+  }
+}

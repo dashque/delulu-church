@@ -1,0 +1,247 @@
+:host {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+
+  @media (width <= 485px) {
+    padding: 0.75rem;
+  }
+}
+
+.ball {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.ball-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.ball-title {
+  margin: 0;
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--accent-primary) 65%, transparent);
+}
+
+.ball-subtitle {
+  margin: 0;
+  max-width: 36rem;
+  color: var(--air);
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
+  font-style: italic;
+  line-height: 1.5;
+  text-shadow: 0 0 8px color-mix(in srgb, var(--air) 35%, transparent);
+}
+
+.ball-divider {
+  width: 100%;
+  height: 1px;
+  margin-top: 0.5rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent-primary) 52%, transparent),
+    transparent
+  );
+}
+
+.call-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+
+  @media (width <= 485px) {
+    padding: 0.75rem;
+  }
+}
+
+.ball-circle {
+  width: 300px;
+  height: 300px;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: 0 0 20px var(--accent-primary);
+  display: grid;
+  place-items: center;
+  transition: 1s ease all;
+  position: relative;
+  overflow: hidden;
+  cursor: url('/assets/cursor-pointer.png'), pointer;
+
+  tui-icon {
+    color: var(--accent-primary-soft);
+    inline-size: 4rem;
+    block-size: 4rem;
+
+    --tui-stroke-width: 3px;
+    --tui-icon-size: 4rem;
+
+    animation: answer 0.7s ease-out;
+  }
+
+  &:hover {
+    box-shadow: 0 0 40px var(--accent-primary);
+  }
+
+  @media (width <= 485px) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.spark {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 0%, var(--accent-primary-soft) 70%, transparent 100%);
+  animation: float 2s ease-in-out infinite;
+  transition: 1s ease all;
+}
+
+.ball-circle:hover .spark {
+  animation-duration: 1.9s;
+  width: 5.3px;
+  height: 5.3px;
+  background: radial-gradient(circle, #fff 0%, var(--accent-soft) 70%, transparent 100%);
+}
+
+.spark-1 {
+  top: 30%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.spark-2 {
+  top: 60%;
+  left: 70%;
+  animation-delay: 0.8s;
+}
+
+.spark-3 {
+  top: 75%;
+  left: 45%;
+  animation-delay: 1.6s;
+}
+
+.spark-4 {
+  top: 70%;
+  left: 30%;
+  animation-delay: 2.4s;
+}
+
+.spark-5 {
+  top: 70%;
+  left: 65%;
+  animation-delay: 3.2s;
+}
+
+.spark-6 {
+  top: 70%;
+  left: 25%;
+  animation-delay: 2s;
+}
+
+.spark-7 {
+  top: 35%;
+  left: 55%;
+  animation-delay: 3.2s;
+}
+
+.spark-8 {
+  top: 15%;
+  left: 47%;
+  animation-delay: 2.2s;
+}
+
+.spark-9 {
+  top: 40%;
+  left: 75%;
+  animation-delay: 1.9s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: translate(8px, -12px) scale(1.5);
+    opacity: 1;
+  }
+}
+
+.stand-top {
+  width: 210px;
+  height: 40px;
+  background: var(--bg-primary-btn);
+  margin-top: -2px;
+  display: grid;
+  place-items: center;
+}
+
+.stand-bottom {
+  width: 250px;
+  height: 25px;
+  background: var(--bg-secondary-btn);
+  margin-top: -1px;
+}
+
+.ball-circle.is-charging {
+  tui-icon {
+    animation: pulse 0.6s ease-in-out infinite;
+  }
+}
+
+.ball-answer {
+  color: var(--accent-primary-soft);
+  font-family: var(--font-orbitron), 'Courier New', monospace;
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  animation: answer 0.4s ease-out;
+  z-index: 1;
+}
+
+@keyframes answer {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}

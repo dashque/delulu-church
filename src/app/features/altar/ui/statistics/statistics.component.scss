@@ -1,6 +1,7 @@
 :host {
   display: block;
   width: 100%;
+  min-width: 0;
 }
 
 .altar-stats {
@@ -9,7 +10,7 @@
   gap: 0.75rem;
   width: 100%;
 
-  @media (width <= 768px) {
+  @media (width <= 900px) {
     grid-template-columns: 1fr;
   }
 }
@@ -18,36 +19,73 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 1rem;
+  min-width: 0;
+  padding: 1rem 0.75rem;
   border: 1px solid var(--accent-primary);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--accent-primary) 6%, transparent), transparent 55%),
     color-mix(in srgb, var(--tui-background-base-alt) 90%, transparent);
   box-shadow: 0 0 14px color-mix(in srgb, var(--accent-primary) 14%, transparent);
   text-align: center;
+  container-type: inline-size;
 }
 
 .altar-panel-label {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   color: var(--accent-primary);
-  font-family: var(--font-orbitron), 'Courier New', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
+  font-family: 'Courier New', monospace;
+  font-size: clamp(0.55rem, 2.1vw, 0.68rem);
+  font-stretch: normal;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-wrap: balance;
   text-shadow: 0 0 8px color-mix(in srgb, var(--accent-primary) 55%, transparent);
 }
 
 .altar-stat-value {
   margin: 0;
+  width: 100%;
+  max-width: 100%;
   color: var(--accent-primary-soft);
-  font-family: var(--font-orbitron), 'Courier New', monospace;
-  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(1.35rem, 4vw, 2.25rem);
+  font-stretch: normal;
   font-weight: 800;
-  line-height: 1;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
   text-shadow: 0 0 12px color-mix(in srgb, var(--accent-primary) 50%, transparent);
 }
 
 .altar-stat-value-status {
-  font-size: clamp(1.1rem, 3vw, 1.5rem);
-  letter-spacing: 0.08em;
+  font-size: clamp(0.7rem, 2.5vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+@container (max-width: 11rem) {
+  .altar-panel-label {
+    font-size: 0.52rem;
+    letter-spacing: 0.05em;
+  }
+
+  .altar-stat-value {
+    font-size: 1.35rem;
+  }
+
+  .altar-stat-value-status {
+    font-size: 0.68rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+@container (max-width: 8.5rem) {
+  .altar-stat-value-status {
+    font-size: 0.6rem;
+  }
 }

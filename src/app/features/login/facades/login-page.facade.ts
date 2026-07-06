@@ -1,19 +1,18 @@
-import { DestroyRef, inject, Service, signal } from '@angular/core';
+import { inject, Service, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/services/auth/auth.service';
-import { TuiNotificationService } from '@taiga-ui/core';
 import { LoginFormService } from '../services/login-form.service';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TranslocoService } from '@jsverse/transloco';
 import { firstValueFrom } from 'rxjs';
+import { toErrorMessage } from '@shared/helpers/to-error-message.helper';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Service({
   autoProvided: false,
 })
 export class LoginPageFacade {
-  private readonly destroyRef = inject(DestroyRef);
   private readonly authService = inject(AuthService);
-  private readonly notifications = inject(TuiNotificationService);
+  private readonly notifications = inject(HotToastService);
   private readonly translocoService = inject(TranslocoService);
   private readonly router = inject(Router);
   public readonly isLoading = signal(false);
@@ -31,9 +30,9 @@ export class LoginPageFacade {
       await this.authService.login(email, password);
       await this.completeSuccessfulLogin();
     } catch (error) {
-      if (error instanceof Error) {
-        this.showNotification(error.message, this.translocoService.translate('error.text', {}, 'login'), 'negative');
-      }
+      this.notifications.error(
+        `${this.translocoService.translate('error.text', {}, 'login')} ${toErrorMessage(error)}`
+      );
     } finally {
       this.isLoading.set(false);
     }
@@ -55,17 +54,6 @@ export class LoginPageFacade {
     await this.loginWithProvider(() => this.authService.loginWithGoogle());
   }
 
-  private showNotification(message: string, label: string, appearance: 'positive' | 'negative') {
-    this.notifications
-      .open(message, {
-        label: label,
-        appearance: appearance,
-        autoClose: 5000,
-      })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
-  }
-
   private async loginWithProvider(login: () => Promise<unknown>) {
     this.isLoading.set(true);
 
@@ -73,9 +61,9 @@ export class LoginPageFacade {
       await login();
       await this.completeSuccessfulLogin();
     } catch (error) {
-      if (error instanceof Error) {
-        this.showNotification(error.message, this.translocoService.translate('error.text', {}, 'login'), 'negative');
-      }
+      this.notifications.error(
+        `${this.translocoService.translate('error.text', {}, 'login')} ${toErrorMessage(error)}`
+      );
     } finally {
       this.isLoading.set(false);
     }
@@ -87,7 +75,7 @@ export class LoginPageFacade {
       firstValueFrom<string>(this.translocoService.selectTranslate('success-title', {}, 'login')),
     ]);
 
-    this.showNotification(message, label, 'positive');
+    this.notifications.success(`${label} ${message}`);
     this.loginForm.markAsPristine();
     await this.router.navigate(['/']);
   }

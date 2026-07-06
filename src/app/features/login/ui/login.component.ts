@@ -15,7 +15,6 @@ import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import { TranslocoModule } from '@jsverse/transloco';
 import { RouterLink } from '@angular/router';
 import { LoginPageFacade } from '../facades/login-page.facade';
-import { VALIDATION_ERRORS_DICT } from '@shared/dictionaries/validation-errors.dictionary';
 
 @Component({
   selector: 'ngKitty-login',
@@ -41,5 +40,4 @@ import { VALIDATION_ERRORS_DICT } from '@shared/dictionaries/validation-errors.d
 export class LoginComponent {
   public readonly facade = inject(LoginPageFacade);
   public readonly form = this.facade.loginForm;
-  protected readonly validationErrors = VALIDATION_ERRORS_DICT;
 }

@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import type { Observable } from 'rxjs';
 import { catchError, forkJoin, from, map, mergeMap, of, toArray } from 'rxjs';
 
@@ -9,7 +9,9 @@ import type { TarotCardApi } from '@features/main/data/api/models/tarot-card-api
 import { MY_MEMORY_TRANSLATION_URL } from '@features/main/data/api/tokens/my-memory-translation-url.token';
 import { Languages } from '@core/models/languages.model';
 
-@Injectable({ providedIn: 'root' })
+@Service({
+  autoProvided: false,
+})
 export class MyMemoryTranslationService {
   private readonly httpClient = inject(HttpClient);
   private readonly url = inject(MY_MEMORY_TRANSLATION_URL);

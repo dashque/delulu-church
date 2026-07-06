@@ -13,28 +13,16 @@
 >
   <tui-textfield iconStart="@tui.mail">
     <label tuiLabel for="email">{{ 'login.email' | transloco }}</label>
-    <input formControlName="email" placeholder="john@wick.com" tuiInput type="email" id="email" />
+    <input [formControl]="emailControl" placeholder="john@wick.com" tuiInput type="email" id="email" />
   </tui-textfield>
-  @if (emailControl.errors?.['required'] && emailControl.touched) {
-    <tui-error [error]="validationErrors.required | transloco" />
-  }
-
-  @if (emailControl.errors?.['pattern'] && emailControl.touched) {
-    <tui-error [error]="validationErrors.emailPattern | transloco" />
-  }
+  <tui-error [formControl]="emailControl" />
 
   <tui-textfield iconStart="@tui.lock">
     <label tuiLabel for="password">{{ 'login.password' | transloco }}</label>
-    <input id="password" formControlName="password" placeholder="Aa88888" tuiInput />
+    <input id="password" [formControl]="passwordControl" placeholder="Aa888888" tuiInput type="password" />
     <tui-icon tuiPassword />
   </tui-textfield>
-  @if (passwordControl.errors?.['required'] && passwordControl.touched) {
-    <tui-error [error]="validationErrors.required | transloco" />
-  }
-
-  @if (passwordControl.errors?.['pattern'] && passwordControl.touched) {
-    <tui-error [error]="validationErrors.passwordPattern | transloco" />
-  }
+  <tui-error [formControl]="passwordControl" />
 
   <footer class="footer">
     <button tuiButton type="submit" [disabled]="facade.loginForm.invalid || isLoading">

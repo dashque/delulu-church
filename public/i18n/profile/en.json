@@ -1,4 +1,22 @@
 {
+  "form": {
+    "labels": {
+      "name": "Username",
+      "password": "Current password",
+      "new_password": "New password",
+      "new_password_confirmation": "New password confirmation"
+    }
+  },
+  "notifications": {
+    "success": "Profile is successfully updated",
+    "success-title": "Success",
+    "failure-title": "Error",
+    "failure-message": "Changes could not be saved.",
+    "invalid-password": "Current password is incorrect."
+  },
+  "actions": {
+    "submit": "Save changes"
+  },
   "location": "location",
   "city": {
     "moscow": "Moscow"

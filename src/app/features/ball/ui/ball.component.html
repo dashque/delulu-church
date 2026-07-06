@@ -1,0 +1,32 @@
+<section class="ball">
+  <header class="ball-header">
+    <h2 class="ball-title">
+      {{ 'ball.title' | transloco }}
+    </h2>
+    <p class="ball-subtitle">{{ 'ball.subtitle' | transloco }}</p>
+    <span class="ball-divider" aria-hidden="true"></span>
+  </header>
+
+  <div class="call-container">
+    <button class="ball-circle" [class.is-charging]="isCharging()" (click)="onBallClick()">
+      <span class="spark spark-1"></span>
+      <span class="spark spark-2"></span>
+      <span class="spark spark-3"></span>
+      <span class="spark spark-4"></span>
+      <span class="spark spark-5"></span>
+      <span class="spark spark-6"></span>
+      <span class="spark spark-7"></span>
+      <span class="spark spark-8"></span>
+      <span class="spark spark-9"></span>
+
+      @if (answerText()) {
+        <p class="ball-answer">{{ answerText() }}</p>
+      } @else {
+        <tui-icon icon="@tui.sparkles" />
+      }
+    </button>
+    <div class="stand-top">{{ 'ball.ask' | transloco }}</div>
+    <div class="stand-bottom"></div>
+  </div>
+  <ngKitty-wisdom />
+</section>

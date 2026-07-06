@@ -1,11 +1,39 @@
+:root {
+  --font-display: 'Science Gothic', sans-serif;
+  --font-display-weight: 700;
+  --font-display-stretch: 125%;
+  --font-orbitron: var(--font-display);
+  --font-oxanium: 'Oxanium', var(--font-display), sans-serif;
+  --tui-typography-family-display: var(--font-display);
+  --tui-typography-family-text: var(--font-oxanium);
+}
+
+.header-title,
+.tarot-verdict-title,
+.altar-title,
+.candle-altar-label,
+.oracle-config-title,
+.oracle-speaks-title {
+  font-family: var(--font-display), sans-serif;
+  font-stretch: var(--font-display-stretch);
+}
+
+/* App «light» theme (gold). :root — дефолт, когда provideTaiga снимает tuiTheme с body */
 :root,
 [tuiTheme='light'] {
+  color-scheme: dark;
+
   --tui-background-base: #14100f;
   --tui-background-base-alt: #1b1513;
-  --tui-background-elevation-1: #000;
-  --tui-background-elevation-2: #000;
+  --tui-background-elevation-1: #1f1814;
+  --tui-background-elevation-2: #2a211c;
+  --tui-background-neutral-1: #241c18;
   --tui-text-primary: #f4e7c8;
+  --tui-text-secondary: #e8c98f;
+  --tui-text-tertiary: #c9b88a;
   --tui-border-normal: #d6a85f;
+  --tui-border-hover: var(--accent-primary-soft);
+  --tui-border-focus: color-mix(in srgb, var(--accent-primary) 72%, #fff);
   --tui-status-positive-pale: rgb(96 255 180 / 16%);
   --tui-status-negative-pale: rgb(255 82 82 / 16%);
   --tui-status-warning-pale: rgb(255 190 92 / 16%);
@@ -57,25 +85,31 @@
   --secondary-text-hover: var(--accent-soft);
   --secondary-shadow: 0 0 10px rgb(214 168 95 / 25%);
   --card-glow: 0 0 18px rgb(168 85 247 / 16%), 0 0 36px rgb(255 79 216 / 8%);
-  --font-orbitron: 'Orbitron', sans-serif;
-  --font-oxanium: 'Oxanium', sans-serif;
-  --dark-text: #3a0295;
-  --light-text: #7b7b7b;
-  --light-card: #41300e;
+  --purple-soft: var(--accent-primary-soft);
+  --dark-text: #5c3d0a;
+  --light-text: #8a7a5c;
+  --light-card: #2a2118;
   --dark-card: #1d1910;
-  --divider: #2d1e3a;
-  --alternative-text: #0f6652;
-  --alternative-light-text: #0fc;
+  --divider: #4a3a24;
+  --alternative-text: #b8862e;
+  --alternative-light-text: #e8c98f;
 }
 
-:root,
+/* App «dark» theme (purple). Только [tuiTheme], без :root — иначе палитры конфликтуют */
 [tuiTheme='dark'] {
+  color-scheme: dark;
+
   --tui-background-base: #0f071b;
   --tui-background-base-alt: #0d0617;
   --tui-background-elevation-1: #171021;
-  --tui-background-elevation-2: #171021;
+  --tui-background-elevation-2: #1f1630;
+  --tui-background-neutral-1: #1a1228;
   --tui-text-primary: #dccdff;
+  --tui-text-secondary: #c084fc;
+  --tui-text-tertiary: #a78bfa;
   --tui-border-normal: #a855f7;
+  --tui-border-hover: var(--accent-primary-soft);
+  --tui-border-focus: color-mix(in srgb, var(--accent-primary) 72%, #fff);
   --tui-status-positive-pale: rgb(0 255 200 / 18%);
   --tui-status-negative-pale: rgb(255 0 98 / 18%);
   --tui-status-warning-pale: rgb(255 166 0 / 18%);
@@ -133,8 +167,7 @@
   --outline-hover-bg: rgb(255 255 255 / 3%);
   --outline-hover-shadow: 0 0 12px rgb(255 79 216 / 14%);
   --card-glow: 0 0 18px rgb(168 85 247 / 16%), 0 0 36px rgb(255 79 216 / 8%);
-  --font-orbitron: 'Orbitron', sans-serif;
-  --font-oxanium: 'Oxanium', sans-serif;
+  --purple-soft: var(--accent-primary-soft);
   --dark-text: #3a0295;
   --light-text: #7b7b7b;
   --light-card: #41300e;
@@ -142,6 +175,27 @@
   --divider: #2d1e3a;
   --alternative-text: #0f6652;
   --alternative-light-text: #0fc;
+}
+
+[tuiTheme='light'] [tuiDropdown],
+[tuiTheme='light'] tui-data-list,
+[tuiTheme='light'] [tuiOption],
+[tuiTheme='light'] [role='listbox'] {
+  --tui-background-elevation-1: var(--tui-background-base-alt);
+  --tui-background-elevation-2: var(--tui-background-base-alt);
+
+  background-color: var(--tui-background-base-alt);
+  color: var(--tui-text-primary);
+}
+
+[tuiTheme='light'] [tuiOption] {
+  color: var(--tui-text-primary);
+}
+
+[tuiTheme='light'] [tuiOption]:hover,
+[tuiTheme='light'] [tuiOption][class*='selected'] {
+  background-color: color-mix(in srgb, var(--accent-primary) 16%, var(--tui-background-base-alt));
+  color: var(--accent-secondary);
 }
 
 * {
@@ -194,6 +248,8 @@ body {
   margin: 0;
   min-height: 100%;
   letter-spacing: 0.03em;
+  background-color: var(--tui-background-base);
+  color: var(--tui-text-primary);
 }
 
 body {
@@ -337,4 +393,63 @@ tui-textfield [tuiButtonX] {
 tui-textfield:has([tuiInputDate])::after,
 tui-textfield:has([tuiInputDate]) tui-icon {
   color: var(--accent-primary);
+}
+
+[tuiTheme='light'] tui-textfield {
+  --tui-background-neutral-1: var(--tui-background-base-alt);
+  --tui-service-autofill-background: var(--tui-background-base-alt);
+
+  border: 1px solid var(--tui-border-normal);
+  background-color: var(--tui-background-base-alt);
+  color: var(--tui-text-primary);
+}
+
+[tuiTheme='light'] tui-textfield:has(:focus-within) {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-primary) 22%, transparent);
+}
+
+[tuiTheme='light'] tui-textfield:has([data-invalid='true']),
+[tuiTheme='light'] tui-textfield:has(.ng-invalid.ng-touched) {
+  border-color: var(--critical);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--critical) 28%, transparent);
+}
+
+[tuiTheme='light'] tui-textfield input,
+[tuiTheme='light'] tui-textfield textarea {
+  color: var(--tui-text-primary);
+  caret-color: var(--accent-primary);
+}
+
+[tuiTheme='light'] tui-textfield input::placeholder,
+[tuiTheme='light'] tui-textfield textarea::placeholder {
+  color: color-mix(in srgb, var(--tui-text-primary) 45%, transparent);
+  opacity: 1;
+}
+
+[tuiTheme='light'] tui-textfield label,
+[tuiTheme='light'] tui-textfield [tuiLabel] {
+  color: var(--accent-primary);
+}
+
+[tuiTheme='light'] tui-textfield input:-webkit-autofill,
+[tuiTheme='light'] tui-textfield input:-webkit-autofill:hover,
+[tuiTheme='light'] tui-textfield input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--tui-text-primary);
+  box-shadow: 0 0 0 1000px var(--tui-background-base-alt) inset;
+  transition: background-color 99999s ease-out;
+}
+
+[tuiTheme='light'] tui-error {
+  color: color-mix(in srgb, var(--critical) 88%, var(--warning));
+}
+
+/* className from provideHotToastConfig({ className: 'toast' }) */
+.toast {
+  font-family: var(--font-display);
+  white-space: pre-line;
+}
+
+.hot-toast-theme-glassmorphism .hot-toast-bar-base.toast {
+  border: 2px solid var(--accent-primary);
 }

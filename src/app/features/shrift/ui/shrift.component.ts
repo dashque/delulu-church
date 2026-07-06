@@ -14,7 +14,7 @@ export class ShriftComponent {
   protected readonly facade = inject(ShriftPageFacade);
   protected readonly translocoService = inject(TranslocoService);
 
-  protected onDelete(sinUid: string) {
-    this.facade.onDelete(sinUid);
+  protected async onDelete(sinUid: string) {
+    await this.facade.onDelete(sinUid);
   }
 }

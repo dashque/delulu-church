@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { Component, computed, input, output, signal } from '@angular/core';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { TuiIcon } from '@taiga-ui/core';
 import type { CdkDragDrop } from '@angular/cdk/drag-drop';
@@ -12,21 +12,48 @@ import type { CandleCounts } from '@core/services/candles/models/candle-counts.m
   imports: [TuiIcon, TranslocoPipe, CdkDrag, CdkDropList],
   templateUrl: './candles.component.html',
   styleUrl: './candles.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CandlesComponent {
+  private readonly isDragActive = signal(false);
+
   public readonly candleListChanged = output<CandleType>();
   public readonly candleList = input.required<CandleType[]>();
   public readonly litCandleList = input.required<LitCandle[]>();
   public readonly candleCountsMap = input.required<CandleCounts>();
+
+  protected readonly altarDropListData: CandleType[] = [];
+  protected readonly canOfferCandle = computed(() => !this.isDragActive());
+
+  protected offerCandle(candle: CandleType): void {
+    if (!this.canOfferCandle()) {
+      return;
+    }
+
+    this.candleListChanged.emit(candle);
+  }
+
+  protected onCandleKeydown(event: KeyboardEvent, candle: CandleType): void {
+    if (event.key !== 'Enter' && event.key !== ' ') {
+      return;
+    }
+
+    event.preventDefault();
+    this.offerCandle(candle);
+  }
+
+  protected onDragStarted(): void {
+    this.isDragActive.set(true);
+  }
+
+  protected onDragEnded(): void {
+    this.isDragActive.set(false);
+  }
 
   protected onDrop(event: CdkDragDrop<CandleType[]>): void {
     if (event.container.id !== 'altar-drop-list' || event.previousContainer.id !== 'candles-source') {
       return;
     }
 
-    const candle = event.previousContainer.data[event.previousIndex];
-
-    this.candleListChanged.emit(candle);
+    this.offerCandle(event.previousContainer.data[event.previousIndex]);
   }
 }

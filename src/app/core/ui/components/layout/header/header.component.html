@@ -1,13 +1,7 @@
-@let machineSpiritState = isSpiritPleased() | machineSpiritState;
-<header tuiHeader="h2" appearance="primary">
+@let machineSpiritState = isSpiritPleased() | machineSpiritState | transloco;
+<header tuiHeader="h2" class="header-shell">
   <div class="header-box">
-    <div class="header-buttons">
-      <button appearance="primary" class="header-action" size="s" tuiButton type="button" (click)="themeChanged.emit()">
-        <tui-icon icon="@tui.moon" />
-      </button>
-      <ngKitty-language-switcher />
-    </div>
-    <hgroup tuiTitle>
+    <hgroup tuiTitle class="header-brand">
       <h2 class="header-title">
         <a routerLink="/">{{ 'header.title' | transloco }}</a>
       </h2>
@@ -15,8 +9,25 @@
         {{ 'header.subtitle' | transloco: { machineSpiritState } }}
       </p>
     </hgroup>
-    <div class="header-buttons">
-      <ng-content />
+
+    <div class="header-actions">
+      <div class="header-actions-start">
+        <button
+          appearance="primary"
+          class="header-action"
+          size="s"
+          tuiButton
+          type="button"
+          (click)="themeChanged.emit()"
+        >
+          <tui-icon icon="@tui.moon" />
+        </button>
+        <ngKitty-language-switcher />
+      </div>
+
+      <div class="header-actions-end">
+        <ng-content />
+      </div>
     </div>
   </div>
 </header>

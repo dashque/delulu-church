@@ -7,13 +7,30 @@ The Church of the Holy Deploy — цифровой храм для програ�
 ### Реализовано
 
 - **Главная** — гадание на судьбу деплоя (расклад Tarot через внешний API)
-- **Дед-сеньор** — генератор цифровой мудрости
+- **Дед-сеньор** — генератор цифровой мудрости (ghost-coder)
 - **Исповедальня (shrift)** — список грехов, добавление и удаление (Firebase Firestore)
-- **Алтарь (altar)** — свечи, подсчёт подношений, уровень благословения
+- **Алтарь (altar)** — свечи, подсчёт подношений, уровень благословения Духа Машины
+- **Санктум (sanctum)** — ритуал суда над веткой (litany, вердикт, digital priest, звук)
+- **Crystal ball** — страница с магическим шаром и «мудростью»
 - **Авторизация** — регистрация, вход (email + OAuth GitHub/Google), Firebase Auth
 - **Профиль** — UI-shell (в разработке)
+- **404** — страница для неизвестных маршрутов с возвратом на главную
 - **i18n** — русский / английский (Transloco)
 - **Тема** — светлая / тёмная, синхронизация с Firestore
+- **Уведомления** — `@ngxpert/hot-toast` (тема glassmorphism): HTTP-ошибки через interceptor, ошибки Firestore — в facades страниц
+- **Валидация форм** — login / register: `tui-error` привязан к `FormControl`, тексты ошибок централизованы через `tuiValidationErrorsProvider` + Transloco
+
+### Обработка ошибок (кратко)
+
+| Источник                                            | Как показываем                                                                     |
+| --------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `HttpClient` (tarot, перевод и т.п.)                | `httpErrorInterceptor` → HotToast (`error`), запросы `/i18n/` без toast            |
+| Firebase / Firestore (auth, shrift, altar, sanctum) | сервис кладёт `error` / throw → facade → HotToast                                  |
+| Долгий/зависший Firestore                           | `withTimeout` + `FIRESTORE_OPERATION_TIMEOUT_MS` (7 с), чтобы не висеть на loading |
+
+## 🚀 Демонстрация обработки ошибок, состояния загрузки, 404
+
+[Ссылка](https://drive.google.com/file/d/1xQl8qfHqrmiRhw6KaKnjK7WEUC5O3FE4/view?usp=sharing)
 
 ## 🚀 Deployment
 

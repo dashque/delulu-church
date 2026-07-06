@@ -4,12 +4,26 @@
     id="candles-source"
     [cdkDropListData]="candleList()"
     [cdkDropListConnectedTo]="['altar-drop-list']"
+    [cdkDropListAutoScrollDisabled]="true"
     cdkDropListSortingDisabled
     class="candles"
     (cdkDropListDropped)="onDrop($event)"
   >
     @for (candle of candleList(); track candle.id) {
-      <article class="candle" [style.--candle-color]="candle.color" cdkDrag>
+      @let offeringCount = candleCountsMap()[candle.id];
+
+      <article
+        class="candle"
+        [style.--candle-color]="candle.color"
+        cdkDrag
+        role="button"
+        tabindex="0"
+        [attr.aria-label]="candle.purpose | transloco"
+        (click)="offerCandle(candle)"
+        (keydown)="onCandleKeydown($event, candle)"
+        (cdkDragStarted)="onDragStarted()"
+        (cdkDragEnded)="onDragEnded()"
+      >
         <div class="candle-figure">
           <span class="candle-wick" aria-hidden="true"></span>
 
@@ -26,7 +40,7 @@
 
         <p class="candle-purpose">{{ candle.purpose | transloco }}</p>
         <p class="candle-count">
-          {{ 'altar.candles.count' | transloco: { count: candleCountsMap()[candle.id] } }}
+          {{ 'altar.candles.count' | transloco: { count: offeringCount } }}
         </p>
       </article>
     }
@@ -38,7 +52,9 @@
     <div
       cdkDropList
       id="altar-drop-list"
+      [cdkDropListData]="altarDropListData"
       [cdkDropListConnectedTo]="['candles-source']"
+      [cdkDropListAutoScrollDisabled]="true"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="onDrop($event)"
       class="candle-altar-surface"

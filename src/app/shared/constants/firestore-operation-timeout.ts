@@ -1,0 +1,1 @@
+export const FIRESTORE_OPERATION_TIMEOUT_MS = 7_000;

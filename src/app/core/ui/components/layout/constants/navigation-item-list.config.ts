@@ -8,6 +8,7 @@ export const NAVIGATION_ITEM_LIST = [
     url: '/',
     exact: true,
   },
+  { icon: '@tui.sparkles', label: marker('navigation-items.crystal_ball'), url: '/crystal-ball' },
   {
     icon: '@tui.scroll',
     label: marker('navigation-items.shrift'),
@@ -19,8 +20,8 @@ export const NAVIGATION_ITEM_LIST = [
     url: '/altar',
   },
   {
-    icon: '@tui.eye',
-    label: marker('navigation-items.crystal_ball'),
-    url: '/crystal-ball',
+    icon: '@tui.git-branch',
+    label: marker('navigation-items.sanctum'),
+    url: '/sanctum',
   },
 ] as const satisfies NavigationItem[];

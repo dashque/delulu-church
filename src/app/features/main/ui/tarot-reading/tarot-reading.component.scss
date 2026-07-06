@@ -54,12 +54,15 @@
 
 .tarot-verdict-title {
   color: var(--verdict-accent);
-  font-family: var(--font-orbitron), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-stretch: var(--font-display-stretch);
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.1em;
   line-height: 1.2;
-  text-shadow: 0 0 0.5rem color-mix(in srgb, var(--verdict-accent) 55%, transparent);
+  text-shadow:
+    0 0 0.5rem color-mix(in srgb, var(--verdict-accent) 55%, transparent),
+    0 0 1.25rem color-mix(in srgb, var(--verdict-accent) 28%, transparent);
 }
 
 .tarot-verdict-text {
