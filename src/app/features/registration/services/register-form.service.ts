@@ -14,15 +14,15 @@ export class RegisterFormService {
   private createFormInstance() {
     return this.fb.group<RegisterFormGroup>(
       {
-        name: this.fb.nonNullable.control('', [Validators.required, Validators.maxLength(30)]),
-        email: this.fb.nonNullable.control('', [Validators.required, Validators.pattern(EMAIL_PATTERN)]),
-        password: this.fb.nonNullable.control('', [
+        name: this.fb.control(null, [Validators.required, Validators.maxLength(30)]),
+        email: this.fb.control(null, [Validators.required, Validators.pattern(EMAIL_PATTERN)]),
+        password: this.fb.control(null, [
           Validators.required,
           Validators.minLength(PASSWORD_MIN_LENGTH),
           Validators.maxLength(PASSWORD_MAX_LENGTH),
           Validators.pattern(PASSWORD_PATTERN),
         ]),
-        passwordConfirmation: this.fb.nonNullable.control('', [
+        passwordConfirmation: this.fb.control(null, [
           Validators.required,
           Validators.minLength(PASSWORD_MIN_LENGTH),
           Validators.maxLength(PASSWORD_MAX_LENGTH),

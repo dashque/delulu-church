@@ -1,13 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
-import { of } from 'rxjs';
 
 import { AltarPageFacade } from './altar-page.facade';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { candlesServiceMock, resetCandlesServiceMock } from '@core/services/candles/candles.service.mock';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
-import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
-import { TuiNotificationService } from '@taiga-ui/core';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 describe('AltarPageFacade', () => {
   let facade: AltarPageFacade;
@@ -16,7 +15,7 @@ describe('AltarPageFacade', () => {
   beforeEach(() => {
     resetCandlesServiceMock();
     errorSignal.set(null);
-    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
+    hotToastServiceMock.error.mockReset();
 
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
@@ -26,7 +25,7 @@ describe('AltarPageFacade', () => {
           provide: CandlesService,
           useValue: { ...candlesServiceMock, error: errorSignal.asReadonly() },
         },
-        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+        { provide: HotToastService, useValue: hotToastServiceMock },
       ],
     });
     facade = TestBed.inject(AltarPageFacade);
@@ -40,7 +39,7 @@ describe('AltarPageFacade', () => {
     errorSignal.set(new Error('Firestore error'));
     TestBed.flushEffects();
 
-    expect(tuiNotificationServiceMock.open).toHaveBeenCalledTimes(1);
+    expect(hotToastServiceMock.error).toHaveBeenCalledTimes(1);
   });
 
   it('должен делегировать offerCandle в CandlesService', () => {

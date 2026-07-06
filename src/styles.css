@@ -443,3 +443,13 @@ tui-textfield:has([tuiInputDate]) tui-icon {
 [tuiTheme='light'] tui-error {
   color: color-mix(in srgb, var(--critical) 88%, var(--warning));
 }
+
+/* className from provideHotToastConfig({ className: 'toast' }) */
+.toast {
+  font-family: var(--font-display);
+  white-space: pre-line;
+}
+
+.hot-toast-theme-glassmorphism .hot-toast-bar-base.toast {
+  border: 2px solid var(--accent-primary);
+}

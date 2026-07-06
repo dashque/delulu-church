@@ -1,17 +1,15 @@
-import { DestroyRef, inject, Service } from '@angular/core';
+import { inject, Service } from '@angular/core';
 import { ConfessFormService } from '../services/confess-form.service';
 import { ConfessService } from '@core/services/confess/confess.service';
-import { TuiNotificationService } from '@taiga-ui/core';
 import { TranslocoService } from '@jsverse/transloco';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { toErrorMessage } from '@shared/helpers/to-error-message.helper';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 @Service({
   autoProvided: false,
 })
 export class ShriftPageFacade {
-  private readonly notifications = inject(TuiNotificationService);
-  private readonly destroyRef = inject(DestroyRef);
+  private readonly notifications = inject(HotToastService);
   private readonly translocoService = inject(TranslocoService);
   private readonly confessService = inject(ConfessService);
   public readonly confessForm = inject(ConfessFormService).confessForm;
@@ -20,9 +18,9 @@ export class ShriftPageFacade {
 
   constructor() {
     this.confessService.loadSins().catch((error: unknown) => {
-      void this.showNotification(
-        toErrorMessage(error),
-        this.translocoService.translate('notifications.failure', {}, 'shrift')
+      this.notifications.error(
+        `${this.translocoService.translate('notifications.failure', {}, 'shrift')}
+        ${toErrorMessage(error)}`
       );
     });
   }
@@ -38,9 +36,9 @@ export class ShriftPageFacade {
       await this.confessService.addSin(text, severity);
       this.confessForm.reset();
     } catch (error) {
-      void this.showNotification(
-        toErrorMessage(error),
-        this.translocoService.translate('notifications.failure', {}, 'shrift')
+      this.notifications.error(
+        `${this.translocoService.translate('notifications.failure', {}, 'shrift')}
+        ${toErrorMessage(error)}`
       );
     }
   }
@@ -49,21 +47,10 @@ export class ShriftPageFacade {
     try {
       await this.confessService.deleteSin(sinUid);
     } catch (error) {
-      void this.showNotification(
-        toErrorMessage(error),
-        this.translocoService.translate('notifications.failure', {}, 'shrift')
+      this.notifications.error(
+        `${this.translocoService.translate('notifications.failure', {}, 'shrift')}
+        ${toErrorMessage(error)}`
       );
     }
-  }
-
-  private showNotification(message: string, label: string) {
-    this.notifications
-      .open(message, {
-        label: label,
-        appearance: 'negative',
-        autoClose: 5000,
-      })
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
   }
 }

@@ -6,23 +6,22 @@ import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-
 import { AltarPageFacade } from '@features/altar/facades/altar-page.facade';
 import { candlesServiceMock } from '@core/services/candles/candles.service.mock';
 import { CandlesService } from '@core/services/candles/candles.service';
-import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
-import { TuiNotificationService } from '@taiga-ui/core';
-import { of } from 'rxjs';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 describe('AltarComponent', () => {
   let component: AltarComponent;
   let fixture: ComponentFixture<AltarComponent>;
 
   beforeEach(async () => {
-    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
+    hotToastServiceMock.error.mockReset();
 
     await TestBed.configureTestingModule({
       imports: [AltarComponent, TranslocoTestingMock],
       providers: [
         AltarPageFacade,
         { provide: CandlesService, useValue: candlesServiceMock },
-        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+        { provide: HotToastService, useValue: hotToastServiceMock },
       ],
     }).compileComponents();
 

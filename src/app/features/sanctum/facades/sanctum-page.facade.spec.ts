@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { signal } from '@angular/core';
-import { of } from 'rxjs';
 
 import { SanctumPageFacade } from './sanctum-page.facade';
 import { CandlesService } from '@core/services/candles/candles.service';
@@ -16,8 +15,8 @@ import { SanctumSoundService } from '@features/sanctum/services/sanctum-sound.se
 import { priestQuotesServiceMock } from '@features/sanctum/services/priest-quotes.service.mock';
 import { PriestQuotesService } from '@features/sanctum/services/priest-quotes.service';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
-import { tuiNotificationServiceMock } from '@shared/mocks/tui-notification/tui-notification.service.mock';
-import { TuiNotificationService } from '@taiga-ui/core';
+import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
+import { HotToastService } from '@ngxpert/hot-toast';
 
 describe('SanctumPageFacade', () => {
   let facade: SanctumPageFacade;
@@ -28,7 +27,7 @@ describe('SanctumPageFacade', () => {
     sanctumRitualServiceMock.isJudging.set(false);
     sanctumRitualServiceMock.judgment.set(null);
     sanctumRitualServiceMock.litanyLines.set([]);
-    tuiNotificationServiceMock.open.mockReset().mockReturnValue(of(undefined));
+    hotToastServiceMock.error.mockReset();
 
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
@@ -45,7 +44,7 @@ describe('SanctumPageFacade', () => {
             quotesByPool: { error: quotesErrorSignal.asReadonly() },
           },
         },
-        { provide: TuiNotificationService, useValue: tuiNotificationServiceMock },
+        { provide: HotToastService, useValue: hotToastServiceMock },
       ],
     });
 
@@ -60,7 +59,7 @@ describe('SanctumPageFacade', () => {
     quotesErrorSignal.set(new Error('Firestore error'));
     TestBed.flushEffects();
 
-    expect(tuiNotificationServiceMock.open).toHaveBeenCalledTimes(1);
+    expect(hotToastServiceMock.error).toHaveBeenCalledTimes(1);
   });
 
   describe('Вердикт запрошен', () => {
