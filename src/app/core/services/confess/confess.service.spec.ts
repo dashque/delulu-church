@@ -8,8 +8,13 @@ import type { User } from 'firebase/auth';
 import type { Mock } from 'vitest';
 import { vi } from 'vitest';
 
-import { ConfessService } from './confess.service';
 import { confessServiceMock, resetConfessServiceMock } from './confess.service.mock';
+import {
+  coderQuotesServiceMock,
+  resetCoderQuotesServiceMock,
+} from '@core/ui/components/ghost-coder/services/coder-quotes.service.mock';
+import { CoderQuotesService } from '@core/ui/components/ghost-coder/services/coder-quotes.service';
+import { ConfessService } from './confess.service';
 import { FIRESTORE_OPERATION_TIMEOUT_MS } from '@shared/constants/firestore-operation-timeout';
 
 describe('ConfessService', () => {
@@ -18,11 +23,16 @@ describe('ConfessService', () => {
   beforeEach(() => {
     resetFirebaseAuthMock();
     resetAuthServiceMock();
+    resetCoderQuotesServiceMock();
     (authServiceMock.user as unknown as Mock).mockReturnValue(userFixture as unknown as User);
 
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
-      providers: [ConfessService, { provide: AuthService, useValue: authServiceMock }],
+      providers: [
+        ConfessService,
+        { provide: AuthService, useValue: authServiceMock },
+        { provide: CoderQuotesService, useValue: coderQuotesServiceMock },
+      ],
     });
     service = TestBed.inject(ConfessService);
   });
