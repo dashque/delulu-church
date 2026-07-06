@@ -4,12 +4,14 @@ import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase
 import { firestore } from '@env/environment';
 import type { Severity, Sin, Status } from '@features/shrift/models/sin.model';
 import { SINS_SUBCOLLECTION, STATUSES, USERS_COLLECTION } from '@core/services/confess/models/confess.model';
+import { CoderQuotesService } from '@core/ui/components/ghost-coder/services/coder-quotes.service';
 import { withTimeout } from '@shared/helpers/with-timeout.helper';
 import { FIRESTORE_OPERATION_TIMEOUT_MS } from '@shared/constants/firestore-operation-timeout';
 
 @Service()
 export class ConfessService {
   private readonly authService = inject(AuthService);
+  private readonly coderService = inject(CoderQuotesService);
 
   private readonly _sins = signal<Sin[] | null>(null);
   private readonly _isLoading = signal(false);
@@ -62,6 +64,7 @@ export class ConfessService {
       this._sins.update((sins) => (sins ? [...sins, newSin] : [newSin]));
 
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
+      this.coderService.reactSins('add');
     } catch (error) {
       this._error.set(error);
       throw error;
@@ -81,6 +84,7 @@ export class ConfessService {
 
       this._sins.update((sins) => sins?.filter((sin) => sin.uid !== sinUid) ?? null);
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
+      this.coderService.reactSins('delete');
     } catch (error) {
       this._error.set(error);
       throw error;
