@@ -1,4 +1,4 @@
-import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Service, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
@@ -10,7 +10,9 @@ import { TranslocoService } from '@jsverse/transloco';
 import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
 
-@Injectable()
+@Service({
+  autoProvided: false,
+})
 export class ProfileFacade {
   private readonly profileFormService = inject(ProfileFormService);
 
