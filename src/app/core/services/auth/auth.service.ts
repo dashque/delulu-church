@@ -4,13 +4,16 @@ import { UserProfileService } from '@core/services/user-profile/user-profile.ser
 import type { AuthProvider, User } from 'firebase/auth';
 import {
   createUserWithEmailAndPassword,
+  EmailAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
+  reauthenticateWithCredential,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updatePassword,
 } from 'firebase/auth';
 
 @Service()
@@ -124,6 +127,24 @@ export class AuthService {
 
       throw error;
     }
+  }
+
+  public async changePassword(currentPassword: string, newPassword: string) {
+    const user = auth.currentUser;
+
+    if (!user || !user.email) {
+      throw new Error('User is not authenticated');
+    }
+
+    const credential = EmailAuthProvider.credential(user.email, currentPassword);
+
+    /**
+     * Requires email/password account; OAuth-only users are not supported.
+     */
+
+    await reauthenticateWithCredential(user, credential);
+
+    await updatePassword(user, newPassword);
   }
 
   private startLoading() {

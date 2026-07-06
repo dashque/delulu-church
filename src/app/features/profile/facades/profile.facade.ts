@@ -1,14 +1,29 @@
-import { computed, inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Service, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
+import { ProfileFormService } from '../services/profile-form/profile-form.service';
+import { AuthService } from '@core/services/auth/auth.service';
+import { TranslocoService } from '@jsverse/transloco';
+import { FirebaseError } from 'firebase/app';
+import { HotToastService } from '@ngxpert/hot-toast';
 
-@Injectable({
-  providedIn: 'root',
+@Service({
+  autoProvided: false,
 })
 export class ProfileFacade {
+  private readonly profileFormService = inject(ProfileFormService);
+
+  private readonly authService = inject(AuthService);
+
+  private readonly translocoService = inject(TranslocoService);
+
+  private readonly toast = inject(HotToastService);
+
+  public readonly profileForm = this.profileFormService.form;
+
   public readonly state = signal<ProfileData>(PROFILE_MOCK);
 
   public readonly userProfileService = inject(UserProfileService);
@@ -77,6 +92,8 @@ export class ProfileFacade {
     };
   });
 
+  public readonly isLoading = signal(false);
+
   public readonly achievementsCount = computed(() => this.achievementInfo().achievements.length);
 
   public readonly unlockedAchievementsCount = computed(
@@ -87,4 +104,61 @@ export class ProfileFacade {
     unlocked: this.unlockedAchievementsCount(),
     total: this.achievementsCount(),
   }));
+
+  constructor() {
+    effect(() => {
+      const user = this.userProfileService.user();
+
+      if (!user) {
+        return;
+      }
+
+      this.profileForm.patchValue(
+        {
+          name: user.displayName ?? '',
+        },
+        { emitEvent: false }
+      );
+    });
+  }
+
+  public async submit() {
+    if (this.profileForm.invalid || this.isLoading()) {
+      return;
+    }
+
+    const user = this.authService.user();
+
+    if (!user) {
+      return;
+    }
+
+    this.isLoading.set(true);
+
+    try {
+      const { name, currentPassword, newPassword } = this.profileForm.getRawValue();
+
+      if (currentPassword && newPassword) {
+        await this.authService.changePassword(currentPassword, newPassword);
+      }
+
+      await this.userProfileService.updateProfile(user.uid, {
+        displayName: name,
+      });
+
+      this.profileForm.markAsPristine();
+
+      this.toast.success(this.translocoService.translate('notifications.success', {}, 'profile'));
+    } catch (error) {
+      let message = this.translocoService.translate('notifications.failure-message', {}, 'profile');
+
+      if (error instanceof FirebaseError && error.code === 'auth/invalid-credential') {
+        message = this.translocoService.translate('notifications.invalid-password', {}, 'profile');
+      }
+
+      this.toast.error(message);
+    } finally {
+      this.isLoading.set(false);
+    }
+  }
 }

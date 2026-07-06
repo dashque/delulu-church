@@ -18,6 +18,7 @@ export const authServiceMock = {
   loginWithGithub: vi.fn().mockResolvedValue(null),
   loginWithGoogle: vi.fn().mockResolvedValue(null),
   requestPasswordRecovery: vi.fn().mockResolvedValue(undefined),
+  changePassword: vi.fn().mockResolvedValue(undefined),
 } as const satisfies MockedObject<Partial<AuthService>>;
 
 export const resetAuthServiceMock = (): void => {

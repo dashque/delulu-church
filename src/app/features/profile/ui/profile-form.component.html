@@ -1,0 +1,50 @@
+@let nameControl = form.controls.name;
+@let currentPasswordControl = form.controls.currentPassword;
+@let newPasswordControl = form.controls.newPassword;
+@let newPasswordConfirmationControl = form.controls.newPasswordConfirmation;
+<form [formGroup]="form" tuiCardLarge tuiForm="m" class="form" [style.max-width.rem]="48" (submit)="onSubmit($event)">
+  <tui-textfield>
+    <label tuiLabel for="name">{{ 'profile.form.labels.name' | transloco }}</label>
+    <input [formControl]="nameControl" placeholder="aboba" tuiInput id="name" />
+  </tui-textfield>
+  <tui-error [formControl]="nameControl" />
+
+  <tui-textfield iconStart="@tui.lock">
+    <label tuiLabel for="password">{{ 'profile.form.labels.password' | transloco }}</label>
+    <input id="password" [formControl]="currentPasswordControl" placeholder="Aa888888" tuiInput type="password" />
+    <tui-icon tuiPassword />
+  </tui-textfield>
+  <tui-error [formControl]="currentPasswordControl" />
+
+  <tui-textfield iconStart="@tui.lock">
+    <label tuiLabel for="newPassword">{{ 'profile.form.labels.new_password' | transloco }}</label>
+    <input id="newPassword" [formControl]="newPasswordControl" placeholder="Aa888888" tuiInput type="password" />
+    <tui-icon tuiPassword />
+  </tui-textfield>
+  <tui-error [formControl]="newPasswordControl" />
+
+  <tui-textfield iconStart="@tui.lock">
+    <label tuiLabel for="newPasswordConfirmation">{{
+      'profile.form.labels.new_password_confirmation' | transloco
+    }}</label>
+    <input
+      id="newPasswordConfirmation"
+      [formControl]="newPasswordConfirmationControl"
+      placeholder="Aa888888"
+      tuiInput
+      type="password"
+    />
+    <tui-icon tuiPassword />
+  </tui-textfield>
+  <tui-error [formControl]="newPasswordConfirmationControl" />
+
+  <footer class="footer">
+    <button tuiButton type="submit" [disabled]="form.invalid || isLoading()">
+      @if (isLoading()) {
+        <tui-loader />
+      } @else {
+        {{ 'profile.actions.submit' | transloco }}
+      }
+    </button>
+  </footer>
+</form>

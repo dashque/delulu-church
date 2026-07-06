@@ -42,7 +42,29 @@ export class UserProfileService {
       },
     });
   }
+  public async updateProfile(
+    uid: string,
+    data: {
+      displayName?: string;
+    }
+  ) {
+    const updateData: Record<string, unknown> = {};
 
+    if (data.displayName) {
+      updateData['displayName'] = data.displayName;
+    }
+
+    await setDoc(this.getUserReference(uid), updateData, { merge: true });
+
+    const currentUser = this._user();
+
+    if (currentUser?.uid === uid) {
+      this._user.set({
+        ...currentUser,
+        displayName: data.displayName ?? currentUser.displayName,
+      });
+    }
+  }
   public async ensureProviderProfile(uid: string, email: string | null, displayName: string | null) {
     const userReference = this.getUserReference(uid);
     const userSnapshot = await getDoc(userReference);

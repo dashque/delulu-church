@@ -5,31 +5,7 @@
       <h2 class="profile-title">{{ user.displayName || user.email }}</h2>
     }
   </section>
-  <section class="user-section">
-    <div class="section-title">
-      <tui-icon icon="@tui.trending-up" />
-      <h3>{{ 'profile.statistics' | transloco }}</h3>
-    </div>
-    <div class="section-container">
-      @for (stat of stats; track stat.name) {
-        <ng-container
-          *ngTemplateOutlet="
-            statTemplate;
-            context: {
-              $implicit: stat.value,
-              name: stat.name,
-            }
-          "
-        />
-      }
-    </div>
-    <ng-template #statTemplate let-value let-name="name">
-      <div class="stats-item">
-        <span class="stats-value">{{ value }}</span>
-        <span class="stats-name">{{ name | transloco }}</span>
-      </div>
-    </ng-template>
-  </section>
+  <ngKitty-profile-form />
   <section class="user-section">
     <div class="section-title">
       <tui-icon icon="@tui.award" />
