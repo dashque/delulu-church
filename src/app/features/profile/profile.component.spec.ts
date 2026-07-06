@@ -10,8 +10,8 @@ import { ProfileComponent } from './profile.component';
 import { ProfileFacade } from './facades/profile.facade';
 import { vi } from 'vitest';
 import { signal } from '@angular/core';
-import { provideRouter } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -35,11 +35,10 @@ describe('ProfileComponent', () => {
     resetUserProfileServiceMock();
 
     await TestBed.configureTestingModule({
-      imports: [ProfileComponent, TranslocoTestingMock],
+      imports: [ProfileComponent, TranslocoTestingMock, ReactiveFormsModule],
       providers: [
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: ProfileFacade, useValue: profileFacadeMock },
-        provideRouter([]),
       ],
     }).compileComponents();
 

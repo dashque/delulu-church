@@ -19,6 +19,7 @@ import { SanctumFormService } from '@features/sanctum/services/sanctum-form.serv
 import { SanctumRitualService } from '@features/sanctum/services/sanctum-ritual.service';
 import { SanctumSoundService } from '@features/sanctum/services/sanctum-sound.service';
 import { PriestQuotesService } from '@features/sanctum/services/priest-quotes.service';
+import { ProfileFacade } from '@features/profile/facades/profile.facade';
 
 export const routes: Routes = [
   {
@@ -35,7 +36,7 @@ export const routes: Routes = [
         path: 'profile',
         canMatch: [authGuard],
         loadComponent: () => import('./features/profile/profile.component').then((c) => c.ProfileComponent),
-        providers: [provideTranslocoScope('profile')],
+        providers: [provideTranslocoScope('profile'), ProfileFacade],
         data: { preloadFor: PreloadFor.AUTH },
       },
       {

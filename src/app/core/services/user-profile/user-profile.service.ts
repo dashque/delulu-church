@@ -46,7 +46,6 @@ export class UserProfileService {
     uid: string,
     data: {
       displayName?: string;
-      password?: string;
     }
   ) {
     const updateData: Record<string, unknown> = {};

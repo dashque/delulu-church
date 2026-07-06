@@ -10,9 +10,7 @@ import { TranslocoService } from '@jsverse/transloco';
 import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ProfileFacade {
   private readonly profileFormService = inject(ProfileFormService);
 
