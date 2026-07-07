@@ -54,8 +54,19 @@
 }
 
 .form-subtitle {
-  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   color: var(--critical);
+}
+
+.form-subtitle-first {
+  text-transform: uppercase;
+}
+
+.form-subtitle-second {
+  text-transform: lowercase;
 }
 
 .footer {

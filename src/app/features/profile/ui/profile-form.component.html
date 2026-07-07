@@ -8,7 +8,11 @@
     <input [formControl]="nameControl" placeholder="aboba" tuiInput id="name" />
   </tui-textfield>
   <tui-error [formControl]="nameControl" />
-  <h3 class="form-subtitle">{{ 'profile.form.subtitle' | transloco }}</h3>
+  <div class="form-subtitle">
+    <h3 class="form-subtitle-first">{{ 'profile.form.subtitle.first' | transloco }}</h3>
+    <span class="form-subtitle-second">&nbsp;</span>
+    <span class="form-subtitle-second">{{ 'profile.form.subtitle.second' | transloco }}</span>
+  </div>
   <tui-textfield iconStart="@tui.lock">
     <label tuiLabel for="password">{{ 'profile.form.labels.password' | transloco }}</label>
     <input id="password" [formControl]="currentPasswordControl" placeholder="Aa888888" tuiInput type="password" />

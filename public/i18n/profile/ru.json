@@ -10,7 +10,10 @@
       "new_password": "Новый пароль",
       "new_password_confirmation": "Подтверждение нового пароля"
     },
-    "subtitle": "Изменить паспорт (опционально)"
+    "subtitle": {
+      "first": "Изменить пароль",
+      "second": " (опционально)"
+    }
   },
   "notifications": {
     "success": "Профиль успешно обновлен",
