@@ -1,18 +1,21 @@
 <div class="profile">
-   
   <section appearance="flat" tuiCardLarge class="user-info">
-       
     <h1 class="profile-title">[{{ 'profile.title' | transloco }}]</h1>
-       
-    <div tuiAvatar="@tui.user" size="xl"></div>
-       
-    @if (userProfileService.user(); as user) {
-           
-      <h2 class="profile-title">{{ user.displayName || user.email }}</h2>
-         
-    }
+    <div class="profile-head">
+      <div tuiAvatar="@tui.user" size="xl"></div>
+      @if (userProfileService.user(); as user) {
+        <div class="profile-head_info">
+          <h2 class="profile-title">{{ user.displayName || user.email }}</h2>
+          <p class="machine-spirit-status">
+            {{ 'profile.machine-spirit.id' | transloco }} {{ user.uid || user.email }}
+          </p>
+        </div>
+      }
+    </div>
+
+    <ngKitty-profile-form />
   </section>
-  <ngKitty-profile-form />
+
   <section class="user-section">
     <div class="section-title">
       <tui-icon icon="@tui.award" />

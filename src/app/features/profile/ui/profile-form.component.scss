@@ -6,12 +6,9 @@
 }
 
 .form {
-  border-radius: 0;
-  border: 1px solid var(--tui-border-normal);
   padding: 2rem;
   width: 100%;
   background: color-mix(in srgb, var(--tui-background-base-alt) 92%, transparent);
-  box-shadow: var(--primary-shadow);
 }
 
 .form[tuiCardLarge] {
