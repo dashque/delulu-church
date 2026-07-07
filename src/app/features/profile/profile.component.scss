@@ -1,25 +1,46 @@
 :host {
   display: flex;
   gap: 1rem;
+  box-sizing: border-box;
 }
 
 .profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 50% 50%;
   width: 100%;
   gap: 1rem;
+}
+
+.profile-head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.profile-head-info {
+  margin-left: 1rem;
+}
+
+.machine-spirit-status {
+  text-align: left;
+  color: var(--light-text);
+  padding: 0;
+  margin: 0;
 }
 
 .user-info {
   display: flex;
   flex-direction: column;
-  align-items: center !important;
+  align-items: flex-start !important;
   width: max-content !important;
-  background: inherit !important;
   gap: 0.5rem !important;
-  padding: 0.5rem !important;
+  padding: 2rem !important;
+  margin: 1rem !important;
+  border-radius: 0 !important;
+  border: 1px solid var(--tui-border-normal);
+  background: color-mix(in srgb, var(--tui-background-base-alt) 92%, transparent) !important;
+  box-shadow: var(--primary-shadow);
 }
 
 .user-info span {
@@ -30,14 +51,21 @@
 
 .profile-title {
   margin: 0;
-  text-align: center;
+  text-align: left;
   letter-spacing: 0.1em;
   color: var(--accent-primary);
 }
 
-.user-section {
-  border-radius: 1rem;
+.user-avatar {
   border: 2px solid var(--accent-primary);
+  background-color: inherit;
+}
+
+.user-section {
+  box-sizing: border-box;
+  border-radius: 0;
+  border: 2px solid var(--accent-primary);
+  margin-top: 1rem;
   padding: 1rem;
   width: 100%;
 }
@@ -136,7 +164,29 @@
   margin: 0;
 }
 
+@media (width<=1490px) {
+  .profile {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100% !important;
+    gap: 1rem;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
 @media (width<=768px) {
+  .profile {
+    display: grid;
+    grid-template-columns: 100%;
+    width: 100%;
+    gap: 1rem;
+  }
+
   .section-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -148,6 +198,13 @@
 }
 
 @media (width<=460px) {
+  .profile {
+    display: grid;
+    grid-template-columns: 100%;
+    width: 100%;
+    gap: 1rem;
+  }
+
   .section-container {
     display: grid;
     grid-template-columns: 1fr;

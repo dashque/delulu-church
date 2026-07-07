@@ -2,13 +2,17 @@
 @let currentPasswordControl = form.controls.currentPassword;
 @let newPasswordControl = form.controls.newPassword;
 @let newPasswordConfirmationControl = form.controls.newPasswordConfirmation;
-<form [formGroup]="form" tuiCardLarge tuiForm="m" class="form" [style.max-width.rem]="48" (submit)="onSubmit($event)">
+<form [formGroup]="form" tuiCardLarge tuiForm="m" class="form" (submit)="onSubmit($event)">
   <tui-textfield>
     <label tuiLabel for="name">{{ 'profile.form.labels.name' | transloco }}</label>
     <input [formControl]="nameControl" placeholder="aboba" tuiInput id="name" />
   </tui-textfield>
   <tui-error [formControl]="nameControl" />
-
+  <div class="form-subtitle">
+    <h3 class="form-subtitle-first">{{ 'profile.form.subtitle.first' | transloco }}</h3>
+    <span class="form-subtitle-second">&nbsp;</span>
+    <span class="form-subtitle-second">{{ 'profile.form.subtitle.second' | transloco }}</span>
+  </div>
   <tui-textfield iconStart="@tui.lock">
     <label tuiLabel for="password">{{ 'profile.form.labels.password' | transloco }}</label>
     <input id="password" [formControl]="currentPasswordControl" placeholder="Aa888888" tuiInput type="password" />
@@ -43,6 +47,7 @@
       @if (isLoading()) {
         <tui-loader />
       } @else {
+        <tui-icon icon="@tui.save" />
         {{ 'profile.actions.submit' | transloco }}
       }
     </button>

@@ -1,10 +1,18 @@
 {
+  "title": "Настройки Профиля",
+  "machine-spirit": {
+    "id": "Дух Машины ID: "
+  },
   "form": {
     "labels": {
       "name": "Имя пользователя",
       "password": "Текущий пароль",
       "new_password": "Новый пароль",
       "new_password_confirmation": "Подтверждение нового пароля"
+    },
+    "subtitle": {
+      "first": "Изменить пароль",
+      "second": " (опционально)"
     }
   },
   "notifications": {
