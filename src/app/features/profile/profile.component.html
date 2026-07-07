@@ -1,8 +1,15 @@
 <div class="profile">
+   
   <section appearance="flat" tuiCardLarge class="user-info">
+       
+    <h1 class="profile-title">[{{ 'profile.title' | transloco }}]</h1>
+       
     <div tuiAvatar="@tui.user" size="xl"></div>
+       
     @if (userProfileService.user(); as user) {
+           
       <h2 class="profile-title">{{ user.displayName || user.email }}</h2>
+         
     }
   </section>
   <ngKitty-profile-form />
