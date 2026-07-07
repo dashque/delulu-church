@@ -9,7 +9,8 @@
       "password": "Current password",
       "new_password": "New password",
       "new_password_confirmation": "New password confirmation"
-    }
+    },
+    "subtitle": "Change Password (optional)"
   },
   "notifications": {
     "success": "Profile is successfully updated",

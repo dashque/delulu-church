@@ -1,32 +1,41 @@
 :host {
-  display: grid;
-  place-items: center;
+  display: flex;
   box-sizing: border-box;
-  flex: 1;
+  flex-direction: column;
+  width: 100%;
 }
 
 .form {
   padding: 2rem;
-  width: 100%;
   background: color-mix(in srgb, var(--tui-background-base-alt) 92%, transparent);
 }
 
 .form[tuiCardLarge] {
   border-radius: 0;
 
-  --tui-radius-l: 0rem;
-  --tui-radius-m: 0rem;
-  --tui-radius-s: 0rem;
+  --tui-radius-l: 0.5rem;
+  --tui-radius-m: 0.5rem;
+  --tui-radius-s: 0.5rem;
+}
+
+.footer button {
+  tui-icon {
+    color: var(--alternative-light-text);
+  }
+
+  color: var(--alternative-light-text);
+  text-transform: uppercase;
 }
 
 .form[tuiCardLarge] tui-textfield {
-  --tui-radius-l: 0rem;
-  --tui-radius-m: 0rem;
-  --tui-radius-s: 0rem;
+  --tui-radius-l: 0.5rem;
+  --tui-radius-m: 0.5rem;
+  --tui-radius-s: 0.5rem;
   --tui-background-neutral-1: var(--tui-background-base-alt);
+  --tui-status-negative: var(--critical);
 
   [tuiLabel] {
-    color: var(--accent-primary-soft);
+    color: var(--alternative-light-text);
   }
 
   &::before {
@@ -35,11 +44,18 @@
 
   tui-icon {
     color: var(--accent-primary);
+    margin-left: 0.5rem;
   }
 }
 
 .form[tuiCardLarge] tui-error {
   margin-top: -0.35rem;
+  color: var(--critical);
+}
+
+.form-subtitle {
+  text-transform: uppercase;
+  color: var(--critical);
 }
 
 .footer {
