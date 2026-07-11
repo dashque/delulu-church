@@ -14,8 +14,11 @@ import { TuiButton, TuiIcon } from '@taiga-ui/core';
 })
 export class CardComponent {
   public readonly icon = input<string>();
-  public readonly statNumber = input<string>();
-  public readonly statLabel = input<string>();
+  public readonly title = input<string>();
+  public readonly subtitle = input<string>();
+  public readonly description = input<string>();
+  public readonly buttonLabel = input<string>();
+  public readonly badge = input<string>();
   public readonly isClickable = input<boolean>(false);
 
   public readonly cardClicked = output<void>();
