@@ -1,0 +1,19 @@
+@if (icon()) {
+  <div class="icon-shell">
+    <tui-icon [icon]="icon()!" class="icon" />
+  </div>
+}
+
+@if (statNumber()) {
+  <div class="header">
+    @if (statNumber()) {
+      <h2 class="title">
+        {{ statNumber() }}
+      </h2>
+    }
+  </div>
+}
+
+@if (statLabel()) {
+  <p class="description">{{ statLabel() }}</p>
+}
