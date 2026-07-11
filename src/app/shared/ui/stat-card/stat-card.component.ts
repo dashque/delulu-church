@@ -1,9 +1,11 @@
 import { Component, input, output } from '@angular/core';
-import { TuiButton, TuiIcon } from '@taiga-ui/core';
+import { TuiIcon } from '@taiga-ui/core';
+import type { StatCard } from '@features/profile/data/models/stats-card.model';
 
 @Component({
-  selector: 'ngKitty-card',
-  imports: [TuiIcon, TuiButton],
+  selector: 'ngKitty-stat-card',
+  standalone: true,
+  imports: [TuiIcon],
   templateUrl: './stat-card.component.html',
   styleUrl: './stat-card.component.scss',
   host: {
@@ -13,9 +15,7 @@ import { TuiButton, TuiIcon } from '@taiga-ui/core';
   },
 })
 export class StatCardComponent {
-  public readonly icon = input<string>();
-  public readonly statNumber = input<string>();
-  public readonly statLabel = input<string>();
+  public readonly stat = input.required<StatCard>();
 
   public readonly isClickable = input<boolean>(false);
 

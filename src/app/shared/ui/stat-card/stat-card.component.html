@@ -1,19 +1,13 @@
-@if (icon()) {
+@if (stat(); as stat) {
   <div class="icon-shell">
-    <tui-icon [icon]="icon()!" class="icon" />
+    <tui-icon [icon]="stat.icon" class="icon" />
   </div>
-}
 
-@if (statNumber()) {
   <div class="header">
-    @if (statNumber()) {
-      <h2 class="title">
-        {{ statNumber() }}
-      </h2>
-    }
+    <h2 class="title">
+      {{ stat.value ?? 0 }}
+    </h2>
   </div>
-}
 
-@if (statLabel()) {
-  <p class="description">{{ statLabel() }}</p>
+  <p class="description">{{ stat.label }}</p>
 }

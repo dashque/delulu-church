@@ -9,6 +9,7 @@ import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
 import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
+import type { StatCard } from '../data/models/stats-card.model';
 
 @Service({
   autoProvided: false,
@@ -57,6 +58,25 @@ export class ProfileFacade {
     candles: Number(this.candlesService.totalOfferings?.() ?? 0),
     confesses: Number(this.confessService.sins?.()?.length ?? 0),
   }));
+
+  public readonly statCards = computed<StatCard[]>(() => {
+    const statistics = this.statistics();
+
+    return [
+      {
+        id: 'confessions',
+        icon: '@tui.book-heart',
+        value: statistics.confesses ?? 0,
+        label: this.translocoService.translate('profile.stats.confessions'),
+      },
+      {
+        id: 'candles',
+        icon: '@tui.flame',
+        value: statistics.candles ?? 0,
+        label: this.translocoService.translate('profile.stats.candles'),
+      },
+    ];
+  });
 
   public readonly achievementInfo = computed<AchievementInfo>(() => this.state().achievementInfo);
 

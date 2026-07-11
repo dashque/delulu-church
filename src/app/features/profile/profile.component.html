@@ -26,6 +26,14 @@
         >{{ 'profile.state.unblocked' | transloco }}: 0 {{ 'profile.state.from' | transloco }} 5</span
       >
     </div>
+    <div class="section-container">
+      @for (card of facade.statCards(); track card.id) {
+        <ngKitty-stat-card [stat]="card" />
+      }
+    </div>
+  </section>
+
+  <section class="user-section">
     <div class="divider"></div>
     <div class="achievements">
       @for (achieve of achieves; track achieve.title) {
