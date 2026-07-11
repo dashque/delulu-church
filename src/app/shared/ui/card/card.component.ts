@@ -4,8 +4,8 @@ import { TuiButton, TuiIcon } from '@taiga-ui/core';
 @Component({
   selector: 'ngKitty-stat-card',
   imports: [TuiIcon, TuiButton],
-  templateUrl: './stat-card.component.html',
-  styleUrl: './stat-card.component.scss',
+  templateUrl: './card.component.html',
+  styleUrl: './card.component.scss',
   host: {
     '[attr.tabindex]': 'isClickable() ? 0 : null',
     '(click)': 'onCardClick()',
