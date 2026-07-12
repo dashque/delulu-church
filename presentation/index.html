@@ -500,7 +500,7 @@
             <div class="agenda-item">
               <div class="time">~10</div>
               <div class="label"><strong>Team Story</strong> — как работали и учили Angular</div>
-              <div class="hint">роли, спринты, решения, сложности</div>
+              <div class="hint">роли, спринты, дизайн, архитектура, сложности</div>
             </div>
             <div class="agenda-item">
               <div class="time">5–10</div>
@@ -538,6 +538,43 @@
         <div class="footer"><span>Intro</span><span>3 / 20</span></div>
       </section>
 
+      <section class="slide" data-note="Зачем проект: юмор + ритуалы вокруг боли разработчика. 1 мин.">
+        <div class="content">
+          <p class="part-divider">Intro</p>
+          <span class="badge">Theme</span>
+          <h2>Тема и назначение</h2>
+          <ul>
+            <li><strong>The Church of the Holy Deploy</strong> — цифровой храм для программистов</li>
+            <li>Юмор и «ритуалы» вокруг деплоев, багов, code review и техдолга</li>
+            <li><strong>Tarot</strong> — судьба деплоя · <strong>Исповедальня</strong> — список грехов (багов)</li>
+            <li><strong>Алтарь</strong> — свечи за достижения · <strong>Санктум</strong> — суд над веткой</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Intro</span><span>4 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Почему выбрали эти библиотеки — кратко, без deep dive.">
+        <div class="content">
+          <span class="badge">Stack</span>
+          <h2>Выбор библиотек</h2>
+          <div class="two-col">
+            <ul>
+              <li><strong>Taiga UI 5</strong> — единый UI-kit, темизация, a11y</li>
+              <li><strong>Firebase</strong> — Auth + Firestore без своего бэкенда</li>
+              <li><strong>Transloco</strong> — i18n RU/EN</li>
+              <li><strong>NgRx Signals</strong> — uiStateStore без NgRx Store</li>
+            </ul>
+            <ul>
+              <li><strong>HotToast</strong> — единый UX ошибок</li>
+              <li><strong>Vitest</strong> — unit-тесты в Angular 22</li>
+              <li><strong>Netlify</strong> — static hosting + tarot API redirect</li>
+              <li><strong>ESLint + Husky</strong> — единые правила в команде</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Intro</span><span>5 / 20</span></div>
+      </section>
+
       <section class="slide" data-note="Alena: обзор продукта, 2 мин. Переход к demo.">
         <div class="content">
           <p class="part-divider">Part 1 · Product Demo</p>
@@ -573,7 +610,7 @@
             <li><strong>DevTools</strong></li>
           </ul>
         </div>
-        <div class="footer"><span>Product Demo</span><span>5 / 20</span></div>
+        <div class="footer"><span>Product Demo</span><span>7 / 20</span></div>
       </section>
 
       <!-- PART 2 · TEAM STORY -->
@@ -759,32 +796,118 @@
         <div class="footer"><span>Team Story</span><span>20 / 20</span></div>
       </section>
 
-      <section class="slide" data-note="Как учили Angular — отличия до/после курса.">
+      <section class="slide" data-note="Discord — основной канал: чат для задач и API, голос для синхронизаций.">
+        <div class="content">
+          <span class="badge">Communication</span>
+          <h2>Discord-сервер команды</h2>
+          <div class="two-col">
+            <ul>
+              <li><strong>Текстовые каналы</strong> — задачи, API, вопросы по коду</li>
+              <li><strong>Голосовые каналы</strong> — спринт-планирование, daily sync</li>
+              <li>Обсуждение API, схем и декомпозиции до написания кода</li>
+            </ul>
+            <div class="shot" style="max-height: 42vh; margin-top: 0"><img src="assets/discord-chat.png" alt="Discord team chat" /></div>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>21 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Декомпозиция: issues → sub-issues. Схемы: wireframes, UI → Facade → API.">
+        <div class="content">
+          <span class="badge">Planning</span>
+          <h2>Декомпозиция и схемы</h2>
+          <ul style="margin-bottom: 12px">
+            <li><strong>GitHub Issues</strong> — спринты, sub-issues, assignee на каждую задачу</li>
+            <li><strong>Схемы до кода</strong> — wireframes страниц, разбиение на компоненты</li>
+            <li><strong>Архитектура</strong> — UI → Facade → API service, структура features/</li>
+          </ul>
+          <div class="shot-two">
+            <div class="shot"><img src="assets/schema-confess.png" alt="Confession page wireframe" /></div>
+            <div class="shot"><img src="assets/schema-architecture.png" alt="Architecture schema" /></div>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>22 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Figma AI сгенерировала 2 варианта макета — выбрали элементы, адаптировали под Taiga UI.">
+        <div class="content">
+          <span class="badge">Design</span>
+          <h2>Дизайн: Figma AI</h2>
+          <p class="shot-caption" style="margin-top: 0; margin-bottom: 12px; text-align: left">
+            Два варианта макета через Figma AI → обсудили в команде → взяли лучшее в реализацию
+          </p>
+          <div class="shot-two">
+            <div class="shot"><img src="assets/design-figma.png" alt="Figma AI design variant 1" /></div>
+            <div class="shot"><img src="assets/design-ai-altar.png" alt="Figma AI design variant 2" /></div>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>23 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Стек технологий — если спросят.">
+        <div class="content">
+          <span class="badge">Tech Stack</span>
+          <h2>Стек технологий</h2>
+          <div class="two-col">
+            <ul>
+              <li>Angular 22 · TypeScript 6 · standalone</li>
+              <li>Firebase Auth + Firestore</li>
+              <li>Taiga UI 5 · Transloco</li>
+              <li>NgRx Signals · signals-first</li>
+            </ul>
+            <ul>
+              <li>Vitest · 64 unit tests</li>
+              <li>GitHub Actions → Netlify</li>
+              <li>ESLint · Stylelint · Prettier · Husky</li>
+              <li>pnpm · conventional commits</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>24 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Чистая архитектура: слои, facade, единообразие в команде.">
+        <div class="content">
+          <span class="badge">Architecture</span>
+          <h2>Чистая архитектура</h2>
+          <div class="flow" style="margin-bottom: 16px">
+            <span>UI</span><span class="arrow">→</span><span>Facade</span><span class="arrow">→</span
+            ><span>Service</span><span class="arrow">→</span><span>HTTP / Firestore</span>
+          </div>
+          <div class="two-col">
+            <ul>
+              <li><strong>Поддерживаемость</strong> — features/data/facades/ui, shared domain в core</li>
+              <li><strong>Facade pattern</strong> — UI не знает про HTTP и Firestore</li>
+            </ul>
+            <ul>
+              <li><strong>Единообразие</strong> — path aliases, ESLint rules, naming conventions</li>
+              <li><strong>Route-scoped DI</strong> — сервисы привязаны к маршруту</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>25 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Как запустить проект — всё в README.">
+        <div class="content">
+          <span class="badge">Get Started</span>
+          <h2>Как запустить проект</h2>
+          <div class="shot shot-full"><img src="assets/get-started.png" alt="README Get Started section" /></div>
+          <p class="shot-caption">git clone → pnpm run ci → pnpm start → localhost:4200</p>
+        </div>
+        <div class="footer"><span>Team Story</span><span>26 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Кратко: как учили Angular — 30 сек.">
         <div class="content">
           <span class="badge">Learning</span>
           <h2>Как учили Angular</h2>
           <ul>
-            <li>От <strong>компонентов и модулей</strong> → standalone + signals-first</li>
-            <li>От <strong>сервисов в root</strong> → route-scoped DI + facades</li>
-            <li>От <strong>subscribe в компонентах</strong> → signals, effect, takeUntilDestroyed</li>
-            <li>Практика через <strong>code review</strong> — 125+ merged PRs, substantive comments</li>
+            <li>Модули → <strong>standalone</strong> · subscribe → <strong>signals-first</strong></li>
+            <li>root services → <strong>route-scoped DI + facades</strong> · практика в code review</li>
           </ul>
         </div>
-        <div class="footer"><span>Team Story</span><span>10 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Самое сложное — каждый может добавить свой пример.">
-        <div class="content">
-          <span class="badge">Challenge</span>
-          <h2>Самое сложное</h2>
-          <ul>
-            <li><strong>Санктум</strong> — rxResource + звук + litany + вердикт</li>
-            <li><strong>Error handling</strong> — единый UX для HTTP и Firestore</li>
-            <li><strong>Архитектура</strong> — facade pattern и route-scoped DI</li>
-            <li><strong>i18n</strong> — tarot EN → перевод через MyMemory API</li>
-          </ul>
-        </div>
-        <div class="footer"><span>Team Story</span><span>11 / 20</span></div>
+        <div class="footer"><span>Team Story</span><span>27 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Ключевые решения и как решали конфликты.">
@@ -899,7 +1022,7 @@
       <section class="slide" data-note="Error handling + delivery.">
         <div class="content">
           <span class="badge">UX & Delivery</span>
-          <h2>Errors, CI/CD, Stack</h2>
+          <h2>Errors & CI/CD</h2>
           <div class="two-col">
             <div class="card">
               <h3>Error handling</h3>
@@ -914,15 +1037,13 @@
               <ul>
                 <li>GitHub Actions → Netlify</li>
                 <li>64 unit tests (Vitest)</li>
-                <li>Angular 22 · Taiga UI 5</li>
+                <li>Deploy preview на каждый PR</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="footer"><span>Q&A Backup</span><span>17 / 20</span></div>
       </section>
-
-      <!-- Q&A backup slides — skip dedicated Q&A slide, go straight to links -->
 
       <section class="slide" data-note="Ссылки для жюри — всё есть в README.">
         <div class="content">
@@ -937,6 +1058,27 @@
           </ul>
         </div>
         <div class="footer"><span>Links</span><span>19 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Сложности — в конце. Каждый может добавить свой пример.">
+        <div class="content">
+          <p class="part-divider">Team Story</p>
+          <span class="badge">Challenges</span>
+          <h2>Сложности</h2>
+          <div class="two-col">
+            <ul>
+              <li><strong>Санктум</strong> — rxResource + звук + litany + вердикт</li>
+              <li><strong>Error handling</strong> — единый UX для HTTP и Firestore</li>
+              <li><strong>Firebase migration</strong> — Netlify Identity → Firebase Auth</li>
+            </ul>
+            <ul>
+              <li><strong>i18n</strong> — tarot EN → перевод через MyMemory API</li>
+              <li><strong>Архитектура</strong> — договориться о facade pattern в команде</li>
+              <li><strong>Асинхрон</strong> — разные таймзоны, синхронизация через Discord</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>34 / 20</span></div>
       </section>
 
       <section class="slide title-slide" data-note="Финал. Вопросы?">
