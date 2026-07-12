@@ -499,13 +499,13 @@
             </div>
             <div class="agenda-item">
               <div class="time">~10</div>
-              <div class="label"><strong>Team Story</strong> — как работали и учили Angular</div>
+              <div class="label"><strong>Team Story</strong> — как работали как команда</div>
               <div class="hint">роли, спринты, дизайн, архитектура, сложности</div>
             </div>
             <div class="agenda-item">
               <div class="time">5–10</div>
               <div class="label"><strong>Q&A</strong> — вопросы жюри</div>
-              <div class="hint">архитектура, код, Angular-решения</div>
+              <div class="hint">архитектура, код, Angular-решения — отвечаем устно</div>
             </div>
           </div>
         </div>
@@ -553,12 +553,13 @@
         <div class="footer"><span>Intro</span><span>4 / 20</span></div>
       </section>
 
-      <section class="slide" data-note="Почему выбрали эти библиотеки — кратко, без deep dive.">
+      <section class="slide" data-note="Стек и причины выбора библиотек — кратко, без deep dive.">
         <div class="content">
-          <span class="badge">Stack</span>
-          <h2>Выбор библиотек</h2>
+          <span class="badge">Tech Stack</span>
+          <h2>Стек и выбор библиотек</h2>
           <div class="two-col">
             <ul>
+              <li><strong>Angular 22 + TypeScript 6</strong> — standalone, signals-first</li>
               <li><strong>Taiga UI 5</strong> — единый UI-kit, темизация, a11y</li>
               <li><strong>Firebase</strong> — Auth + Firestore без своего бэкенда</li>
               <li><strong>Transloco</strong> — i18n RU/EN</li>
@@ -566,9 +567,10 @@
             </ul>
             <ul>
               <li><strong>HotToast</strong> — единый UX ошибок</li>
-              <li><strong>Vitest</strong> — unit-тесты в Angular 22</li>
+              <li><strong>Vitest</strong> — 64 unit-теста</li>
               <li><strong>Netlify</strong> — static hosting + tarot API redirect</li>
-              <li><strong>ESLint + Husky</strong> — единые правила в команде</li>
+              <li><strong>GitHub Actions</strong> — CI/CD и deploy previews</li>
+              <li><strong>ESLint + Husky + pnpm</strong> — единые правила в команде</li>
             </ul>
           </div>
         </div>
@@ -598,7 +600,7 @@
         <div class="footer"><span>Product Demo</span><span>4 / 20</span></div>
       </section>
 
-      <section class="slide" data-note="Переключиться на live demo на 10–15 мин. Слайды 12–16 — backup для Q&A.">
+      <section class="slide" data-note="Переключиться на live demo на 10–15 мин.">
         <div class="content center-big">
           <span class="badge">Live Demo</span>
           <h2 style="margin-bottom: 32px">Демонстрация продукта</h2>
@@ -829,6 +831,28 @@
         <div class="footer"><span>Team Story</span><span>22 / 20</span></div>
       </section>
 
+      <section class="slide" data-note="Сложности: команда, декомпозиция, нагрузка, выгорание, собесы, error handling. Каждый может добавить пример.">
+        <div class="content">
+          <span class="badge">Challenges</span>
+          <h2>Сложности</h2>
+          <div class="two-col">
+            <ul>
+              <li><strong>Взаимодействие в команде</strong> — разный уровень, async, разные таймзоны</li>
+              <li><strong>Декомпозиция задач</strong> — баланс детализации и скорости, sub-issues</li>
+              <li><strong>Нагрузка по навыкам</strong> — распределение задач с учётом сильных сторон</li>
+              <li><strong>Выгорание</strong> — курс «застыл», внезапные задания под конец курса</li>
+            </ul>
+            <ul>
+              <li><strong>Собеседования</strong> — усталость параллельно с курсом и проектом</li>
+              <li><strong>Error handling</strong> — один источник невозможен: Firebase SDK ≠ HttpClient</li>
+              <li><strong>Firebase migration</strong> — Netlify Identity → Firebase Auth</li>
+              <li><strong>Архитектура</strong> — договориться о facade pattern всей командой</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>23 / 20</span></div>
+      </section>
+
       <section class="slide" data-note="Figma AI сгенерировала 2 варианта макета — выбрали элементы, адаптировали под Taiga UI.">
         <div class="content">
           <span class="badge">Design</span>
@@ -844,46 +868,28 @@
         <div class="footer"><span>Team Story</span><span>23 / 20</span></div>
       </section>
 
-      <section class="slide" data-note="Стек технологий — если спросят.">
-        <div class="content">
-          <span class="badge">Tech Stack</span>
-          <h2>Стек технологий</h2>
-          <div class="two-col">
-            <ul>
-              <li>Angular 22 · TypeScript 6 · standalone</li>
-              <li>Firebase Auth + Firestore</li>
-              <li>Taiga UI 5 · Transloco</li>
-              <li>NgRx Signals · signals-first</li>
-            </ul>
-            <ul>
-              <li>Vitest · 64 unit tests</li>
-              <li>GitHub Actions → Netlify</li>
-              <li>ESLint · Stylelint · Prettier · Husky</li>
-              <li>pnpm · conventional commits</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>Team Story</span><span>24 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Чистая архитектура: слои, facade, единообразие в команде.">
+      <section class="slide" data-note="Чистая архитектура: слои, facade, единообразие. CodeQL: Maintainability и Reliability — Excellent, 0 findings.">
         <div class="content">
           <span class="badge">Architecture</span>
           <h2>Чистая архитектура</h2>
-          <div class="flow" style="margin-bottom: 16px">
-            <span>UI</span><span class="arrow">→</span><span>Facade</span><span class="arrow">→</span
-            ><span>Service</span><span class="arrow">→</span><span>HTTP / Firestore</span>
-          </div>
           <div class="two-col">
-            <ul>
-              <li><strong>Поддерживаемость</strong> — features/data/facades/ui, shared domain в core</li>
-              <li><strong>Facade pattern</strong> — UI не знает про HTTP и Firestore</li>
-            </ul>
-            <ul>
-              <li><strong>Единообразие</strong> — path aliases, ESLint rules, naming conventions</li>
-              <li><strong>Route-scoped DI</strong> — сервисы привязаны к маршруту</li>
-            </ul>
+            <div>
+              <div class="flow" style="margin-bottom: 12px">
+                <span>UI</span><span class="arrow">→</span><span>Facade</span><span class="arrow">→</span
+                ><span>Service</span><span class="arrow">→</span><span>HTTP / Firestore</span>
+              </div>
+              <ul>
+                <li><strong>Поддерживаемость</strong> — features/data/facades/ui, domain в core</li>
+                <li><strong>Facade pattern</strong> — UI не знает про HTTP и Firestore</li>
+                <li><strong>Единообразие</strong> — path aliases, ESLint, naming conventions</li>
+                <li><strong>Route-scoped DI</strong> — сервисы привязаны к маршруту</li>
+              </ul>
+            </div>
+            <div class="shot" style="max-height: 48vh; margin-top: 0">
+              <img src="assets/code-quality.png" alt="GitHub CodeQL code quality — Excellent" />
+            </div>
           </div>
+          <p class="shot-caption">CodeQL · Maintainability Excellent · 0 findings · Reliability Excellent</p>
         </div>
         <div class="footer"><span>Team Story</span><span>25 / 20</span></div>
       </section>
@@ -896,18 +902,6 @@
           <p class="shot-caption">git clone → pnpm run ci → pnpm start → localhost:4200</p>
         </div>
         <div class="footer"><span>Team Story</span><span>26 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Кратко: как учили Angular — 30 сек.">
-        <div class="content">
-          <span class="badge">Learning</span>
-          <h2>Как учили Angular</h2>
-          <ul>
-            <li>Модули → <strong>standalone</strong> · subscribe → <strong>signals-first</strong></li>
-            <li>root services → <strong>route-scoped DI + facades</strong> · практика в code review</li>
-          </ul>
-        </div>
-        <div class="footer"><span>Team Story</span><span>27 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Ключевые решения и как решали конфликты.">
@@ -938,113 +932,6 @@
         <div class="footer"><span>Team Story</span><span>12 / 20</span></div>
       </section>
 
-      <!-- PART 3 · TECH BACKUP (Q&A) -->
-      <section class="slide title-slide" data-note="Backup-слайды для Q&A или если спросят про архитектуру.">
-        <div class="content">
-          <span class="badge">Part 3 · Q&A backup</span>
-          <h1>Angular Deep Dive</h1>
-          <p class="subtitle">Архитектура и технические решения — для вопросов жюри</p>
-        </div>
-        <div class="footer"><span>Q&A Backup</span><span>13 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Daria: архитектура, если спросят.">
-        <div class="content">
-          <p class="part-divider">Q&A Backup</p>
-          <span class="badge">Architecture</span>
-          <h2>Слои приложения</h2>
-          <div class="flow" style="margin-bottom: 28px">
-            <span>UI</span><span class="arrow">→</span><span>Facade</span><span class="arrow">→</span
-            ><span>API / Service</span><span class="arrow">→</span><span>HTTP / Firestore</span>
-          </div>
-          <div class="two-col">
-            <div class="card">
-              <h3>core/</h3>
-              <ul>
-                <li>Layout, guards, interceptors</li>
-                <li>Auth, Confess, Candles</li>
-                <li>uiStateStore (NgRx Signals)</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>features/ + shared/</h3>
-              <ul>
-                <li>Route-bound domains</li>
-                <li>data/ + facades/ + ui/</li>
-                <li>Validators, UI kit</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer"><span>Q&A Backup</span><span>14 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="DI + Signals — главные Angular highlights.">
-        <div class="content">
-          <span class="badge">DI & Signals</span>
-          <h2>DI + Signals</h2>
-          <div class="code"><span class="kw">@Service</span>({ autoProvided: <span class="kw">false</span> })
-<span class="kw">export class</span> <span class="fn">MainPageFacade</span> {
-  <span class="kw">private readonly</span> tarot = <span class="fn">inject</span>(TarotService);
-  <span class="kw">public readonly</span> isLoading = <span class="fn">computed</span>(...);
-}</div>
-          <ul style="margin-top: 20px">
-            <li><strong>linkedSignal</strong> — сброс reading при смене role/intent</li>
-            <li><strong>effect</strong> — tarot → перевод · <strong>rxResource</strong> — sanctum ritual</li>
-            <li><strong>signalStore</strong> — theme + language → Firestore</li>
-          </ul>
-        </div>
-        <div class="footer"><span>Q&A Backup</span><span>15 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Routing, Forms, CD — если спросят отдельно.">
-        <div class="content">
-          <span class="badge">Routing · Forms · CD</span>
-          <h2>Routing, Forms, Change Detection</h2>
-          <div class="two-col">
-            <ul>
-              <li>Lazy loading + functional guards</li>
-              <li>Route-scoped providers</li>
-              <li>Typed nonNullable forms</li>
-              <li>dirtyFormGuard</li>
-            </ul>
-            <ul>
-              <li>OnPush по умолчанию (Angular 22)</li>
-              <li>Signals-driven reactivity</li>
-              <li>Zone-based + eventCoalescing</li>
-              <li>@if / @for control flow</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>Q&A Backup</span><span>16 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Error handling + delivery.">
-        <div class="content">
-          <span class="badge">UX & Delivery</span>
-          <h2>Errors & CI/CD</h2>
-          <div class="two-col">
-            <div class="card">
-              <h3>Error handling</h3>
-              <ul>
-                <li>HTTP → interceptor → HotToast</li>
-                <li>Firestore → facade → HotToast</li>
-                <li>withTimeout 7 с</li>
-              </ul>
-            </div>
-            <div class="card">
-              <h3>Delivery</h3>
-              <ul>
-                <li>GitHub Actions → Netlify</li>
-                <li>64 unit tests (Vitest)</li>
-                <li>Deploy preview на каждый PR</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="footer"><span>Q&A Backup</span><span>17 / 20</span></div>
-      </section>
-
       <section class="slide" data-note="Ссылки для жюри — всё есть в README.">
         <div class="content">
           <span class="badge">Links</span>
@@ -1057,28 +944,7 @@
             <li><strong>Demo video:</strong> <a class="link" href="https://drive.google.com/file/d/1xQl8qfHqrmiRhw6KaKnjK7WEUC5O3FE4/view" target="_blank" rel="noreferrer">error handling & 404</a></li>
           </ul>
         </div>
-        <div class="footer"><span>Links</span><span>19 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Сложности — в конце. Каждый может добавить свой пример.">
-        <div class="content">
-          <p class="part-divider">Team Story</p>
-          <span class="badge">Challenges</span>
-          <h2>Сложности</h2>
-          <div class="two-col">
-            <ul>
-              <li><strong>Санктум</strong> — rxResource + звук + litany + вердикт</li>
-              <li><strong>Error handling</strong> — единый UX для HTTP и Firestore</li>
-              <li><strong>Firebase migration</strong> — Netlify Identity → Firebase Auth</li>
-            </ul>
-            <ul>
-              <li><strong>i18n</strong> — tarot EN → перевод через MyMemory API</li>
-              <li><strong>Архитектура</strong> — договориться о facade pattern в команде</li>
-              <li><strong>Асинхрон</strong> — разные таймзоны, синхронизация через Discord</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>Team Story</span><span>34 / 20</span></div>
+        <div class="footer"><span>Links</span><span>26 / 20</span></div>
       </section>
 
       <section class="slide title-slide" data-note="Финал. Вопросы?">
