@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>delulu-church — Team Presentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #14100f;
+        --bg-alt: #1b1513;
+        --bg-card: #1f1814;
+        --gold: #d6a85f;
+        --gold-soft: #e8c98f;
+        --gold-pale: #fff0c7;
+        --text: #f4e7c8;
+        --text-muted: #c9b88a;
+        --glow: 0 0 24px rgb(214 168 95 / 28%);
+        --slide-w: 1280px;
+        --slide-h: 720px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Oxanium', system-ui, sans-serif;
+        background: #0a0807;
+        color: var(--text);
+        overflow: hidden;
+        height: 100vh;
+      }
+
+      .deck {
+        width: 100vw;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+
+      .slide {
+        display: none;
+        width: min(var(--slide-w), 96vw);
+        height: min(var(--slide-h), 90vh);
+        background:
+          radial-gradient(ellipse 80% 60% at 50% 0%, rgb(214 168 95 / 8%), transparent 60%),
+          linear-gradient(160deg, var(--bg) 0%, var(--bg-alt) 100%);
+        border: 1px solid rgb(214 168 95 / 35%);
+        border-radius: 12px;
+        box-shadow: var(--glow);
+        padding: 56px 72px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+        animation: fadeIn 0.35s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgb(214 168 95 / 2%) 3px,
+          rgb(214 168 95 / 2%) 4px
+        );
+        pointer-events: none;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--gold-soft);
+        border: 1px solid rgb(214 168 95 / 40%);
+        padding: 4px 12px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+        width: fit-content;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 4.5vw, 3.4rem);
+        font-weight: 700;
+        color: var(--gold-pale);
+        line-height: 1.1;
+        letter-spacing: 0.02em;
+        text-shadow: 0 0 30px rgb(214 168 95 / 25%);
+      }
+
+      h2 {
+        font-size: clamp(1.6rem, 3vw, 2.4rem);
+        color: var(--gold);
+        margin-bottom: 28px;
+        font-weight: 700;
+      }
+
+      h3 {
+        font-size: 1.1rem;
+        color: var(--gold-soft);
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-top: 16px;
+        max-width: 720px;
+        line-height: 1.5;
+      }
+
+      .content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      ul {
+        list-style: none;
+        display: grid;
+        gap: 14px;
+      }
+
+      li {
+        font-size: 1.15rem;
+        line-height: 1.45;
+        padding-left: 22px;
+        position: relative;
+        color: var(--text);
+      }
+
+      li::before {
+        content: '✦';
+        position: absolute;
+        left: 0;
+        color: var(--gold);
+        font-size: 0.85rem;
+        top: 2px;
+      }
+
+      li strong {
+        color: var(--gold-soft);
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: start;
+      }
+
+      .card {
+        background: var(--bg-card);
+        border: 1px solid rgb(214 168 95 / 22%);
+        border-radius: 10px;
+        padding: 24px;
+      }
+
+      .card ul {
+        gap: 10px;
+      }
+
+      .card li {
+        font-size: 1rem;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 12px;
+      }
+
+      .member {
+        background: var(--bg-card);
+        border: 1px solid rgb(214 168 95 / 25%);
+        border-radius: 10px;
+        padding: 24px;
+        text-align: center;
+      }
+
+      .member .name {
+        font-size: 1.2rem;
+        color: var(--gold-pale);
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+
+      .member .role {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        margin-bottom: 10px;
+      }
+
+      .member .gh {
+        font-size: 0.85rem;
+        color: var(--gold);
+      }
+
+      .code {
+        font-family: 'SF Mono', 'Fira Code', monospace;
+        font-size: 0.92rem;
+        background: #0d0a09;
+        border: 1px solid rgb(214 168 95 / 20%);
+        border-radius: 8px;
+        padding: 20px 24px;
+        line-height: 1.6;
+        color: #e8dcc0;
+        white-space: pre-wrap;
+      }
+
+      .code .kw {
+        color: #7adfff;
+      }
+      .code .fn {
+        color: #ffd98f;
+      }
+      .code .str {
+        color: #c8ff78;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        margin-top: 8px;
+      }
+
+      .stat {
+        background: var(--bg-card);
+        border: 1px solid rgb(214 168 95 / 22%);
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .stat .num {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--gold);
+      }
+
+      .stat .label {
+        font-size: 0.82rem;
+        color: var(--text-muted);
+        margin-top: 4px;
+      }
+
+      .flow {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        font-size: 1rem;
+      }
+
+      .flow span {
+        background: var(--bg-card);
+        border: 1px solid rgb(214 168 95 / 30%);
+        padding: 10px 16px;
+        border-radius: 8px;
+        color: var(--gold-soft);
+      }
+
+      .flow .arrow {
+        background: none;
+        border: none;
+        color: var(--gold);
+        padding: 0;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 24px;
+        left: 72px;
+        right: 72px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        z-index: 2;
+      }
+
+      .nav-hint {
+        position: fixed;
+        bottom: 16px;
+        right: 20px;
+        font-size: 0.75rem;
+        color: rgb(201 184 138 / 50%);
+        z-index: 100;
+      }
+
+      .title-slide {
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+      }
+
+      .title-slide .content {
+        align-items: center;
+      }
+
+      .title-slide h1 {
+        font-size: clamp(2.4rem, 5vw, 4rem);
+      }
+
+      .emoji {
+        font-size: 3rem;
+        margin-bottom: 16px;
+      }
+
+      .link {
+        color: var(--gold);
+        text-decoration: none;
+        border-bottom: 1px solid rgb(214 168 95 / 40%);
+      }
+
+      .demo-list li::before {
+        content: '▸';
+      }
+
+      .center-big {
+        text-align: center;
+        font-size: 1.5rem;
+        color: var(--gold-pale);
+        line-height: 1.6;
+      }
+
+      .small {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="deck" id="deck">
+      <!-- 1 -->
+      <section class="slide active title-slide" data-note="Daria: приветствие, 30 сек">
+        <div class="content">
+          <div class="emoji">⛪</div>
+          <span class="badge">RS School · Angular 2026 Q2 · Team Presentation</span>
+          <h1>The Church of the Holy Deploy</h1>
+          <p class="subtitle">delulu-church — цифровой храм для программистов</p>
+          <p class="subtitle small" style="margin-top: 32px">
+            <a class="link" href="https://delulu-church.netlify.app/" target="_blank" rel="noreferrer"
+              >delulu-church.netlify.app</a
+            >
+          </p>
+        </div>
+        <div class="footer"><span>ngKittyDebug</span><span>1 / 20</span></div>
+      </section>
+
+      <!-- 2 -->
+      <section class="slide" data-note="Daria: кто мы, 1 мин">
+        <div class="content">
+          <span class="badge">Team</span>
+          <h2>Команда ngKittyDebug</h2>
+          <div class="team-grid">
+            <div class="member">
+              <div class="name">Daria Melnikova</div>
+              <div class="role">Frontend / Team Lead</div>
+              <div class="gh">@dashque</div>
+            </div>
+            <div class="member">
+              <div class="name">Alena Alekseeva</div>
+              <div class="role">Frontend Developer</div>
+              <div class="gh">@Alena1409</div>
+            </div>
+            <div class="member">
+              <div class="name">Nadezhda Kozochkina</div>
+              <div class="role">Frontend Developer</div>
+              <div class="gh">@kozochkina82</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span>Team Story</span><span>2 / 20</span></div>
+      </section>
+
+      <!-- 3 -->
+      <section class="slide" data-note="Alena: продукт, 2 мин">
+        <div class="content">
+          <span class="badge">Product</span>
+          <h2>Что мы построили</h2>
+          <div class="two-col">
+            <ul>
+              <li><strong>Главная</strong> — Tarot-оракул судьбы деплоя</li>
+              <li><strong>Исповедальня</strong> — список «грехов» (багов)</li>
+              <li><strong>Алтарь</strong> — свечи и благословение Духа Машины</li>
+              <li><strong>Санктум</strong> — ритуал суда над веткой</li>
+            </ul>
+            <ul>
+              <li><strong>Дед-сеньор</strong> — цифровая мудрость</li>
+              <li><strong>Crystal ball</strong> — магический шар</li>
+              <li><strong>Auth</strong> — email + GitHub + Google</li>
+              <li><strong>i18n + тема</strong> — RU/EN, light/dark</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Product Demo</span><span>3 / 20</span></div>
+      </section>
+
+      <!-- 4 -->
+      <section class="slide" data-note="Переход к live demo — 10-15 мин">
+        <div class="content center-big">
+          <span class="badge">Live Demo</span>
+          <h2 style="margin-bottom: 32px">Демонстрация продукта</h2>
+          <p>🌐 <a class="link" href="https://delulu-church.netlify.app/" target="_blank" rel="noreferrer">delulu-church.netlify.app</a></p>
+          <ul class="demo-list" style="margin-top: 40px; text-align: left; max-width: 560px">
+            <li>Tarot draw + смена языка → перевод</li>
+            <li>Login → Исповедальня → Алтарь</li>
+            <li>Санктум: ритуал суда над веткой</li>
+            <li>Angular DevTools: component tree + CD profiler</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Product Demo · 10–15 min</span><span>4 / 20</span></div>
+      </section>
+
+      <!-- 5 -->
+      <section class="slide" data-note="Daria: архитектура, 2 мин">
+        <div class="content">
+          <span class="badge">Architecture</span>
+          <h2>Слои приложения</h2>
+          <div class="flow" style="margin-bottom: 28px">
+            <span>UI</span><span class="arrow">→</span><span>Facade</span><span class="arrow">→</span
+            ><span>API / Service</span><span class="arrow">→</span><span>HTTP / Firestore</span>
+          </div>
+          <div class="two-col">
+            <div class="card">
+              <h3>core/</h3>
+              <ul>
+                <li>Layout, guards, interceptors</li>
+                <li>Auth, Confess, Candles</li>
+                <li>uiStateStore (NgRx Signals)</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>features/ + shared/</h3>
+              <ul>
+                <li>Route-bound domains</li>
+                <li>data/ + facades/ + ui/</li>
+                <li>Validators, UI kit, helpers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span>Angular · DI & Architecture</span><span>5 / 20</span></div>
+      </section>
+
+      <!-- 6 -->
+      <section class="slide" data-note="Nadezhda: routing, 1.5 мин">
+        <div class="content">
+          <span class="badge">Routing</span>
+          <h2>Маршрутизация и Guards</h2>
+          <ul>
+            <li><strong>Lazy loading</strong> — все фичи, кроме главной (entry point)</li>
+            <li><strong>Functional guards</strong> — authGuard, guestGuard, dirtyFormGuard</li>
+            <li><strong>Route providers</strong> — facade и API только на маршруте</li>
+            <li><strong>UserStateStrategy</strong> — preload по auth-состоянию</li>
+            <li><strong>withComponentInputBinding</strong> + view transitions</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Angular · Routing</span><span>6 / 20</span></div>
+      </section>
+
+      <!-- 7 -->
+      <section class="slide" data-note="Daria: DI pattern">
+        <div class="content">
+          <span class="badge">Dependency Injection</span>
+          <h2>DI: границы фич</h2>
+          <div class="code"><span class="kw">@Service</span>({ autoProvided: <span class="kw">false</span> })
+<span class="kw">export class</span> <span class="fn">MainPageFacade</span> {
+  <span class="kw">private readonly</span> tarot = <span class="fn">inject</span>(TarotService);
+  <span class="kw">public readonly</span> isLoading = <span class="fn">computed</span>(...);
+}</div>
+          <ul style="margin-top: 24px">
+            <li>Фичевые сервисы — <strong>route-scoped</strong>, не root singleton</li>
+            <li>Shared domain (Confess, Candles) — в <strong>core/</strong> намеренно</li>
+            <li>UI инжектит только <strong>facade</strong>, не HttpClient</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Angular · DI</span><span>7 / 20</span></div>
+      </section>
+
+      <!-- 8 -->
+      <section class="slide" data-note="Daria: signals — главный highlight">
+        <div class="content">
+          <span class="badge">Signals & State</span>
+          <h2>Signals-first реактивность</h2>
+          <div class="two-col">
+            <ul>
+              <li><strong>signal</strong> — loading, error, result</li>
+              <li><strong>computed</strong> — derived state</li>
+              <li><strong>linkedSignal</strong> — сброс при смене role/intent</li>
+              <li><strong>effect</strong> — tarot → перевод pipeline</li>
+            </ul>
+            <ul>
+              <li><strong>rxResource</strong> — sanctum ritual timeline</li>
+              <li><strong>resource()</strong> — priest quotes из Firestore</li>
+              <li><strong>signalStore</strong> — theme + language → Firestore</li>
+              <li><strong>takeUntilDestroyed</strong> — RxJS cleanup</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Angular · Signals</span><span>8 / 20</span></div>
+      </section>
+
+      <!-- 9 -->
+      <section class="slide" data-note="Alena: forms">
+        <div class="content">
+          <span class="badge">Forms</span>
+          <h2>Typed Reactive Forms</h2>
+          <ul>
+            <li><strong>FormBuilder.nonNullable.group&lt;T&gt;</strong> — строгая типизация</li>
+            <li>Отдельный <strong>FormService</strong> на фичу (login, shrift, sanctum)</li>
+            <li><strong>tuiValidationErrorsProvider</strong> + Transloco — централизованные ошибки</li>
+            <li><strong>dirtyFormGuard</strong> — подтверждение при уходе с dirty-формы</li>
+            <li>Cross-field validator — подтверждение пароля при регистрации</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Angular · Forms</span><span>9 / 20</span></div>
+      </section>
+
+      <!-- 10 -->
+      <section class="slide" data-note="Nadezhda: CD">
+        <div class="content">
+          <span class="badge">Change Detection</span>
+          <h2>Change Detection</h2>
+          <ul>
+            <li><strong>OnPush по умолчанию</strong> — Angular 22 default strategy</li>
+            <li>Реактивность через <strong>signals</strong> — минимум ручного CD</li>
+            <li><strong>Zone-based</strong> + eventCoalescing (не zoneless — осознанный выбор)</li>
+            <li>Новый control flow: <strong>@if</strong>, <strong>@for</strong> во всех шаблонах</li>
+          </ul>
+          <p class="subtitle small" style="margin-top: 24px">
+            На демо: Angular DevTools → Component Tree + Profiler
+          </p>
+        </div>
+        <div class="footer"><span>Angular · CD</span><span>10 / 20</span></div>
+      </section>
+
+      <!-- 11 -->
+      <section class="slide" data-note="Alena: error handling">
+        <div class="content">
+          <span class="badge">Error Handling</span>
+          <h2>Обработка ошибок</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>HTTP</h3>
+              <ul>
+                <li>httpErrorInterceptor</li>
+                <li>HotToast (glassmorphism)</li>
+                <li>/i18n/ — без toast</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Firestore</h3>
+              <ul>
+                <li>Facade → HotToast</li>
+                <li>withTimeout (7 с)</li>
+                <li>Loaders на UI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span>UX · Errors</span><span>11 / 20</span></div>
+      </section>
+
+      <!-- 12 -->
+      <section class="slide" data-note="Tech stack slide">
+        <div class="content">
+          <span class="badge">Tech Stack</span>
+          <h2>Стек технологий</h2>
+          <div class="stats">
+            <div class="stat"><div class="num">22</div><div class="label">Angular</div></div>
+            <div class="stat"><div class="num">64</div><div class="label">Unit tests</div></div>
+            <div class="stat"><div class="num">125+</div><div class="label">Merged PRs</div></div>
+            <div class="stat"><div class="num">4</div><div class="label">Sprints</div></div>
+          </div>
+          <ul style="margin-top: 28px">
+            <li>TypeScript 6 · Taiga UI 5 · Transloco · NgRx Signals · Vitest</li>
+            <li>Firebase Auth + Firestore · Netlify (CI/CD + deploy)</li>
+            <li>ESLint + Stylelint + Prettier + Husky + commitlint</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Tech Stack</span><span>12 / 20</span></div>
+      </section>
+
+      <!-- 13 -->
+      <section class="slide title-slide" data-note="Team Story section">
+        <div class="content">
+          <span class="badge">Part 2</span>
+          <h1>Team Story</h1>
+          <p class="subtitle">Как мы работали, учили Angular и принимали решения</p>
+        </div>
+        <div class="footer"><span>~10 min</span><span>13 / 20</span></div>
+      </section>
+
+      <!-- 14 -->
+      <section class="slide" data-note="Sprint journey — каждый рассказывает свой вклад">
+        <div class="content">
+          <span class="badge">Journey</span>
+          <h2>Путь через 4 спринта</h2>
+          <ul>
+            <li><strong>Sprint 1</strong> — скелет: layout, routing, auth, главная</li>
+            <li><strong>Sprint 2</strong> — shrift, altar, i18n, тема, ghost-coder</li>
+            <li><strong>Sprint 3</strong> — sanctum, error handling, forms polish</li>
+            <li><strong>Sprint 4</strong> — profile shell, CI hardening, refactor facades</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Team Story</span><span>14 / 20</span></div>
+      </section>
+
+      <!-- 15 -->
+      <section class="slide" data-note="Hardest part — sanctum или error handling">
+        <div class="content">
+          <span class="badge">Challenge</span>
+          <h2>Самое сложное</h2>
+          <ul>
+            <li><strong>Санктум</strong> — мультифазный ритуал: rxResource + звук + litany + вердикт</li>
+            <li><strong>Error handling</strong> — единый UX для HTTP и Firestore + timeout</li>
+            <li><strong>Архитектура</strong> — договориться о facade pattern и route-scoped DI</li>
+            <li><strong>i18n pipeline</strong> — tarot API на EN → перевод через MyMemory API</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Team Story</span><span>15 / 20</span></div>
+      </section>
+
+      <!-- 16 -->
+      <section class="slide" data-note="Key decisions">
+        <div class="content">
+          <span class="badge">Decisions</span>
+          <h2>Ключевые решения</h2>
+          <ul>
+            <li><strong>Facade pattern</strong> — UI не знает про HTTP/Firestore</li>
+            <li><strong>Shared domain в core</strong> — Confess + Candles для нескольких фич</li>
+            <li><strong>Signals over NgRx Store</strong> — signalStore только для UI prefs</li>
+            <li><strong>Taiga UI</strong> — единый kit, accessibility, form integration</li>
+            <li><strong>Repository rulesets</strong> — 1 approval + required CI на develop</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Team Story</span><span>16 / 20</span></div>
+      </section>
+
+      <!-- 17 -->
+      <section class="slide" data-note="Git culture for jury">
+        <div class="content">
+          <span class="badge">Git & PM</span>
+          <h2>Процессы команды</h2>
+          <div class="two-col">
+            <div class="card">
+              <h3>Git Culture</h3>
+              <ul>
+                <li>Conventional Commits + commitlint</li>
+                <li>Pre-push: typecheck, lint, test</li>
+                <li>PR template + code review</li>
+                <li>CI: quality-check на каждый PR</li>
+              </ul>
+            </div>
+            <div class="card">
+              <h3>Project Management</h3>
+              <ul>
+                <li>136 issues, sprint labels 1–4</li>
+                <li>Декомпозиция: assignee + labels</li>
+                <li>Дневники разработки</li>
+                <li>Meeting notes по спринтам</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer"><span>SCORE_TEAM · 260 pts</span><span>17 / 20</span></div>
+      </section>
+
+      <!-- 18 -->
+      <section class="slide" data-note="Deployment">
+        <div class="content">
+          <span class="badge">Delivery</span>
+          <h2>Deployment & CI/CD</h2>
+          <div class="flow" style="margin-bottom: 24px">
+            <span>git push</span><span class="arrow">→</span><span>GitHub Actions</span
+            ><span class="arrow">→</span><span>Netlify Deploy</span>
+          </div>
+          <ul>
+            <li>Production: <a class="link" href="https://delulu-church.netlify.app/" target="_blank" rel="noreferrer">delulu-church.netlify.app</a></li>
+            <li>Tarot API: Netlify redirect → deploytarot.com</li>
+            <li>README: clone → pnpm ci → pnpm start</li>
+            <li>Единый UI: Taiga + gold theme + glassmorphism toasts</li>
+          </ul>
+        </div>
+        <div class="footer"><span>Delivery</span><span>18 / 20</span></div>
+      </section>
+
+      <!-- 19 -->
+      <section class="slide" data-note="Q&A prep">
+        <div class="content">
+          <span class="badge">Q&A Prep</span>
+          <h2>Возможные вопросы жюри</h2>
+          <div class="two-col">
+            <ul>
+              <li>Почему не NgRx Store?</li>
+              <li>Почему main не lazy?</li>
+              <li>Zoneless migration?</li>
+              <li>Profile — WIP?</li>
+            </ul>
+            <ul>
+              <li>Как тестируете? (64 specs, Vitest)</li>
+              <li>Firebase vs REST backend?</li>
+              <li>Form services: root vs route?</li>
+              <li>Branch protection?</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer"><span>Q&A · 5–10 min</span><span>19 / 20</span></div>
+      </section>
+
+      <!-- 20 -->
+      <section class="slide title-slide" data-note="Thank you">
+        <div class="content">
+          <div class="emoji">🙏</div>
+          <h1>Спасибо!</h1>
+          <p class="subtitle">Вопросы?</p>
+          <p class="subtitle small" style="margin-top: 32px">
+            <a class="link" href="https://delulu-church.netlify.app/" target="_blank" rel="noreferrer"
+              >delulu-church.netlify.app</a
+            >
+            ·
+            <a
+              class="link"
+              href="https://github.com/ngKittyDebug/angular-ngKittyDebugRight"
+              target="_blank"
+              rel="noreferrer"
+              >GitHub</a
+            >
+          </p>
+        </div>
+        <div class="footer"><span>ngKittyDebug</span><span>20 / 20</span></div>
+      </section>
+    </div>
+
+    <div class="nav-hint">← → или клик · N — speaker notes</div>
+
+    <script>
+      const slides = [...document.querySelectorAll('.slide')];
+      let index = 0;
+
+      function show(i) {
+        slides[index].classList.remove('active');
+        index = (i + slides.length) % slides.length;
+        slides[index].classList.add('active');
+        const footer = slides[index].querySelector('.footer span:last-child');
+        if (footer) footer.textContent = `${index + 1} / ${slides.length}`;
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          show(index + 1);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'PageUp') show(index - 1);
+        if (e.key === 'Home') show(0);
+        if (e.key === 'End') show(slides.length - 1);
+        if (e.key === 'n' || e.key === 'N') {
+          const note = slides[index].dataset.note;
+          if (note) alert(`Speaker note:\n\n${note}`);
+        }
+      });
+
+      document.getElementById('deck').addEventListener('click', (e) => {
+        if (e.clientX > window.innerWidth / 2) show(index + 1);
+        else show(index - 1);
+      });
+    </script>
+  </body>
+</html>
