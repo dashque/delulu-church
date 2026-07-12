@@ -664,41 +664,17 @@
         <div class="footer"><span>Team Story</span><span>8 / 20</span></div>
       </section>
 
-      <section class="slide" data-note="Sprint 1: 14/14 sub-issues closed. UI base, header, footer, sidebar, card.">
+      <section class="slide" data-note="Sprint 1 и 2: sub-issues closed. UI base, routing, guards, signals.">
         <div class="content">
           <p class="part-divider">Part 2 · Team Story</p>
-          <span class="badge">Sprint 1 · Components Foundation</span>
-          <div class="shot shot-full"><img src="assets/sprint-1-issue.png" alt="Sprint 1 GitHub Issue" /></div>
-          <p class="shot-caption">14/14 sub-issues · header, footer, sidebar, card, layout shell</p>
+          <span class="badge">Sprint 1 & 2</span>
+          <div class="shot-two">
+            <div class="shot"><img src="assets/sprint-1-issue.png" alt="Sprint 1 GitHub Issue" /></div>
+            <div class="shot"><img src="assets/sprint-2-issue.png" alt="Sprint 2 GitHub Issue" /></div>
+          </div>
+          <p class="shot-caption">Sprint 1: 14/14 · layout shell · Sprint 2: 23/23 · routes, lazy loading, guards, signals</p>
         </div>
         <div class="footer"><span>Team Story</span><span>9 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Sprint 2: 23/23 closed. Routes, lazy loading, guards, signals, services.">
-        <div class="content">
-          <span class="badge">Sprint 2 · Routing & Signals</span>
-          <div class="shot shot-full"><img src="assets/sprint-2-issue.png" alt="Sprint 2 GitHub Issue" /></div>
-          <p class="shot-caption">23/23 sub-issues · routes, lazy loading, guards, signals, @Injectable services</p>
-        </div>
-        <div class="footer"><span>Team Story</span><span>10 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Sprint 3: 14/14 closed. Login, register, ghost-coder, theme, Firebase.">
-        <div class="content">
-          <span class="badge">Sprint 3 · Directives, Pipes & Forms</span>
-          <div class="shot shot-full"><img src="assets/sprint-3-issue.png" alt="Sprint 3 GitHub Issue" /></div>
-          <p class="shot-caption">14/14 sub-issues · login, register, ghost-coder, theme, Firebase migration</p>
-        </div>
-        <div class="footer"><span>Team Story</span><span>11 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Sprint 4: 12/12 closed. HTTP interceptor, tests, error handling, altar, ball.">
-        <div class="content">
-          <span class="badge">Sprint 4 · HTTP, RxJS & Testing</span>
-          <div class="shot shot-full"><img src="assets/sprint-4-issue.png" alt="Sprint 4 GitHub Issue" /></div>
-          <p class="shot-caption">12/12 sub-issues · HTTP interceptor, 15+ tests, error handling, video proof</p>
-        </div>
-        <div class="footer"><span>Team Story</span><span>12 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Показать живую доску: задачи двигаются по колонкам, декомпозиция на sub-issues.">
@@ -715,32 +691,24 @@
         <div class="footer"><span>Team Story</span><span>13 / 20</span></div>
       </section>
 
-      <section class="slide title-slide" data-note="Daria: как мы работали с Git — процессы, не только код.">
+      <section class="slide" data-note="Daria: процессы без скриншотов — ветки, pre-push, чистота репо. 125+ merged PRs.">
         <div class="content">
-          <h1>Git Culture</h1>
-          <p class="subtitle">Branch protection · PR template · code review · conventional commits</p>
-        </div>
-        <div class="footer"><span>Team Story</span><span>14 / 20</span></div>
-      </section>
-
-      <section class="slide" data-note="Кратко: правила до скриншотов. 125+ merged PRs.">
-        <div class="content">
-          <span class="badge">Process</span>
+          <p class="part-divider">Part 2 · Team Story</p>
+          <span class="badge">Git Culture</span>
           <h2>Как работали с Git</h2>
           <div class="two-col">
             <ul>
-              <li><strong>Branch protection</strong> — rulesets на develop/main: min 1 approval, CI checks</li>
-              <li><strong>PR template</strong> — type, changes, self-check, deploy preview</li>
-              <li><strong>Code review</strong> — архитектура, UX, performance; resolved threads</li>
+              <li><strong>Ветки</strong> — feat/, fix/, docs/ · валидация в pre-push hook</li>
+              <li><strong>Pre-push</strong> — typecheck → format → lint → test</li>
+              <li><strong>Дневники</strong> — development-notes + meeting notes</li>
             </ul>
             <ul>
-              <li><strong>Conventional Commits</strong> — feat:/fix:/refactor:/test: + commitlint</li>
-              <li><strong>Pre-push</strong> — typecheck → format → lint → test</li>
-              <li><strong>Чистый репо</strong> — knip, нет мусорных файлов; .planning в gitignore</li>
+              <li><strong>Чистый репо</strong> — knip, без лишних файлов и неиспользуемых зависимостей</li>
+              <li><strong>125+ merged PRs</strong> — substantive review comments</li>
             </ul>
           </div>
         </div>
-        <div class="footer"><span>Team Story</span><span>15 / 20</span></div>
+        <div class="footer"><span>Team Story</span><span>11 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Merge blocked без approval. CodeQL, test-and-build, auto-assign.">
@@ -954,29 +922,7 @@
         <div class="footer"><span>Q&A Backup</span><span>17 / 20</span></div>
       </section>
 
-      <!-- Q&A -->
-      <section class="slide" data-note="Part 3: Q&A 5–10 мин.">
-        <div class="content">
-          <p class="part-divider">Part 3 · Q&A</p>
-          <span class="badge">Q&A · 5–10 min</span>
-          <h2>Возможные вопросы жюри</h2>
-          <div class="two-col">
-            <ul>
-              <li>Почему не NgRx Store?</li>
-              <li>Почему main не lazy?</li>
-              <li>Zoneless migration?</li>
-              <li>Profile — WIP?</li>
-            </ul>
-            <ul>
-              <li>Как тестируете?</li>
-              <li>Firebase vs REST?</li>
-              <li>Form services: root vs route?</li>
-              <li>Branch protection / rulesets?</li>
-            </ul>
-          </div>
-        </div>
-        <div class="footer"><span>Q&A</span><span>18 / 20</span></div>
-      </section>
+      <!-- Q&A backup slides — skip dedicated Q&A slide, go straight to links -->
 
       <section class="slide" data-note="Ссылки для жюри — всё есть в README.">
         <div class="content">
