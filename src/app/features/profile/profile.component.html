@@ -16,6 +16,18 @@
     <ngKitty-profile-form />
   </section>
 
+  <section appearanсe="flat" class="user-section">
+    <div class="section-title">
+      <tui-icon icon="@tui.trending-up" />
+      <h3>{{ 'profile.statistics' | transloco }}</h3>
+    </div>
+    <div class="stats-section">
+      @for (card of facade.statCards(); track card.id; let i = $index) {
+        <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
+      }
+    </div>
+  </section>
+
   <section class="user-section">
     <div class="section-title">
       <tui-icon icon="@tui.award" />
@@ -26,14 +38,6 @@
         >{{ 'profile.state.unblocked' | transloco }}: 0 {{ 'profile.state.from' | transloco }} 5</span
       >
     </div>
-    <div class="section-container">
-      @for (card of facade.statCards(); track card.id) {
-        <ngKitty-stat-card [stat]="card" />
-      }
-    </div>
-  </section>
-
-  <section class="user-section">
     <div class="divider"></div>
     <div class="achievements">
       @for (achieve of achieves; track achieve.title) {

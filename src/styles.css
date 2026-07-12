@@ -93,6 +93,7 @@
   --divider: #4a3a24;
   --alternative-text: #b8862e;
   --alternative-light-text: #e8c98f;
+  --text-glow: 0 0 18px rgb(#e8c98f / 25%), 0 0 36px rgb(#e8c98f / 10%);
 }
 
 /* App «dark» theme (purple). Только [tuiTheme], без :root — иначе палитры конфликтуют */
@@ -175,6 +176,7 @@
   --divider: #2d1e3a;
   --alternative-text: #0f6652;
   --alternative-light-text: #0fc;
+  --text-glow: 0 0 18px rgb(#0fc / 25%), 0 0 36px rgb(#0fc / 10%);
 }
 
 [tuiTheme='light'] [tuiDropdown],

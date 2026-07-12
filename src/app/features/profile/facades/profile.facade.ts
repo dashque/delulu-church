@@ -65,7 +65,7 @@ export class ProfileFacade {
     return [
       {
         id: 'confessions',
-        icon: '@tui.book-heart',
+        icon: '@tui.scroll-text',
         value: statistics.confesses ?? 0,
         label: this.translocoService.translate('profile.stats.confessions'),
       },
@@ -127,6 +127,8 @@ export class ProfileFacade {
 
   constructor() {
     effect(() => {
+      console.log(this.statistics());
+      console.log(this.confessService.sins?.());
       const user = this.userProfileService.user();
 
       if (!user) {
