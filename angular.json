@@ -51,7 +51,7 @@
                 "input": "public"
               },
               {
-                "glob": "index.html",
+                "glob": "**/*.{html,png,jpg,jpeg,svg,webp}",
                 "input": "presentation",
                 "output": "presentation"
               },

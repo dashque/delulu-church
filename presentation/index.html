@@ -424,6 +424,45 @@
         color: var(--text-muted);
         margin-top: -6px;
       }
+
+      .shot {
+        border: 1px solid rgb(214 168 95 / 30%);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #0d0a09;
+        box-shadow: 0 8px 28px rgb(0 0 0 / 45%);
+        max-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+      }
+
+      .shot img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
+
+      .shot-caption {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        margin-top: 12px;
+        text-align: center;
+      }
+
+      .shot-two {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 8px;
+      }
+
+      .shot-two .shot {
+        max-height: 52vh;
+        margin-top: 0;
+      }
     </style>
   </head>
   <body>
@@ -441,7 +480,7 @@
             >
           </p>
         </div>
-        <div class="footer"><span>Intro</span><span>1 / 19</span></div>
+        <div class="footer"><span>Intro</span><span>1 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Показать структуру 30-минутной презентации жюри.">
@@ -466,7 +505,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span>Intro</span><span>2 / 19</span></div>
+        <div class="footer"><span>Intro</span><span>2 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Daria: кто мы, 1 мин. Каждый кивнёт при упоминании.">
@@ -492,7 +531,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span>Intro</span><span>3 / 19</span></div>
+        <div class="footer"><span>Intro</span><span>3 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Alena: обзор продукта, 2 мин. Переход к demo.">
@@ -515,7 +554,7 @@
             </ul>
           </div>
         </div>
-        <div class="footer"><span>Product Demo</span><span>4 / 19</span></div>
+        <div class="footer"><span>Product Demo</span><span>4 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Переключиться на live demo на 10–15 мин. Слайды 12–16 — backup для Q&A.">
@@ -530,7 +569,7 @@
             <li><strong>DevTools</strong></li>
           </ul>
         </div>
-        <div class="footer"><span>Product Demo</span><span>5 / 19</span></div>
+        <div class="footer"><span>Product Demo</span><span>5 / 20</span></div>
       </section>
 
       <!-- PART 2 · TEAM STORY -->
@@ -539,7 +578,7 @@
           <h1>Team Story</h1>
           <p class="subtitle">Как работали, учили Angular и принимали решения</p>
         </div>
-        <div class="footer"><span>Team Story</span><span>6 / 19</span></div>
+        <div class="footer"><span>Team Story</span><span>6 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Каждый рассказывает свой вклад за 2–3 мин. Daria → Alena → Nadezhda.">
@@ -597,7 +636,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span>Team Story</span><span>7 / 19</span></div>
+        <div class="footer"><span>Team Story</span><span>7 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Хронология по спринтам — общий контекст.">
@@ -617,9 +656,22 @@
 
             </ul>
           </div>
-          <p class="subtitle small" style="margin-top: 20px">136 issues · sprint labels</p>
         </div>
-        <div class="footer"><span>Team Story</span><span>8 / 19</span></div>
+        <div class="footer"><span>Team Story</span><span>8 / 20</span></div>
+      </section>
+
+      <section class="slide" data-note="Показать живую доску: задачи двигаются по колонкам, декомпозиция на sub-issues.">
+        <div class="content">
+          <p class="part-divider">Part 2 · Team Story</p>
+          <span class="badge">Project Board</span>
+          <h2>GitHub Projects — живая доска</h2>
+          <div class="shot-two">
+            <div class="shot"><img src="assets/board-kanban.png" alt="GitHub Projects Kanban board" /></div>
+            <div class="shot"><img src="assets/board-issues.png" alt="GitHub Issues list" /></div>
+          </div>
+          <p class="shot-caption">Backlog → In progress → Paused → Done · 132 задачи закрыто · sprint labels · sub-issues</p>
+        </div>
+        <div class="footer"><span>Team Story</span><span>9 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Как учили Angular — отличия до/после курса.">
@@ -633,7 +685,7 @@
             <li>Практика через <strong>code review</strong> — 125+ merged PRs, substantive comments</li>
           </ul>
         </div>
-        <div class="footer"><span>Team Story</span><span>9 / 19</span></div>
+        <div class="footer"><span>Team Story</span><span>10 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Самое сложное — каждый может добавить свой пример.">
@@ -647,7 +699,7 @@
             <li><strong>i18n</strong> — tarot EN → перевод через MyMemory API</li>
           </ul>
         </div>
-        <div class="footer"><span>Team Story</span><span>10 / 19</span></div>
+        <div class="footer"><span>Team Story</span><span>11 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Ключевые решения и как решали конфликты.">
@@ -675,7 +727,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span>Team Story</span><span>11 / 19</span></div>
+        <div class="footer"><span>Team Story</span><span>12 / 20</span></div>
       </section>
 
       <!-- PART 3 · TECH BACKUP (Q&A) -->
@@ -685,7 +737,7 @@
           <h1>Angular Deep Dive</h1>
           <p class="subtitle">Архитектура и технические решения — для вопросов жюри</p>
         </div>
-        <div class="footer"><span>Q&A Backup</span><span>12 / 19</span></div>
+        <div class="footer"><span>Q&A Backup</span><span>13 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Daria: архитектура, если спросят.">
@@ -716,7 +768,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span>Q&A Backup</span><span>13 / 19</span></div>
+        <div class="footer"><span>Q&A Backup</span><span>14 / 20</span></div>
       </section>
 
       <section class="slide" data-note="DI + Signals — главные Angular highlights.">
@@ -734,7 +786,7 @@
             <li><strong>signalStore</strong> — theme + language → Firestore</li>
           </ul>
         </div>
-        <div class="footer"><span>Q&A Backup</span><span>14 / 19</span></div>
+        <div class="footer"><span>Q&A Backup</span><span>15 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Routing, Forms, CD — если спросят отдельно.">
@@ -756,7 +808,7 @@
             </ul>
           </div>
         </div>
-        <div class="footer"><span>Q&A Backup</span><span>15 / 19</span></div>
+        <div class="footer"><span>Q&A Backup</span><span>16 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Error handling + delivery.">
@@ -782,7 +834,7 @@
             </div>
           </div>
         </div>
-        <div class="footer"><span>Q&A Backup</span><span>16 / 19</span></div>
+        <div class="footer"><span>Q&A Backup</span><span>17 / 20</span></div>
       </section>
 
       <!-- Q&A -->
@@ -806,7 +858,7 @@
             </ul>
           </div>
         </div>
-        <div class="footer"><span>Q&A</span><span>17 / 19</span></div>
+        <div class="footer"><span>Q&A</span><span>18 / 20</span></div>
       </section>
 
       <section class="slide" data-note="Ссылки для жюри — всё есть в README.">
@@ -821,7 +873,7 @@
             <li><strong>Demo video:</strong> <a class="link" href="https://drive.google.com/file/d/1xQl8qfHqrmiRhw6KaKnjK7WEUC5O3FE4/view" target="_blank" rel="noreferrer">error handling & 404</a></li>
           </ul>
         </div>
-        <div class="footer"><span>Links</span><span>18 / 19</span></div>
+        <div class="footer"><span>Links</span><span>19 / 20</span></div>
       </section>
 
       <section class="slide title-slide" data-note="Финал. Вопросы?">
@@ -833,7 +885,7 @@
             ngKittyDebug · RS School Angular 2026 Q2
           </p>
         </div>
-        <div class="footer"><span>Fin</span><span>19 / 19</span></div>
+        <div class="footer"><span>Fin</span><span>20 / 20</span></div>
       </section>
     </div>
 
