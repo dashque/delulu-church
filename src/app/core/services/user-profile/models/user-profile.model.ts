@@ -8,5 +8,6 @@ export interface UserProfile {
   createdAt: unknown;
   candles: number;
   sins: number;
+  totalSins: number;
   uiState: UiState;
 }
