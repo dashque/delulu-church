@@ -13,6 +13,7 @@ interface FirebaseAuthMock {
   getDocs: ReturnType<typeof vi.fn>;
   query: ReturnType<typeof vi.fn>;
   updateDoc: ReturnType<typeof vi.fn>;
+  increment: ReturnType<typeof vi.fn>;
   where: ReturnType<typeof vi.fn>;
   GithubAuthProvider: ReturnType<typeof vi.fn>;
   getAuth: ReturnType<typeof vi.fn>;
@@ -79,6 +80,8 @@ export const resetFirebaseAuthMock = (): void => {
   mock.signInWithEmailAndPassword.mockReset();
   mock.signInWithPopup.mockReset();
   mock.signOut.mockReset();
+  mock.increment.mockReset();
+  mock.increment.mockImplementation((value: number) => ({ __increment__: value }));
   mock.authInstance.currentUser = null;
   mock.addDoc.mockResolvedValue({ id: 'new-sin-id' });
   mock.collection.mockReturnValue({ path: 'users/firebase-user-1/sins' });

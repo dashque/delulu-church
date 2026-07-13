@@ -49,6 +49,7 @@ describe('UserProfileService', () => {
           createdAt: userProfileFixture.createdAt,
           candles: 3,
           sins: 2,
+          totalSins: 0,
           uiState: initialUiState,
         }),
       });
@@ -63,6 +64,7 @@ describe('UserProfileService', () => {
         createdAt: userProfileFixture.createdAt,
         candles: 3,
         sins: 2,
+        totalSins: 0,
         uiState: initialUiState,
       });
       expect(service.user()).toEqual(profile);
@@ -76,6 +78,7 @@ describe('UserProfileService', () => {
           displayName: null,
           candles: 'invalid',
           sins: undefined,
+          totalSins: 0,
           uiState: 'invalid',
         }),
       });
@@ -90,6 +93,7 @@ describe('UserProfileService', () => {
         createdAt: null,
         candles: 0,
         sins: 0,
+        totalSins: 0,
         uiState: initialUiState,
       });
     });
@@ -123,6 +127,7 @@ describe('UserProfileService', () => {
           dateOfBirth,
           candles: 0,
           sins: 0,
+          totalSins: 0,
           uiState: initialUiState,
           createdAt: firebaseAuthMock.serverTimestampFixture,
         })
