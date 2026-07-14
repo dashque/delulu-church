@@ -25,6 +25,8 @@
 .title {
   font-size: 0.9rem;
   padding: 0;
+  max-width: 100%;
+  overflow-wrap: break-word;
 
   @media (width <= 768px) {
     font-size: 0.9rem;
