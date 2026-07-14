@@ -14,6 +14,10 @@
     flex-direction: column;
     padding: 0.25rem;
     text-align: center;
+
+    .content {
+      width: 100%;
+    }
   }
 
   &:hover {
@@ -64,4 +68,9 @@
 .status.full {
   border-color: var(--earth);
   color: var(--earth);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
 }
