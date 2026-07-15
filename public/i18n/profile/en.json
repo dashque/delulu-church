@@ -55,23 +55,31 @@
   "achieve": {
     "first_confession": {
       "title": "First confession",
-      "description": "You confessed your first bug"
-    },
-    "chronicist": {
-      "title": "Chronicist",
-      "description": "7 daily writings to diary"
-    },
-    "good_mood": {
-      "title": "Happy developer",
-      "description": "The average mood rating is over 4"
-    },
-    "regular_visitor": {
-      "title": "Regular visitor",
-      "description": "Over 30 days of activity"
+      "description": "Confessed your first sin"
     },
     "penitent": {
       "title": "Penitent",
-      "description": "10 confessions"
+      "description": "10 confessions completed"
+    },
+    "first_candle": {
+      "title": "First candle",
+      "description": "Lit your first candle"
+    },
+    "flame_keeper": {
+      "title": "Flame keeper",
+      "description": "Lit 20 candles"
+    },
+    "altar_master": {
+      "title": "Altar master",
+      "description": "Lit 50 candles"
+    },
+    "saved": {
+      "title": "Saved",
+      "description": "50 confessions completed"
+    },
+    "saint": {
+      "title": "Saint",
+      "description": "Made a sacrifice"
     }
   }
 }
