@@ -7,15 +7,16 @@ import { NgTemplateOutlet } from '@angular/common';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { ProfileFacade } from './facades/profile.facade';
 import { ProfileFormComponent } from './ui/profile-form.component';
+import { StatCardComponent } from './ui/stat-card/stat-card.component';
 
 @Component({
   selector: 'ngKitty-profile',
-  imports: [TuiCardLarge, TuiAvatar, TuiIcon, TranslocoPipe, NgTemplateOutlet, ProfileFormComponent],
+  imports: [TuiCardLarge, TuiAvatar, TuiIcon, TranslocoPipe, NgTemplateOutlet, ProfileFormComponent, StatCardComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent {
-  private readonly facade = inject(ProfileFacade);
+  protected readonly facade = inject(ProfileFacade);
 
   protected readonly userProfileService = inject(UserProfileService);
 

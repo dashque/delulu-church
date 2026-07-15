@@ -12,6 +12,8 @@ import { vi } from 'vitest';
 import { signal } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { computed } from '@angular/core';
+import type { StatCard } from './data/models/stats-card.model';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -26,6 +28,21 @@ describe('ProfileComponent', () => {
     }) as ProfileFacade['profileForm'],
 
     isLoading: signal(false),
+
+    statCards: computed<StatCard[]>(() => [
+      {
+        id: 'confessions',
+        icon: '@tui.book-heart',
+        value: 3,
+        label: 'Confessions',
+      },
+      {
+        id: 'candles',
+        icon: '@tui.flame',
+        value: 10,
+        label: 'Candles',
+      },
+    ]),
 
     submit: vi.fn(),
   };

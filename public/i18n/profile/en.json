@@ -30,6 +30,10 @@
     "moscow": "Moscow"
   },
   "statistics": "Statistics",
+  "stats": {
+    "confessions": "Confessions",
+    "candles": "Candles"
+  },
   "achievements": "Achievements",
   "state": {
     "unblocked": "Unblocked",
