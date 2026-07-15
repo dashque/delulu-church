@@ -37,7 +37,6 @@ export class UserProfileService {
       email: email,
       candles: 0,
       sins: 0,
-      totalSins: 0,
       uiState: {
         ...initialUiState,
       },
@@ -90,7 +89,6 @@ export class UserProfileService {
       email: email,
       candles: 0,
       sins: 0,
-      totalSins: 0,
     });
   }
 
@@ -121,7 +119,6 @@ export class UserProfileService {
       createdAt: data['createdAt'] ?? null,
       candles: this.getNumber(data['candles']),
       sins: this.getNumber(data['sins']),
-      totalSins: this.getNumber(data['totalSins']),
       uiState: this.getUiState(data['uiState']),
     };
   }

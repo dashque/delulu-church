@@ -5,7 +5,6 @@ import type { StatCard } from '@features/profile/data/models/stats-card.model';
 
 @Component({
   selector: 'ngKitty-stat-card',
-  standalone: true,
   imports: [TuiIcon, TranslocoPipe],
   templateUrl: './stat-card.component.html',
   styleUrl: './stat-card.component.scss',
@@ -27,10 +26,5 @@ export class StatCardComponent {
     if (this.isClickable()) {
       this.cardClicked.emit();
     }
-  }
-
-  protected onButtonClick(event: MouseEvent) {
-    event.stopPropagation();
-    this.buttonClicked.emit();
   }
 }

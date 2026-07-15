@@ -9,6 +9,5 @@ export const userProfileFixture = {
   createdAt: 'server-timestamp',
   candles: 0,
   sins: 0,
-  totalSins: 0,
   uiState: initialUiState,
 } as const satisfies UserProfile;

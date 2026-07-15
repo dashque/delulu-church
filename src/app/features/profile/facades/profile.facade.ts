@@ -16,19 +16,12 @@ import type { StatCard } from '../data/models/stats-card.model';
 })
 export class ProfileFacade {
   private readonly profileFormService = inject(ProfileFormService);
-
   private readonly authService = inject(AuthService);
-
   private readonly translocoService = inject(TranslocoService);
-
   private readonly toast = inject(HotToastService);
-
   public readonly profileForm = this.profileFormService.form;
-
   public readonly state = signal<ProfileData>(PROFILE_MOCK);
-
   public readonly userProfileService = inject(UserProfileService);
-
   public readonly profile = computed<Profile | null>(() => {
     const user = this.userProfileService.user();
 
@@ -53,7 +46,6 @@ export class ProfileFacade {
 
   public readonly candlesService = inject(CandlesService);
   public readonly confessService = inject(ConfessService);
-
   public readonly statistics = computed<Statistics>(() => ({
     candles: Number(this.candlesService.totalOfferings?.() ?? 0),
     confesses: Number(this.userProfileService.user()?.sins ?? 0),
@@ -79,10 +71,8 @@ export class ProfileFacade {
   });
 
   public readonly achievementInfo = computed<AchievementInfo>(() => this.state().achievementInfo);
-
   public readonly zodiac = computed<Zodiac>(() => {
     const user = this.userProfileService.user();
-
     const birth = user?.dateOfBirth as string | null;
 
     if (!birth) {
@@ -94,10 +84,8 @@ export class ProfileFacade {
     }
 
     const date = new Date(birth);
-
     const month = date.getMonth() + 1;
     const day = date.getDate();
-
     const sign =
       (month === 3 && day >= 21) || (month === 4 && day <= 19)
         ? 'Овен'
@@ -113,9 +101,7 @@ export class ProfileFacade {
   });
 
   public readonly isLoading = signal(false);
-
   public readonly achievementsCount = computed(() => this.achievementInfo().achievements.length);
-
   public readonly unlockedAchievementsCount = computed(
     () => this.achievementInfo().achievements.filter((achievement) => achievement.unlocked).length
   );
@@ -167,7 +153,6 @@ export class ProfileFacade {
       });
 
       this.profileForm.markAsPristine();
-
       this.toast.success(this.translocoService.translate('notifications.success', {}, 'profile'));
     } catch (error) {
       let message = this.translocoService.translate('notifications.failure-message', {}, 'profile');

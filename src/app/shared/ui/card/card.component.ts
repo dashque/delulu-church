@@ -29,4 +29,8 @@ export class CardComponent {
       this.cardClicked.emit();
     }
   }
+  protected onButtonClick(event: MouseEvent) {
+    event.stopPropagation();
+    this.buttonClicked.emit();
+  }
 }

@@ -30,7 +30,6 @@ const firebaseAuthMock = vi.hoisted(() => {
     getDocs: vi.fn(),
     query: vi.fn(),
     updateDoc: vi.fn(),
-
     where: vi.fn(),
     GithubAuthProvider: vi.fn(GithubAuthProviderMock),
     getAuth: vi.fn(() => authInstance),
