@@ -7,7 +7,7 @@ import { NgTemplateOutlet } from '@angular/common';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { ProfileFacade } from './facades/profile.facade';
 import { ProfileFormComponent } from './ui/profile-form.component';
-import { StatCardComponent } from '@shared/ui/stat-card/stat-card.component';
+import { StatCardComponent } from './ui/stat-card/stat-card.component';
 
 @Component({
   selector: 'ngKitty-profile',

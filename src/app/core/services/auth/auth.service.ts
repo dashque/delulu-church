@@ -201,7 +201,5 @@ export class AuthService {
     }
 
     await this.userProfileService.loadProfile(user.uid);
-
-    console.log('PROFILE AFTER LOAD:', this.userProfileService.user());
   }
 }

@@ -1,6 +1,6 @@
 import { inject, Service, signal } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
-import { addDoc, collection, deleteDoc, doc, getDocs, increment, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, getDocs, updateDoc } from 'firebase/firestore';
 import { firestore } from '@env/environment';
 import type { Severity, Sin, Status } from '@features/shrift/models/sin.model';
 import { SINS_SUBCOLLECTION, STATUSES, USERS_COLLECTION } from '@core/services/confess/models/confess.model';
@@ -66,7 +66,6 @@ export class ConfessService {
       this._sins.update((sins) => (sins ? [...sins, newSin] : [newSin]));
 
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
-      await this.incrementTotalSins(uid);
       await this.userProfileService.loadProfile(uid);
 
       this.coderService.reactSins('add');
@@ -88,7 +87,7 @@ export class ConfessService {
       await this.runFirestoreOp(deleteDoc(sinReference));
 
       this._sins.update((sins) => sins?.filter((sin) => sin.uid !== sinUid) ?? null);
-      await this.updateSinsCount(uid, await this.getSinsCount(uid));
+
       await this.userProfileService.loadProfile(uid);
       this.coderService.reactSins('delete');
     } catch (error) {
@@ -111,21 +110,6 @@ export class ConfessService {
       const userReference = doc(firestore, USERS_COLLECTION, uid);
 
       await this.runFirestoreOp(updateDoc(userReference, { sins: count }));
-    } catch (error) {
-      this._error.set(error);
-      throw error;
-    }
-  }
-
-  public async incrementTotalSins(uid: string): Promise<void> {
-    try {
-      const userReference = doc(firestore, USERS_COLLECTION, uid);
-
-      await this.runFirestoreOp(
-        updateDoc(userReference, {
-          totalSins: increment(1),
-        })
-      );
     } catch (error) {
       this._error.set(error);
       throw error;

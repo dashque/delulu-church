@@ -16,7 +16,6 @@ export const confessServiceMock = {
   deleteSin: vi.fn().mockResolvedValue(undefined),
   getSinsCount: vi.fn().mockResolvedValue(0),
   updateSinsCount: vi.fn().mockResolvedValue(undefined),
-  incrementTotalSins: vi.fn(),
   error: signal(null).asReadonly(),
 } as const satisfies MockedObject<Partial<ConfessService>>;
 
@@ -28,7 +27,6 @@ export const resetConfessServiceMock = (): void => {
   confessServiceMock.deleteSin.mockReset().mockResolvedValue(undefined);
   confessServiceMock.getSinsCount.mockReset().mockResolvedValue(0);
   confessServiceMock.updateSinsCount.mockReset().mockResolvedValue(undefined);
-  confessServiceMock.incrementTotalSins.mockReset();
 };
 
 export const setConfessServiceMockSins = (sins: Sin[] | null): void => {

@@ -56,7 +56,7 @@ export class ProfileFacade {
 
   public readonly statistics = computed<Statistics>(() => ({
     candles: Number(this.candlesService.totalOfferings?.() ?? 0),
-    confesses: Number(this.confessService.sins?.()?.length ?? 0),
+    confesses: Number(this.userProfileService.user()?.sins ?? 0),
   }));
 
   public readonly statCards = computed<StatCard[]>(() => {
@@ -67,13 +67,13 @@ export class ProfileFacade {
         id: 'confessions',
         icon: '@tui.scroll-text',
         value: statistics.confesses ?? 0,
-        label: this.translocoService.translate('profile.stats.confessions'),
+        label: 'profile.stats.confessions',
       },
       {
         id: 'candles',
         icon: '@tui.flame',
         value: statistics.candles ?? 0,
-        label: this.translocoService.translate('profile.stats.candles'),
+        label: 'profile.stats.candles',
       },
     ];
   });
@@ -127,8 +127,6 @@ export class ProfileFacade {
 
   constructor() {
     effect(() => {
-      console.log(this.statistics());
-      console.log(this.confessService.sins?.());
       const user = this.userProfileService.user();
 
       if (!user) {

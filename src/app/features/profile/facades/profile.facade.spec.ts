@@ -19,11 +19,7 @@ import {
   setCandlesServiceMockCounts,
 } from '@core/services/candles/candles.service.mock';
 
-import {
-  confessServiceMock,
-  resetConfessServiceMock,
-  setConfessServiceMockSins,
-} from '@core/services/confess/confess.service.mock';
+import { confessServiceMock, resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
 
 import {
   resetUserProfileServiceMock,
@@ -104,12 +100,15 @@ describe('ProfileFacade', () => {
   describe('Статистика', () => {
     it('должен посчитать количество свечей и исповедей', () => {
       setCandlesServiceMockCounts({ ...createEmptyCandleCounts(), deploy: 2, bug: 1 });
-      setConfessServiceMockSins([
-        { uid: '1', text: 'Sin', severity: 'low', status: 'none' },
-        { uid: '2', text: 'Sin 2', severity: 'critical', status: 'full' },
-      ]);
+      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
+        ...userProfileFixture,
+        sins: 2,
+      });
 
-      expect(facade.statistics()).toEqual({ candles: 3, confesses: 2 });
+      expect(facade.statistics()).toEqual({
+        candles: 3,
+        confesses: 2,
+      });
     });
   });
 

@@ -2,7 +2,7 @@ import { Component, input, output } from '@angular/core';
 import { TuiButton, TuiIcon } from '@taiga-ui/core';
 
 @Component({
-  selector: 'ngKitty-stat-card',
+  selector: 'ngKitty-card',
   imports: [TuiIcon, TuiButton],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
@@ -28,10 +28,5 @@ export class CardComponent {
     if (this.isClickable()) {
       this.cardClicked.emit();
     }
-  }
-
-  protected onButtonClick(event: MouseEvent) {
-    event.stopPropagation();
-    this.buttonClicked.emit();
   }
 }
