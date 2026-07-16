@@ -17,10 +17,7 @@
   </section>
 
   <section appearance="flat" class="user-section">
-    <div class="section-title">
-      <tui-icon icon="@tui.trending-up" />
-      <h3>{{ 'profile.statistics' | transloco }}</h3>
-    </div>
+    <div class="section-title"></div>
     <div class="stats-section">
       @for (card of facade.statCards(); track card.id; let i = $index) {
         <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
@@ -30,16 +27,15 @@
 
   <section class="user-section">
     <div class="section-title">
-      <tui-icon icon="@tui.award" />
-      <h3>{{ 'profile.achievements' | transloco }}</h3>
+      <h3>[ {{ 'profile.achievements' | transloco }} ]</h3>
     </div>
     <div class="section-title">
-      <span class="stats-name"
-        >{{ 'profile.state.unblocked' | transloco }}:
-        {{ facade.achievementInfo().unlocked }}
-        {{ 'profile.state.from' | transloco }}
-        {{ facade.achievementInfo().total }}
-      </span>
+      <progress
+        max="1"
+        size="l"
+        tuiProgressBar
+        [value]="facade.achievementProgress().unlocked / facade.achievementProgress().total"
+      ></progress>
     </div>
     <div class="divider"></div>
     <div class="achievements">
