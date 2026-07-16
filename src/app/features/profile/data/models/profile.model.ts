@@ -15,13 +15,14 @@ export interface Profile {
 export interface Statistics {
   confesses: number;
   candles: number;
+  donuts: number;
 }
 
 export interface Achievement {
   id: string;
+  icon: string;
   title: string;
   description: string;
-  imageUrl: string;
   unlocked: boolean;
 }
 

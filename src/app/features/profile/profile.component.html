@@ -35,8 +35,11 @@
     </div>
     <div class="section-title">
       <span class="stats-name"
-        >{{ 'profile.state.unblocked' | transloco }}: 0 {{ 'profile.state.from' | transloco }} 5</span
-      >
+        >{{ 'profile.state.unblocked' | transloco }}:
+        {{ facade.achievementInfo().unlocked }}
+        {{ 'profile.state.from' | transloco }}
+        {{ facade.achievementInfo().total }}
+      </span>
     </div>
     <div class="divider"></div>
     <div class="achievements">

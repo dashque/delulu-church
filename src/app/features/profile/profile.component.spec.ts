@@ -44,6 +44,12 @@ describe('ProfileComponent', () => {
       },
     ]),
 
+    achievementInfo: computed(() => ({
+      total: 7,
+      unlocked: 0,
+      achievements: [],
+    })),
+
     submit: vi.fn(),
   };
 

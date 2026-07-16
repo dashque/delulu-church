@@ -1,4 +1,5 @@
 import { TestBed } from '@angular/core/testing';
+import { computed } from '@angular/core';
 import type { Mock } from 'vitest';
 import { ProfileFacade } from './profile.facade';
 import { expect, vi } from 'vitest';
@@ -11,6 +12,7 @@ import { authServiceMock } from '@core/services/auth/auth.service.mock';
 import { AuthService } from '@core/services/auth/auth.service';
 import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
+import { DonutService } from '@core/services/donuts/donuts.service';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
 import {
@@ -52,6 +54,7 @@ describe('ProfileFacade', () => {
         { provide: AuthService, useValue: authServiceMock },
         { provide: CandlesService, useValue: candlesServiceMock },
         { provide: ConfessService, useValue: confessServiceMock },
+        { provide: DonutService, useValue: { totalDonuts: computed(() => 1) } },
       ],
     });
     facade = TestBed.inject(ProfileFacade);
@@ -108,6 +111,7 @@ describe('ProfileFacade', () => {
       expect(facade.statistics()).toEqual({
         candles: 3,
         confesses: 2,
+        donuts: 0,
       });
     });
   });
@@ -151,9 +155,9 @@ describe('ProfileFacade', () => {
     });
 
     it('должен посчитать прогресс достижений', () => {
-      expect(facade.achievementsCount()).toBe(5);
+      expect(facade.achievementsCount()).toBe(7);
       expect(facade.unlockedAchievementsCount()).toBe(0);
-      expect(facade.achievementProgress()).toEqual({ unlocked: 0, total: 5 });
+      expect(facade.achievementProgress()).toEqual({ unlocked: 0, total: 7 });
     });
   });
 });
