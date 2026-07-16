@@ -50,6 +50,11 @@ describe('ProfileComponent', () => {
       achievements: [],
     })),
 
+    achievementProgress: computed(() => ({
+      unlocked: 0,
+      total: profileFacadeMock.achievementInfo!().total,
+    })),
+
     submit: vi.fn(),
   };
 

@@ -72,6 +72,10 @@ export const PROFILE_MOCK = {
       },
     ],
   },
+  achievementProgress: {
+    unlocked: 0,
+    total: 7,
+  },
   zodiac: {
     sign: 'Рыбы',
     description: 'Интуитивно понимает архитектуру',
