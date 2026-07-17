@@ -21,14 +21,14 @@ export const PROFILE_MOCK = {
   },
   achievementInfo: {
     total: 7,
-    unlocked: 0,
+    unlocked: 2,
     achievements: [
       {
         id: 'first_confession',
         icon: './assets/pray.svg',
         title: 'profile.achieve.first_confession.title',
         description: 'profile.achieve.first_confession.description',
-        unlocked: false,
+        unlocked: true,
       },
       {
         id: 'penitent',
@@ -42,7 +42,7 @@ export const PROFILE_MOCK = {
         icon: './assets/candle.svg',
         title: 'profile.achieve.first_candle.title',
         description: 'profile.achieve.first_candle.description',
-        unlocked: false,
+        unlocked: true,
       },
       {
         id: 'flame_keeper',
@@ -74,10 +74,6 @@ export const PROFILE_MOCK = {
       },
     ],
   },
-  // achievementProgress: {
-  //   unlocked: 0,
-  //   total: 7,
-  // },
   zodiac: {
     sign: 'Рыбы',
     description: 'Интуитивно понимает архитектуру',
