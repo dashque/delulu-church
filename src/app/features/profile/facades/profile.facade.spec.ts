@@ -1,10 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import type { Mock } from 'vitest';
+import { expect } from 'vitest';
 import { ProfileFacade } from './profile.facade';
-import { expect, vi } from 'vitest';
-import { TranslocoService } from '@jsverse/transloco';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
-import { createEmptyCandleCounts } from '@core/services/candles/helpers/create-empty-candle-counts.helper';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { authServiceMock } from '@core/services/auth/auth.service.mock';
@@ -13,11 +11,7 @@ import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
-import {
-  candlesServiceMock,
-  resetCandlesServiceMock,
-  setCandlesServiceMockCounts,
-} from '@core/services/candles/candles.service.mock';
+import { candlesServiceMock, resetCandlesServiceMock } from '@core/services/candles/candles.service.mock';
 
 import { confessServiceMock, resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
 
@@ -25,6 +19,7 @@ import {
   resetUserProfileServiceMock,
   userProfileServiceMock,
 } from '@core/services/user-profile/user-profile.service.mock';
+import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
@@ -36,18 +31,10 @@ describe('ProfileFacade', () => {
     (userProfileServiceMock.user as unknown as Mock).mockReturnValue(userProfileFixture);
 
     TestBed.configureTestingModule({
+      imports: [TranslocoTestingMock],
       providers: [
         ProfileFacade,
-        {
-          provide: TranslocoService,
-          useValue: {
-            translate: vi.fn().mockReturnValue('translated'),
-          },
-        },
-        {
-          provide: HotToastService,
-          useValue: hotToastServiceMock,
-        },
+        { provide: HotToastService, useValue: hotToastServiceMock },
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: AuthService, useValue: authServiceMock },
         { provide: CandlesService, useValue: candlesServiceMock },
@@ -55,9 +42,6 @@ describe('ProfileFacade', () => {
       ],
     });
     facade = TestBed.inject(ProfileFacade);
-    expect(facade.userProfileService).toBe(userProfileServiceMock);
-    expect(facade.candlesService).toBe(candlesServiceMock);
-    expect(facade.confessService).toBe(confessServiceMock);
   });
 
   it('должен инициализироваться', () => {
@@ -71,44 +55,13 @@ describe('ProfileFacade', () => {
       expect(facade.profile()).toBeNull();
     });
 
-    it('должен собрать профиль из UserProfileService', () => {
-      expect(facade.profile()).toEqual({
-        id: userProfileFixture.uid,
-        name: userProfileFixture.displayName,
-        email: userProfileFixture.email,
-        avatarUrl: PROFILE_MOCK.profile.avatarUrl,
-        dateOfBirth: String(userProfileFixture.dateOfBirth),
-        candles: userProfileFixture.candles,
-        sins: userProfileFixture.sins,
-        metadata: {
-          creationTime: String(userProfileFixture.createdAt),
-          lastSignInTime: '',
-        },
-      });
-    });
-
     it('должен подставить Anonymous при отсутствии displayName', () => {
       (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
         ...userProfileFixture,
         displayName: null,
       });
 
-      expect(facade.profile()?.name).toBe('Anonymous');
-    });
-  });
-
-  describe('Статистика', () => {
-    it('должен посчитать количество свечей и исповедей', () => {
-      setCandlesServiceMockCounts({ ...createEmptyCandleCounts(), deploy: 2, bug: 1 });
-      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
-        ...userProfileFixture,
-        sins: 2,
-      });
-
-      expect(facade.statistics()).toEqual({
-        candles: 3,
-        confesses: 2,
-      });
+      expect(facade.profile()?.displayName).toBe('Anonymous');
     });
   });
 

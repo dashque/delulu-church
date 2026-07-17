@@ -87,6 +87,7 @@ export class ConfessService {
       await this.runFirestoreOp(deleteDoc(sinReference));
 
       this._sins.update((sins) => sins?.filter((sin) => sin.uid !== sinUid) ?? null);
+      await this.updateSinsCount(uid, await this.getSinsCount(uid));
 
       await this.userProfileService.loadProfile(uid);
       this.coderService.reactSins('delete');

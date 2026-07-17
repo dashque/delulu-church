@@ -3,7 +3,7 @@
     <h2 class="profile-title">[{{ 'profile.title' | transloco }}]</h2>
     <div class="profile-head">
       <div tuiAvatar="@tui.user" size="xl" class="user-avatar"></div>
-      @if (userProfileService.user(); as user) {
+      @if (user(); as user) {
         <div class="profile-head-info">
           <h3 class="profile-title">{{ user.displayName || user.email }}</h3>
           <p class="machine-spirit-status">

@@ -1,9 +1,7 @@
 import { computed, effect, inject, Service, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
-import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
+import type { AchievementInfo, Profile, ProfileData, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
-import { CandlesService } from '@core/services/candles/candles.service';
-import { ConfessService } from '@core/services/confess/confess.service';
 import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
@@ -19,19 +17,23 @@ export class ProfileFacade {
   private readonly authService = inject(AuthService);
   private readonly translocoService = inject(TranslocoService);
   private readonly toast = inject(HotToastService);
+  private readonly userProfileService = inject(UserProfileService);
+  private readonly _currentUser = this.userProfileService.user;
+  private readonly _isLoading = signal(false);
+  private readonly _state = signal<ProfileData>(PROFILE_MOCK);
   public readonly profileForm = this.profileFormService.form;
-  public readonly state = signal<ProfileData>(PROFILE_MOCK);
-  public readonly userProfileService = inject(UserProfileService);
+  public readonly isLoading = this._isLoading.asReadonly();
+  public readonly state = this._state.asReadonly();
   public readonly profile = computed<Profile | null>(() => {
-    const user = this.userProfileService.user();
+    const user = this._currentUser();
 
     if (!user) {
       return null;
     }
 
     return {
-      id: user.uid,
-      name: user.displayName ?? 'Anonymous',
+      uid: user.uid,
+      displayName: user.displayName ?? 'Anonymous',
       email: user.email,
       avatarUrl: PROFILE_MOCK.profile.avatarUrl,
       dateOfBirth: String(user.dateOfBirth),
@@ -44,35 +46,25 @@ export class ProfileFacade {
     };
   });
 
-  public readonly candlesService = inject(CandlesService);
-  public readonly confessService = inject(ConfessService);
-  public readonly statistics = computed<Statistics>(() => ({
-    candles: Number(this.candlesService.totalOfferings?.() ?? 0),
-    confesses: Number(this.userProfileService.user()?.sins ?? 0),
-  }));
-
   public readonly statCards = computed<StatCard[]>(() => {
-    const statistics = this.statistics();
-
     return [
       {
         id: 'confessions',
         icon: '@tui.scroll-text',
-        value: statistics.confesses ?? 0,
+        value: this.profile()?.sins ?? 0,
         label: 'profile.stats.confessions',
       },
       {
         id: 'candles',
         icon: '@tui.flame',
-        value: statistics.candles ?? 0,
+        value: this.profile()?.candles ?? 0,
         label: 'profile.stats.candles',
       },
     ];
   });
-
-  public readonly achievementInfo = computed<AchievementInfo>(() => this.state().achievementInfo);
+  public readonly achievementInfo = computed<AchievementInfo>(() => this._state()?.achievementInfo);
   public readonly zodiac = computed<Zodiac>(() => {
-    const user = this.userProfileService.user();
+    const user = this._currentUser();
     const birth = user?.dateOfBirth as string | null;
 
     if (!birth) {
@@ -99,13 +91,16 @@ export class ProfileFacade {
       icon: 'assets/star.svg',
     };
   });
+  public readonly achievementsCount = computed(() => {
+    if (!this.achievementInfo()) {
+      return 0;
+    }
 
-  public readonly isLoading = signal(false);
-  public readonly achievementsCount = computed(() => this.achievementInfo().achievements.length);
+    return this.achievementInfo().achievements.length;
+  });
   public readonly unlockedAchievementsCount = computed(
     () => this.achievementInfo().achievements.filter((achievement) => achievement.unlocked).length
   );
-
   public readonly achievementProgress = computed(() => ({
     unlocked: this.unlockedAchievementsCount(),
     total: this.achievementsCount(),
@@ -113,18 +108,13 @@ export class ProfileFacade {
 
   constructor() {
     effect(() => {
-      const user = this.userProfileService.user();
+      const user = this._currentUser();
 
       if (!user) {
         return;
       }
 
-      this.profileForm.patchValue(
-        {
-          name: user.displayName ?? '',
-        },
-        { emitEvent: false }
-      );
+      this.profileForm.patchValue({ name: user.displayName ?? '' }, { emitEvent: false });
     });
   }
 
@@ -133,13 +123,13 @@ export class ProfileFacade {
       return;
     }
 
-    const user = this.authService.user();
+    const user = this._currentUser();
 
     if (!user) {
       return;
     }
 
-    this.isLoading.set(true);
+    this._isLoading.set(true);
 
     try {
       const { name, currentPassword, newPassword } = this.profileForm.getRawValue();
@@ -163,7 +153,7 @@ export class ProfileFacade {
 
       this.toast.error(message);
     } finally {
-      this.isLoading.set(false);
+      this._isLoading.set(false);
     }
   }
 }

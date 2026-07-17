@@ -22,7 +22,7 @@ export class UserProfileService {
       return null;
     }
 
-    const userProfile = this.getUserProfile(uid, userSnapshot.data());
+    const userProfile = this.fillUserProfile(uid, userSnapshot.data());
 
     this._user.set(userProfile);
 
@@ -42,6 +42,7 @@ export class UserProfileService {
       },
     });
   }
+
   public async updateProfile(
     uid: string,
     data: {
@@ -65,6 +66,7 @@ export class UserProfileService {
       });
     }
   }
+
   public async ensureProviderProfile(uid: string, email: string | null, displayName: string | null) {
     const userReference = this.getUserReference(uid);
     const userSnapshot = await getDoc(userReference);
@@ -110,7 +112,7 @@ export class UserProfileService {
     return doc(firestore, 'users', uid);
   }
 
-  private getUserProfile(uid: string, data: Record<string, unknown>): UserProfile {
+  private fillUserProfile(uid: string, data: Record<string, unknown>) {
     return {
       uid: uid,
       email: this.getNullableString(data['email']),
@@ -131,7 +133,7 @@ export class UserProfileService {
     return typeof value === 'number' ? value : 0;
   }
 
-  private getUiState(value: unknown): UiState {
+  private getUiState(value: unknown) {
     if (typeof value !== 'object' || value === null) {
       return { ...initialUiState };
     }

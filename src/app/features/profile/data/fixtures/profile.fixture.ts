@@ -1,7 +1,9 @@
+import type { ProfileData } from '@features/profile/data/models/profile.model';
+
 export const PROFILE_MOCK = {
   profile: {
-    id: 'anonimous_coder',
-    name: 'Anonimous Coder',
+    uid: 'anonimous_coder',
+    displayName: 'Anonimous Coder',
     email: 'coder@getMultiFactorResolver.com',
     avatarUrl: 'assets/star.svg',
     dateOfBirth: '2000-01-07T00:00:01.651Z',
@@ -62,4 +64,4 @@ export const PROFILE_MOCK = {
     description: 'Интуитивно понимает архитектуру',
     icon: 'assets/star.svg',
   },
-};
+} as const satisfies ProfileData;

@@ -51,22 +51,26 @@ export const appConfig: ApplicationConfig = {
       const transloco = inject(TranslocoService);
 
       return {
-        required: () => transloco.translate(VALIDATION_ERRORS_DICT.required),
-        maxlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.maxLength, context),
-        minlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.minLength, context),
+        required: () => transloco.translate(VALIDATION_ERRORS_DICT.required, {}, transloco.activeLang()),
+        maxlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.maxLength, context, transloco.activeLang()),
+        minlength: (context) => transloco.translate(VALIDATION_ERRORS_DICT.minLength, context, transloco.activeLang()),
         pattern: (context) => {
           const requiredPattern = String(context?.['requiredPattern'] ?? '');
 
           if (requiredPattern === PASSWORD_PATTERN.toString()) {
-            return transloco.translate(VALIDATION_ERRORS_DICT.passwordPattern, {
-              minLength: PASSWORD_MIN_LENGTH,
-              maxLength: PASSWORD_MAX_LENGTH,
-            });
+            return transloco.translate(
+              VALIDATION_ERRORS_DICT.passwordPattern,
+              {
+                minLength: PASSWORD_MIN_LENGTH,
+                maxLength: PASSWORD_MAX_LENGTH,
+              },
+              transloco.activeLang()
+            );
           }
 
-          return transloco.translate(VALIDATION_ERRORS_DICT.emailPattern);
+          return transloco.translate(VALIDATION_ERRORS_DICT.emailPattern, {}, transloco.activeLang());
         },
-        confirmPasswordError: (key) => transloco.translate(key as string),
+        confirmPasswordError: (key) => transloco.translate(key as string, {}, transloco.activeLang()),
       };
     }),
     provideHotToastConfig({
