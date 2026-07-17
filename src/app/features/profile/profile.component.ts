@@ -5,7 +5,6 @@ import { TranslocoPipe } from '@jsverse/transloco';
 import { TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar } from '@taiga-ui/kit';
 import { NgTemplateOutlet } from '@angular/common';
-import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { ProfileFacade } from './facades/profile.facade';
 import { ProfileFormComponent } from './ui/profile-form.component';
 import { StatCardComponent } from './ui/stat-card/stat-card.component';
@@ -27,9 +26,7 @@ import { StatCardComponent } from './ui/stat-card/stat-card.component';
 })
 export class ProfileComponent {
   protected readonly facade = inject(ProfileFacade);
-
-  protected readonly userProfileService = inject(UserProfileService);
-
+  protected user = this.facade.profile;
   protected achieves = [
     {
       icon: './assets/pray.svg',

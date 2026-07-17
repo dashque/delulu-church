@@ -16,9 +16,7 @@ import type { StatCard } from '@features/profile/data/models/stats-card.model';
 })
 export class StatCardComponent {
   public readonly stat = input.required<StatCard>();
-
   public readonly isClickable = input<boolean>(false);
-
   public readonly cardClicked = output<void>();
   public readonly buttonClicked = output<void>();
 
