@@ -209,28 +209,43 @@
   text-shadow: var(--text-glow);
 }
 
+.zodiac-section {
+  border: 1px solid var(--warning);
+  box-shadow: 0 0 8px var(--warning);
+}
+
+.calendar-icon {
+  color: var(--warning);
+}
+
+.zodiac-section .section-title h3 {
+  color: var(--warning);
+}
+
 .zodiac-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  border-radius: 1rem;
-  background-color: var(--warning);
   margin: 0 0.5rem;
   gap: 1rem;
 }
 
 .zodiac-description {
   font-size: 1rem;
-  color: var(--dark-text);
+  color: var(--alternative-light-text);
   margin: 0;
 }
 
 .zodiac-title {
   font-size: 2rem;
-  color: var(--alternative-light-text);
+  color: var(--warning);
   margin: 0;
+}
+
+.zodiac-icon {
+  color: var(--warning);
 }
 
 @media (width<=1490px) {
