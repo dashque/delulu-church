@@ -1,16 +1,12 @@
-export interface Profile {
-  id: string;
-  name: string;
-  email: string | null;
+import type { UserProfile } from '@core/services/user-profile/models/user-profile.model';
+
+export type Profile = Omit<UserProfile, 'uiState' | 'createdAt'> & {
   avatarUrl: string;
-  dateOfBirth: string;
-  candles: number;
-  sins: number;
   metadata: {
     creationTime: string;
     lastSignInTime: string;
   };
-}
+};
 
 export interface Statistics {
   confesses: number;
