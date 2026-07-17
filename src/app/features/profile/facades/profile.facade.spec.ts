@@ -3,7 +3,6 @@ import type { Mock } from 'vitest';
 import { expect } from 'vitest';
 import { ProfileFacade } from './profile.facade';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
-import { createEmptyCandleCounts } from '@core/services/candles/helpers/create-empty-candle-counts.helper';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { authServiceMock } from '@core/services/auth/auth.service.mock';
@@ -12,11 +11,7 @@ import { CandlesService } from '@core/services/candles/candles.service';
 import { ConfessService } from '@core/services/confess/confess.service';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
-import {
-  candlesServiceMock,
-  resetCandlesServiceMock,
-  setCandlesServiceMockCounts,
-} from '@core/services/candles/candles.service.mock';
+import { candlesServiceMock, resetCandlesServiceMock } from '@core/services/candles/candles.service.mock';
 
 import { confessServiceMock, resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
 
@@ -67,21 +62,6 @@ describe('ProfileFacade', () => {
       });
 
       expect(facade.profile()?.displayName).toBe('Anonymous');
-    });
-  });
-
-  describe('Статистика', () => {
-    it('должен посчитать количество свечей и исповедей', () => {
-      setCandlesServiceMockCounts({ ...createEmptyCandleCounts(), deploy: 2, bug: 1 });
-      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
-        ...userProfileFixture,
-        sins: 2,
-      });
-
-      expect(facade.statistics()).toEqual({
-        candles: 3,
-        confesses: 2,
-      });
     });
   });
 

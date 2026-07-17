@@ -1,8 +1,7 @@
 import { computed, effect, inject, Service, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
-import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
+import type { AchievementInfo, Profile, ProfileData, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
-import { CandlesService } from '@core/services/candles/candles.service';
 import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
@@ -19,12 +18,11 @@ export class ProfileFacade {
   private readonly translocoService = inject(TranslocoService);
   private readonly toast = inject(HotToastService);
   private readonly userProfileService = inject(UserProfileService);
-  private readonly candlesService = inject(CandlesService);
   private readonly _currentUser = this.userProfileService.user;
   private readonly _isLoading = signal(false);
   private readonly _state = signal<ProfileData>(PROFILE_MOCK);
-  public readonly isLoading = this._isLoading.asReadonly();
   public readonly profileForm = this.profileFormService.form;
+  public readonly isLoading = this._isLoading.asReadonly();
   public readonly state = this._state.asReadonly();
   public readonly profile = computed<Profile | null>(() => {
     const user = this._currentUser();
@@ -47,24 +45,19 @@ export class ProfileFacade {
       },
     };
   });
-  public readonly statistics = computed<Statistics>(() => ({
-    candles: Number(this.candlesService.totalOfferings?.() ?? 0),
-    confesses: Number(this.userProfileService.user()?.sins ?? 0),
-  }));
-  public readonly statCards = computed<StatCard[]>(() => {
-    const statistics = this.statistics();
 
+  public readonly statCards = computed<StatCard[]>(() => {
     return [
       {
         id: 'confessions',
         icon: '@tui.scroll-text',
-        value: statistics.confesses ?? 0,
+        value: this.profile()?.sins ?? 0,
         label: 'profile.stats.confessions',
       },
       {
         id: 'candles',
         icon: '@tui.flame',
-        value: statistics.candles ?? 0,
+        value: this.profile()?.candles ?? 0,
         label: 'profile.stats.candles',
       },
     ];
@@ -121,12 +114,7 @@ export class ProfileFacade {
         return;
       }
 
-      this.profileForm.patchValue(
-        {
-          name: user.displayName ?? '',
-        },
-        { emitEvent: false }
-      );
+      this.profileForm.patchValue({ name: user.displayName ?? '' }, { emitEvent: false });
     });
   }
 
