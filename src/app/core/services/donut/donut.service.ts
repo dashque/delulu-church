@@ -1,9 +1,15 @@
-import { computed, Service, signal } from '@angular/core';
-import type { DonutCounts } from '@core/services/donuts/models/donut-count.model';
-import { createEmptyDonutCounts } from '@core/services/donuts/models/donut-count.model';
-import { DONUTS_MOCK } from './donuts.service.mock';
+import { computed, Injectable, signal } from '@angular/core';
+import type { DonutCounts } from '@core/services/donut/models/donut-count.model';
 
-@Service()
+export const createEmptyDonutCounts = (): DonutCounts => ({
+  sacrifice: 0,
+});
+
+export const INITIAL_DONUT_COUNTS: DonutCounts = {
+  sacrifice: 1,
+};
+
+@Injectable()
 export class DonutService {
   private readonly _donutCounts = signal<DonutCounts>(createEmptyDonutCounts());
   public readonly donutCounts = this._donutCounts.asReadonly();
@@ -14,7 +20,7 @@ export class DonutService {
   });
 
   constructor() {
-    this.setDonutCounts(DONUTS_MOCK);
+    this.setDonutCounts(INITIAL_DONUT_COUNTS);
   }
   public setDonutCounts(counts: DonutCounts): void {
     this._donutCounts.set(counts);

@@ -1,20 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 import type { Mock } from 'vitest';
 import { ProfileFacade } from './profile.facade';
-import { expect, vi } from 'vitest';
-import { TranslocoService } from '@jsverse/transloco';
+import { expect } from 'vitest';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { authServiceMock } from '@core/services/auth/auth.service.mock';
 import { AuthService } from '@core/services/auth/auth.service';
-import { DonutService } from '@core/services/donuts/donuts.service';
+import { DonutService } from '@core/services/donut/donut.service';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
 import {
   resetUserProfileServiceMock,
   userProfileServiceMock,
 } from '@core/services/user-profile/user-profile.service.mock';
+import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
+import { donutServiceMock } from '@core/services/donut/donut.service.mock';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
@@ -24,21 +25,16 @@ describe('ProfileFacade', () => {
     (userProfileServiceMock.user as unknown as Mock).mockReturnValue(userProfileFixture);
 
     TestBed.configureTestingModule({
+      imports: [TranslocoTestingMock],
       providers: [
         ProfileFacade,
-        {
-          provide: TranslocoService,
-          useValue: {
-            translate: vi.fn().mockReturnValue('translated'),
-          },
-        },
         {
           provide: HotToastService,
           useValue: hotToastServiceMock,
         },
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: AuthService, useValue: authServiceMock },
-        { provide: DonutService, useValue: { donutCounts: 0 } },
+        { provide: DonutService, useValue: donutServiceMock },
       ],
     });
     facade = TestBed.inject(ProfileFacade);

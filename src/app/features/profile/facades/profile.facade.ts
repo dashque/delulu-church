@@ -9,7 +9,7 @@ import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
 import type { Achievement } from '../data/models/achievement.model';
 import type { StatCard } from '../data/models/stats-card.model';
-import { DonutService } from '@core/services/donuts/donuts.service';
+import { DonutService } from '@core/services/donut/donut.service';
 
 @Service({
   autoProvided: false,
@@ -52,7 +52,7 @@ export class ProfileFacade {
   public readonly statistics = computed<Statistics>(() => ({
     candles: Number(this.profile()?.candles ?? 0),
     confesses: Number(this.profile()?.sins ?? 0),
-    donuts: Number(this.donutService.donutCounts ?? 0),
+    donuts: this.donutService.totalDonuts(),
   }));
 
   public readonly statCards = computed<StatCard[]>(() => {
