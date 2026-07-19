@@ -6,7 +6,9 @@ import { passwordConfirmationValidator } from '@shared/validators/password-confi
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/password-length';
 import type { RegisterFormGroup } from '@features/registration/models/register-form.model';
 
-@Service()
+@Service({
+  autoProvided: false,
+})
 export class RegisterFormService {
   private readonly fb = inject(FormBuilder);
   public readonly registerForm = this.createFormInstance();

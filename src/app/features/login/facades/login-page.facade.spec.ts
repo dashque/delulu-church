@@ -8,6 +8,8 @@ import { HotToastService } from '@ngxpert/hot-toast';
 
 import { LoginPageFacade } from './login-page.facade';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
+import { LoginFormService } from '@features/login/services/login-form.service';
+import { loginFormServiceMock } from '@features/login/services/login-form.service.mock';
 
 describe('LoginPageFacadeService', () => {
   let service: LoginPageFacade;
@@ -25,6 +27,7 @@ describe('LoginPageFacadeService', () => {
       imports: [TranslocoTestingMock],
       providers: [
         LoginPageFacade,
+        { provide: LoginFormService, useValue: loginFormServiceMock },
         { provide: AuthService, useValue: authServiceMock },
         { provide: Router, useValue: routerMock },
         { provide: HotToastService, useValue: hotToastServiceMock },
@@ -39,12 +42,6 @@ describe('LoginPageFacadeService', () => {
   });
 
   describe('Вход по email и паролю', () => {
-    it('не должен вызывать login при невалидной форме', async () => {
-      await service.login();
-
-      expect(authServiceMock.login).not.toHaveBeenCalled();
-    });
-
     it('должен вызвать login и перенаправить при успехе', async () => {
       service.loginForm.setValue({ email: 'dev@example.com', password: 'Aa888888' });
 

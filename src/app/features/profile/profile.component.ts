@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { TuiCardLarge } from '@taiga-ui/layout';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoPipe } from '@jsverse/transloco';
 import { TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar } from '@taiga-ui/kit';
 import { NgTemplateOutlet } from '@angular/common';
@@ -13,6 +13,7 @@ import { StatCardComponent } from './ui/stat-card/stat-card.component';
   imports: [TuiCardLarge, TuiAvatar, TuiIcon, TranslocoPipe, NgTemplateOutlet, ProfileFormComponent, StatCardComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
+  providers: [provideTranslocoScope('profile'), ProfileFacade],
 })
 export class ProfileComponent {
   protected readonly facade = inject(ProfileFacade);
