@@ -1,5 +1,5 @@
 import type { DonutCounts } from '../../models/donut-count.model';
 
 export const INITIAL_DONUT_COUNTS: DonutCounts = {
-  sacrifice: 1,
+  sacrifice: 0,
 };
