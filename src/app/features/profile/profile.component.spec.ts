@@ -10,8 +10,8 @@ import { ProfileComponent } from './profile.component';
 import { ProfileFacade } from './facades/profile.facade';
 import { vi } from 'vitest';
 import { ReactiveFormsModule } from '@angular/forms';
-import { donutServiceMock } from '@core/services/donut/donut.service.mock';
-import { DonutService } from '@core/services/donut/donut.service';
+import { donutServiceMock } from './services/donut/donut.service.mock';
+import { DonutService } from './services/donut/donut.service';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;

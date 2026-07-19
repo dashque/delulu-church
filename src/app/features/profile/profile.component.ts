@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { TuiCardLarge } from '@taiga-ui/layout';
-import { TuiProgress } from '@taiga-ui/kit';
 import { TuiIcon } from '@taiga-ui/core';
 import { TuiAvatar } from '@taiga-ui/kit';
 import { ProfileFacade } from './facades/profile.facade';
@@ -10,7 +9,7 @@ import { TranslocoPipe } from '@jsverse/transloco';
 
 @Component({
   selector: 'ngKitty-profile',
-  imports: [TuiCardLarge, TuiAvatar, TuiIcon, TuiProgress, TranslocoPipe, ProfileFormComponent, StatCardComponent],
+  imports: [TuiCardLarge, TuiAvatar, TuiIcon, TranslocoPipe, ProfileFormComponent, StatCardComponent],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
 })

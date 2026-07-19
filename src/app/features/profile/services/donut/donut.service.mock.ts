@@ -1,12 +1,9 @@
 import { signal } from '@angular/core';
 import type { MockedObject } from 'vitest';
 import { vi } from 'vitest';
-import type { DonutService } from '@core/services/donut/donut.service';
-import type { DonutCounts } from '@core/services/donut/models/donut-count.model';
-
-const createEmptyDonutCounts = (): DonutCounts => ({
-  sacrifice: 0,
-});
+import type { DonutService } from '../donut/donut.service';
+import type { DonutCounts } from '../donut/models/donut-count.model';
+import { createEmptyDonutCounts } from '../donut/data/constants/donut-count.constants';
 
 const donutCountsSignal = signal<DonutCounts>(createEmptyDonutCounts());
 const totalDonutsSignal = signal(0);

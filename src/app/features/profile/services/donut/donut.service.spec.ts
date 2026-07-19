@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { DonutService, INITIAL_DONUT_COUNTS } from '@core/services/donut/donut.service';
+import { DonutService } from '../donut/donut.service';
+import { INITIAL_DONUT_COUNTS } from './data/constants/donut-count.constants';
 
 describe('DonutService', () => {
   let service: DonutService;

@@ -9,7 +9,7 @@ import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
 import type { Achievement } from '../data/models/achievement.model';
 import type { StatCard } from '../data/models/stats-card.model';
-import { DonutService } from '@core/services/donut/donut.service';
+import { DonutService } from '../services/donut/donut.service';
 
 @Service({
   autoProvided: false,

@@ -7,7 +7,7 @@ import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { authServiceMock } from '@core/services/auth/auth.service.mock';
 import { AuthService } from '@core/services/auth/auth.service';
-import { DonutService } from '@core/services/donut/donut.service';
+import { DonutService } from '../services/donut/donut.service';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
 import {
@@ -15,7 +15,7 @@ import {
   userProfileServiceMock,
 } from '@core/services/user-profile/user-profile.service.mock';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
-import { donutServiceMock } from '@core/services/donut/donut.service.mock';
+import { donutServiceMock } from '../services/donut/donut.service.mock';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
@@ -139,9 +139,15 @@ describe('ProfileFacade', () => {
       expect(facade.achievementInfo()).toEqual(PROFILE_MOCK.achievementInfo);
     });
 
-    it('должен посчитать прогресс достижений', () => {
+    it('должен вернуть количество достижений', () => {
       expect(facade.achievementsCount()).toBe(7);
+    });
+
+    it('должен вернуть количество разблокированных достижений', () => {
       expect(facade.unlockedAchievementsCount()).toBe(2);
+    });
+
+    it('должен вернуть прогресс достижений', () => {
       expect(facade.achievementProgress()).toEqual({ unlocked: 2, total: 7 });
     });
   });
