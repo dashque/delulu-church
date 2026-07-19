@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RegisterPageFacade } from '@features/registration/facades/register-page.facade';
 import { TuiInputDate, tuiInputDateOptionsProvider, TuiPassword } from '@taiga-ui/kit';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoPipe } from '@jsverse/transloco';
 import { TuiButton, TuiError, TuiIcon, TuiInputDirective, TuiLoader, tuiLoaderOptionsProvider } from '@taiga-ui/core';
 
 import { RouterLink } from '@angular/router';
@@ -25,7 +25,10 @@ import { TuiDay } from '@taiga-ui/cdk';
     ReactiveFormsModule,
     ...TuiInputDate,
   ],
+
   providers: [
+    provideTranslocoScope('register'),
+    RegisterPageFacade,
     tuiLoaderOptionsProvider({ size: 'm' }),
     tuiInputDateOptionsProvider({
       valueTransformer: {

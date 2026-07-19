@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/core';
 import { TuiPassword } from '@taiga-ui/kit';
 import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
-import { TranslocoModule } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 import { RouterLink } from '@angular/router';
 import { LoginPageFacade } from '../facades/login-page.facade';
 
@@ -35,7 +35,7 @@ import { LoginPageFacade } from '../facades/login-page.facade';
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [tuiLoaderOptionsProvider({ size: 's' })],
+  providers: [tuiLoaderOptionsProvider({ size: 's' }), provideTranslocoScope('login'), LoginPageFacade],
 })
 export class LoginComponent {
   public readonly facade = inject(LoginPageFacade);
