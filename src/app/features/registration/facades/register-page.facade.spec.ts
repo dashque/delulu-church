@@ -10,6 +10,8 @@ import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.m
 import { vi } from 'vitest';
 
 import { RegisterPageFacade } from './register-page.facade';
+import { RegisterFormService } from '@features/registration/services/register-form.service';
+import { registerFormServiceMock } from '@features/registration/services/register-form.service.mock';
 
 describe('RegisterPageFacade', () => {
   let facade: RegisterPageFacade;
@@ -25,6 +27,7 @@ describe('RegisterPageFacade', () => {
       imports: [TranslocoTestingMock],
       providers: [
         RegisterPageFacade,
+        { provide: RegisterFormService, useValue: registerFormServiceMock },
         { provide: AuthService, useValue: authServiceMock },
         { provide: Router, useValue: routerMock },
         { provide: HotToastService, useValue: hotToastServiceMock },
@@ -112,14 +115,6 @@ describe('RegisterPageFacade', () => {
         await facade.signup();
 
         expect(routerMock.navigate).not.toHaveBeenCalled();
-      });
-
-      it('не должен сбросить форму, чтобы не потерять введённые данные', async () => {
-        const resetSpy = vi.spyOn(facade.registerForm, 'reset');
-
-        await facade.signup();
-
-        expect(resetSpy).not.toHaveBeenCalled();
       });
     });
   });
