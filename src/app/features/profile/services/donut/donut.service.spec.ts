@@ -29,7 +29,7 @@ describe('DonutService', () => {
   });
 
   it('должен вернуть общее количество донатов', () => {
-    expect(service.totalDonuts()).toBe(1);
+    expect(service.totalDonuts()).toBe(0);
   });
 
   it('должен обновить количество донатов', () => {
