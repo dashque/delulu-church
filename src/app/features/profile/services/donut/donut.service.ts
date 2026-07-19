@@ -1,6 +1,6 @@
 import { computed, Injectable, signal } from '@angular/core';
 import type { DonutCounts } from './models/donut-count.model';
-import { createEmptyDonutCounts } from './data/constants/donut-count.constants';
+import { createEmptyDonutCounts } from './data/constants/empty-donut-count.constants';
 import { INITIAL_DONUT_COUNTS } from './data/constants/donut-count.constants';
 
 @Injectable()
