@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
 import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
+import { RegisterFormService } from '@features/registration/services/register-form.service';
 
 @Component({
   selector: 'ngKitty-register-page',
@@ -29,6 +30,7 @@ import { TuiDay } from '@taiga-ui/cdk';
   providers: [
     provideTranslocoScope('register'),
     RegisterPageFacade,
+    RegisterFormService,
     tuiLoaderOptionsProvider({ size: 'm' }),
     tuiInputDateOptionsProvider({
       valueTransformer: {

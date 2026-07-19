@@ -15,6 +15,7 @@ import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 import { RouterLink } from '@angular/router';
 import { LoginPageFacade } from '../facades/login-page.facade';
+import { LoginFormService } from '@features/login/services/login-form.service';
 
 @Component({
   selector: 'ngKitty-login',
@@ -35,7 +36,12 @@ import { LoginPageFacade } from '../facades/login-page.facade';
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [tuiLoaderOptionsProvider({ size: 's' }), provideTranslocoScope('login'), LoginPageFacade],
+  providers: [
+    tuiLoaderOptionsProvider({ size: 's' }),
+    provideTranslocoScope('login'),
+    LoginPageFacade,
+    LoginFormService,
+  ],
 })
 export class LoginComponent {
   public readonly facade = inject(LoginPageFacade);
