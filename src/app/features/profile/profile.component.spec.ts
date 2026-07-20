@@ -10,6 +10,8 @@ import { ProfileComponent } from './profile.component';
 import { ProfileFacade } from './facades/profile.facade';
 import { vi } from 'vitest';
 import { ReactiveFormsModule } from '@angular/forms';
+import { donutServiceMock } from './services/donut/donut.service.mock';
+import { DonutService } from './services/donut/donut.service';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -21,7 +23,11 @@ describe('ProfileComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ProfileComponent, TranslocoTestingMock, ReactiveFormsModule],
-      providers: [{ provide: UserProfileService, useValue: userProfileServiceMock }, { provide: ProfileFacade }],
+      providers: [
+        { provide: UserProfileService, useValue: userProfileServiceMock },
+        { provide: ProfileFacade },
+        { provide: DonutService, useValue: donutServiceMock },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProfileComponent);

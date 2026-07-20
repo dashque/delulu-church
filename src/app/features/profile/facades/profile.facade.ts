@@ -1,13 +1,15 @@
 import { computed, effect, inject, Service, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
-import type { AchievementInfo, Profile, ProfileData, Zodiac } from '../data/models/profile.model';
+import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
 import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
+import type { Achievement } from '../data/models/achievement.model';
 import type { StatCard } from '../data/models/stats-card.model';
+import { DonutService } from '../services/donut/donut.service';
 
 @Service({
   autoProvided: false,
@@ -16,6 +18,7 @@ export class ProfileFacade {
   private readonly profileFormService = inject(ProfileFormService);
   private readonly authService = inject(AuthService);
   private readonly translocoService = inject(TranslocoService);
+  private readonly donutService = inject(DonutService);
   private readonly toast = inject(HotToastService);
   private readonly userProfileService = inject(UserProfileService);
   private readonly _currentUser = this.userProfileService.user;
@@ -46,23 +49,90 @@ export class ProfileFacade {
     };
   });
 
+  public readonly statistics = computed<Statistics>(() => ({
+    candles: Number(this.profile()?.candles ?? 0),
+    confesses: Number(this.profile()?.sins ?? 0),
+    donuts: this.donutService.totalDonuts(),
+  }));
+
   public readonly statCards = computed<StatCard[]>(() => {
     return [
       {
         id: 'confessions',
         icon: '@tui.scroll-text',
-        value: this.profile()?.sins ?? 0,
+        value: this.statistics()?.confesses,
         label: 'profile.stats.confessions',
       },
       {
         id: 'candles',
         icon: '@tui.flame',
-        value: this.profile()?.candles ?? 0,
+        value: this.statistics()?.candles,
         label: 'profile.stats.candles',
       },
     ];
   });
-  public readonly achievementInfo = computed<AchievementInfo>(() => this._state()?.achievementInfo);
+
+  public readonly achievementInfo = computed<AchievementInfo>(() => {
+    const statistics = this.statistics();
+    const achievements: Achievement[] = [
+      {
+        id: 'first_confession',
+        icon: './assets/pray.svg',
+        title: 'profile.achieve.first_confession.title',
+        description: 'profile.achieve.first_confession.description',
+        unlocked: statistics.confesses >= 1,
+      },
+      {
+        id: 'penitent',
+        icon: './assets/beads.svg',
+        title: 'profile.achieve.penitent.title',
+        description: 'profile.achieve.penitent.description',
+        unlocked: statistics.confesses >= 10,
+      },
+      {
+        id: 'first_candle',
+        icon: './assets/candle.svg',
+        title: 'profile.achieve.first_candle.title',
+        description: 'profile.achieve.first_candle.description',
+        unlocked: statistics.candles >= 1,
+      },
+      {
+        id: 'flame_keeper',
+        icon: './assets/flame.svg',
+        title: 'profile.achieve.flame_keeper.title',
+        description: 'profile.achieve.flame_keeper.description',
+        unlocked: statistics.candles >= 20,
+      },
+      {
+        id: 'altar_master',
+        icon: './assets/oil.svg',
+        title: 'profile.achieve.altar_master.title',
+        description: 'profile.achieve.altar_master.description',
+        unlocked: statistics.candles >= 50,
+      },
+      {
+        id: 'saved',
+        icon: './assets/angel.svg',
+        title: 'profile.achieve.saved.title',
+        description: 'profile.achieve.saved.description',
+        unlocked: statistics.confesses >= 50,
+      },
+      {
+        id: 'saint',
+        icon: './assets/coins.svg',
+        title: 'profile.achieve.saint.title',
+        description: 'profile.achieve.saint.description',
+        unlocked: statistics.donuts >= 1,
+      },
+    ];
+
+    return {
+      achievements,
+      total: achievements.length,
+      unlocked: achievements.filter((a) => a.unlocked).length,
+    };
+  });
+
   public readonly zodiac = computed<Zodiac>(() => {
     const user = this._currentUser();
     const birth = user?.dateOfBirth as string | null;

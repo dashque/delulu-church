@@ -1,44 +1,40 @@
 import { TestBed } from '@angular/core/testing';
 import type { Mock } from 'vitest';
-import { expect } from 'vitest';
 import { ProfileFacade } from './profile.facade';
+import { expect } from 'vitest';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { authServiceMock } from '@core/services/auth/auth.service.mock';
 import { AuthService } from '@core/services/auth/auth.service';
-import { CandlesService } from '@core/services/candles/candles.service';
-import { ConfessService } from '@core/services/confess/confess.service';
+import { DonutService } from '../services/donut/donut.service';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { hotToastServiceMock } from '@shared/mocks/hot-toast/hot-toast.service.mock';
-import { candlesServiceMock, resetCandlesServiceMock } from '@core/services/candles/candles.service.mock';
-
-import { confessServiceMock, resetConfessServiceMock } from '@core/services/confess/confess.service.mock';
-
 import {
   resetUserProfileServiceMock,
   userProfileServiceMock,
 } from '@core/services/user-profile/user-profile.service.mock';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
+import { donutServiceMock } from '../services/donut/donut.service.mock';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
 
   beforeEach(() => {
     resetUserProfileServiceMock();
-    resetCandlesServiceMock();
-    resetConfessServiceMock();
     (userProfileServiceMock.user as unknown as Mock).mockReturnValue(userProfileFixture);
 
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
       providers: [
         ProfileFacade,
-        { provide: HotToastService, useValue: hotToastServiceMock },
+        {
+          provide: HotToastService,
+          useValue: hotToastServiceMock,
+        },
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: AuthService, useValue: authServiceMock },
-        { provide: CandlesService, useValue: candlesServiceMock },
-        { provide: ConfessService, useValue: confessServiceMock },
+        { provide: DonutService, useValue: donutServiceMock },
       ],
     });
     facade = TestBed.inject(ProfileFacade);
@@ -55,6 +51,22 @@ describe('ProfileFacade', () => {
       expect(facade.profile()).toBeNull();
     });
 
+    it('должен собрать профиль из UserProfileService', () => {
+      expect(facade.profile()).toEqual({
+        uid: userProfileFixture.uid,
+        displayName: userProfileFixture.displayName,
+        email: userProfileFixture.email,
+        avatarUrl: PROFILE_MOCK.profile.avatarUrl,
+        dateOfBirth: String(userProfileFixture.dateOfBirth),
+        candles: userProfileFixture.candles,
+        sins: userProfileFixture.sins,
+        metadata: {
+          creationTime: String(userProfileFixture.createdAt),
+          lastSignInTime: '',
+        },
+      });
+    });
+
     it('должен подставить Anonymous при отсутствии displayName', () => {
       (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
         ...userProfileFixture,
@@ -62,6 +74,22 @@ describe('ProfileFacade', () => {
       });
 
       expect(facade.profile()?.displayName).toBe('Anonymous');
+    });
+  });
+
+  describe('Статистика', () => {
+    it('должен посчитать количество свечей и исповедей', () => {
+      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
+        ...userProfileFixture,
+        candles: 3,
+        sins: 1,
+      });
+
+      expect(facade.statistics()).toEqual({
+        confesses: 1,
+        candles: 3,
+        donuts: 0,
+      });
     });
   });
 
@@ -99,14 +127,28 @@ describe('ProfileFacade', () => {
   });
 
   describe('Достижения', () => {
+    beforeEach(() => {
+      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
+        ...userProfileFixture,
+        candles: PROFILE_MOCK.statistics.candles,
+        sins: PROFILE_MOCK.statistics.confesses,
+      });
+    });
+
     it('должен вернуть данные достижений из state', () => {
       expect(facade.achievementInfo()).toEqual(PROFILE_MOCK.achievementInfo);
     });
 
-    it('должен посчитать прогресс достижений', () => {
-      expect(facade.achievementsCount()).toBe(5);
-      expect(facade.unlockedAchievementsCount()).toBe(0);
-      expect(facade.achievementProgress()).toEqual({ unlocked: 0, total: 5 });
+    it('должен вернуть количество достижений', () => {
+      expect(facade.achievementsCount()).toBe(7);
+    });
+
+    it('должен вернуть количество разблокированных достижений', () => {
+      expect(facade.unlockedAchievementsCount()).toBe(2);
+    });
+
+    it('должен вернуть прогресс достижений', () => {
+      expect(facade.achievementProgress()).toEqual({ unlocked: 2, total: 7 });
     });
   });
 });

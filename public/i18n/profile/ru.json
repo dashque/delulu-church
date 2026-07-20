@@ -57,21 +57,29 @@
       "title": "Первая исповедь",
       "description": "Признались в первом грехе"
     },
-    "chronicist": {
-      "title": "Хроникер",
-      "description": "7 дней ведения дневника"
-    },
-    "good_mood": {
-      "title": "Счастливый разработчик",
-      "description": "Средняя оценка настроения > 4"
-    },
-    "regular_visitor": {
-      "title": "Постоянный посетитель",
-      "description": "30 дней активности"
-    },
     "penitent": {
       "title": "Кающийся",
-      "description": "10 исповедей"
+      "description": "10 исповедей принято"
+    },
+    "first_candle": {
+      "title": "Первая свеча",
+      "description": "Зажгли первую свечу"
+    },
+    "flame_keeper": {
+      "title": "Хранитель пламени",
+      "description": "20 свечей зажжено"
+    },
+    "altar_master": {
+      "title": "Мастер алтаря",
+      "description": "50 свечей зажжено"
+    },
+    "saved": {
+      "title": "Спасенный",
+      "description": "50 исповедей принято"
+    },
+    "saint": {
+      "title": "Святой",
+      "description": "Сделал пожертвование"
     }
   }
 }
