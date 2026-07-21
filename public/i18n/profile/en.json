@@ -1,4 +1,7 @@
 {
+  "header": {
+    "title": "Profile settings"
+  },
   "title": "Profile & Security",
   "machine-spirit": {
     "id": "Machine Spirit ID: "

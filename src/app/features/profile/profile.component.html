@@ -1,87 +1,94 @@
 <div class="profile">
-  <section appearance="flat" tuiCardLarge class="user-info">
-    <h2 class="profile-title">[{{ 'profile.title' | transloco }}]</h2>
-    <div class="profile-head">
-      <div tuiAvatar="@tui.user" size="xl" class="user-avatar"></div>
-      @if (user(); as user) {
-        <div class="profile-head-info">
-          <h3 class="profile-title">{{ user.displayName || user.email }}</h3>
-          <p class="machine-spirit-status">
-            {{ 'profile.machine-spirit.id' | transloco }} {{ user.uid || user.email }}
-          </p>
-        </div>
-      }
+  <div class="profile-header">
+    <div class="title-wrapper">
+      <h1 class="profile-title">{{ 'profile.header.title' | transloco }}</h1>
     </div>
-
-    <ngKitty-profile-form />
-  </section>
-
-  <section class="user-section">
-    <div class="stats-section">
-      @for (card of facade.statCards(); track card.id; let i = $index) {
-        <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
-      }
-    </div>
-  </section>
-
-  <section class="user-section achievement-section">
-    <div class="section-title achievements-title">
-      <h3>[ {{ 'profile.achievements' | transloco }} ]</h3>
-    </div>
-    <div class="achievement-progress">
-      <div class="achievement-progress-bar">
-        <div
-          class="achievement-progress-fill"
-          [style.width.%]="(facade.achievementProgress().unlocked * 100) / facade.achievementProgress().total"
-        ></div>
+  </div>
+  <div class="profile-content">
+    <section appearance="flat" tuiCardLarge class="user-info">
+      <h2 class="profile-title">[{{ 'profile.title' | transloco }}]</h2>
+      <div class="profile-head">
+        <div tuiAvatar="@tui.user" size="xl" class="user-avatar"></div>
+        @if (user(); as user) {
+          <div class="profile-head-info">
+            <h3 class="profile-title">{{ user.displayName || user.email }}</h3>
+            <p class="machine-spirit-status">
+              {{ 'profile.machine-spirit.id' | transloco }} {{ user.uid || user.email }}
+            </p>
+          </div>
+        }
       </div>
 
-      <span class="achievement-progress-text">
-        {{ facade.achievementProgress().unlocked }}
-        /
-        {{ facade.achievementProgress().total }}
-      </span>
-    </div>
-    <div class="achievements">
-      @for (achieve of facade.achievementInfo().achievements; track achieve.id) {
-        <div
-          class="achieve-item"
-          [class.achieve-item-unlocked]="achieve.unlocked"
-          [class.achieve-item-locked]="!achieve.unlocked"
-        >
-          <div class="achieve-icon">
-            <img [src]="achieve.icon" width="35" [alt]="achieve.id" />
-          </div>
+      <ngKitty-profile-form />
+    </section>
 
-          <div class="achieve-text">
-            <h3>{{ achieve.title | transloco }}</h3>
-            <span class="stats-name">
-              {{ achieve.description | transloco }}
-            </span>
-          </div>
-        </div>
-      }
-    </div>
-  </section>
-
-  @let profile = user();
-
-  @if (profile) {
-    @let zodiac = profile.dateOfBirth | zodiac;
-    <section class="user-section zodiac-section">
-      <div class="section-title">
-        <tui-icon icon="@tui.calendar" class="calendar-icon" />
-        <h3>[ {{ 'profile.zodiac' | transloco }} ]</h3>
-      </div>
-      <div class="zodiac-text">
-        @if (zodiac) {
-          <div class="section-title">
-            <tui-icon [icon]="zodiac.icon" size="l" class="zodiac-icon" />
-            <h2 class="zodiac-title">{{ zodiac.title | transloco }}</h2>
-          </div>
-          <p class="zodiac-description">{{ zodiac.description | transloco }}</p>
+    <section class="user-section">
+      <div class="stats-section">
+        @for (card of facade.statCards(); track card.id; let i = $index) {
+          <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
         }
       </div>
     </section>
-  }
+
+    <section class="user-section achievement-section">
+      <div class="section-title achievements-title">
+        <h3>[ {{ 'profile.achievements' | transloco }} ]</h3>
+      </div>
+      <div class="achievement-progress">
+        <div class="achievement-progress-bar">
+          <div
+            class="achievement-progress-fill"
+            [style.width.%]="(facade.achievementProgress().unlocked * 100) / facade.achievementProgress().total"
+          ></div>
+        </div>
+
+        <span class="achievement-progress-text">
+          {{ facade.achievementProgress().unlocked }}
+          /
+          {{ facade.achievementProgress().total }}
+        </span>
+      </div>
+      <div class="achievements">
+        @for (achieve of facade.achievementInfo().achievements; track achieve.id) {
+          <div
+            class="achieve-item"
+            [class.achieve-item-unlocked]="achieve.unlocked"
+            [class.achieve-item-locked]="!achieve.unlocked"
+          >
+            <div class="achieve-icon">
+              <img [src]="achieve.icon" width="35" [alt]="achieve.id" />
+            </div>
+
+            <div class="achieve-text">
+              <h3>{{ achieve.title | transloco }}</h3>
+              <span class="stats-name">
+                {{ achieve.description | transloco }}
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    @let profile = user();
+
+    @if (profile) {
+      @let zodiac = profile.dateOfBirth | zodiac;
+      <section class="user-section zodiac-section">
+        <div class="section-title">
+          <tui-icon icon="@tui.calendar" class="calendar-icon" />
+          <h3>[ {{ 'profile.zodiac' | transloco }} ]</h3>
+        </div>
+        <div class="zodiac-text">
+          @if (zodiac) {
+            <div class="section-title">
+              <tui-icon [icon]="zodiac.icon" size="l" class="zodiac-icon" />
+              <h2 class="zodiac-title">{{ zodiac.title | transloco }}</h2>
+            </div>
+            <p class="zodiac-description">{{ zodiac.description | transloco }}</p>
+          }
+        </div>
+      </section>
+    }
+  </div>
 </div>
