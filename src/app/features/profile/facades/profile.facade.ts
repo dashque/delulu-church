@@ -1,6 +1,6 @@
 import { computed, effect, inject, Service, signal } from '@angular/core';
 import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
-import type { AchievementInfo, Profile, ProfileData, Statistics, Zodiac } from '../data/models/profile.model';
+import type { AchievementInfo, Profile, ProfileData, Statistics } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
@@ -39,7 +39,12 @@ export class ProfileFacade {
       displayName: user.displayName ?? 'Anonymous',
       email: user.email,
       avatarUrl: PROFILE_MOCK.profile.avatarUrl,
-      dateOfBirth: String(user.dateOfBirth),
+      dateOfBirth:
+        typeof user.dateOfBirth === 'string'
+          ? user.dateOfBirth
+          : user.dateOfBirth && typeof user.dateOfBirth === 'object' && 'toDate' in user.dateOfBirth
+            ? (user.dateOfBirth as { toDate: () => Date }).toDate().toISOString()
+            : null,
       candles: user.candles,
       sins: user.sins,
       metadata: {
@@ -133,34 +138,6 @@ export class ProfileFacade {
     };
   });
 
-  public readonly zodiac = computed<Zodiac>(() => {
-    const user = this._currentUser();
-    const birth = user?.dateOfBirth as string | null;
-
-    if (!birth) {
-      return {
-        sign: 'Unknown',
-        description: 'Нет данных о дате рождения',
-        icon: 'assets/star.svg',
-      };
-    }
-
-    const date = new Date(birth);
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const sign =
-      (month === 3 && day >= 21) || (month === 4 && day <= 19)
-        ? 'Овен'
-        : (month === 4 && day >= 20) || (month === 5 && day <= 20)
-          ? 'Телец'
-          : 'Неизвестно';
-
-    return {
-      sign,
-      description: 'Определяется по дате рождения',
-      icon: 'assets/star.svg',
-    };
-  });
   public readonly achievementsCount = computed(() => {
     if (!this.achievementInfo()) {
       return 0;

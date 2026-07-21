@@ -42,10 +42,34 @@
   "zodiac": "Developer's Zodiac sign",
   "sign": {
     "title": {
-      "aquarius": "Aquarius"
+      "aries": "Aries",
+      "taurus": "Taurus",
+      "gemini": "Gemini",
+      "cancer": "Cancer",
+      "leo": "Leo",
+      "virgo": "Virgo",
+      "libra": "Libra",
+      "scorpio": "Scorpio",
+      "sagittarius": "Sagittarius",
+      "capricorn": "Capricorn",
+      "aquarius": "Aquarius",
+      "pisces": "Pisces",
+      "unknown": "Unknown sign"
     },
     "description": {
-      "aquarius": "Generator of unconventional solutions"
+      "aries": "Writes code by intuition but often forgets about tests",
+      "taurus": "Slow but reliable. Loves refactoring",
+      "gemini": "Can code in two languages at the same time",
+      "cancer": "Takes code reviews personally",
+      "leo": "Always wants to be the lead developer",
+      "virgo": "A perfectionist when writing code",
+      "libra": "Always seeks a balance between quality and speed",
+      "scorpio": "A master of debugging the most complex bugs",
+      "sagittarius": "Loves experimenting with new technologies",
+      "capricorn": "Disciplined and follows best practices",
+      "aquarius": "A generator of unconventional solutions",
+      "pisces": "Intuitively understands software architecture",
+      "unknown": "No birth date provided"
     }
   },
   "confessions": "Confessions",

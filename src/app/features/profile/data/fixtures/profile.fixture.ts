@@ -75,8 +75,8 @@ export const PROFILE_MOCK = {
     ],
   },
   zodiac: {
-    sign: 'Рыбы',
-    description: 'Интуитивно понимает архитектуру',
     icon: 'assets/star.svg',
+    title: 'profile.sign.title.pisces',
+    description: 'profile.sign.description.pisces',
   },
 } as const satisfies ProfileData;

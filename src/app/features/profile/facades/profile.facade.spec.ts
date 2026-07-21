@@ -57,7 +57,7 @@ describe('ProfileFacade', () => {
         displayName: userProfileFixture.displayName,
         email: userProfileFixture.email,
         avatarUrl: PROFILE_MOCK.profile.avatarUrl,
-        dateOfBirth: String(userProfileFixture.dateOfBirth),
+        dateOfBirth: userProfileFixture.dateOfBirth,
         candles: userProfileFixture.candles,
         sins: userProfileFixture.sins,
         metadata: {
@@ -90,39 +90,6 @@ describe('ProfileFacade', () => {
         candles: 3,
         donuts: 0,
       });
-    });
-  });
-
-  describe('Знак зодиака', () => {
-    it('должен вернуть Unknown без даты рождения', () => {
-      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
-        ...userProfileFixture,
-        dateOfBirth: null,
-      });
-
-      expect(facade.zodiac()).toEqual({
-        sign: 'Unknown',
-        description: 'Нет данных о дате рождения',
-        icon: 'assets/star.svg',
-      });
-    });
-
-    it('должен определить знак Овен', () => {
-      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
-        ...userProfileFixture,
-        dateOfBirth: '2020-03-25',
-      });
-
-      expect(facade.zodiac().sign).toBe('Овен');
-    });
-
-    it('должен определить знак Телец', () => {
-      (userProfileServiceMock.user as unknown as Mock).mockReturnValue({
-        ...userProfileFixture,
-        dateOfBirth: '2020-04-25',
-      });
-
-      expect(facade.zodiac().sign).toBe('Телец');
     });
   });
 
