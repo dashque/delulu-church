@@ -63,17 +63,25 @@
       }
     </div>
   </section>
-  <section class="user-section zodiac-section">
-    <div class="section-title">
-      <tui-icon icon="@tui.calendar" class="calendar-icon" />
-      <h3>[ {{ 'profile.zodiac' | transloco }} ]</h3>
-    </div>
-    <div class="zodiac-text">
+
+  @let profile = user();
+
+  @if (profile) {
+    @let zodiac = profile.dateOfBirth | zodiac;
+    <section class="user-section zodiac-section">
       <div class="section-title">
-        <tui-icon icon="@tui.zodiac-aquarius" size="l" class="zodiac-icon" />
-        <h2 class="zodiac-title">{{ 'profile.sign.title.aquarius' | transloco }}</h2>
+        <tui-icon icon="@tui.calendar" class="calendar-icon" />
+        <h3>[ {{ 'profile.zodiac' | transloco }} ]</h3>
       </div>
-      <p class="zodiac-description">{{ 'profile.sign.description.aquarius' | transloco }}</p>
-    </div>
-  </section>
+      <div class="zodiac-text">
+        @if (zodiac) {
+          <div class="section-title">
+            <tui-icon [icon]="zodiac.icon" size="l" class="zodiac-icon" />
+            <h2 class="zodiac-title">{{ zodiac.title | transloco }}</h2>
+          </div>
+          <p class="zodiac-description">{{ zodiac.description | transloco }}</p>
+        }
+      </div>
+    </section>
+  }
 </div>

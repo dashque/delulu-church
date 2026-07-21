@@ -1,7 +1,8 @@
 import type { UserProfile } from '@core/services/user-profile/models/user-profile.model';
 
-export type Profile = Omit<UserProfile, 'uiState' | 'createdAt'> & {
+export type Profile = Omit<UserProfile, 'uiState' | 'createdAt' | 'dateOfBirth'> & {
   avatarUrl: string;
+  dateOfBirth: string | null;
   metadata: {
     creationTime: string;
     lastSignInTime: string;
@@ -29,9 +30,9 @@ export interface AchievementInfo {
 }
 
 export interface Zodiac {
-  sign: string;
-  description: string;
   icon: string;
+  title: string;
+  description: string;
 }
 export interface ProfileData {
   profile: Profile;
