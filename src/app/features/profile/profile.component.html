@@ -11,30 +11,28 @@
       <p class="profile-subtitle">{{ 'profile.header.subtitle' | transloco }}</p>
     </div>
   </div>
-  <div class="profile-content">
-    <section appearance="flat" tuiCardLarge class="user-info">
-      <h2 class="profile-title">[{{ 'profile.title' | transloco }}]</h2>
-      <div class="profile-head">
-        <div tuiAvatar="@tui.user" size="xl" class="user-avatar"></div>
-        @if (user(); as user) {
-          <div class="profile-head-info">
-            <h3 class="profile-title">{{ user.displayName || user.email }}</h3>
-            <p class="machine-spirit-status">
-              {{ 'profile.machine-spirit.id' | transloco }} {{ user.uid || user.email }}
-            </p>
-          </div>
-        }
-      </div>
+  <section appearance="flat" tuiCardLarge class="user-info">
+    <h2 class="profile-title">[{{ 'profile.title' | transloco }}]</h2>
+    <div class="profile-head">
+      <div tuiAvatar="@tui.user" size="xl" class="user-avatar"></div>
+      @if (user(); as user) {
+        <div class="profile-head-info">
+          <h3 class="profile-title">{{ user.displayName || user.email }}</h3>
+          <p class="machine-spirit-status">
+            {{ 'profile.machine-spirit.id' | transloco }} {{ user.uid || user.email }}
+          </p>
+        </div>
+      }
+    </div>
 
-      <ngKitty-profile-form />
-    </section>
+    <ngKitty-profile-form />
+  </section>
 
-    <section class="user-section">
-      <div class="stats-section">
-        @for (card of facade.statCards(); track card.id; let i = $index) {
-          <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
-        }
-      </div>
+  <div class="profile-right">
+    <section class="user-section stats-section">
+      @for (card of facade.statCards(); track card.id; let i = $index) {
+        <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
+      }
     </section>
 
     <section class="user-section achievement-section">
