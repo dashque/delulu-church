@@ -1,0 +1,13 @@
+@if (stat(); as stat) {
+  <div class="icon-shell">
+    <tui-icon [icon]="stat.icon" class="icon" />
+  </div>
+
+  <div class="header">
+    <h2 class="title">
+      {{ stat.value ?? 0 }}
+    </h2>
+  </div>
+
+  <p class="description">{{ stat.label | transloco }}</p>
+}
