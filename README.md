@@ -20,14 +20,6 @@ The Church of the Holy Deploy — цифровой храм для програ�
 - **Уведомления** — `@ngxpert/hot-toast` (тема glassmorphism): HTTP-ошибки через interceptor, ошибки Firestore — в facades страниц
 - **Валидация форм** — login / register: `tui-error` привязан к `FormControl`, тексты ошибок централизованы через `tuiValidationErrorsProvider` + Transloco
 
-### Обработка ошибок (кратко)
-
-| Источник                                            | Как показываем                                                                     |
-| --------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `HttpClient` (tarot, перевод и т.п.)                | `httpErrorInterceptor` → HotToast (`error`), запросы `/i18n/` без toast            |
-| Firebase / Firestore (auth, shrift, altar, sanctum) | сервис кладёт `error` / throw → facade → HotToast                                  |
-| Долгий/зависший Firestore                           | `withTimeout` + `FIRESTORE_OPERATION_TIMEOUT_MS` (7 с), чтобы не висеть на loading |
-
 ## 🚀 Демонстрация обработки ошибок, состояния загрузки, 404
 
 [Ссылка](https://drive.google.com/file/d/1xQl8qfHqrmiRhw6KaKnjK7WEUC5O3FE4/view?usp=sharing)
@@ -36,11 +28,11 @@ The Church of the Holy Deploy — цифровой храм для програ�
 
 **Production:** [https://delulu-church.netlify.app/](https://delulu-church.netlify.app/)
 
+**Teamwork:** [`presentation/teamwork.md`](presentation/teamwork.md)
+
 **Team presentation:** [https://delulu-church.netlify.app/presentation/](https://delulu-church.netlify.app/presentation/)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/be597b1e-bdc6-4923-a2cc-0eb263412cab/deploy-status)](https://app.netlify.com/projects/delulu-church/deploys)
-
-Сборка — статический Angular SPA. Tarot API проксируется через Netlify redirect (`/api/reading` → `deploytarot.com`). Бэкенд на Netlify Functions в репозитории **отсутствует**; данные пользователей — Firebase Firestore.
 
 **CI/CD:** GitHub Actions [`quality-check`](.github/workflows/quality-check.yml) на каждый push/PR в `develop` и `main` (typecheck, lint, format, test, build). После merge в `develop` — автодеплой на Netlify.
 
@@ -49,6 +41,7 @@ The Church of the Holy Deploy — цифровой храм для програ�
 | Артефакт                | Ссылка                                                                            |
 | ----------------------- | --------------------------------------------------------------------------------- |
 | **Issues / backlog**    | [GitHub Issues](https://github.com/ngKittyDebug/angular-ngKittyDebugRight/issues) |
+| **Teamwork**            | [`presentation/teamwork.md`](presentation/teamwork.md)                            |
 | **Дневники разработки** | [`development-notes/`](development-notes/)                                        |
 | **Meeting notes**       | [`development-notes/meetings-notes/`](development-notes/meetings-notes/)          |
 
@@ -68,20 +61,6 @@ The Church of the Holy Deploy — цифровой храм для програ�
 - **Pull Requests:** шаблон в [`.github/pull_request_template.md`](.github/pull_request_template.md), auto-assign reviewers
 - **Code review:** repository rulesets на `develop`/`main` — минимум 1 approval + required CI check `test-and-build`
 - **Pre-push:** `typecheck` → `format` → `lint` → `test`
-
-## 🏗 Architecture (кратко)
-
-```
-UI → Facade → API service / core service → HTTP / Firestore
-```
-
-| Слой        | Назначение                                                                                          |
-| ----------- | --------------------------------------------------------------------------------------------------- |
-| `core/`     | Layout, guards, interceptors, shared domain services (`Auth`, `Confess`, `Candles`), `uiStateStore` |
-| `features/` | Route-bound домены: `data/` + `facades/` + `ui/`                                                    |
-| `shared/`   | Валидаторы, UI-kit, helpers                                                                         |
-
-Angular 22: standalone, signals-first, route-scoped DI (`@Service({ autoProvided: false })`), functional guards, typed reactive forms.
 
 ## 👥 Team Members
 
@@ -118,24 +97,24 @@ pnpm start
 
 ## :gear: Основные команды
 
-| Команда             | Что делает                                            |
-| ------------------- | ----------------------------------------------------- |
-| `pnpm ci`           | Устанавливает зависимости строго по `pnpm-lock.yaml`  |
-| `pnpm start`        | Запускает dev-сервер Angular (`ng serve -o`)          |
-| `pnpm watch`        | Собирает проект в watch-режиме                        |
-| `pnpm build`        | Создаёт production-сборку приложения                  |
-| `pnpm typecheck`    | Проверяет TypeScript без генерации файлов             |
-| `pnpm lint`         | Запускает ESLint (`src`) и Stylelint                  |
-| `pnpm lint:fix`     | Автоматически исправляет ошибки ESLint и Stylelint    |
-| `pnpm format`       | Проверяет форматирование Prettier                     |
-| `pnpm format:fix`   | Форматирует файлы через Prettier                      |
-| `pnpm test`         | Запускает unit-тесты один раз                         |
-| `pnpm test:watch`   | Запускает unit-тесты в watch-режиме                   |
-| `pnpm test:cov`     | Запускает тесты с отчётом о покрытии                  |
-| `pnpm i18n:extract` | Извлекает ключи локализации Transloco                 |
-| `pnpm i18n:find`    | Ищет отсутствующие и неиспользуемые ключи             |
-| `pnpm knip`         | Поиск неиспользуемых файлов, экспортов и зависимостей |
-| `pnpm deploy`       | Деплоит приложение на Netlify                         |
+| Команда             | Что делает                                                   |
+| ------------------- | ------------------------------------------------------------ |
+| `pnpm run ci`       | Устанавливает зависимости (`pnpm install --frozen-lockfile`) |
+| `pnpm start`        | Запускает dev-сервер Angular (`ng serve -o`)                 |
+| `pnpm watch`        | Собирает проект в watch-режиме                               |
+| `pnpm build`        | Создаёт production-сборку приложения                         |
+| `pnpm typecheck`    | Проверяет TypeScript без генерации файлов                    |
+| `pnpm lint`         | Запускает ESLint (`src`) и Stylelint                         |
+| `pnpm lint:fix`     | Автоматически исправляет ошибки ESLint и Stylelint           |
+| `pnpm format`       | Проверяет форматирование Prettier                            |
+| `pnpm format:fix`   | Форматирует файлы через Prettier                             |
+| `pnpm test`         | Запускает unit-тесты один раз                                |
+| `pnpm test:watch`   | Запускает unit-тесты в watch-режиме                          |
+| `pnpm test:cov`     | Запускает тесты с отчётом о покрытии                         |
+| `pnpm i18n:extract` | Извлекает ключи локализации Transloco                        |
+| `pnpm i18n:find`    | Ищет отсутствующие и неиспользуемые ключи                    |
+| `pnpm knip`         | Поиск неиспользуемых файлов, экспортов и зависимостей        |
+| `pnpm deploy`       | Деплоит приложение на Netlify                                |
 
 ## :hammer_and_wrench: Tech Stack
 
