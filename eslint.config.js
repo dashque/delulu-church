@@ -134,6 +134,7 @@ export default tseslint.config(
           directive: 'off',
           service: 'off',
           component: 'off',
+          constants: 'off',
           resolver: 'off',
           mock: 'off',
           fixture: 'off',

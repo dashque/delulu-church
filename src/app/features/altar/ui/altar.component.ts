@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { TranslocoPipe } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoPipe } from '@jsverse/transloco';
 import { StatisticsComponent } from '@features/altar/ui/statistics/statistics.component';
 import { PrayerComponent } from '@features/altar/ui/prayer/prayer.component';
 import { InstructionsComponent } from '@features/altar/ui/instructions/instructions.component';
@@ -11,6 +11,7 @@ import { AltarPageFacade } from '@features/altar/facades/altar-page.facade';
   imports: [StatisticsComponent, PrayerComponent, InstructionsComponent, TranslocoPipe, CandlesComponent],
   templateUrl: './altar.component.html',
   styleUrl: './altar.component.scss',
+  providers: [provideTranslocoScope('altar'), AltarPageFacade],
 })
 export class AltarComponent {
   protected readonly facade = inject(AltarPageFacade);

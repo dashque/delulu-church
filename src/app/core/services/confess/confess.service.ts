@@ -7,11 +7,13 @@ import { SINS_SUBCOLLECTION, STATUSES, USERS_COLLECTION } from '@core/services/c
 import { CoderQuotesService } from '@core/ui/components/ghost-coder/services/coder-quotes.service';
 import { withTimeout } from '@shared/helpers/with-timeout.helper';
 import { FIRESTORE_OPERATION_TIMEOUT_MS } from '@shared/constants/firestore-operation-timeout';
+import { UserProfileService } from '../user-profile/user-profile.service';
 
 @Service()
 export class ConfessService {
   private readonly authService = inject(AuthService);
   private readonly coderService = inject(CoderQuotesService);
+  private readonly userProfileService = inject(UserProfileService);
 
   private readonly _sins = signal<Sin[] | null>(null);
   private readonly _isLoading = signal(false);
@@ -64,6 +66,8 @@ export class ConfessService {
       this._sins.update((sins) => (sins ? [...sins, newSin] : [newSin]));
 
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
+      await this.userProfileService.loadProfile(uid);
+
       this.coderService.reactSins('add');
     } catch (error) {
       this._error.set(error);
@@ -84,6 +88,8 @@ export class ConfessService {
 
       this._sins.update((sins) => sins?.filter((sin) => sin.uid !== sinUid) ?? null);
       await this.updateSinsCount(uid, await this.getSinsCount(uid));
+
+      await this.userProfileService.loadProfile(uid);
       this.coderService.reactSins('delete');
     } catch (error) {
       this._error.set(error);

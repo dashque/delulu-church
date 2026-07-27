@@ -1,5 +1,5 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
-import { TranslocoPipe, TranslocoService } from '@jsverse/transloco';
+import { provideTranslocoScope, TranslocoPipe, TranslocoService } from '@jsverse/transloco';
 import { TuiIcon } from '@taiga-ui/core';
 import { WisdomComponent } from './wisdom/wisdom.component';
 import { ANSWER_KEYS } from '../constants/answer-keys';
@@ -11,6 +11,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   imports: [TranslocoPipe, TuiIcon, WisdomComponent],
   templateUrl: './ball.component.html',
   styleUrl: './ball.component.scss',
+  providers: [provideTranslocoScope('ball')],
 })
 export class BallComponent {
   private readonly transloco = inject(TranslocoService);

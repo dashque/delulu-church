@@ -1,4 +1,8 @@
 {
+  "header": {
+    "title": "Profile settings",
+    "subtitle": "Your profile settings in Machine Spirit system"
+  },
   "title": "Profile & Security",
   "machine-spirit": {
     "id": "Machine Spirit ID: "
@@ -30,6 +34,10 @@
     "moscow": "Moscow"
   },
   "statistics": "Statistics",
+  "stats": {
+    "confessions": "Confessions",
+    "candles": "Candles"
+  },
   "achievements": "Achievements",
   "state": {
     "unblocked": "Unblocked",
@@ -38,10 +46,34 @@
   "zodiac": "Developer's Zodiac sign",
   "sign": {
     "title": {
-      "aquarius": "Aquarius"
+      "aries": "Aries",
+      "taurus": "Taurus",
+      "gemini": "Gemini",
+      "cancer": "Cancer",
+      "leo": "Leo",
+      "virgo": "Virgo",
+      "libra": "Libra",
+      "scorpio": "Scorpio",
+      "sagittarius": "Sagittarius",
+      "capricorn": "Capricorn",
+      "aquarius": "Aquarius",
+      "pisces": "Pisces",
+      "unknown": "Unknown sign"
     },
     "description": {
-      "aquarius": "Generator of unconventional solutions"
+      "aries": "Writes code by intuition but often forgets about tests",
+      "taurus": "Slow but reliable. Loves refactoring",
+      "gemini": "Can code in two languages at the same time",
+      "cancer": "Takes code reviews personally",
+      "leo": "Always wants to be the lead developer",
+      "virgo": "A perfectionist when writing code",
+      "libra": "Always seeks a balance between quality and speed",
+      "scorpio": "A master of debugging the most complex bugs",
+      "sagittarius": "Loves experimenting with new technologies",
+      "capricorn": "Disciplined and follows best practices",
+      "aquarius": "A generator of unconventional solutions",
+      "pisces": "Intuitively understands software architecture",
+      "unknown": "No birth date provided"
     }
   },
   "confessions": "Confessions",
@@ -51,23 +83,31 @@
   "achieve": {
     "first_confession": {
       "title": "First confession",
-      "description": "You confessed your first bug"
-    },
-    "chronicist": {
-      "title": "Chronicist",
-      "description": "7 daily writings to diary"
-    },
-    "good_mood": {
-      "title": "Happy developer",
-      "description": "The average mood rating is over 4"
-    },
-    "regular_visitor": {
-      "title": "Regular visitor",
-      "description": "Over 30 days of activity"
+      "description": "Confessed your first sin"
     },
     "penitent": {
       "title": "Penitent",
-      "description": "10 confessions"
+      "description": "10 confessions completed"
+    },
+    "first_candle": {
+      "title": "First candle",
+      "description": "Lit your first candle"
+    },
+    "flame_keeper": {
+      "title": "Flame keeper",
+      "description": "Lit 20 candles"
+    },
+    "altar_master": {
+      "title": "Altar master",
+      "description": "Lit 50 candles"
+    },
+    "saved": {
+      "title": "Saved",
+      "description": "50 confessions completed"
+    },
+    "saint": {
+      "title": "Saint",
+      "description": "Made a sacrifice"
     }
   }
 }

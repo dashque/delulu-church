@@ -10,6 +10,7 @@ describe('RegisterFormService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [TranslocoTestingMock],
+      providers: [RegisterFormService],
     });
     service = TestBed.inject(RegisterFormService);
   });

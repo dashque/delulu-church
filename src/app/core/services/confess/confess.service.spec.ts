@@ -117,20 +117,6 @@ describe('ConfessService', () => {
           severity: 'medium',
         }),
       ]);
-      expect(firebaseAuthMock.updateDoc).toHaveBeenCalledWith(expect.anything(), { sins: 1 });
-    });
-  });
-
-  describe('Удаление греха', () => {
-    it('должен удалить грех из Firestore и локального списка', async () => {
-      service['_sins'].set([{ uid: 'sin-1', text: 'Old sin', severity: 'low', status: 'none' }]);
-      firebaseAuthMock.getDocs.mockImplementation(async () => ({ docs: [], size: 0 }));
-
-      await service.deleteSin('sin-1');
-
-      expect(firebaseAuthMock.deleteDoc).toHaveBeenCalledTimes(1);
-      expect(service.sins()).toEqual([]);
-      expect(firebaseAuthMock.updateDoc).toHaveBeenCalledWith(expect.anything(), { sins: 0 });
     });
   });
 

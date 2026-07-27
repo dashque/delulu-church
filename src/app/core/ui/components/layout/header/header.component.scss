@@ -189,10 +189,26 @@
   }
 }
 
-@media (width <= 480px) {
+@media (width<=768px) {
   .header-box {
     padding: 0.75rem;
     gap: 0.85rem;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+@media (width <= 480px) {
+  .header-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.75rem;
+    gap: 0.85rem;
+    width: 100%;
   }
 
   .header-actions {
