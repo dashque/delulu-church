@@ -36,9 +36,52 @@ The Church of the Holy Deploy — цифровой храм для програ�
 
 **Production:** [https://delulu-church.netlify.app/](https://delulu-church.netlify.app/)
 
+**Team presentation:** [https://delulu-church.netlify.app/presentation/](https://delulu-church.netlify.app/presentation/)
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/be597b1e-bdc6-4923-a2cc-0eb263412cab/deploy-status)](https://app.netlify.com/projects/delulu-church/deploys)
 
 Сборка — статический Angular SPA. Tarot API проксируется через Netlify redirect (`/api/reading` → `deploytarot.com`). Бэкенд на Netlify Functions в репозитории **отсутствует**; данные пользователей — Firebase Firestore.
+
+**CI/CD:** GitHub Actions [`quality-check`](.github/workflows/quality-check.yml) на каждый push/PR в `develop` и `main` (typecheck, lint, format, test, build). После merge в `develop` — автодеплой на Netlify.
+
+## 📋 Project Management
+
+| Артефакт                | Ссылка                                                                            |
+| ----------------------- | --------------------------------------------------------------------------------- |
+| **Issues / backlog**    | [GitHub Issues](https://github.com/ngKittyDebug/angular-ngKittyDebugRight/issues) |
+| **Дневники разработки** | [`development-notes/`](development-notes/)                                        |
+| **Meeting notes**       | [`development-notes/meetings-notes/`](development-notes/meetings-notes/)          |
+
+### Meeting notes
+
+| Спринт   | Запись / заметки                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Sprint 1 | [Запись встречи (Google Drive)](https://drive.google.com/file/d/1CzNgI0UiuxF0_Y4qsqid9KUsxPaGFleb/view?usp=sharing) · [meeting-notes](development-notes/meetings-notes/meeting-notes-sprint-1-2026-05-18.md)                                                                                                                                                                                                                        |
+| Sprint 2 | [Запись 27.05 (Google Drive)](https://drive.google.com/file/d/11Bn0mX9QPjcSKq_shiMDHU79aO8QSnMo/view?usp=sharing) · [Запись 30.05 (Google Drive)](https://drive.google.com/file/d/1t1DQv65eqgCe_lI-5epvMVc4Fx0682dX/view?usp=sharing) · [meeting-notes 27.05](development-notes/meetings-notes/meeting-notes-sprint-2-2026-05-27.md) · [meeting-notes 30.05](development-notes/meetings-notes/meeting-notes-sprint-2-2026-05-30.md) |
+
+Задачи декомпозированы по спринтам (`sprint-1`…`sprint-4` labels), у каждого issue — assignee и описание.
+
+## 🔀 Git Culture
+
+- **Ветки:** `feat/`, `fix/`, `docs/` и др. — валидация в pre-push hook
+- **Коммиты:** [Conventional Commits](https://www.conventionalcommits.org/) — `feat:`, `fix:`, `chore:` (commitlint в Husky)
+- **Pull Requests:** шаблон в [`.github/pull_request_template.md`](.github/pull_request_template.md), auto-assign reviewers
+- **Code review:** repository rulesets на `develop`/`main` — минимум 1 approval + required CI check `test-and-build`
+- **Pre-push:** `typecheck` → `format` → `lint` → `test`
+
+## 🏗 Architecture (кратко)
+
+```
+UI → Facade → API service / core service → HTTP / Firestore
+```
+
+| Слой        | Назначение                                                                                          |
+| ----------- | --------------------------------------------------------------------------------------------------- |
+| `core/`     | Layout, guards, interceptors, shared domain services (`Auth`, `Confess`, `Candles`), `uiStateStore` |
+| `features/` | Route-bound домены: `data/` + `facades/` + `ui/`                                                    |
+| `shared/`   | Валидаторы, UI-kit, helpers                                                                         |
+
+Angular 22: standalone, signals-first, route-scoped DI (`@Service({ autoProvided: false })`), functional guards, typed reactive forms.
 
 ## 👥 Team Members
 
