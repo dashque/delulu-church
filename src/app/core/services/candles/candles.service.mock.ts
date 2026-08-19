@@ -25,8 +25,3 @@ export const resetCandlesServiceMock = (): void => {
   totalOfferingsSignal.set(0);
   candlesServiceMock.offerCandle.mockReset();
 };
-
-export const setCandlesServiceMockCounts = (counts: ReturnType<typeof createEmptyCandleCounts>): void => {
-  candleCountsSignal.set(counts);
-  totalOfferingsSignal.set(Object.values(counts).reduce((total, count) => total + count, 0));
-};

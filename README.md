@@ -1,4 +1,4 @@
-# ngKittyDebug
+# ФОРК delulu-church
 
 ## :church: About the project
 
@@ -20,68 +20,22 @@ The Church of the Holy Deploy — цифровой храм для програ�
 - **Уведомления** — `@ngxpert/hot-toast` (тема glassmorphism): HTTP-ошибки через interceptor, ошибки Firestore — в facades страниц
 - **Валидация форм** — login / register: `tui-error` привязан к `FormControl`, тексты ошибок централизованы через `tuiValidationErrorsProvider` + Transloco
 
-## 🚀 Демонстрация обработки ошибок, состояния загрузки, 404
-
-[Ссылка](https://drive.google.com/file/d/1xQl8qfHqrmiRhw6KaKnjK7WEUC5O3FE4/view?usp=sharing)
-
 ## 🚀 Deployment
 
-**Production:** [https://delulu-church.netlify.app/](https://delulu-church.netlify.app/)
-
-**Teamwork:** [`presentation/teamwork.md`](presentation/teamwork.md)
-
-**Team presentation:** [https://delulu-church.netlify.app/presentation/](https://delulu-church.netlify.app/presentation/)
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/be597b1e-bdc6-4923-a2cc-0eb263412cab/deploy-status)](https://app.netlify.com/projects/delulu-church/deploys)
-
-**CI/CD:** GitHub Actions [`quality-check`](.github/workflows/quality-check.yml) на каждый push/PR в `develop` и `main` (typecheck, lint, format, test, build). После merge в `develop` — автодеплой на Netlify.
-
-## 📋 Project Management
-
-| Артефакт                | Ссылка                                                                            |
-| ----------------------- | --------------------------------------------------------------------------------- |
-| **Issues / backlog**    | [GitHub Issues](https://github.com/ngKittyDebug/angular-ngKittyDebugRight/issues) |
-| **Teamwork**            | [`presentation/teamwork.md`](presentation/teamwork.md)                            |
-| **Дневники разработки** | [`development-notes/`](development-notes/)                                        |
-| **Meeting notes**       | [`development-notes/meetings-notes/`](development-notes/meetings-notes/)          |
-
-### Meeting notes
-
-| Спринт   | Запись / заметки                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Sprint 1 | [Запись встречи (Google Drive)](https://drive.google.com/file/d/1CzNgI0UiuxF0_Y4qsqid9KUsxPaGFleb/view?usp=sharing) · [meeting-notes](development-notes/meetings-notes/meeting-notes-sprint-1-2026-05-18.md)                                                                                                                                                                                                                        |
-| Sprint 2 | [Запись 27.05 (Google Drive)](https://drive.google.com/file/d/11Bn0mX9QPjcSKq_shiMDHU79aO8QSnMo/view?usp=sharing) · [Запись 30.05 (Google Drive)](https://drive.google.com/file/d/1t1DQv65eqgCe_lI-5epvMVc4Fx0682dX/view?usp=sharing) · [meeting-notes 27.05](development-notes/meetings-notes/meeting-notes-sprint-2-2026-05-27.md) · [meeting-notes 30.05](development-notes/meetings-notes/meeting-notes-sprint-2-2026-05-30.md) |
-
-Задачи декомпозированы по спринтам (`sprint-1`…`sprint-4` labels), у каждого issue — assignee и описание.
-
-## 🔀 Git Culture
-
-- **Ветки:** `feat/`, `fix/`, `docs/` и др. — валидация в pre-push hook
-- **Коммиты:** [Conventional Commits](https://www.conventionalcommits.org/) — `feat:`, `fix:`, `chore:` (commitlint в Husky)
-- **Pull Requests:** шаблон в [`.github/pull_request_template.md`](.github/pull_request_template.md), auto-assign reviewers
-- **Code review:** repository rulesets на `develop`/`main` — минимум 1 approval + required CI check `test-and-build`
-- **Pre-push:** `typecheck` → `format` → `lint` → `test`
-
-## 👥 Team Members
-
-| Роль                           | Имя                 | Гитхаб                                          |
-| ------------------------------ | ------------------- | ----------------------------------------------- |
-| Frontend developer / Team Lead | Daria Melnikova     | [dashque](https://github.com/dashque)           |
-| Frontend developer             | Alena Alekseeva     | [alena1409](https://github.com/Alena1409)       |
-| Frontend developer             | Nadezhda Kozochkina | [kozochkina82](https://github.com/kozochkina82) |
+**Production:** [https://ng-delulu-church.netlify.app/](https://delulu-church.netlify.app/)
 
 ## :closed_book: Требования
 
 - `Node.js` (24.15.0)
-- `pnpm` (в проекте зафиксирован `pnpm@10.30.0`)
+- `pnpm` (в проекте зафиксирован `pnpm@11.22.0`)
 
 ## ⚡ Get Started
 
 1. Клонировать репозиторий:
 
 ```bash
-git clone https://github.com/ngKittyDebug/angular-ngKittyDebugRight.git
-cd angular-ngKittyDebugRight
+git clone git@github.com:dashque/delulu-church.git
+cd delulu-church
 ```
 
 2. Установить зависимости и запустить dev-сервер:

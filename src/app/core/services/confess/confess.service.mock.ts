@@ -28,7 +28,3 @@ export const resetConfessServiceMock = (): void => {
   confessServiceMock.getSinsCount.mockReset().mockResolvedValue(0);
   confessServiceMock.updateSinsCount.mockReset().mockResolvedValue(undefined);
 };
-
-export const setConfessServiceMockSins = (sins: Sin[] | null): void => {
-  sinsSignal.set(sins);
-};

@@ -1,7 +1,7 @@
 name: Auto Assign and request review
 on:
   pull_request:
-    types: [opened, reopened, ready_for_review]
+    types: [ opened, reopened, ready_for_review ]
 
 jobs:
   assign:
@@ -14,7 +14,7 @@ jobs:
         with:
           script: |
             const author = context.payload.pull_request.user.login;
-            const allPossibleReviewers = ['dashque', 'kozochkina82', 'Alena1409'];
+            const allPossibleReviewers = ['dashque', 'tryproxy'];
             const reviewers = allPossibleReviewers.filter(reviewer => reviewer !== author);
 
             await github.rest.issues.addAssignees({

@@ -6,5 +6,3 @@ export function createTuiDarkModeMock(initialValue = false) {
     reset: vi.fn(),
   });
 }
-
-export const tuiDarkModeMock = createTuiDarkModeMock();

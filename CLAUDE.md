@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-«ngKittyDebug / delulu-church» — Angular 22 SPA (RS School team project), TypeScript strict, Taiga UI, NgRx Signals, Firebase (Auth + Firestore). Package manager pinned to `pnpm@10.30.0` (see `packageManager` in `package.json`).
+«ngKittyDebug / delulu-church» — Angular 22 SPA (RS School team project), TypeScript strict, Taiga UI, NgRx Signals, Firebase (Auth + Firestore). Package manager pinned to `pnpm@11.22.0` (see `packageManager` in `package.json`).
 
 **Deploy:** Netlify hosts the static SPA. Tarot readings are proxied to an external API (`deploytarot.com`) via redirect in [`netlify.toml`](netlify.toml). There are **no local Netlify Functions** in this repo.
 
