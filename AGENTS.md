@@ -81,7 +81,7 @@ On pnpm 11, `pnpm ci` (without `run`) deletes `node_modules` then frozen-install
 
 - **SCSS** `includePaths: ["src", "src/styles"]` — `@use 'styles/foo'` without `../../`. Taiga themes from `node_modules/@taiga-ui/styles/*.less` + `src/styles.css`
 - **`.netlify/`** — local CLI state, never edit. `netlify/` has no function source
-- **Commits:** Conventional Commits (`build|ci|docs|feat|fix|perf|refactor|revert|style|test|chore`), header ≤72 chars
+- **Commits:** Conventional Commits (`build|ci|docs|feat|fix|perf|refactor|revert|style|test|chore`)
 - **Branches:** `^(chore|feat|fix|docs|style|refactor|perf)\/[a-zA-Z0-9-]+[_-][a-zA-Z0-9-]+$` (`validate-branch-name`)
 - **Husky:** pre-commit = lint-staged + typecheck + format + lint; commit-msg = commitlint; pre-push = branch-name + tests. Do not `--no-verify`
 - **ESLint:** `member-ordering`, `@typescript-eslint/explicit-member-accessibility`, `consistent-type-imports`, `consistent-type-definitions: ['error', 'interface']`, `filename-case` (camelCase or kebab-case), `padding-line-between-statements`. Relaxed `any` / unsafe-\* in `.mock.ts` and `.spec.ts`

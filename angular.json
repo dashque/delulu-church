@@ -8,7 +8,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ngKittyDebugRight": {
+    "delulu-church": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -32,7 +32,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "ngKitty",
+      "prefix": "delulu",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
@@ -40,7 +40,7 @@
             "browser": "src/main.ts",
             "index": "src/index.html",
             "tsConfig": "tsconfig.app.json",
-            "outputPath": "dist/ngKittyDebugRight",
+            "outputPath": "dist/delulu-church",
             "stylePreprocessorOptions": {
               "includePaths": ["src", "src/styles"]
             },
@@ -101,10 +101,10 @@
           },
           "configurations": {
             "production": {
-              "buildTarget": "ngKittyDebugRight:build:production"
+              "buildTarget": "delulu-church:build:production"
             },
             "development": {
-              "buildTarget": "ngKittyDebugRight:build:development"
+              "buildTarget": "delulu-church:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -121,7 +121,7 @@
         "deploy": {
           "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "outputPath": "dist/ngKittyDebugRight/browser"
+            "outputPath": "dist/delulu-church/browser"
           }
         }
       }

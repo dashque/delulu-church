@@ -1,6 +1,7 @@
 export default {
   extends: ['@commitlint/config-conventional', '@commitlint/config-angular'],
   rules: {
+    'header-max-length': [0],
     'type-enum': [
       2,
       'always',

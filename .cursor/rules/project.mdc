@@ -11,6 +11,6 @@ Follow [AGENTS.md](../../AGENTS.md). Do not treat `CLAUDE.md` as the spec.
 - UI talks only to a **facade**. Feature facades/HTTP services: `@Service({ autoProvided: false })` on the **routed component** `providers` — not `providedIn: 'root'`, not `app.routes.ts`
 - `ConfessService` / `CandlesService` stay in `core/`. Domain must not import `@core/ui`
 - Errors in feature facades: `HotToastService` + Transloco. New user-facing strings go in `public/i18n/`
-- Commits: Conventional Commits, header ≤72. Branches: `feat|fix|chore|docs|style|refactor|perf/<name>_<name>`
+- Commits: Conventional Commits. Branches: `feat|fix|chore|docs|style|refactor|perf/<name>_<name>`
 - PRs against `main`. Before done: `pnpm typecheck && pnpm lint && pnpm test`
 - Do not `--no-verify` hooks. On pnpm 11 use `pnpm run ci` for install, not bare `pnpm ci`
