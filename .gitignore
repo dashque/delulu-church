@@ -54,5 +54,7 @@ Thumbs.db
 # Local Netlify folder
 .netlify
 deno.lock
-.cursor
+.cursor/*
+!.cursor/rules/
+!.cursor/rules/**
 /development-notes
