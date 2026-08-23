@@ -1,8 +1,9 @@
 import { Component, input, output } from '@angular/core';
-import { TuiPassword } from '@taiga-ui/kit';
+import { TuiInputDateDirective, TuiInputPhone, TuiPassword } from '@taiga-ui/kit';
 import { TranslocoPipe } from '@jsverse/transloco';
 import {
   TuiButton,
+  TuiCalendar,
   TuiError,
   TuiIcon,
   TuiInputDirective,
@@ -31,6 +32,9 @@ import type { ProfileForm } from '@features/profile/models/profile-form.model';
     TuiTextfieldComponent,
     ReactiveFormsModule,
     TuiError,
+    TuiCalendar,
+    TuiInputDateDirective,
+    TuiInputPhone,
   ],
   providers: [tuiLoaderOptionsProvider({ size: 'm' })],
   templateUrl: './profile-form.component.html',
