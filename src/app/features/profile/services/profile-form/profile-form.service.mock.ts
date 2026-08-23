@@ -5,6 +5,7 @@ import { EMPTY } from 'rxjs';
 
 export const profileFormServiceMock = {
   form: profileFormFixture,
+  setFormValue: vi.fn(),
   get formValueChanges() {
     return EMPTY;
   },

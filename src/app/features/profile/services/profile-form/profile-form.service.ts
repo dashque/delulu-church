@@ -7,6 +7,7 @@ import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/pass
 import type { Observable } from 'rxjs';
 import { map } from 'rxjs';
 import type { ProfileForm } from '@features/profile/models/profile-form.model';
+import type { ProfileFormValue } from '@features/profile/models/profile-form-value.model';
 
 @Service({ autoProvided: false })
 export class ProfileFormService {
@@ -15,6 +16,10 @@ export class ProfileFormService {
 
   public get formValueChanges(): Observable<unknown> {
     return this.form.valueChanges.pipe(map(() => this.togglePasswordValidators()));
+  }
+
+  public setFormValue(formValue: ProfileFormValue) {
+    this.form.setValue(formValue, { emitEvent: false });
   }
 
   private createFormInstance() {
@@ -35,7 +40,7 @@ export class ProfileFormService {
     this.updatePasswordControlsValidity();
   }
 
-  private setValidators(validatorList: ValidatorFn[]): void {
+  private setValidators(validatorList: ValidatorFn[]) {
     const { currentPassword, newPassword, newPasswordConfirmation } = this.form.controls;
 
     currentPassword.setValidators(validatorList);
@@ -43,7 +48,7 @@ export class ProfileFormService {
     newPasswordConfirmation.setValidators(validatorList);
   }
 
-  private updatePasswordControlsValidity(): void {
+  private updatePasswordControlsValidity() {
     const { currentPassword, newPassword, newPasswordConfirmation } = this.form.controls;
 
     currentPassword.updateValueAndValidity({ emitEvent: false });
