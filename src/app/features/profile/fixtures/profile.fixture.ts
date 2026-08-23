@@ -1,4 +1,4 @@
-import type { ProfileData } from '@features/profile/data/models/profile.model';
+import type { ProfileData } from '@features/profile/models/profile.model';
 
 export const PROFILE_MOCK = {
   profile: {

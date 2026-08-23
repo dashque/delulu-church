@@ -1,4 +1,4 @@
-import type { Zodiac } from '../models/profile.model';
+import type { Zodiac } from '@features/profile/models/zodiac.model';
 
 export const ZODIACS = {
   aries: {

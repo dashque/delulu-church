@@ -19,29 +19,32 @@ export const routes: Routes = [
       {
         path: 'profile',
         canMatch: [authGuard],
-        loadComponent: () => import('./features/profile/profile.component').then((c) => c.ProfileComponent),
+        canDeactivate: [dirtyFormGuard],
+        loadComponent: () =>
+          import('@features/profile/ui/components/profile.component').then((c) => c.ProfileComponent),
         data: { preloadFor: PreloadFor.AUTH },
       },
       {
         path: 'login',
         canMatch: [guestGuard],
-        loadComponent: () => import('./features/login/ui/login.component').then((c) => c.LoginComponent),
         canDeactivate: [dirtyFormGuard],
+        loadComponent: () => import('@features/login/ui/login.component').then((c) => c.LoginComponent),
         data: { preloadFor: PreloadFor.GUEST },
       },
       {
         path: 'register',
         canMatch: [guestGuard],
+        canDeactivate: [dirtyFormGuard],
         loadComponent: () =>
           import('@features/registration/ui/register-page/register-page.component').then(
             (c) => c.RegisterPageComponent
           ),
-        canDeactivate: [dirtyFormGuard],
         data: { preloadFor: PreloadFor.GUEST },
       },
       {
         path: 'shrift',
         canMatch: [authGuard],
+        canDeactivate: [dirtyFormGuard],
         loadComponent: () => import('./features/shrift/ui/shrift.component').then((c) => c.ShriftComponent),
         data: { preloadFor: PreloadFor.AUTH },
       },

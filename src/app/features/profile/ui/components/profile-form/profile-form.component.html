@@ -1,8 +1,9 @@
-@let nameControl = form.controls.name;
-@let currentPasswordControl = form.controls.currentPassword;
-@let newPasswordControl = form.controls.newPassword;
-@let newPasswordConfirmationControl = form.controls.newPasswordConfirmation;
-<form [formGroup]="form" tuiCardLarge tuiForm="m" class="form" (submit)="onSubmit($event)">
+@let nameControl = form().controls.name;
+@let currentPasswordControl = form().controls.currentPassword;
+@let newPasswordControl = form().controls.newPassword;
+@let newPasswordConfirmationControl = form().controls.newPasswordConfirmation;
+@let dateOfBirthControl = form().controls.dateOfBirth;
+<form [formGroup]="form()" tuiCardLarge tuiForm="m" class="form" (submit)="formSubmitted.emit()">
   <tui-textfield>
     <label tuiLabel for="name">{{ 'profile.form.labels.name' | transloco }}</label>
     <input [formControl]="nameControl" placeholder="aboba" tuiInput id="name" />
@@ -42,8 +43,14 @@
   </tui-textfield>
   <tui-error [formControl]="newPasswordConfirmationControl" />
 
+  <tui-textfield iconStart="@tui.calendar">
+    <label tuiLabel for="dateOfBirth">{{ 'profile.form.labels.date_of_birth' | transloco }}</label>
+    <input id="dateOfBirth" [formControl]="dateOfBirthControl" tuiInputDate />
+    <tui-calendar *tuiDropdown />
+  </tui-textfield>
+
   <footer class="footer">
-    <button tuiButton type="submit" [disabled]="form.invalid || isLoading()">
+    <button tuiButton type="submit" [disabled]="form().invalid || isLoading()">
       @if (isLoading()) {
         <tui-loader />
       } @else {

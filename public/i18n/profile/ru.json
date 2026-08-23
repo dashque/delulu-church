@@ -12,7 +12,8 @@
       "name": "Имя пользователя",
       "password": "Текущий пароль",
       "new_password": "Новый пароль",
-      "new_password_confirmation": "Подтверждение нового пароля"
+      "new_password_confirmation": "Подтверждение нового пароля",
+      "date_of_birth": "Дата рождения"
     },
     "subtitle": {
       "first": "Изменить пароль",
