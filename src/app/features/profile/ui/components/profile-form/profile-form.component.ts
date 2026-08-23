@@ -1,5 +1,4 @@
-import { Component, inject } from '@angular/core';
-import { ProfileFacade } from '@features/profile/facades/profile.facade';
+import { Component, input, output } from '@angular/core';
 import { TuiPassword } from '@taiga-ui/kit';
 import { TranslocoPipe } from '@jsverse/transloco';
 import {
@@ -13,7 +12,9 @@ import {
   TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
+import type { FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import type { ProfileForm } from '@features/profile/models/profile-form.model';
 
 @Component({
   selector: 'ngKitty-profile-form',
@@ -36,12 +37,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './profile-form.component.scss',
 })
 export class ProfileFormComponent {
-  private readonly profileFacade = inject(ProfileFacade);
-  protected readonly isLoading = this.profileFacade.isLoading;
-  protected readonly form = this.profileFacade.profileForm;
-
-  protected onSubmit(event: SubmitEvent): void {
-    event.preventDefault();
-    void this.profileFacade.submit();
-  }
+  public readonly isLoading = input.required<boolean>();
+  public readonly form = input.required<FormGroup<ProfileForm>>();
+  public readonly formSubmitted = output<void>();
 }

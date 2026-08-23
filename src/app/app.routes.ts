@@ -20,7 +20,8 @@ export const routes: Routes = [
         path: 'profile',
         canMatch: [authGuard],
         canDeactivate: [dirtyFormGuard],
-        loadComponent: () => import('@features/profile/ui/profile.component').then((c) => c.ProfileComponent),
+        loadComponent: () =>
+          import('@features/profile/ui/components/profile.component').then((c) => c.ProfileComponent),
         data: { preloadFor: PreloadFor.AUTH },
       },
       {

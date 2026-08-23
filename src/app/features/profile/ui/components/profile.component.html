@@ -25,12 +25,12 @@
       }
     </div>
 
-    <ngKitty-profile-form />
+    <ngKitty-profile-form [form]="form" [isLoading]="isLoading()" (formSubmitted)="onSubmit()" />
   </section>
 
   <div class="profile-right">
     <section class="user-section stats-section">
-      @for (card of facade.statCards(); track card.id; let i = $index) {
+      @for (card of statCards(); track card.id; let i = $index) {
         <ngKitty-stat-card [stat]="card" [class.secondary]="i === 1" />
       }
     </section>
@@ -43,18 +43,18 @@
         <div class="achievement-progress-bar">
           <div
             class="achievement-progress-fill"
-            [style.width.%]="(facade.achievementProgress().unlocked * 100) / facade.achievementProgress().total"
+            [style.width.%]="(achievementProgress().unlocked * 100) / achievementProgress().total"
           ></div>
         </div>
 
         <span class="achievement-progress-text">
-          {{ facade.achievementProgress().unlocked }}
+          {{ achievementProgress().unlocked }}
           /
-          {{ facade.achievementProgress().total }}
+          {{ achievementProgress().total }}
         </span>
       </div>
       <div class="achievements">
-        @for (achieve of facade.achievementInfo().achievements; track achieve.id) {
+        @for (achieve of achievementInfo().achievements; track achieve.id) {
           <div
             class="achieve-item"
             [class.achieve-item-unlocked]="achieve.unlocked"
