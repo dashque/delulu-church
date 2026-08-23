@@ -4,8 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { PASSWORD_PATTERN } from '@shared/patterns/password-pattern';
 import { passwordConfirmationValidator } from '@shared/validators/password-confirmation.validator';
 import { PASSWORD_MAX_LENGTH, PASSWORD_MIN_LENGTH } from '@shared/constants/password-length';
-import type { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { tap } from 'rxjs';
 import type { ProfileForm } from '@features/profile/models/profile-form.model';
 import type { ProfileFormValue } from '@features/profile/models/profile-form-value.model';
 
@@ -14,8 +13,8 @@ export class ProfileFormService {
   private readonly fb = inject(FormBuilder);
   public readonly form = this.createFormInstance();
 
-  public get formValueChanges(): Observable<unknown> {
-    return this.form.valueChanges.pipe(map(() => this.togglePasswordValidators()));
+  public get formValueChanges() {
+    return this.form.valueChanges.pipe(tap(() => this.togglePasswordValidators()));
   }
 
   public setFormValue(formValue: ProfileFormValue) {
