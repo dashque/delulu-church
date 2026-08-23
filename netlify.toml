@@ -1,7 +1,6 @@
 [build]
   command = "pnpm build"
-  publish = "dist/ngKittyDebugRight/browser"
-
+  publish = "dist/delulu-church/browser"
 
 [[redirects]]
   from = "/api/reading"
