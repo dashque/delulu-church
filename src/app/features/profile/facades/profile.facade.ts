@@ -1,15 +1,15 @@
 import { computed, effect, inject, Service, signal } from '@angular/core';
-import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
-import type { AchievementInfo, Profile, ProfileData, Statistics } from '../data/models/profile.model';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { ProfileFormService } from '../services/profile-form/profile-form.service';
 import { AuthService } from '@core/services/auth/auth.service';
 import { TranslocoService } from '@jsverse/transloco';
 import { FirebaseError } from 'firebase/app';
 import { HotToastService } from '@ngxpert/hot-toast';
-import type { Achievement } from '../data/models/achievement.model';
-import type { StatCard } from '../data/models/stats-card.model';
 import { DonutService } from '../services/donut/donut.service';
+import { PROFILE_MOCK } from '@features/profile/fixtures/profile.fixture';
+import type { StatCard } from '@features/profile/models/stats-card.model';
+import type { Achievement } from '@features/profile/models/achievement.model';
+import type { AchievementInfo, Profile, ProfileData, Statistics } from '@features/profile/models/profile.model';
 
 @Service({
   autoProvided: false,
@@ -186,7 +186,7 @@ export class ProfileFacade {
       }
 
       await this.userProfileService.updateProfile(user.uid, {
-        displayName: name,
+        displayName: name ?? '',
       });
 
       this.profileForm.markAsPristine();

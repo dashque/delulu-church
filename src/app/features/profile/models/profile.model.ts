@@ -1,4 +1,6 @@
 import type { UserProfile } from '@core/services/user-profile/models/user-profile.model';
+import type { Achievement } from '@features/profile/models/achievement.model';
+import type { Zodiac } from '@features/profile/models/zodiac.model';
 
 export type Profile = Omit<UserProfile, 'uiState' | 'createdAt' | 'dateOfBirth'> & {
   avatarUrl: string;
@@ -15,25 +17,12 @@ export interface Statistics {
   donuts: number;
 }
 
-export interface Achievement {
-  id: string;
-  icon: string;
-  title: string;
-  description: string;
-  unlocked: boolean;
-}
-
 export interface AchievementInfo {
   total: number;
   unlocked: number;
   achievements: Achievement[];
 }
 
-export interface Zodiac {
-  icon: string;
-  title: string;
-  description: string;
-}
 export interface ProfileData {
   profile: Profile;
   statistics: Statistics;

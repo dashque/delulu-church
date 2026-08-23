@@ -26,9 +26,9 @@ export class ProfileFormService {
     return this.fb.group<ProfileForm>(
       {
         name: this.fb.control(null, [Validators.required, Validators.maxLength(30)]),
-        currentPassword: this.fb.control(null, this.passwordValidatorList),
-        newPassword: this.fb.control(null, this.passwordValidatorList),
-        newPasswordConfirmation: this.fb.control(null, this.passwordValidatorList),
+        currentPassword: this.fb.control(null, []),
+        newPassword: this.fb.control(null, []),
+        newPasswordConfirmation: this.fb.control(null, []),
         dateOfBirth: this.fb.control(null),
       },
       { validators: passwordConfirmationValidator('newPassword', 'newPasswordConfirmation') }
