@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { TuiInputDateDirective, TuiInputPhone, TuiPassword } from '@taiga-ui/kit';
+import { TuiInputDate, TuiInputDateDirective, tuiInputDateOptionsProvider, TuiPassword } from '@taiga-ui/kit';
 import { TranslocoPipe } from '@jsverse/transloco';
 import {
   TuiButton,
@@ -16,6 +16,7 @@ import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import type { FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import type { ProfileForm } from '@features/profile/models/profile-form.model';
+import { TuiDay } from '@taiga-ui/cdk';
 
 @Component({
   selector: 'ngKitty-profile-form',
@@ -34,9 +35,17 @@ import type { ProfileForm } from '@features/profile/models/profile-form.model';
     TuiError,
     TuiCalendar,
     TuiInputDateDirective,
-    TuiInputPhone,
+    ...TuiInputDate,
   ],
-  providers: [tuiLoaderOptionsProvider({ size: 'm' })],
+  providers: [
+    tuiLoaderOptionsProvider({ size: 'm' }),
+    tuiInputDateOptionsProvider({
+      valueTransformer: {
+        fromControlValue: (value: Date | null): TuiDay | null => value && TuiDay.fromUtcNativeDate(value),
+        toControlValue: (value: TuiDay | null): Date | null => value?.toUtcNativeDate() || null,
+      },
+    }),
+  ],
   templateUrl: './profile-form.component.html',
   styleUrl: './profile-form.component.scss',
 })
