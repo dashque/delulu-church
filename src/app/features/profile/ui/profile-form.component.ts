@@ -8,12 +8,12 @@ import {
   TuiIcon,
   TuiInputDirective,
   TuiLabel,
-  TuiLoader,
   tuiLoaderOptionsProvider,
   TuiTextfieldComponent,
 } from '@taiga-ui/core';
 import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeluluLoaderDirective } from '@shared/directives/delulu-loader/delulu-loader.directive';
 
 @Component({
   selector: 'ngKitty-profile-form',
@@ -23,13 +23,13 @@ import { ReactiveFormsModule } from '@angular/forms';
     TuiPassword,
     TuiButton,
     TuiLabel,
-    TuiLoader,
     TuiIcon,
     TuiCardLarge,
     TuiForm,
     TuiTextfieldComponent,
     ReactiveFormsModule,
     TuiError,
+    DeluluLoaderDirective,
   ],
   providers: [tuiLoaderOptionsProvider({ size: 'm' })],
   templateUrl: './profile-form.component.html',
