@@ -6,6 +6,8 @@ import { rxResource } from '@angular/core/rxjs-interop';
 import { MyMemoryTranslationService } from '@features/main/data/api/services/my-memory-translation/my-memory-translation.service';
 import { TranslocoService } from '@jsverse/transloco';
 import type { Languages } from '@core/models/languages.model';
+import type { TarotRole } from '../data/api/models/role.model';
+import type { TarotIntent } from '../data/api/models/intent.model';
 
 @Service({
   autoProvided: false,
@@ -22,13 +24,10 @@ export class MainPageFacade {
 
     return null;
   });
+  private readonly queryParams = signal<{ role: TarotRole; intent: TarotIntent } | undefined>(undefined);
   private readonly useRxResource = rxResource({
-    params: () => ({
-      role: this.role,
-      intent: this.intent,
-    }),
-
-    stream: ({ params: { intent, role } }) => this.tarotService.loadReading(role(), intent()),
+    params: () => this.queryParams(),
+    stream: ({ params: { intent, role } }) => this.tarotService.loadReading(role, intent),
   });
 
   public readonly result = this._result.asReadonly();
@@ -38,6 +37,11 @@ export class MainPageFacade {
   public readonly error = this.useRxResource.error;
 
   constructor() {
+    effect(() => {
+      if (this.useRxResource.hasValue()) {
+        this.sourceResult.set(this.useRxResource.value());
+      }
+    });
     effect((onCleanup) => {
       const sourceResult = this.sourceResult();
       const activeLang = this.translocoService.activeLang() as Languages;
@@ -69,8 +73,9 @@ export class MainPageFacade {
   }
 
   public loadTarot(): void {
-    if (this.useRxResource.hasValue()) {
-      this.sourceResult.set(this.useRxResource.value());
-    }
+    this.queryParams.set({
+      role: this.role(),
+      intent: this.intent(),
+    });
   }
 }
