@@ -9,10 +9,26 @@ jobs:
     if: github.event.pull_request.draft == false
     steps:
       - name: Send Discord Notification
+        env:
+          WEBHOOK_URL: ${{ secrets.PR_NOTIFIER_WEBHOOK_CHURCH }}
+          PR_ACTION: ${{ github.event.action }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
         run: |
-          curl -X POST \
+          if [ -z "$WEBHOOK_URL" ]; then
+            echo "Secret PR_NOTIFIER_WEBHOOK_CHURCH is missing or empty" >&2
+            exit 1
+          fi
+
+          payload=$(jq -n \
+            --arg action "$PR_ACTION" \
+            --arg title "$PR_TITLE" \
+            --arg url "$PR_URL" \
+            --arg author "$PR_AUTHOR" \
+            '{content: ("🚀 PR \($action): **\($title)**\n🔗 \($url)\n👤 Author: \($author)")}')
+
+          curl -fsS -X POST \
             -H "Content-Type: application/json" \
-            -d '{
-              "content": "🚀 PR ${{ github.event.action }}: **${{ github.event.pull_request.title }}**\n🔗 ${{ github.event.pull_request.html_url }}\n👤 Author: ${{ github.event.pull_request.user.login }}"
-            }' \
-            "${{ secrets.PR_NOTIFIER_WEBHOOK_CHURCH }}"
+            -d "$payload" \
+            "$WEBHOOK_URL"
