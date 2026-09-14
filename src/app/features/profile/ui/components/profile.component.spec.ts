@@ -7,11 +7,14 @@ import {
   userProfileServiceMock,
 } from '@core/services/user-profile/user-profile.service.mock';
 import { ProfileComponent } from './profile.component';
-import { ProfileFacade } from './facades/profile.facade';
 import { vi } from 'vitest';
 import { ReactiveFormsModule } from '@angular/forms';
-import { donutServiceMock } from './services/donut/donut.service.mock';
-import { DonutService } from './services/donut/donut.service';
+import { donutServiceMock } from '@features/profile/services/donut/donut.service.mock';
+import { ProfileFacade } from '@features/profile/facades/profile.facade';
+import { DonutService } from '@features/profile/services/donut/donut.service';
+import { ProfileFormService } from '@features/profile/services/profile-form/profile-form.service';
+import { profileFormServiceMock } from '@features/profile/services/profile-form/profile-form.service.mock';
+import { NewProfileFacade } from '@features/profile/facades/new-profile.facade';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -24,9 +27,11 @@ describe('ProfileComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ProfileComponent, TranslocoTestingMock, ReactiveFormsModule],
       providers: [
+        ProfileFacade,
+        NewProfileFacade,
         { provide: UserProfileService, useValue: userProfileServiceMock },
-        { provide: ProfileFacade },
         { provide: DonutService, useValue: donutServiceMock },
+        { provide: ProfileFormService, useValue: profileFormServiceMock },
       ],
     }).compileComponents();
 

@@ -1,9 +1,8 @@
-import { Pipe } from '@angular/core';
 import type { PipeTransform } from '@angular/core';
-
-import type { Zodiac } from '@features/profile/data/models/zodiac.model';
-import { ZODIACS } from '@features/profile/data/constants/zodiac.constants';
-import { ZODIAC_DATES } from '@features/profile/data/constants/zodiac-date.constants';
+import { Pipe } from '@angular/core';
+import type { Zodiac } from '@features/profile/models/zodiac.model';
+import { ZODIACS } from '@features/profile/constants/zodiac.constants';
+import { ZODIAC_DATES } from '@features/profile/constants/zodiac-date.constants';
 
 @Pipe({
   name: 'zodiac',

@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { TuiIcon } from '@taiga-ui/core';
 import { TranslocoPipe } from '@jsverse/transloco';
-import type { StatCard } from '@features/profile/data/models/stats-card.model';
+import type { StatCard } from '@features/profile/models/stats-card.model';
 
 @Component({
   selector: 'ngKitty-stat-card',

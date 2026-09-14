@@ -47,6 +47,7 @@ export class UserProfileService {
     uid: string,
     data: {
       displayName?: string;
+      dateOfBirth?: unknown;
     }
   ) {
     const updateData: Record<string, unknown> = {};
@@ -55,6 +56,9 @@ export class UserProfileService {
       updateData['displayName'] = data.displayName;
     }
 
+    if (data.dateOfBirth) {
+      updateData['dateOfBirth'] = data.dateOfBirth;
+    }
     await setDoc(this.getUserReference(uid), updateData, { merge: true });
 
     const currentUser = this._user();
@@ -63,6 +67,7 @@ export class UserProfileService {
       this._user.set({
         ...currentUser,
         displayName: data.displayName ?? currentUser.displayName,
+        dateOfBirth: data.dateOfBirth ?? currentUser.dateOfBirth,
       });
     }
   }

@@ -1,5 +1,5 @@
+import { ZODIACS } from '@features/profile/constants/zodiac.constants';
 import { ZodiacPipe } from './zodiac.pipe';
-import { ZODIACS } from '@features/profile/data/constants/zodiac.constants';
 
 describe('ZodiacPipe', () => {
   let pipe: ZodiacPipe;
@@ -8,9 +8,11 @@ describe('ZodiacPipe', () => {
     pipe = new ZodiacPipe();
   });
 
-  it('should create an instance', () => {
+  it('должен инициализироваться', () => {
     expect(pipe).toBeTruthy();
   });
+
+  //TODO переделать на табличный тест
 
   it('should return Aries for April 1', () => {
     expect(pipe.transform('2000-04-01')).toEqual(ZODIACS.aries);

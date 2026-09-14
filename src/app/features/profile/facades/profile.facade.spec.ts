@@ -1,9 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import type { Mock } from 'vitest';
 import { ProfileFacade } from './profile.facade';
-import { expect } from 'vitest';
 import { userProfileFixture } from '@core/fixtures/user-profile.fixture';
-import { PROFILE_MOCK } from '../data/fixtures/profile.fixture';
 import { UserProfileService } from '@core/services/user-profile/user-profile.service';
 import { authServiceMock } from '@core/services/auth/auth.service.mock';
 import { AuthService } from '@core/services/auth/auth.service';
@@ -16,6 +14,9 @@ import {
 } from '@core/services/user-profile/user-profile.service.mock';
 import { TranslocoTestingMock } from '@shared/mocks/transloco-testing/transloco-testing.mock';
 import { donutServiceMock } from '../services/donut/donut.service.mock';
+import { PROFILE_MOCK } from '../fixtures/profile.fixture';
+import { ProfileFormService } from '@features/profile/services/profile-form/profile-form.service';
+import { profileFormServiceMock } from '@features/profile/services/profile-form/profile-form.service.mock';
 
 describe('ProfileFacade', () => {
   let facade: ProfileFacade;
@@ -28,10 +29,8 @@ describe('ProfileFacade', () => {
       imports: [TranslocoTestingMock],
       providers: [
         ProfileFacade,
-        {
-          provide: HotToastService,
-          useValue: hotToastServiceMock,
-        },
+        { provide: HotToastService, useValue: hotToastServiceMock },
+        { provide: ProfileFormService, useValue: profileFormServiceMock },
         { provide: UserProfileService, useValue: userProfileServiceMock },
         { provide: AuthService, useValue: authServiceMock },
         { provide: DonutService, useValue: donutServiceMock },
