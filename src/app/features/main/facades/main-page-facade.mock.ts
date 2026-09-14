@@ -9,7 +9,7 @@ import { TarotIntent } from '@features/main/data/api/models/intent.model';
 export const mainPageFacadeMock = {
   result: signal(tarotResponseApiFixture),
   isLoading: signal(false).asReadonly(),
-  error: signal<unknown | null>(null).asReadonly(),
+  error: signal<Error | undefined>(undefined).asReadonly(),
   loadTarot: vi.fn(),
   role: signal(TarotRole.DEVOPS),
   intent: signal(TarotIntent.FULL_RELEASE),
