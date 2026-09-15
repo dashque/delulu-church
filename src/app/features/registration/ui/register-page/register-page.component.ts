@@ -2,13 +2,14 @@ import { Component, inject } from '@angular/core';
 import { RegisterPageFacade } from '@features/registration/facades/register-page.facade';
 import { TuiInputDate, tuiInputDateOptionsProvider, TuiPassword } from '@taiga-ui/kit';
 import { provideTranslocoScope, TranslocoPipe } from '@jsverse/transloco';
-import { TuiButton, TuiError, TuiIcon, TuiInputDirective, TuiLoader, tuiLoaderOptionsProvider } from '@taiga-ui/core';
+import { TuiButton, TuiError, TuiIcon, TuiInputDirective, tuiLoaderOptionsProvider } from '@taiga-ui/core';
 
 import { RouterLink } from '@angular/router';
 import { TuiCardLarge, TuiForm } from '@taiga-ui/layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TuiDay } from '@taiga-ui/cdk';
 import { RegisterFormService } from '@features/registration/services/register-form.service';
+import { DeluluLoaderDirective } from '@shared/directives/delulu-loader/delulu-loader.directive';
 
 @Component({
   selector: 'ngKitty-register-page',
@@ -17,7 +18,6 @@ import { RegisterFormService } from '@features/registration/services/register-fo
     TuiInputDirective,
     TuiPassword,
     TuiButton,
-    TuiLoader,
     RouterLink,
     TuiIcon,
     TuiCardLarge,
@@ -25,6 +25,7 @@ import { RegisterFormService } from '@features/registration/services/register-fo
     TuiError,
     ReactiveFormsModule,
     ...TuiInputDate,
+    DeluluLoaderDirective,
   ],
 
   providers: [

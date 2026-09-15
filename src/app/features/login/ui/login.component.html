@@ -26,29 +26,23 @@
 
   <footer class="footer">
     <button tuiButton type="submit" [disabled]="facade.loginForm.invalid || isLoading">
-      @if (isLoading) {
-        <tui-loader />
-      } @else {
+      <div *deluluLoader="isLoading">
         {{ 'login.submit' | transloco }}
-      }
+      </div>
     </button>
 
     <span class="divider"></span>
 
     <button appearance="secondary" tuiButton type="button" (click)="facade.loginWithGoogle()" [disabled]="isLoading">
-      @if (isLoading) {
-        <tui-loader />
-      } @else {
+      <div *deluluLoader="isLoading">
         {{ 'login.google' | transloco }}
-      }
+      </div>
     </button>
 
     <button appearance="secondary" tuiButton type="button" (click)="facade.loginWithGithub()" [disabled]="isLoading">
-      @if (isLoading) {
-        <tui-loader />
-      } @else {
+      <div *deluluLoader="isLoading">
         {{ 'login.github' | transloco }}
-      }
+      </div>
     </button>
     <a routerLink="/register" class="link">{{ 'login.register' | transloco }}</a>
   </footer>

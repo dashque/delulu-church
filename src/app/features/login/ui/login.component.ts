@@ -6,7 +6,6 @@ import {
   TuiIcon,
   TuiInput,
   TuiLabel,
-  TuiLoader,
   tuiLoaderOptionsProvider,
   TuiTextfieldComponent,
 } from '@taiga-ui/core';
@@ -16,6 +15,7 @@ import { provideTranslocoScope, TranslocoModule } from '@jsverse/transloco';
 import { RouterLink } from '@angular/router';
 import { LoginPageFacade } from '../facades/login-page.facade';
 import { LoginFormService } from '@features/login/services/login-form.service';
+import { DeluluLoaderDirective } from '@shared/directives/delulu-loader/delulu-loader.directive';
 
 @Component({
   selector: 'ngKitty-login',
@@ -32,7 +32,7 @@ import { LoginFormService } from '@features/login/services/login-form.service';
     TranslocoModule,
     RouterLink,
     TuiError,
-    TuiLoader,
+    DeluluLoaderDirective,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
